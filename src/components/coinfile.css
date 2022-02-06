@@ -1,0 +1,55 @@
+.clicktovote{
+    background-color: rgb(243, 175, 150);
+    font-size: 24px;
+    padding: 3.5px;
+    border: 2px solid white;
+    margin-bottom: 40px;
+    border-radius: 15px;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.textholdercoinfile{
+        font-size: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        color: white
+}
+
+.coinfileheader{
+        height: 45vh;
+        width: 70%;
+        display: flex;
+        justify-content: space-around;
+        margin:20px auto;
+        transition: opacity 1s ease;
+}
+
+
+.clicktovote:hover{
+    background-color: orangered;
+    transition: 1s;
+    cursor: pointer;
+}
+
+
+@media(max-width: 750px){
+    .coinfileheader{
+        height: auto;
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin:20px auto;
+        transition: opacity 1s ease;
+}
+
+.textholdercoinfile{
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: white
+}
+}

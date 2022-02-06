@@ -1,0 +1,14 @@
+.hamburgli{
+    text-align: center;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: grey;
+}
+
+.hamburgli:hover{
+    color: white;
+    cursor: pointer;
+    transition: 1s;
+}
