@@ -1,7 +1,54 @@
+
+
 .App {
   text-align: center;
   min-height: 100vh;
   max-width: 100vw;
   box-sizing: border-box;
-  background-color: #0f1c50;
+  background: rgb(0, 0, 24);
+  scroll-behavior: smooth;
+  position: relative;
+  
+}
+
+
+.banner{
+  margin-top: 80px;
+  height:30vh;
+  width:100%;
+  display:flex;
+  justify-content:space-around;
+  align-items:center
+}
+
+.biggestAds{
+  width:40%;
+  height:200px;
+  left:30%;
+  top:40%;
+  position:fixed;
+  background-color:#708AF4; 
+  border-radius: 20px
+}
+
+
+@media (max-width: 700px){
+  .banner{
+    height:240px;
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items:center
+  }
+
+  .biggestAds{
+    width:80%;
+    height:200px;
+    left:10%;
+    top:40%;
+    position:fixed;
+    background-color:#708AF4; 
+    border-radius: 20px
+  }
 }

@@ -1,21 +1,44 @@
 .signup{
     width:100%;
-    height: auto;
-    background-color: #0f1c50;
+    height: 100vh;
     padding-top: 15px;
     box-sizing: border-box;
-    margin-top: 30px;
-  
+    min-height: 71vh;
+    background-color: rgb(0, 0, 24);
+
+  }
+
+  .signupchildWrapper{
+      padding:20px;
+      background-color: rgba(0, 0, 24,0.45);
+      max-width: 700px;
+      width: 80%;
+      height: 70%;
+      margin: 45px auto;
+      backdrop-filter: blur(40px);
+  }
+
+  .buttonForSign{
+    background-image: linear-gradient(
+        to right,
+        #708AF4,
+        #455596
+
+    );
+    border-radius: 10px;
+    width: 60%;
+    color: white;
+    height:40px;
+    margin: 0 auto;
   }
 
   .signupchild{
       padding:15px;
-      max-width: 600px;
-      width: 75%;
+      width: 100%;
       height: 60%;
-      margin:auto;
-      background-color: rgb(0, 0, 24);
+      margin: 0px auto;
       border-radius: 25px;
+      box-sizing: border-box;
       
   }
 
@@ -25,16 +48,45 @@
 
   }
 
-  .box{
-      width:20px;
-      height:20px;
-      border-radius: 50%;
-      color:red;
-      background-color: red;
+  .signinFoot{
+        margin: 0px auto;
+        display: flex;
+        color: white;
+        margin-top: 15px;
+        width: 80%;
+        justify-content: space-around;
+  }
+
+  .separationBar{
+    width:0.5px;
+    height: 25px;
+    background-color: white;
+    margin: 0px 5px;
   }
 
   .contentforsign{
       box-sizing: border-box;
+      width: 80%;
+      margin: 0px auto;
       margin-top: 50px;
-      margin-left: 14px;
+  }
+
+
+  @media(max-width:700px){
+    .signinFoot{
+        margin: 0px auto;
+        display: block;
+        color: white;
+        margin-top: 15px;
+        width: 80%;     
+        height: 80px;
+        flex-direction: column;
+        display:flex;
+        justify-content: space-around;  
+  }
+
+
+  .separationBar{
+    display: none;
+  }
   }
