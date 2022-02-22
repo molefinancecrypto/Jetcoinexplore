@@ -1,4 +1,28 @@
-img{
-    width:75px;
-    height:75px
+.sponsorshipwrapper{
+    background-color:#0f1c50;
+    width:40%;
+    height:260px;
+    padding:20px;
+    box-sizing:border-box;
+    border-radius:10px;
+    margin-left:20px
+}
+
+.sponsorshipinner{
+    height:200px;
+    width:220px;
+    background-color:rgb(0,0,24);
+    text-align:center
+}
+
+
+@media(max-width:800px){
+    .sponsorshipwrapper{
+        margin: 20px auto; 
+        width: 80%
+    }
+
+    .sponsorshipinner{
+        width: 100%
+    }
 }
