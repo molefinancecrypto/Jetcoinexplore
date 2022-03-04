@@ -134,7 +134,7 @@ export function PromotedCoin() {
 
   return <div>
             <div style={{backgroundColor:'rgb(0, 0, 24)',width:'90%',height:'auto',borderRadius:'10px',margin:"30px auto",marginBottom:'0px',boxSizing:'border-box'}}>
-           <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright'><p className='symbol'>SYMBOL</p> <p style={{textAlign:'center',width:'20%'}}>MARKET-CAP</p> <p className='launch'>LAUNCH-DATE</p> <p style={{textAlign:'center',width:'20%'}}>CHANGE</p> <p style={{textAlign:'center',width:'20%'}}>VOTE</p></div></div>  
+           <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright'><p className='symbol'>SYMBOL</p> <p className='capRank'>MARKET-CAP</p> <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE</p> <p style={{textAlign:'center',width:'20%'}}>VOTE</p></div></div>  
               {  coins.map( coin => <div className='coinselector' coin={coin} key={uuidv4()}>
     
     <div className='tableleft' >
@@ -144,9 +144,9 @@ export function PromotedCoin() {
     </div>
     </div>
        <div className= 'tableright'><p className='symbol'>{coin[Object.keys(coin)]['symbol']}</p>
-            <p style={{textAlign:'center',width:'20%'}}>{coin[Object.keys(coin)]['market_cap_rank']}</p>
+            <p className='capRank'>{coin[Object.keys(coin)]['market_cap_rank']}</p>
             <p className='launch'>{coin[Object.keys(coin)]['launch']}</p>
-            <p style={{textAlign:'center',width:'20%',color:coin[Object.keys(coin)]['change'][0]==='+'? 'green':'red'}}>{coin[Object.keys(coin)]['change']}</p>
+            <p className='change'>{coin[Object.keys(coin)]['change']}</p>
             <div style={{width:'20%',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'35px',height:"35px",padding:'4px',backgroundColor:'rgba(8, 52, 107,0.4)'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
                                                                                                  <p  style={{fontSize:'15px',color:{colorvote}}}>{votes}</p>
                                                                                               </div>                      
