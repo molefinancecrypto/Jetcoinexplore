@@ -24,21 +24,15 @@ function App() {
   const NewsApi = async ()=>{
     const NewsData = await fetch('https://newsapi.org/v2/everything?q=cryptocurrency&apiKey=3b2baf89ff384326b0244cd6f484611b')
     const Data = await NewsData.json();
-    return Data
+    if(Data['status'] === 'ok'){
+      setnews(Data['articles'])
+    }
     
 }
 
 useEffect(
-  async ()=>{
-
-          const value = await NewsApi();
-
-          if(value['status'] === 'ok'){
-              setnews(value['articles'])
-              console.log(news)
-          } 
-      
-     
+   ()=>{
+       NewsApi()     
   },[])  
 
 
