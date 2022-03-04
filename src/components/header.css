@@ -1,18 +1,24 @@
+.headerwrapper{
+    width:100%;
+    min-height:10vh;
+    display:flex;
+    background-color: rgb(10, 24, 41) 
+}
+
 .headercontainer{
-    background-color: rgb(1, 1, 39);
     padding: 5px 20px;
     width: 100%;
     color: white;
     display: flex;
     box-sizing: border-box;
     justify-content: space-between;
-    height: 10vh;
+    height: 100%;
 }
 
 .lister{
     width:40%;
     display:flex;
-    justify-content: space-around;
+    justify-content: space-between;
     list-style: none;
     align-items: center;
 }
@@ -23,10 +29,11 @@
 }
 .menuholder{
     height: 100%;
-    text-align: center;
+    justify-content: center;
     display: flex;
     align-items: center;
     display:none;
+    padding-top: 10px;
 }
 
 .hamburgli{
@@ -35,7 +42,7 @@
     font-size: 16px;
     margin-top: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: grey;
+    color: white;
     list-style-type: none;
 }
 
@@ -49,7 +56,7 @@
 }
 
 .hambugholder{
-    background-color: rgb(1, 1, 39);
+    background-color: rgb(6, 16, 28);
         width:0%;
         display: none;
         height:170px;
@@ -64,12 +71,35 @@
         transition-duration: 1.5s;
 }
 
+.searchholder{
+
+    width:350px;
+    height:10vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.searchcoinsmenu{
+    position:absolute;
+    width:100%;
+    height:auto;
+    top:100%;
+    left:0px;
+    background-color: rgb(6, 16, 28);
+    border-radius: 10px;
+    display:block;
+    z-index: 100;
+    border: 1px solid white;
+    border-top: 0px;
+}
+
 input#menu{
     display: none;
 }
 
 .menuicon:checked ~.hambugholder{
-    background-color: rgb(1, 1, 39);
+    background-color: rgb(6, 16, 28);
         width:85%;
         height:170px;
         list-style:none;
@@ -92,11 +122,29 @@ input#menu{
  }
 
 
+@media(max-width:1450px){
+    .lister{
+        width:50%;
+        display:flex;
+        justify-content: space-between;
+        list-style: none;
+        align-items: center;
+    }
+}
 
 
 
+@media(max-width: 1250px){
 
-@media(max-width: 1150px){
+    .headerwrapper{
+        width:100%;
+        min-height:10vh;
+        display:flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: rgb(10, 24, 41);
+        padding-bottom: 20px;
+    }
  .lister{
      display: none;
  }
@@ -107,5 +155,17 @@ input#menu{
  .menuholder{
      display: flex;
  }
+
+ .headerwrapper{
+     display:block
+ }
+
+ .searchholder{
+    height: 100%;
+    width:90%;
+    margin: 10px auto;
+    
+    
+}
 }
     

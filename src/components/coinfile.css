@@ -1,5 +1,5 @@
 .clicktovote{
-    background-color: rgb(243, 175, 150);
+    background-color: rgb(10, 24, 41);
     font-size: 24px;
     padding: 3.5px;
     border: 2px solid white;
@@ -7,6 +7,8 @@
     border-radius: 15px;
     width: 200px;
     margin: 0 auto;
+    color: white;
+    margin-bottom: 40px;
 }
 
 .textholdercoinfile{

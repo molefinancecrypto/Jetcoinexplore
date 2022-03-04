@@ -1,7 +1,6 @@
 import { useEffect, useRef,useReducer,useState } from 'react';
 import Header from './components/Header';
 import './App.css';
-import Sponsorship from './components/Sponsorship';
 import CoinsTable from './components/Mainpage/CoinsTable';
 import {  Routes, Route} from 'react-router-dom';
 import CoinFile from './components/CoinFile';
@@ -10,6 +9,11 @@ import Signup from './components/userAuthorization/Signup';
 import ListCoin from './components/Menu/ListCoin';
 import {PromotedCoin} from './components/Mainpage/CoinsTable';
 import AdsBanner from './components/AdsBanner';
+import Cryptonews from './components/Cryptonews';
+import NewsPage from './components/Menu/NewsPage';
+import facebook from './socialMedia/facebook.jpg';
+import twitter from './socialMedia/twitterLogo.jpg';
+import telegram from './socialMedia/telegram.jpg';
 
 
 
@@ -65,7 +69,7 @@ useEffect(
       <div>
 
             <div className='banner' >
-                {news &&  <Sponsorship news={news}/>}
+                {news &&  <Cryptonews news={news}/>}
                 <AdsBanner />  
             </div>
 
@@ -87,13 +91,56 @@ useEffect(
       <Route path='/signup' element={<Signup/>} />
       <Route path='/signin' element={<Signin/>} />
       <Route path='/addcoin' element={<ListCoin/>} />
+      <Route path='/newspage' element={<NewsPage news={news}/>} />
+
 
       </Routes>
       </div>
       </div>
-      <div style={{width:'60%',textAlign:'center',paddingTop:'15px',backgroundColor:'rgb(0,0,24)',height:"25vh",position:'absolute',bottom:'10px',left:'20%',borderRadius:'20px',boxShadow:'-5px -5px 5px 5px black'}}>
-        <p style={{fontFamily: "'Dongle', sans-serif", fontFamily: "'Satisfy', cursive",fontSize:'45px',color:'white'}}>Partners With</p>
-        <div style={{display:"flex",width:'80%',marginTop:'45px',justifyContent:'space-around',margin:'0px auto',fontSize:'33px',color:'white',fontFamily:"'Dongle', sans-serif"}}><p>Elon-Musk</p><p>Bill- Gates</p><p>The Glaziers</p></div>
+      <div style={{width:'100%',textAlign:'center',color:'white',padding:'15px',backgroundColor:'rgb(10, 24, 41)',height:"35vh",position:'absolute',bottom:'0px',left:'0px',boxSizing:'border-box',display:'flex'}}>
+        <div style={{width:'40%',height:'100%',display:'flex',justifyContent:'space-between',flexDirection:'column'}}>
+          <div style={{width:'100%',height:'60%'}}>
+             <p style={{width:'100%',textAlign:'left',paddingBottom:'30px'}}><strong>Subscribe to our weekly NewsLetter</strong></p>
+             <div style={{width:'100%',display:'flex',justifyContent:'space-between'}}><input placeholder='Enter your E-mail Address' style={{width:'50%',height:'35px',backgroundColor:'transparent',border:'1px solid white'}} type='text' /><button style={{width:'40%',height:'35px',backgroundColor:'rgb(6, 16, 28)'}}>send</button></div>
+          </div>
+          <div style={{width:'40%',display:'flex',justifyContent:'space-between'}}>
+            <img style={{width:'35px',height:'35px',borderRadius:'50%'}} src={twitter}/>
+            <img style={{width:'35px',height:'35px',borderRadius:'50%'}} src={facebook}/>
+            <img style={{width:'35px',height:'35px',borderRadius:'50%'}} src={telegram}/>
+          </div>
+        
+        </div>
+
+        <div style={{width:'60%',height:'100%',display:'flex',justifyContent:'space-around'}}>
+          <div style={{textAlign:'left'}}>
+            <p style={{marginBottom:'15px'}}><strong>Our Company</strong></p>
+            <div style={{textAlign:'left'}}>
+              <p>News</p>
+              <p>Terms and Conditions</p>
+              <p>Privacy Policy</p>
+            </div>
+          </div>
+          
+        
+        <div style={{textAlign:'left'}}>
+            <p style={{marginBottom:'15px'}}><strong>Help and Support</strong></p>
+            <div style={{textAlign:'left'}}>
+              <p>DYOR</p>
+              <p>Contact Us</p>
+              <p>Advertise</p>
+            </div>
+          </div>
+          <div style={{textAlign:'left'}}>
+            <p style={{marginBottom:'15px'}}><strong>Coins</strong></p>
+            <div style={{textAlign:'left'}}>
+              <p>All Time Ranking</p>
+              <p>Daily Ranking</p>
+              <p>New Listings</p>
+              <p>Submit Coin</p>
+              <p>Update Coin </p>
+            </div>
+          </div>
+          </div>
       </div> 
     </div>
   );

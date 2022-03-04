@@ -9,10 +9,14 @@ import GoToTop from '../Gototop';
 
 function CoinInfo({coin}) {
     const [votes,setvotes] = useState(0);
+    const [colorvote,setcolorvote] = useState('#797878 ')
     const [stars,setstars] = useState(emptystar);
+    const arrowforvote = <svg xmlns="http://www.w3.org/2000/svg" height="17px" viewBox="0 0 24 24" width="17px" fill= {colorvote}><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>;
     const [direction,setdirection] = useState('');
     const navigate = useNavigate();
-    const {votevalidation} = ParticularCoin()
+    const {votevalidation} = ParticularCoin();
+    //#B6B3B3
+    //#fffff
     const StarClick = ()=>{
         if(votevalidation){
           if(votes<=1){
@@ -42,14 +46,22 @@ function CoinInfo({coin}) {
   
         },[votes])
 
-  return <div style={{display:'flex',justifyContent:'space-around',scrollBehavior:'smooth',marginBottom:"0px",textAlign:"center",padding:'10px 5px',boxSizing:'border-box',backgroundColor:'rgb(2, 2, 41)'}}>
+  return <div className='coinselector'>
   <div className='tableleft' onClick={ ()=>{
-    navigate(`/coin/${coin[Object.keys(coin)]['name']}`,{state: coin})}}><img className='tablecoinlogo' src={coin[Object.keys(coin)]['img']} alt='coinLogo'/><p>{coin[Object.keys(coin)]['name']}</p></div>
+    navigate(`/coin/${coin[Object.keys(coin)]['name']}`,{state: coin})}}>
+      <div style={{width:'150px',display:'flex',alignItems:'center',justifyContent:"space-between",padding:'0px'}}>
+      <img className='tablecoinlogo' style={{borderRadius:'50%'}} src={coin[Object.keys(coin)]['img']} alt='coinLogo'/>
+      <p>{coin[Object.keys(coin)]['name']}</p>
+      </div>
+      </div>
   <div className= 'tableright'><p className='symbol'>{coin[Object.keys(coin)]['symbol']}</p>
-       <p style={{textAlign:'center',width:'20%'}}>{coin[Object.keys(coin)]['market_cap_rank']}</p>
+       <p className='capRank'>{coin[Object.keys(coin)]['market_cap_rank']}</p>
        <p className='launch'>{coin[Object.keys(coin)]['launch']}</p>
-       <p style={{textAlign:'center',width:'20%',color:coin[Object.keys(coin)]['change'][0]==='+'? 'green':'red'}}>{coin[Object.keys(coin)]['change']}</p>
-       <p style={{textAlign:'center',width:'20%',display:'flex',justifyContent:'space-around'}}><span style={{fontSize:'22px'}}>{votes}</span><span style={{display:'flex'}}><img src={stars} alt="star-state" style={{width:'24px',height:"24px"}} onClick={StarClick}/></span></p>
+       <p className='change' >{coin[Object.keys(coin)]['change']}</p>
+       <div style={{width:'20%',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'35px',height:"35px",padding:'4px',backgroundColor:'rgba(8, 52, 107,0.4)'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
+                                                                                                 <p  style={{fontSize:'15px',color:{colorvote}}}>{votes}</p>
+                                                                                              </div>                      
+      </div>
   </div>
   <GoToTop/>
 </div>;

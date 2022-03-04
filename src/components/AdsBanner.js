@@ -23,13 +23,13 @@ function AdsBanner() {
          }
      }
 
-  return <div style={{backgroundColor:'#0f1c50',width:'30%',height:'70px',boxSizing:"border-box",borderRadius:'20px',marginTop:'20px',backgroundSize:'cover'}}>
+  return <div style={{backgroundColor:'#0f1c50',width:'30%',height:'70px',boxSizing:"border-box",borderRadius:'20px',marginTop:'20px',backgroundSize:'cover',border:'2px solid black'}}>
       <AliceCarousel mouseTracking
       infinite
       autoPlayInterval={1000}
       animationDuration={1500}
       disableDotsControls
-      
+      disableButtonsControls
       responsive={responsive}
       autoPlay items={items} />
       
