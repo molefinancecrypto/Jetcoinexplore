@@ -26,6 +26,7 @@ function App() {
     const Data = await NewsData.json();
     if(Data['status'] === 'ok'){
       setnews(Data['articles'])
+      console.log(news)
     }
     
 }
