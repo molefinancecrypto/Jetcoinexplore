@@ -13,7 +13,7 @@
 
 .backward{
     position:absolute;
-    left:-30px;
+    left:-10px;
     top: 45%;
     width: 35px;
     height: 35px;
@@ -21,13 +21,13 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: white;
+    
 }
 
 
 .forward{
     position:absolute;
-    right:-30px;
+    right:-10px;
     top: 45%;
     width: 35px;
     height: 35px;
@@ -35,11 +35,11 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: white;
+    
 }
 
 .backward:hover,.forward:hover{
-    background-color: grey;
+    background-color: white;
 }
 
 .newsinner{

@@ -49,16 +49,16 @@ function CoinInfo({coin}) {
   return <div className='coinselector'>
   <div className='tableleft' onClick={ ()=>{
     navigate(`/coin/${coin[Object.keys(coin)]['name']}`,{state: coin})}}>
-      <div style={{width:'150px',display:'flex',alignItems:'center',justifyContent:"space-between",padding:'0px'}}>
+      <div style={{width:'150px',display:'flex',alignItems:'center',justifyContent:"left",padding:'0px'}}>
       <img className='tablecoinlogo' style={{borderRadius:'50%'}} src={coin[Object.keys(coin)]['img']} alt='coinLogo'/>
-      <p>{coin[Object.keys(coin)]['name']}</p>
+      <p style={{marginLeft:'15px'}}>{coin[Object.keys(coin)]['name']}</p>
       </div>
       </div>
   <div className= 'tableright'><p className='symbol'>{coin[Object.keys(coin)]['symbol']}</p>
        <p className='capRank'>{coin[Object.keys(coin)]['market_cap_rank']}</p>
        <p className='launch'>{coin[Object.keys(coin)]['launch']}</p>
        <p className='change' >{coin[Object.keys(coin)]['change']}</p>
-       <div style={{width:'20%',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'35px',height:"35px",padding:'4px',backgroundColor:'rgba(8, 52, 107,0.4)'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
+       <div style={{minWidth:'55px',width:'20%',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'55px',height:"55px",padding:'4px',backgroundColor:'rgba(8, 52, 107,0.4)'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
                                                                                                  <p  style={{fontSize:'15px',color:{colorvote}}}>{votes}</p>
                                                                                               </div>                      
       </div>

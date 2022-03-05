@@ -11,17 +11,12 @@ import {PromotedCoin} from './components/Mainpage/CoinsTable';
 import AdsBanner from './components/AdsBanner';
 import Cryptonews from './components/Cryptonews';
 import NewsPage from './components/Menu/NewsPage';
-import facebook from './socialMedia/facebook.jpg';
-import twitter from './socialMedia/twitterLogo.jpg';
-import telegram from './socialMedia/telegram.jpg';
+import Footer from './components/Mainpage/Footer';
+import { Newsjson } from './components/Newsapi';
 
 
-
-
-function App() {
-
-  const [news, setnews] = useState('')
-  const NewsApi = async ()=>{
+/*
+const NewsApi = async ()=>{
     const NewsData = await fetch('https://newsapi.org/v2/everything?q=cryptocurrency&apiKey=3b2baf89ff384326b0244cd6f484611b')
     const Data = await NewsData.json();
     if(Data['status'] === 'ok'){
@@ -29,11 +24,25 @@ function App() {
       console.log(news)
     }
     
-}
+*/
+
+function App() {
+
+  const [news, setnews] = useState('')
+ /* const NewsApi = async ()=>{
+    const NewsData = await fetch('https://newsapi.org/v2/everything?q=cryptocurrency&apiKey=3b2baf89ff384326b0244cd6f484611b')
+    const Data = await NewsData.json();
+    if(Data['status'] === 'ok'){
+      setnews(Data['articles'])
+      console.log(news)
+    }
+    
+}*/
 
 useEffect(
    ()=>{
-       NewsApi()     
+       /*NewsApi() */    
+       setnews(Newsjson)
   },[])  
 
 
@@ -56,7 +65,7 @@ useEffect(
 
   return (
     <div className="App">
-      <div style={{position:"relative",paddingBottom:'40vh',height:'100%'}}>
+      <div className='Appsecond'>
       <Header />
       <div style={{minHeight:"calc(100%-10vh)"}}>
       <Routes >
@@ -68,7 +77,7 @@ useEffect(
                 <AdsBanner />  
             </div>
 
-      <div style={{marginTop:'30px',fontSize:'25px',color:"white",marginTop:'100px'}}> PROMOTED COINS</div>
+      <div className='gainers'>TOP GAINERS</div>
       
           <PromotedCoin />
       
@@ -92,51 +101,7 @@ useEffect(
       </Routes>
       </div>
       </div>
-      <div style={{width:'100%',textAlign:'center',color:'white',padding:'15px',backgroundColor:'rgb(10, 24, 41)',height:"35vh",position:'absolute',bottom:'0px',left:'0px',boxSizing:'border-box',display:'flex'}}>
-        <div style={{width:'40%',height:'100%',display:'flex',justifyContent:'space-between',flexDirection:'column'}}>
-          <div style={{width:'100%',height:'60%'}}>
-             <p style={{width:'100%',textAlign:'left',paddingBottom:'30px'}}><strong>Subscribe to our weekly NewsLetter</strong></p>
-             <div style={{width:'100%',display:'flex',justifyContent:'space-between'}}><input placeholder='Enter your E-mail Address' style={{width:'50%',height:'35px',backgroundColor:'transparent',border:'1px solid white'}} type='text' /><button style={{width:'40%',height:'35px',backgroundColor:'rgb(6, 16, 28)'}}>send</button></div>
-          </div>
-          <div style={{width:'40%',display:'flex',justifyContent:'space-between'}}>
-            <img style={{width:'35px',height:'35px',borderRadius:'50%'}} src={twitter}/>
-            <img style={{width:'35px',height:'35px',borderRadius:'50%'}} src={facebook}/>
-            <img style={{width:'35px',height:'35px',borderRadius:'50%'}} src={telegram}/>
-          </div>
-        
-        </div>
-
-        <div style={{width:'60%',height:'100%',display:'flex',justifyContent:'space-around'}}>
-          <div style={{textAlign:'left'}}>
-            <p style={{marginBottom:'15px'}}><strong>Our Company</strong></p>
-            <div style={{textAlign:'left'}}>
-              <p>News</p>
-              <p>Terms and Conditions</p>
-              <p>Privacy Policy</p>
-            </div>
-          </div>
-          
-        
-        <div style={{textAlign:'left'}}>
-            <p style={{marginBottom:'15px'}}><strong>Help and Support</strong></p>
-            <div style={{textAlign:'left'}}>
-              <p>DYOR</p>
-              <p>Contact Us</p>
-              <p>Advertise</p>
-            </div>
-          </div>
-          <div style={{textAlign:'left'}}>
-            <p style={{marginBottom:'15px'}}><strong>Coins</strong></p>
-            <div style={{textAlign:'left'}}>
-              <p>All Time Ranking</p>
-              <p>Daily Ranking</p>
-              <p>New Listings</p>
-              <p>Submit Coin</p>
-              <p>Update Coin </p>
-            </div>
-          </div>
-          </div>
-      </div> 
+      <Footer />
     </div>
   );
 }

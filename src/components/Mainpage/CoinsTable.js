@@ -65,18 +65,10 @@ const CoinsTable = () => {
       
      
 
-  return <div style={{marginTop:'30px', color:'white',boxSizing:'border-box'}}>
+  return <div style={{marginTop:'100px', color:'white',boxSizing:'border-box'}}>
     
-      <p style={{fontSize:'25px',marginBottom:'30px'}}>CryptoCurrency Data</p>
-      <div className='searchandbutton' >
-        <div className='buttonsabovesearch'>
-          <div style={{border: '1px solid black',display: 'flex',width: '33.3%',height:'30px',padding: '1px 3px',backgroundColor: buttonColor[0],borderRadius: '12px'}} className='Hottest' onClick={clickHottest} ><p style={{fontSize:"17px",display:'flex',alignItems:'center',width:'100%',justifyContent:'center'}}>Hottest</p></div>
-          <div style={{border: '1px solid black',display: 'flex',width: '33.3%',height:'30px',padding: '1px 3px',backgroundColor: buttonColor[1],borderRadius: '12px'}} className='promoted' onClick={clickpromoted}><p style={{fontSize:"17px",display:'flex',alignItems:'center',width:'100%',justifyContent:'center'}}>Promoted</p></div>
-          <div style={{border: '1px solid black',display: 'flex',width: '33.3%',height:'30px',padding: '1px 3px',backgroundColor: buttonColor[2],borderRadius: '12px'}} className='alltime' onClick={clickalltime}><p style={{fontSize:"17px",display:'flex',alignItems:'center',width:'100%',justifyContent:'center'}}>All-Time</p></div>
-        
-        </div>
-        
-      </div>
+      <p className='highlighted'>HIGHLIGHTED</p>
+      
       <div className='headerClass'>
            <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright' ><p className='symbol'>SYMBOL</p> <p className='capRank'>MARKET-CAP</p> <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE</p> <p style={{textAlign:'center',width:'20%'}}>VOTE</p></div></div>
            { coins.length== 0 ?<div style={{fontSize:'30px'}}>NO MATCHES</div> : coins.map( coin => <CoinInfo coin={coin} key={uuidv4()}/> )}
@@ -132,22 +124,22 @@ export function PromotedCoin() {
     },[])
 
 
-  return <div>
-            <div style={{backgroundColor:'rgb(0, 0, 24)',width:'90%',height:'auto',borderRadius:'10px',margin:"30px auto",marginBottom:'0px',boxSizing:'border-box'}}>
+  return <div style={{width:'90%',margin:'0px auto'}}>
+            <div style={{backgroundColor:'rgb(0, 0, 24)',width:'100%',border: '2px solid #0b1f36',height:'auto',borderRadius:'10px',margin:"30px auto",marginBottom:'0px',boxSizing:'border-box'}}>
            <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright'><p className='symbol'>SYMBOL</p> <p className='capRank'>MARKET-CAP</p> <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE</p> <p style={{textAlign:'center',width:'20%'}}>VOTE</p></div></div>  
               {  coins.map( coin => <div className='coinselector' coin={coin} key={uuidv4()}>
     
     <div className='tableleft' >
-    <div style={{width:'150px',display:'flex',alignItems:'center',justifyContent:"space-between",padding:'0px'}}>
+    <div style={{width:'150px',display:'flex',alignItems:'center',justifyContent:"left",padding:'0px'}}>
       <img className='tablecoinlogo' style={{borderRadius:'50%'}} src={coin[Object.keys(coin)]['img']} alt='coinLogo'/>
-      <p>{coin[Object.keys(coin)]['name']}</p>
+      <p style={{marginLeft:'15px'}}>{coin[Object.keys(coin)]['name']}</p>
     </div>
     </div>
        <div className= 'tableright'><p className='symbol'>{coin[Object.keys(coin)]['symbol']}</p>
             <p className='capRank'>{coin[Object.keys(coin)]['market_cap_rank']}</p>
             <p className='launch'>{coin[Object.keys(coin)]['launch']}</p>
             <p className='change'>{coin[Object.keys(coin)]['change']}</p>
-            <div style={{width:'20%',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'35px',height:"35px",padding:'4px',backgroundColor:'rgba(8, 52, 107,0.4)'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
+            <div style={{minWidth:'55px',width:'20%',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'55px',height:"55px",padding:'4px',backgroundColor:'rgba(8, 52, 107,0.4)'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
                                                                                                  <p  style={{fontSize:'15px',color:{colorvote}}}>{votes}</p>
                                                                                               </div>                      
       </div>

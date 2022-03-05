@@ -2,7 +2,7 @@
     display:flex;
     justify-content: space-around;
     width:100%;
-    background-color: rgb(10, 24, 41);
+    background-color: #06101d;
     color:white;
     height: 60px;
     align-items: center;
@@ -45,6 +45,11 @@
         justify-content: space-around;
 }
 
+.highlighted{
+    font-size:35px;
+    margin-bottom:30px
+}
+
 .symbol{
     text-align: center;
     width:20%
@@ -71,18 +76,22 @@
     border-radius:10px;
     margin:30px auto;
     margin-bottom:0px;
-    box-sizing:border-box
+    box-sizing:border-box;
+    border:  2px solid #0b1f36; 
+    border-width: 2px 2px 2px 2px;
 }
 
 .headerleft{
     width: 20%;
     text-align:center;
+    background-color: #06101d;
 }
 
 .headerright{
     width: 80%;
     display: flex;
     justify-content: space-around;
+    background-color: #06101d;
 }
 
 .tableright{
@@ -115,12 +124,12 @@
     text-align:center;
     padding: 2px 2px ;
     box-sizing: border-box;
-    background-color: rgb(12, 34, 59);
+    background-color:  #0d213a;
     
 }
 
 .coinselector:nth-of-type(odd){
-    background: rgb(10, 24, 41);
+    background: #071323;
   }
 
 
@@ -152,7 +161,10 @@
         height: 50px
     }
 
-    
+    .highlighted{
+        font-size:25px;
+        margin-bottom:30px
+    }
 
     .tableleft{
         width:60%;

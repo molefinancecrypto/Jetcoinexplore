@@ -10,9 +10,9 @@ export default function NewsPage({news}) {
   return (
     <div style={{width:'90vw',margin:'30px auto',minHeight:'100vh',color:'white'}}>
         <div style={{color:"white",width:"100%",textAlign:"left",display:"flex",padding:"15px",boxSizing:"border-box",cursor:'pointer'}} onClick={()=> navigate('/')}><p>{homeIcon}</p>Back to main Page</div>
-        {news.map(newss=><div style={{width:'90%',display:'flex',borderRadius:'10px',justifyContent:'space-between',padding:'30px',boxSizing:'border-box',height:'350px',margin:'20px auto',backgroundColor:'rgb(10, 24, 41)'}}>
-                             <div style={{width:'35%',height:'100%'}}><img style={{width:'100%',height:'100%',borderRadius:'13px'}} src={newss['urlToImage']} alt='image_for_news_page'/></div>
-                             <div style={{width:'50%',display:'flex',flexDirection:'column',justifyContent:'space-between',alignItems:'left'}}>
+        {news.map(newss=><div className='newsItem' >
+                             <div className = 'divForNewsImage' ><img style={{width:'100%',height:'100%',borderRadius:'13px'}} src={newss['urlToImage']} alt='image_for_news_page'/></div>
+                             <div className='divForNewsContent' >
                                  <p style={{width:'100%',textAlign:'left',letterSpacing:'2px'}}><strong>Title</strong>: {newss['title']}</p>
                                  <p style={{width:'100%',textAlign:'left',letterSpacing:'2px'}}><strong>Description</strong>: {newss['description']}</p>
                                  <div style={{display:'flex',justifyContent:'flex',justifyContent:'space-between'}}>

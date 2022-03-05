@@ -115,7 +115,7 @@ function Header() {
   
   <div className = 'searchholder' >
      <div ref={menuref} style={{width:'100%',height:"35px",position:'relative'}}>
-        <input onClick={rolldownsearch} placeholder='search for coins' onChange={changeSearch} type='search' value={searchvalue} style={{width:'100%',height:'100%',outline:'none',color:'white', borderRadius:'9px',backgroundColor:'rgb(6, 16, 28)'}}/>
+        <input onClick={rolldownsearch} placeholder='search for coins' onChange={changeSearch} type='search' value={searchvalue} style={{width:'100%',height:'100%',outline:'none',color:'white', borderRadius:'9px',backgroundColor:'#02050a'}}/>
         {showmenu && <div className='searchcoinsmenu' >
                         {coinShown.map(coin=><div onClick={ ()=>{
     navigate(`/coin/${coin[Object.keys(coin)]['name']}`,{state: coin});setshowmenu(false)}} style={{display:'flex',color:'white', justifyContent:"space-between",width:'90%',margin:'20px auto'}}>
