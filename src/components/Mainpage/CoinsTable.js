@@ -71,7 +71,7 @@ const CoinsTable = () => {
       
       <div className='headerClass'>
            <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright' ><p className='symbol'>SYMBOL</p> <p className='capRank'>MARKET-CAP</p> <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE</p> <p style={{textAlign:'center',width:'20%'}}>VOTE</p></div></div>
-           { coins.length== 0 ?<div style={{fontSize:'30px'}}>NO MATCHES</div> : coins.map( coin => <CoinInfo coin={coin} key={uuidv4()}/> )}
+           { coins.length== 0 ?<div style={{fontSize:'30px'}}>NO MATCHES</div> : <div style={{height:'auto',width:'100%',borderRadius:'0px 0px 10px 10px'}}>{coins.map( coin => <CoinInfo coin={coin} key={uuidv4()}/> )}</div>}
       </div>
   </div>;
 };
@@ -125,7 +125,7 @@ export function PromotedCoin() {
 
 
   return <div style={{width:'90%',margin:'0px auto'}}>
-            <div style={{backgroundColor:'rgb(0, 0, 24)',width:'100%',border: '2px solid #0b1f36',height:'auto',borderRadius:'10px',margin:"30px auto",marginBottom:'0px',boxSizing:'border-box'}}>
+            <div style={{width:'100%',height:'auto',borderRadius:'10px',margin:"30px auto",marginBottom:'0px',boxSizing:'border-box'}}>
            <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright'><p className='symbol'>SYMBOL</p> <p className='capRank'>MARKET-CAP</p> <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE</p> <p style={{textAlign:'center',width:'20%'}}>VOTE</p></div></div>  
               {  coins.map( coin => <div className='coinselector' coin={coin} key={uuidv4()}>
     

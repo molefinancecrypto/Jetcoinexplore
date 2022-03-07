@@ -69,25 +69,40 @@ function Header() {
 
   return <div className='headerwrapper'>
             <div className='headercontainer'>
-               <div className='logoandtitleholder' style={{display:'flex',justifyContent:'left',fontFamily: "'Dongle', sans-serif"}}>
+               <div className='logoandtitleholder'>
         
                   <div style={{height:"100%", textAlign:'center',display:'flex',alignItems:"center"}}>
                      <img src={logo} alt='Logo' style={{width:'40px',height:'40px'}}/>
                   </div>
-                  <div style={{height:"100%", textAlign:'center',display:'flex',alignItems:"center"}}>
-                     <p style={{fontSize:'47px',textAlign:'left'}}>COIN<span style={{color:'#708AF4'}}>EXPLORE</span></p>    
+                  <div className='coinexplore'>
+                     <p style={{fontSize:'27px',textAlign:'left'}}><strong>COIN</strong>EXPLORE</p>    
                   </div>  
-                  </div>     
+               </div>     
 
-
+               <div className = 'searchholder' >
+     <div ref={menuref} style={{width:'100%',height:"35px",position:'relative'}}>
+        <input onClick={rolldownsearch} placeholder='search for coins' onChange={changeSearch} type='search' value={searchvalue} style={{width:'100%',height:'100%',outline:'none',color:'white',border:"1px solid #02050a", borderRadius:'9px',backgroundColor:'#02050a'}}/>
+        {showmenu && <div className='searchcoinsmenu' >
+                        {coinShown.map(coin=><div onClick={ ()=>{
+    navigate(`/coin/${coin[Object.keys(coin)]['name']}`,{state: coin});setshowmenu(false)}} style={{display:'flex',color:'white', justifyContent:"space-between",width:'90%',margin:'20px auto'}}>
+                                              <div style={{display:'flex',width:'60%'}}>
+                                                 <img style={{width:'30px',height:'30px',borderRadius:'50%'}} src={coin[Object.keys(coin)]['img']} alt='logocoin'/>
+                                                 <p style={{fontSize:'17px'}}>{coin[Object.keys(coin)]['name']}</p>
+                                              </div>
+                                              <p>{coin[Object.keys(coin)]['coin_id']}</p>
+                                           </div>)}</div>}
+        
+     </div>
+        
+  </div>
          
          <div className='menuholder' >
               <input className="menuicon" type= "checkbox" id='menu' />
               <label className='open' for='menu'> 
-                 <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+                 <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#808080"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
               </label>
               <label className='cancel' for='menu'> 
-                 <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+                 <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#808080"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
               </label>
               <div className='hambugholder'>
                  <ul>
@@ -99,6 +114,8 @@ function Header() {
                  </ul>
               </div> 
            </div>   
+
+           
 
     <ul className="lister">
        <li className='list'><Link to="/addcoin" style={{color:"white",textDecoration:"none"}}>Add Coin</Link></li>
@@ -113,22 +130,7 @@ function Header() {
   </div>
 
   
-  <div className = 'searchholder' >
-     <div ref={menuref} style={{width:'100%',height:"35px",position:'relative'}}>
-        <input onClick={rolldownsearch} placeholder='search for coins' onChange={changeSearch} type='search' value={searchvalue} style={{width:'100%',height:'100%',outline:'none',color:'white', borderRadius:'9px',backgroundColor:'#02050a'}}/>
-        {showmenu && <div className='searchcoinsmenu' >
-                        {coinShown.map(coin=><div onClick={ ()=>{
-    navigate(`/coin/${coin[Object.keys(coin)]['name']}`,{state: coin});setshowmenu(false)}} style={{display:'flex',color:'white', justifyContent:"space-between",width:'90%',margin:'20px auto'}}>
-                                              <div style={{display:'flex',width:'60%'}}>
-                                                 <img style={{width:'30px',height:'30px',borderRadius:'50%'}} src={coin[Object.keys(coin)]['img']} alt='logocoin'/>
-                                                 <p style={{fontSize:'17px'}}>{coin[Object.keys(coin)]['name']}</p>
-                                              </div>
-                                              <p>{coin[Object.keys(coin)]['coin_id']}</p>
-                                           </div>)}</div>}
-        
-     </div>
-        
-  </div>
+  
      
   
   </div>;

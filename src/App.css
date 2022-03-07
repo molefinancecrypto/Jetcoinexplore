@@ -8,6 +8,8 @@
   background: #05101c;
   scroll-behavior: smooth;
   position: relative;
+  font-family: 'Nexa', sans-serif;
+  
   
 }
 
@@ -86,7 +88,7 @@
 @media(max-width:550px){
   .Appsecond{
     position:relative;
-    padding-bottom:70vh;
+    padding-bottom:105vh;
     height:100%
   }
 }

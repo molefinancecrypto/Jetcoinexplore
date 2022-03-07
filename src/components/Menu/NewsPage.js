@@ -14,7 +14,7 @@ export default function NewsPage({news}) {
                              <div className = 'divForNewsImage' ><img style={{width:'100%',height:'100%',borderRadius:'13px'}} src={newss['urlToImage']} alt='image_for_news_page'/></div>
                              <div className='divForNewsContent' >
                                  <p style={{width:'100%',textAlign:'left',letterSpacing:'2px'}}><strong>Title</strong>: {newss['title']}</p>
-                                 <p style={{width:'100%',textAlign:'left',letterSpacing:'2px'}}><strong>Description</strong>: {newss['description']}</p>
+                                 <p style={{width:'100%',textAlign:'left',letterSpacing:'2px',overflow:'hidden'}}><strong>Description</strong>: {newss['description']}</p>
                                  <div style={{display:'flex',justifyContent:'flex',justifyContent:'space-between'}}>
                                      <p><strong>Date</strong>: {new Date(newss['publishedAt']).getDate()+'/'+new Date(newss['publishedAt']).getMonth()+'/2022'}</p>
                                      <a href={newss['url']}><p>Read Article</p></a>

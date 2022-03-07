@@ -32,7 +32,7 @@ export  const CoinObj = [
     {
        "four": {"id": "insure",
         "coin_id": 10354,
-        "name": "inSure DeFi",
+        "name": "inSureDeFi",
         "symbol": "SURE",
         "market_cap_rank": 297,
         "img": "https://assets.coingecko.com/coins/images/10354/small/logo-grey-circle.png?1614910406",
@@ -102,7 +102,7 @@ export  const CoinObj = [
     {"eleven":{
         "id": "insure",
         "coin_id": 1317,
-        "name": "cerTain DeFi",
+        "name": "cerTainDeFi",
         "symbol": "cerTaiN",
         "market_cap_rank": 97,
         "img": "https://assets.coingecko.com/coins/images/10354/small/logo-grey-circle.png?1614910406",

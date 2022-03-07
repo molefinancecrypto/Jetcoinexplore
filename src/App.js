@@ -28,7 +28,44 @@ const NewsApi = async ()=>{
 
 function App() {
 
-  const [news, setnews] = useState('')
+  const [news, setnews] = useState('');
+  const [windowidth,setwindowidth] = useState('');
+
+
+  const handleResize = ()=> {
+    if(window.innerWidth>1100){
+      let a  = window.innerWidth*0.2667
+      setwindowidth(a)
+    }
+
+    else if( window.innerWidth<=1100 && window.innerWidth>560){
+      let b = window.innerWidth*0.40005;
+      setwindowidth(b)
+    }
+
+    else if(window.innerWidth<560){
+      let c = window.innerWidth*0.80 ;
+      setwindowidth(c)
+    }
+    
+  
+}
+
+
+//useEffect for window resize
+
+useEffect(() => {
+    
+  handleResize()
+  window.addEventListener('resize', handleResize);
+  
+
+  return () => {
+      window.removeEventListener('resize', handleResize)
+    
+}
+})
+
  /* const NewsApi = async ()=>{
     const NewsData = await fetch('https://newsapi.org/v2/everything?q=cryptocurrency&apiKey=3b2baf89ff384326b0244cd6f484611b')
     const Data = await NewsData.json();
@@ -73,7 +110,7 @@ useEffect(
       <div>
 
             <div className='banner' >
-                {news &&  <Cryptonews news={news}/>}
+                {windowidth &&  <Cryptonews news={news} windowidth={windowidth}/>}
                 <AdsBanner />  
             </div>
 

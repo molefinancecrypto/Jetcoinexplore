@@ -1,8 +1,10 @@
 .headerwrapper{
     width:100%;
-    min-height:10vh;
+    min-height:8vh;
     display:flex;
-    background-color:  #071321
+    background-color:  #071321;
+    box-shadow: 10px 2px 15px black;
+    box-sizing: border-box;
 }
 
 .headercontainer{
@@ -13,6 +15,17 @@
     box-sizing: border-box;
     justify-content: space-between;
     height: 100%;
+}
+
+.logoandtitleholder{
+    display:flex;
+    justify-content:left
+}
+.coinexplore{
+    height:100%;
+    text-align:center;
+    display:flex;
+    align-items:center
 }
 
 .lister{
@@ -136,22 +149,10 @@ input#menu{
 
 @media(max-width: 1250px){
 
-    .headerwrapper{
-        width:100%;
-        min-height:10vh;
-        display:flex;
-        flex-direction: column;
-        justify-content: space-between;
-        background-color: rgb(10, 24, 41);
-        padding-bottom: 20px;
-    }
  .lister{
      display: none;
  }
- .logoandtitleholder{
-     width:100%;
-     justify-content: space-around;
- }
+
  .menuholder{
      display: flex;
  }
@@ -160,12 +161,28 @@ input#menu{
      display:block
  }
 
- .searchholder{
-    height: 100%;
-    width:90%;
-    margin: 10px auto;
-    
-    
+ 
 }
+
+@media(max-width: 800px){
+    .coinexplore{
+        display: none;
+    }
+
+    .searchholder{
+        height: 100%;
+        width:70%;
+        margin: 10px auto;    
+    }
+
+    .headercontainer{
+        padding: 5px 5px;
+        width: 100%;
+        color: white;
+        display: flex;
+        box-sizing: border-box;
+        justify-content: space-between;
+        height: 100%;
+    }
 }
     

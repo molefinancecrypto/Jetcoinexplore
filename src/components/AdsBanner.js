@@ -8,10 +8,10 @@ import nft from '../images/Banner/nftBanner.jpg'
 
 function AdsBanner() {
     
-       const items = [<img style={{width:'100%',height:'70px'}} src={defi}/>,
-                    <img style={{width:'100%',height:'70px'}} src={eth}/>,
-                    <img style={{width:'100%',height:'70px'}} src={nft}/>,
-                    <img style={{width:'100%',height:'70px'}} src={luno}/>]
+       const items = [<img style={{width:'100%',height:'120px',objectFit:'cover',borderRadius:'10px'}} src={defi}/>,
+                    <img style={{width:'100%',height:'120px',objectFit:'cover',borderRadius:'10px'}} src={eth}/>,
+                    <img style={{width:'100%',height:'120px',objectFit:'cover',borderRadius:'10px'}} src={nft}/>,
+                    <img style={{width:'100%',height:'120px',objectFit:'cover',borderRadius:'10px'}} src={luno}/>]
 
 
      const responsive = {
@@ -23,7 +23,7 @@ function AdsBanner() {
          }
      }
 
-  return <div style={{backgroundColor:'#0f1c50',width:'30%',height:'70px',boxSizing:"border-box",borderRadius:'20px',marginTop:'20px',backgroundSize:'cover',border:'2px solid black'}}>
+  return <div style={{backgroundColor:'#0f1c50',width:'80%',height:'120px',boxSizing:"border-box",borderRadius:'10px',border:'0.5px solid #112836'}}>
       <AliceCarousel mouseTracking
       infinite
       autoPlayInterval={1000}
