@@ -126,7 +126,7 @@ export function PromotedCoin() {
 
   return <div style={{width:'90%',margin:'0px auto'}}>
             <div style={{width:'100%',height:'auto',borderRadius:'10px',margin:"30px auto",marginBottom:'0px',boxSizing:'border-box'}}>
-           <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright'><p className='symbol'>SYMBOL</p> <p className='capRank'>MARKET-CAP</p> <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE</p> <p style={{textAlign:'center',width:'20%'}}>VOTE</p></div></div>  
+           <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright'><p className='symbol'>SYMBOL</p> <p className='capRank'>MARKET-CAP</p> <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE</p> <p className='voteheader'>VOTE</p></div></div>  
               {  coins.map( coin => <div className='coinselector' coin={coin} key={uuidv4()}>
     
     <div className='tableleft' >
