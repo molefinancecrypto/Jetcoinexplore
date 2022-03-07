@@ -5,7 +5,7 @@ import App from './App';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import { BrowserRouter } from 'react-router-dom';
 import { ParticularcoinHolder } from './contextfolder/Coindata';
-
+import './NEXAFONTS/OTF/Nexa-Bold.otf'
 
 
 

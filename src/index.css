@@ -1,13 +1,14 @@
 body {
   margin: 0;
-  font-family: 'Nexa', sans-serif; 
 }
 
-
-
-code {
-  font-family: 'Nexa', sans-serif;
+@font-face {
+  font-family: "NexaTextBold";
+  src: local("NexaTextBold"),
+    url("./NEXAFONTS/OTF/Nexa-Bold.otf") format("truetype");
+  font-weight: 500;
 }
+
 
 *{
   margin: 0px;
