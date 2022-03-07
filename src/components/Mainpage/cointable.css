@@ -102,6 +102,11 @@
     background-color: #06101d;
 }
 
+.voteheader{
+    text-align:center;
+    width:20%
+}
+
 .tableright{
     width:80%;
     display: flex;
@@ -189,7 +194,7 @@
     }
 
     .headerleft{
-        width: 60%;
+        width: 50%;
         text-align:center;
         box-sizing: border-box;
     }
@@ -204,6 +209,17 @@
     .divforsearchtable{
         width: 70% ;
         margin: 10px auto
+    }
+
+    .voteheader{
+        width: 50%;
+        text-align:center;
+        box-sizing: border-box;
+    }
+
+    .tableheader{
+        display: flex;
+        justify-content: space-around;
     }
     
 }
