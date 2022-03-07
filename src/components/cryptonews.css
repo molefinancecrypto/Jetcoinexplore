@@ -65,6 +65,54 @@
     }
 }
 
+@media(max-width:900px){
+    .forward{
+        position:absolute;
+        right:-20px;
+        top: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        
+    }
+
+    .backward{
+        position:absolute;
+        left:-20px;
+        top: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        
+    }
+}
+
+@media(max-width:700px){
+    .forward{
+        position:absolute;
+        right:-25px;
+        top: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        
+    }
+
+    .backward{
+        position:absolute;
+        left:-25px;
+        top: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        
+    }
+}
+
 @media(max-width:560px){
     .detailPerNews{
         height:300px;
@@ -74,6 +122,30 @@
         display:flex;
         align-items:center;
         justify-content:center
+    }
+}
+
+@media(max-width:450px){
+    .forward{
+        position:absolute;
+        right:-20px;
+        top: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        
+    }
+
+    .backward{
+        position:absolute;
+        left:-20px;
+        top: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        
     }
 }
 

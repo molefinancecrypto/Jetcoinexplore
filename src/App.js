@@ -104,7 +104,7 @@ useEffect(
     <div className="App">
       <div className='Appsecond'>
       <Header />
-      <div style={{minHeight:"calc(100%-10vh)"}}>
+      <div style={{height:"calc(100%-50px)"}}>
       <Routes >
       <Route path='/' element = {
       <div>

@@ -1,6 +1,6 @@
 .headerwrapper{
     width:100%;
-    min-height:8vh;
+    min-height:50px;
     display:flex;
     background-color:  #071321;
     box-shadow: 10px 2px 15px black;
@@ -137,7 +137,7 @@ input#menu{
 
 @media(max-width:1450px){
     .lister{
-        width:50%;
+        width:40%;
         display:flex;
         justify-content: space-between;
         list-style: none;
