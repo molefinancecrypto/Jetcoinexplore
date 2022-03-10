@@ -72,7 +72,7 @@
     .footerMain{
         display: flex;
         flex-direction: column-reverse;
-        height:100vh;
+        height:130vh;
         justify-content: space-between;
         box-sizing: border-box;
     }

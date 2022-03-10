@@ -94,8 +94,8 @@ function Header() {
         <input  placeholder='SEARCH COINEXPLORE' onChange={changeSearch} type='search' value={searchvalue} style={{width:'70%',marginTop:'15px',marginRight:'25px',paddingLeft:'10px',height:'35px',letterSpacing:'1.5px',fontSize:'13px',boxSizing:'border-box',outline:'none',color:'white',border:"1px solid #02050a", borderRadius:'9px',backgroundColor:'#02050a'}}/>
       </div>
                         {coinShown.map(coin=><div onClick={ ()=>{
-    navigate(`/coin/${coin[Object.keys(coin)]['name']}`,{state: coin});setshowmenu(false)}} style={{display:'flex',color:'white',backgroundColor:'purple', justifyContent:"space-between",width:'80%',margin:'20px auto'}}>
-                                              <div style={{display:'flex',width:'60%',justifyContent:'left',backgroundColor:'red'}}>
+    navigate(`/coin/${coin[Object.keys(coin)]['name']}`,{state: coin});setshowmenu(false)}} style={{display:'flex',color:'white',justifyContent:"space-between",width:'80%',margin:'20px auto'}}>
+                                              <div style={{display:'flex',width:'60%',justifyContent:'left'}}>
                                                  <img style={{width:'30px',height:'30px',borderRadius:'50%'}} src={coin[Object.keys(coin)]['img']} alt='logocoin'/>
                                                  <p style={{fontSize:'17px'}}>{coin[Object.keys(coin)]['name']}</p>
                                               </div>
