@@ -26,13 +26,14 @@ export default function Footer() {
             <p className='footerTopic'><strong>Our Company</strong></p>
             <div className='footSecondContent'>
               <p>News</p>
-              <p>Terms and Conditions</p>
+              <p>Terms & Conditions</p>
+              <p>Privacy Policy</p>
             </div>
           </div>
           
         
         <div className='footerSecondMain'>
-            <p className='footerTopic' ><strong>Help and Support</strong></p>
+            <p className='footerTopic' ><strong>Help & Support</strong></p>
             <div className='footSecondContent'>
               <p>DYOR</p>
               <p>Contact Us</p>
@@ -42,7 +43,7 @@ export default function Footer() {
           <div className='footerSecondMain'>
             <p className='footerTopic' ><strong>Coins</strong></p>
             <div className='footSecondContent'>
-              
+              <p>All Time Ranking</p>
               <p>Daily Ranking</p>
               <p>New Listings</p>
               <p>Submit Coin</p>

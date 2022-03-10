@@ -29,6 +29,7 @@
 
 .footerSecondMain{
     text-align: left;
+    margin-bottom: 30px;
 }
 
 .footSecondContent{
@@ -36,7 +37,8 @@
 }
 
 .footerTopic{
-    margin-bottom:15px
+    margin-bottom:15px;
+    font-size: 20px;
 }
 
 
@@ -70,7 +72,7 @@
     .footerMain{
         display: flex;
         flex-direction: column-reverse;
-        height:95vh;
+        height:100vh;
         justify-content: space-between;
         box-sizing: border-box;
     }

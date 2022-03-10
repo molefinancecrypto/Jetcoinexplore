@@ -95,16 +95,17 @@
 
 .searchcoinsmenu{
     position:absolute;
-    width:100%;
+    
+    width:135%;
     height:auto;
-    top:100%;
+    top:0%;
     left:0px;
     background-color: rgb(6, 16, 28);
     border-radius: 10px;
     display:block;
     z-index: 100;
-    border: 1px solid white;
-    border-top: 0px;
+    box-shadow: 10px 2px 15px black;
+    box-sizing: border-box;
 }
 
 input#menu{
@@ -145,6 +146,21 @@ input#menu{
     }
 }
 
+@media(max-width:1400px){
+    .searchcoinsmenu{
+        position:fixed;
+        width:100vw;
+        height:100%;
+        top:0%;
+        left:0px;
+        background-color: rgb(6, 16, 28);
+        border-radius: 10px;
+        display:block;
+        z-index: 100;
+        box-shadow: 10px 2px 15px black;
+    }
+
+}
 
 
 @media(max-width: 1250px){
@@ -175,6 +191,7 @@ input#menu{
         margin: 10px auto;    
     }
 
+   
     .headercontainer{
         padding: 5px 5px;
         width: 100%;

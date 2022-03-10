@@ -30,25 +30,7 @@
     
 }
 
-.Hottest, .promoted, .alltime{
-    border: 1px solid black;
-    display: flex;
-    width: 33.3%;
-    padding: 1px 3px;
-    background-color: #708AF4;
-    border-radius: 12px
-}
 
-.Hottest:hover, .promoted:hover, .alltime:hover{
-    background-color: rgb(0, 0, 24);
-    cursor: pointer;
-}
-
-.buttonsabovesearch{
-    display:flex;
-        width: 500px;
-        justify-content: space-around;
-}
 
 .highlighted{
     font-size:35px;
@@ -91,7 +73,6 @@
 .headerleft{
     width: 20%;
     text-align:center;
-    background-color: #06101d;
     border-radius: 10px 0px 0px 0px;
 }
 
@@ -99,7 +80,6 @@
     width: 80%;
     display: flex;
     justify-content: space-around;
-    background-color: #06101d;
 }
 
 .voteheader{
@@ -112,7 +92,7 @@
     display: flex;
     justify-content:space-around;
     align-items: center;
-    color: white;
+
 
     
 }
@@ -125,7 +105,7 @@
     padding: 10px;
     align-items: center;
     box-sizing: border-box;
-    color: white;
+    
     
 }
 
@@ -137,14 +117,40 @@
     text-align:center;
     padding: 2px 2px ;
     box-sizing: border-box;
-    background-color:  #0d213a;
-    
-    
+    color: grey;
 }
 
+.main{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:0px;
+    text-align:center;
+    padding: 2px 2px ;
+    box-sizing: border-box;
+    color: grey;
+}
+
+.main:nth-of-type(odd){
+    background: #0d213a    
+}
 .coinselector:nth-of-type(odd){
     background: #071323;
   }
+
+  .main:nth-of-type(even){
+    background: #071323;
+  }
+
+  .coinselector:nth-of-type(even){ 
+    background: #0d213a
+  }
+
+  .main:last-child{
+    border-radius: 0px 0px 15px 15px;
+  }
+
+
 .coinselector:last-child{
     border-radius: 0px 0px 15px 15px;
 }

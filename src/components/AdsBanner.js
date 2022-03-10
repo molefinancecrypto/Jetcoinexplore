@@ -23,7 +23,7 @@ function AdsBanner() {
          }
      }
 
-  return <div style={{backgroundColor:'#0f1c50',width:'80%',height:'120px',boxSizing:"border-box",borderRadius:'10px',border:'0.5px solid #112836'}}>
+  return <div style={{backgroundColor:'#0f1c50',width:'80%',height:'120px',overflow:'hidden',boxSizing:"border-box",borderRadius:'15px',border:'0.5px solid #112836'}}>
       <AliceCarousel mouseTracking
       infinite
       autoPlayInterval={1000}

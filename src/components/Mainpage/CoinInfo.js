@@ -46,7 +46,7 @@ function CoinInfo({coin}) {
   
         },[votes])
 
-  return <div className='coinselector'>
+  return <div className='main'>
   <div className='tableleft' onClick={ ()=>{
     navigate(`/coin/${coin[Object.keys(coin)]['name']}`,{state: coin})}}>
       <div style={{width:'150px',display:'flex',alignItems:'center',justifyContent:"left",padding:'0px'}}>

@@ -8,8 +8,8 @@ function Cryptonews({news,windowidth}) {
        
        const scrollRef = useRef();
        const itemRef = useRef();
-       const forward = <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 0 24 24" width="50px" fill="#808080"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg> 
-       const backward = <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 0 24 24" width="50px" fill="#808080"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>
+       const forward = <svg xmlns="http://www.w3.org/2000/svg" height="60px" viewBox="0 0 24 24" width="60px" fill="#808080"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg> 
+       const backward = <svg xmlns="http://www.w3.org/2000/svg" height="60px" viewBox="0 0 24 24" width="60px" fill="#808080"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>
        const forwardScroll = ()=>{
         scrollRef.current.scrollLeft = scrollRef.current.scrollLeft+itemRef.current.offsetWidth
      
@@ -36,7 +36,7 @@ function Cryptonews({news,windowidth}) {
           {news.map(newss => <div key={uuidv4()} ref={itemRef} className='detailPerNews' >
         
                                 <div style={{width:'80%',height:'95%',backgroundColor:'#071323',border:'0.5px solid #112836',padding:'10px',display:'flex',flexDirection:'column',justifyContent:'space-between',borderRadius:'15px'}}>
-                                <img src={newss['urlToImage']} style={{height:'78%', width:'100%',borderRadius:'15px'}}/>
+                                <img src={newss['urlToImage']} style={{height:'78%', width:'100%',borderRadius:'8px'}}/>
                                 
                                 <p style={{color:"white"}}>{newss['title']}</p>
                                 </div>

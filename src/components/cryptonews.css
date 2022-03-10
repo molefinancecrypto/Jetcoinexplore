@@ -12,8 +12,8 @@
 
 .backward{
     position:absolute;
-    left:-10px;
-    top: 40%;
+    left:-25px;
+    top: 35%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,8 +24,8 @@
 
 .forward{
     position:absolute;
-    right:-10px;
-    top: 40%;
+    right:-25px;
+    top: 35%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,32 +68,8 @@
 @media(max-width:900px){
     .forward{
         position:absolute;
-        right:-20px;
-        top: 40%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        
-    }
-
-    .backward{
-        position:absolute;
-        left:-20px;
-        top: 40%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        
-    }
-}
-
-@media(max-width:700px){
-    .forward{
-        position:absolute;
         right:-25px;
-        top: 40%;
+        top: 35%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -104,7 +80,31 @@
     .backward{
         position:absolute;
         left:-25px;
-        top: 40%;
+        top: 35%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        
+    }
+}
+
+@media(max-width:800px){
+    .forward{
+        position:absolute;
+        right:-40px;
+        top: 35%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        
+    }
+
+    .backward{
+        position:absolute;
+        left:-40px;
+        top: 35%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -128,8 +128,8 @@
 @media(max-width:450px){
     .forward{
         position:absolute;
-        right:-20px;
-        top: 40%;
+        right:-30px;
+        top: 35%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -139,8 +139,8 @@
 
     .backward{
         position:absolute;
-        left:-20px;
-        top: 40%;
+        left:-30px;
+        top: 35%;
         display: flex;
         align-items: center;
         justify-content: center;
