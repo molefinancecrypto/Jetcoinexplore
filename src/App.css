@@ -1,4 +1,7 @@
-
+body{
+  padding: 0px;
+  margin: 0px;
+}
 
 .App {
   text-align: center;
@@ -8,9 +11,7 @@
   background: #05101c;
   scroll-behavior: smooth;
   position: relative;
-  font-family: "NexaTextBold";
-  
-  
+  font-family: "NexaTextBold";  
 }
 
 .Appsecond{

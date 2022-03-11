@@ -3,11 +3,13 @@ import './signup.css';
 import { Link,useNavigate } from 'react-router-dom';
 import { ParticularCoin } from '../../contextfolder/Coindata';
 import CustomInput from '../customHooks/CustomInput';
+import worldimage from './imagesforauth/worldforsigning.jpg';
+import bubble from './imagesforauth/bubblesforsigning.jpg';
 
 
 export default function Signin() {
   
-
+  const backward = <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>
 const [usersignupEmail,setusersignupEmail] = useState('');
  const [usersignupPassword,setusersignupPassword] = useState('');
  const {setvotevalidation} = ParticularCoin();
@@ -37,28 +39,77 @@ const onfinalsubmit = ()=>{
   
   
 
-  return <div className='signup'>
-    <div style={{color:"white",width:"100%",textAlign:"left",display:"flex",padding:"15px",boxSizing:"border-box",cursor:'pointer'}} onClick={()=> navigate('/')}><p>{homeIcon}</p>Back to main Page</div>
-    <div className='signupchildWrapper'>
-    <div className='signupchild'>
-      <div className='topofsign'>
-        <p style={{fontSize:'20px',color:'whitesmoke'}}><span style={{fontWeight:'750px'}}><strong>Welcome</strong></span>, Please Sign In</p>
-      </div>
-      <div className='contentforsign'>
-        <div style={{display:'flex',flexDirection:'column',marginTop:'45px'}}>
-              <div style={{marginTop:'15px',color:"white"}}><input type="text" onChange={onchangeEmail} placeholder="Email"  value={usersignupEmail} style={{width:'80%',fontSize:'15px',backgroundColor:'transparent' ,color:'white',outline:'none',borderWidth:'0px 0px 1.5px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'center'}}></input></div>
-              <div style={{marginTop:'50px',color:"white"}}><input type="password" onChange={onchangepassword} placeholder="Password" value={usersignupPassword} style={{width:'80%',fontSize:'15px',backgroundColor:'transparent' ,color:'white',outline:'none',borderWidth:'0px 0px 1.5px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'center'}}></input></div>   
-
-        </div>
-        <div style={{ margin:'50px auto',marginTop:'50px',width:'80%'}} onClick={ onfinalsubmit}><input type='button' className='buttonForSign' value={'Sign In'} ></input></div>
+return <section className='authsection' >
       
-        <div className='signinFoot'>
-          <p>Forgot Password?</p>
-          <p className='separationBar'></p>
-          <div style={{ color:'whitesmoke'}}>Don't have an account? <Link to="/signup" style={{textDecoration:'none'}}><p style={{color:'white',textDecoration:'none',display:'inline',border:'2px solid black',marginLeft:"4px"}}>Sign Up</p></Link></div></div>
+<div className='secondmain' >
+  <div  className='leftsideauth' >
+     <img  className='mainbackgroundimg'  src={worldimage} alt='first background image for auth'/>
+     <div className='secondimgholder' >
+        <img className='secondimg'  src={bubble} alt='second background image for auth'/>  
+     </div> 
+    <div className='backdiv' >
+      <div onClick={()=> navigate('/')} className='backdivinner' >
+        <p>{backward}</p>
+        <p style={{fontSize:'20px'}}>Back</p>
+      
       </div>
+    </div> 
+    
+  </div>
+  <div className='rightsideauth' >
+    <div className='secondrightauth' >
+      <div className='upperrightauth' >
+          <p style={{fontSize:'30px',marginBottom:'30px',textAlign:'left'}}>SIGN IN</p>
+          <div>
+            <p style={{fontSize:'25px',marginBottom:'10px',textAlign:'left'}}>Manage your account efficiently</p>
+            <p style={{fontSize:'15px',color:'grey',textAlign:'left'}}>Set up, verify your personal details and begin setting up your personal profile.</p>
+          </div>
+      </div>
+      <div className='lowerrightauth'>
+            <div className='lowerrightone' >
+                <section className='lowerrightonesection' >
+                  <p className='sectioninput' >Username:</p>
+                  <input className='authinput' type='text' />
+                </section>
 
+                <section className='lowerrightonesection' >
+                  <p className='sectioninput'>Email:</p>
+                  <input className='authinput' type='text'/>
+                </section>
+            </div>
+
+            <div className='lowerrightone'>
+                <section className='lowerrightonesection' >
+                  <p className='sectioninput'>Password:</p>
+                  <input className='authinput' type='password' />
+                </section>
+
+                <section className='lowerrightonesection' >
+                  <p className='sectioninput'>Confirm password:</p>
+                  <input className='authinput' type='password' />
+                </section>
+            </div>
+     
+            <div className='signbuttondiv'>
+
+              <input className='signbutton' type='button' value='Create Account' />
+
+            </div>
+
+            <div className='signbuttondiv' >
+
+              <p style={{color:'white',marginTop:'35px'}}>
+                    Don't have an account <Link to="/signup" style={{textDecoration:'none'}}> Sign up</Link>
+              </p>
+
+            </div>
+          </div>
     </div>
-    </div>
-  </div>;
+  </div>
+    
+
+
+</div>
+
+</section>;
 }

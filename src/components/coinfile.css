@@ -52,6 +52,55 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    color: white
+    color: white;
+  
 }
 }
+
+
+
+
+/*
+ @media(max-width:850px){
+    .authsection{
+      min-height:100vh;
+      width:100%;
+      margin-top:30px;
+      background-color:#05101c;
+      box-sizing:border-box;
+      background-image: url('./imagesforauth/worldforsigning.jpg');
+      background-size: contain;
+    }
+    .mainbackgroundimg{
+     display: none;
+    }
+    .secondimgholder{
+      display: none;
+    }
+
+    .leftsideauth{
+      width:100%;
+    height:100%;
+    position:relative;
+    border-radius: 10px 0px 0px 10px;
+      overflow:hidden
+      
+    }
+
+    .secondmain{
+      position:relative
+    }
+
+    .rightsideauth{
+      position:absolute;
+      bottom:0px;
+      left:0px;
+      width:100%;
+      color:white;
+      height:60%;
+      background-color: #05101c;
+      border-radius:15px 15px 0px 0px
+    }
+  }
+
+*/

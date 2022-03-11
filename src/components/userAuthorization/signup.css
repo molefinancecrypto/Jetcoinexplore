@@ -1,93 +1,304 @@
-.signup{
+
+
+  .authsection{
+    height:100vh;
     width:100%;
-    height: 100vh;
-    padding-top: 15px;
-    box-sizing: border-box;
-    min-height: 71vh;
-    background-color: rgb(6, 16, 28);
-
+    margin:30px auto;
+    padding:50px;
+    padding-top:20px;
+    background-color:#05101c;
+    box-sizing:border-box
   }
 
-  .signupchildWrapper{
-      padding:20px;
-      background-color: rgb(10, 24, 41);
-      max-width: 700px;
-      width: 80%;
-      height: 70%;
-      margin: 45px auto;
-      backdrop-filter: blur(40px);
-      border-radius: 20px;
+
+  .secondmain{
+    width: 100%;
+    height:100%;
+    display:flex;
+    justify-content:space-between;
+    box-sizing:border-box
   }
 
-  .buttonForSign{
-    background-image: linear-gradient(
-        to right,
-        #708AF4,
-        #455596
+  .leftsideauth{
+    width:30%;
+    height:100%;
+    position:relative;
+    border-radius: 10px 0px 0px 10px;
+      overflow:hidden
+  }
 
-    );
-    border-radius: 10px;
-    width: 60%;
-    color: white;
+  .mainbackgroundimg{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+      border-radius:10px 0px 0px 10px
+  }
+
+  .secondimgholder{
+    position:absolute;
+    border-radius:10px 0px 0px 10px;
+    width:70%;
+    top:110px;
+    left:15%;
+    height:55%
+  }
+
+  .upperrightauth{
+    width: 100%;
+    height:auto
+  }
+
+  .lowerrightauth{
+    width: 100%;
+    height:auto
+  }
+
+  .secondimg{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:7px
+  }
+
+  .backdiv{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    border-radius:10px 0px 0px 10px;
+    background-color:#05101cb0
+  }
+
+  .backdivinner{
+    margin-top:25px;
+    color:white;
+    display:flex;
+    justify-content:left;
+    margin-left:15%
+  }
+
+
+  .rightsideauth{
+    width:70%;
+    color:white;
+    height:100%;
+    background-image: linear-gradient(to right,#05101c,#0d213a);
+    border-radius:0px 10px 10px 0px
+  }
+
+  .secondrightauth{
+    width:80%;
+    height:70%;
+    margin:40px auto;
+    box-sizing:border-box
+  }
+
+  .lowerrightone{
+    width:100%;
+    margin-top:35px;
+    display:flex;
+    justify-content:space-between
+  }
+
+  .lowerrightonesection{
+    width:50%;
+    height:60px;
+    text-align:
+    left;
+    position:relative
+  }
+
+  .sectioninput{
+    position:absolute;
+    top:0px;
+    left:0px
+  }
+
+  .authinput{
+    position:absolute;
+    bottom:0px;
+    left:0px;
+    background:transparent;
+    width:80%;
     height:40px;
-    margin: 0 auto;
+    outline:none;
+    color:white;
+    border:0.5px solid white;
+    border-width:0px 0px 0.5px
   }
 
-  .signupchild{
-      padding:15px;
-      width: 100%;
-      height: 60%;
-      margin: 0px auto;
-      border-radius: 25px;
-      box-sizing: border-box;
-      
+  .signbutton{
+    color:white;
+    margin-top:35px;
+    width:130px;
+    height:40px;
+    outline:none;
+    border:1px solid #02050a;
+    border-radius:9px;
+    background-color:#02050a
   }
 
-  .topofsign{
+  .signbuttondiv{
+    text-align:left
+  }
+
+
+
+
+
+  @media(max-width:850px){
+    .authsection{
+      min-height:100vh;
+      width:100%;
+      background-color:#05101c;
+      box-sizing:border-box;
+      background-image: url('./imagesforauth/worldforsigning.jpg');
+      background-size: contain;
+      padding:0px;
+      padding-top:0px;
+      margin:0px;
+    }
+
+    .backdiv{
+      position:absolute;
+      top:0px;
+      left:0px;
+      width:100%;
+      height:100%;
+      border-radius:0px;
+      background-color: #05101c;
+    }
+
+    .backdivinner{
+      margin-top:10px;
       color:white;
-      padding: 0px;
+      display:flex;
+      justify-content:left;
+      margin-left:0%;
+      padding-left: 20px;
+      background-color: #05101c;
+    }
 
-  }
+    .secondrightauth{
+      width:100%;
+      height:100%;
+      margin:40px auto;
+      margin-top: 0px;
+      box-sizing:border-box
+    }
 
-  .signinFoot{
-        margin: 0px auto;
-        display: flex;
-        color: white;
-        margin-top: 15px;
-        width: 80%;
-        justify-content: space-around;
-  }
+    .secondmain{
+      position:relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      background-color:#05101cb0
+    }
+    .mainbackgroundimg{
+     display: none;
+    }
+    .secondimgholder{
+      display: none;
+    }
 
-  .separationBar{
-    width:0.5px;
-    height: 25px;
-    background-color: white;
-    margin: 0px 5px;
-  }
+    .leftsideauth{
+      width:100%;
+    height:5%;
+    position:relative;
+    border-radius: 0px;
+      overflow:hidden
+      
+    }
 
-  .contentforsign{
+    .rightsideauth{
+      bottom:0px;
+      left:0px;
+      width:100%;
+      color:white;
+      height:95%;
+      
+      border-radius:15px 15px 0px 0px;
+      background-image: none
+    }
+
+    .upperrightauth{
+      width: 100%;
+      height:35%;
+      background-image: linear-gradient(to bottom,#05101c,transparent);
+      padding: 20px;
       box-sizing: border-box;
-      width: 80%;
-      margin: 0px auto;
-      margin-top: 50px;
-  }
+    }
+    
+    .lowerrightauth{
+      background-color: #05101c;
+      min-height:65%;
+      padding: 30px;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 70px;
+      box-sizing: border-box;
+      border-radius: 20px 20px 0px 0px;
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      width: 100%;
+      box-sizing: border-box;
+      background-image: linear-gradient(to bottom,#05101c,#0d213a);
+    }
 
+    .lowerrightone{
+      width:100%;
+    
+      display:block;
+      margin-top: 0px;
+    }
 
-  @media(max-width:700px){
-    .signinFoot{
-        margin: 0px auto;
-        display: block;
-        color: white;
-        margin-top: 15px;
-        width: 80%;     
-        height: 80px;
-        flex-direction: column;
-        display:flex;
-        justify-content: space-around;  
-  }
+    .lowerrightonesection{
+      width:100%;
+      height:60px;
+      position:relative;
+      margin-top:25px;
+    }
 
+    .sectioninput{
+      position:absolute;
+      top:38px;
+      
+      left:0px
+    }
 
-  .separationBar{
-    display: none;
-  }
+    .authinput{
+      position:absolute;
+      bottom:0px;
+      left:0px;
+      background:transparent;
+      width:100%;
+      height:40px;
+      outline:none;
+      color:white;
+      border:0.5px solid white;
+      border-width:0px 0px 0.5px;
+      padding-left: 170px;
+      box-sizing: border-box;
+    }
+
+    .signbutton{
+      color:white;
+      width:90%;
+      margin: 35px auto;
+      margin-top:35px;
+      margin-bottom: 10px;
+      height:40px;
+      outline:none;
+      border:1px solid #02050a;
+      border-radius:9px;
+      background-color:#02050a
+    }
+
+    .signbuttondiv{
+      text-align: center
+    }
+  
   }
