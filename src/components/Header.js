@@ -78,7 +78,7 @@ function Header() {
                      <img src={logo} alt='Logo' style={{width:'40px',height:'40px'}}/>
                   </div>
                   <div className='coinexplore'>
-                     <p style={{fontSize:'33px',textAlign:'left',letterSpacing:'1.5px'}}><strong style={{fontWeight:'1200px'}}>COIN</strong>EXPLORE</p>    
+                     <p style={{fontSize:'33px',textAlign:'left',letterSpacing:'1.5px'}}><strong style={{fontWeight:'1200px'}}>COIN</strong><span style={{fontFamily:'NexaTextLight'}}>EXPLORE</span></p>    
                   </div>  
                </div>     
 

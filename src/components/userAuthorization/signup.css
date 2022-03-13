@@ -7,7 +7,8 @@
     padding:50px;
     padding-top:20px;
     background-color:#05101c;
-    box-sizing:border-box
+    box-sizing:border-box;
+    
   }
 
 
@@ -144,6 +145,13 @@
   }
 
 
+  @media(max-width:850px){
+    .secondmain{
+      padding-bottom:60vh;
+      height:100%
+    }
+  }
+
 
 
 
@@ -153,11 +161,12 @@
       width:100%;
       background-color:#05101c;
       box-sizing:border-box;
-      background-image: url('./imagesforauth/worldforsigning.jpg');
+     
       background-size: contain;
       padding:0px;
       padding-top:0px;
       margin:0px;
+      
     }
 
     .backdiv{
@@ -183,9 +192,11 @@
     .secondrightauth{
       width:100%;
       height:100%;
-      margin:40px auto;
+      margin:0px auto;
       margin-top: 0px;
-      box-sizing:border-box
+      box-sizing:border-box;
+    
+      background-image: url('./imagesforauth/worldforsigning.jpg');
     }
 
     .secondmain{
@@ -194,7 +205,7 @@
       flex-direction: column;
       justify-content: space-between;
       width: 100%;
-      background-color:#05101cb0
+      background-color:#05101cb0;
     }
     .mainbackgroundimg{
      display: none;
@@ -217,7 +228,7 @@
       left:0px;
       width:100%;
       color:white;
-      height:95%;
+      min-height:95%;
       
       border-radius:15px 15px 0px 0px;
       background-image: none
@@ -225,7 +236,7 @@
 
     .upperrightauth{
       width: 100%;
-      height:35%;
+      min-height:35%;
       background-image: linear-gradient(to bottom,#05101c,transparent);
       padding: 20px;
       box-sizing: border-box;
@@ -237,7 +248,7 @@
       padding: 30px;
       padding-left: 50px;
       padding-right: 50px;
-      padding-top: 70px;
+      padding-top: 30px;
       box-sizing: border-box;
       border-radius: 20px 20px 0px 0px;
       display: flex;
@@ -246,6 +257,7 @@
       width: 100%;
       box-sizing: border-box;
       background-image: linear-gradient(to bottom,#05101c,#0d213a);
+      
     }
 
     .lowerrightone{
@@ -259,7 +271,7 @@
       width:100%;
       height:60px;
       position:relative;
-      margin-top:25px;
+      
     }
 
     .sectioninput{

@@ -10,6 +10,14 @@ body {
 }
 
 
+@font-face {
+  font-family: "NexaTextLight";
+  src: local("NexaTextLight"),
+    url("./NEXAFONTS/OTF/Nexa-Light.otf") format("truetype");
+  font-weight: 500;
+}
+
+
 *{
   margin: 0px;
   padding: 0px;
