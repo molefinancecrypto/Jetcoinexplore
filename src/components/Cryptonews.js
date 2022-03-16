@@ -1,6 +1,7 @@
 import React, {useRef,useEffect,useState} from 'react';
 import "./cryptonews.css";
 import { v4 as uuidv4 } from 'uuid';
+import backicon from './alexi-icons/alexileft.png'
 
 
 

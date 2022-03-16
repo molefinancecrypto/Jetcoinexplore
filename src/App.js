@@ -13,6 +13,8 @@ import Cryptonews from './components/Cryptonews';
 import NewsPage from './components/Menu/NewsPage';
 import Footer from './components/Mainpage/Footer';
 import { Newsjson } from './components/Newsapi';
+import Salesrep from './components/Menu/Salesrep';
+import Salesrepidentity from './components/Menu/Salesrepidentity';
 
 
 /*
@@ -133,6 +135,10 @@ useEffect(
       <Route path='/signin' element={<Signin/>} />
       <Route path='/addcoin' element={<ListCoin/>} />
       <Route path='/newspage' element={<NewsPage news={news}/>} />
+      <Route path='/salesrep' element={<Salesrep/>} >
+        <Route path=':salesperson' element={<Salesrepidentity/>}/>
+
+      </Route>
 
 
       </Routes>

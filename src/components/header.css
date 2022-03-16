@@ -15,17 +15,39 @@
     box-sizing: border-box;
     justify-content: space-between;
     height: 100%;
+   
 }
 
 .logoandtitleholder{
     display:flex;
-    justify-content:left
+    justify-content:left;
+    cursor: pointer;
 }
 .coinexplore{
     height:100%;
     text-align:center;
     display:flex;
     align-items:center
+}
+
+.divforcanceler{
+    position:fixed;
+    top:0px;
+    right:0px;
+    width:100vw;
+    height:100vh;
+    background-color: rgba(0, 0, 0, 0.623);
+    z-index: 2000;
+}
+
+.hamburgerinactive{
+    text-decoration:none;
+    color:white
+}
+
+.hamburgeractive{
+    color: grey;
+    text-decoration:none;
 }
 
 .lister{
@@ -43,30 +65,12 @@
 .menuholder{
     height: 100%;
     justify-content: center;
-    display: flex;
     align-items: center;
     display:none;
     padding-top: 10px;
 }
 
-.hamburgli{
-    text-align: center;
-    width: 100%;
-    font-size: 16px;
-    margin-top: 10px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
-    list-style-type: none;
-}
 
-.hamburgli:hover{
-    color: white;
-    cursor: pointer;
-    transition: 1s;
-}
-.cancel{
-    display: none;
-}
 
 .hambugholder{
     background-color: rgb(6, 16, 28);
@@ -112,28 +116,8 @@ input#menu{
     display: none;
 }
 
-.menuicon:checked ~.hambugholder{
-    background-color: rgb(6, 16, 28);
-        width:85%;
-        height:170px;
-        list-style:none;
-        position:absolute;
-        right: 0px;
-        top:10vh;
-        padding:0px;
-        border:1px solid black;
-        z-index:100;
-        display: block;
-        
-}
 
-.menuicon:checked ~.cancel{
-   display: block;
-}
 
-.menuicon:checked ~.open{
-    display: none;
- }
 
 
 @media(max-width:1450px){

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 //newss['publishedAt']
 export default function NewsPage({news}) {
+  const numberofPages = Math.ceil(news.length/4)
   const navigate = useNavigate();
   const backward = <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>
   return (
@@ -21,6 +22,7 @@ export default function NewsPage({news}) {
                                  </div>
                              </div>
                         </div>)}
+                      <div style={{display:'flex',justifyContent:'center'}}>{numberofPages}</div>  
     </div>
   )
 }

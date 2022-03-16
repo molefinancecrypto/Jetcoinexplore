@@ -1,0 +1,10 @@
+export const Salesrepinfo = [{id:'1',name:'jeff',mail:'jeff1902@gmail.com',telegram:'@jeff_morrison',backcolor:'transparent',clickedbcolor:'#0d213a'},
+{id:'2',name:'fate',mail:'fatejon@gmail.com',telegram:'@fate_morrison',backcolor:'transparent',clickedbcolor:'#0d213a'},
+{id:'3',name:'precious',mail:'precio@gmail.com',telegram:'@preshy',backcolor:'transparent',clickedbcolor:'#0d213a'},
+{id:'4',name:'dave',mail:'Davi@gmail.com',telegram:'@Davido',backcolor:'transparent',clickedbcolor:'#0d213a'},
+{id:'5',name:'skay',mail:'Esk@gmail.com',telegram:'@Eskay',backcolor:'transparent',clickedbcolor:'#0d213a'},
+{id:'6',name:'neo',mail:'neo@gmail.com',telegram:'@Neeeeeo',backcolor:'transparent',clickedbcolor:'#0d213a'},
+{id:'7',name:'desk',mail:'dee@gmail.com',telegram:'@desky',backcolor:'transparent',clickedbcolor:'#0d213a'},
+{id:'8',name:'Rio',mail:'Rioo@gmail.com',telegram:'@Riooo',backcolor:'transparent',clickedbcolor:'#0d213a'},
+{id:'9',name:'Ferggie',mail:'Fer@gmail.com',telegram:'@fegy',backcolor:'transparent',clickedbcolor:'#0d213a'},
+{id:'10',name:'Nas',mail:'jeff12@gmail.com',telegram:'@Nas',backcolor:'transparent',clickedbcolor:'#0d213a'}]

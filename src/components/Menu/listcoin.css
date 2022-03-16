@@ -1,14 +1,18 @@
 .listCoinMain{
     width: 90%;
     margin: 30px auto;
-    min-height: 100vh;
+    min-height:100vh;
     border-radius: 15px;
     color: grey;
     padding: 35px;
+    padding-top: 20px;
     background-color: rgb(10, 24, 41);
-    margin-bottom: 140px;
+    margin-bottom: 20px;
     color: white;
     box-sizing: border-box;
+    display:'flex';
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .lefthandList,.righthandList{
@@ -21,7 +25,7 @@
     width: 100%;
     padding: 5%;
     box-sizing: border-box;
-    padding-top: 15px 
+    padding-top: 15px;
 }
 
 .divforListInput{

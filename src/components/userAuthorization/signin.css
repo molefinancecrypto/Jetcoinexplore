@@ -1,0 +1,22 @@
+.signinholder{
+    height:calc(100vh-80px);
+    width:100%;
+    margin:30px auto;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    padding-left:27.5vw;
+    padding-right:27.5vw;
+    box-sizing:border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.explore{
+    height:100%;
+    text-align:center;
+    display:flex;
+    align-items:center;
+}
