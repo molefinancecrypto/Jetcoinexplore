@@ -26,10 +26,10 @@ function ListCoin() {
             </div>
             <div style={{height:'80%',width:'90%',margin:'20px auto',border:'1px solid #112836',backgroundColor:'#071323',borderRadius:'7px',padding:'20px',boxSizing:'border-box'}}>
                 <div style={{display:'flex',position:'relative',border:'0.5px solid grey',borderWidth:'0px 0px 0.5px',paddingTop:'15px',paddingBottom:'15px',justifyContent:'space-around',height:'15%',alignItems:'center',width:'100%'}}>
-                    <p onClick={info} style={{cursor:'pointer'}}>Coin Information</p>
-                    <p onClick={contracts} style={{cursor:'pointer'}}>Coin Contracts</p>
-                    <p onClick={links} style={{cursor:'pointer'}}>Coin Links</p>
-                    <p onClick={addons} style={{cursor:'pointer'}}>Additional Informaton</p>
+                    <p style={{cursor:'pointer'}}>Coin Information</p>
+                    <p  style={{cursor:'pointer'}}>Coin Contracts</p>
+                    <p style={{cursor:'pointer'}}>Coin Links</p>
+                    <p style={{cursor:'pointer'}}>Additional Informaton</p>
                     <div style={{position:'absolute',backgroundColor:'#062750',width:'25%',height:'2.5px',top:'100%',left:`${sliderposition.left}%`}}></div>
                 </div>
                 <div style={{width:'100%',height:'80%',marginTop:'40px',display:sliderposition['info']}}>
