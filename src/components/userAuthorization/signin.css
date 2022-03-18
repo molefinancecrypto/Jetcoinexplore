@@ -1,14 +1,11 @@
 .signinholder{
-    height:calc(100vh-80px);
-    width:100%;
-    margin:30px auto;
-    padding-top: 10vh;
-    padding-bottom: 10vh;
-    padding-left:27.5vw;
-    padding-right:27.5vw;
+    height:85vh;
+    width:90vw;
+    margin:0px 0px;
+    position: relative;
     box-sizing:border-box;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 }
 

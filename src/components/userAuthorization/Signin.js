@@ -1,9 +1,10 @@
 import React,{useState, useEffect} from 'react';
 import './signin.css';
-import { NavLink,useNavigate } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import logo from '../../images/coinexploreTwo.png'
 import { ParticularCoin } from '../../contextfolder/Coindata';
 import CustomInput from '../customHooks/CustomInput';
+
 
 
 
@@ -41,26 +42,31 @@ const onfinalsubmit = ()=>{
 
 return <section className='signinholder'>
 
-          <div style={{width:'45vw',height:'55vh',backgroundColor:'#071321',boxShadow: '10px 2px 15px black',borderRadius:'15px'}}>
-             
-        
-                <div style={{height:"15%", textAlign:'center',border: '0.5px solid grey',borderWidth: '0px 0px 0.5px 0px',justifyContent:'center',display:'flex',alignItems:"center",color:'white'}}>
-                   <img src={logo} alt='Logo' style={{width:'40px',height:'40px'}}/>
-                </div>
-                 
-              
-             <div style={{width:'100%',height:'85%',padding:'20px',boxSizing:'border-box'}}>
-               <p style={{height:'15%',textAlign:'center',color:'white',fontSize:'17px',letterSpacing:'2px'}}>SIGN INTO ACCOUNT</p>
-               <div style={{width:'100%',height:'80%',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-between',boxSizing:'border-box'}}>
-
-               <input type='text' placeholder='Enter your mail' style={{textAlign:'center',width:'70%',height:'50px',backgroundColor:'transparent',outline:'none',color:'white',fontSize:'17px',paddingLeft:'7px',border:'0.5px solid grey',borderWidth:'0px 0px 0.5px 0px'}}/>
-               <input type='password' placeholder='Enter your password' style={{textAlign:'center',width:'70%',height:'50px',backgroundColor:'transparent',outline:'none',color:'white',fontSize:'17px',paddingLeft:'7px',border:'0.5px solid grey',borderWidth:'0px 0px 0.5px 0px'}}/>
-               <input type='submit' value='submit' style={{textAlign:'center',marginTop:'15px',width:'70%',height:'50px',backgroundColor:'rgb(117, 117, 243)',borderRadius:'10px',border:'1px solid #071321'}}/>
-               <p style={{textAlign:'center',color:'white'}}>Don't have an account? <NavLink to='/signup'>Sign up</NavLink></p>
-               </div>
-
-             </div>
+          <div style={{width:'30%',height:'100%',backgroundColor:"#071323"}}></div>
+          <div style={{width:'70%',height:'100%',backgroundColor:"#0C223B"}}></div>
+          <div style={{position:'absolute',boxSizing:'border-box',display:'flex',justifyContent:'space-between',left:'0px',height:'80%',padding:'30px',top:'10%',width:"85%",backgroundImage: 'linear-gradient(to right,#071323,#0C223B)',boxShadow: '4px 2px 15px black'}}>
+            <div style={{width:'30%',height:'100%',display:'flex',flexDirection:'column',justifyContent:"left",alignItems:'center'}}>
+              <img src={logo} alt='Logo' style={{width:'65px',height:'65px'}}/>
+              <p style={{color:'white',fontSize:'37px',textAlign:"center",marginTop:'20px'}}>Welcome Back!</p>
+              <p style={{color:'grey',textAlign:"center",marginTop:'20px'}}>To keep connected with us pease log-in with your personal informations</p>
+            </div>
+            <div style={{width:'70%',height:'100%',color:'white',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+              <p style={{fontSize:'27px',marginBottom:'20px'}}>Sign in</p>
+              <p style={{fontSize:'17px',color:'grey'}}>Please sign in to continue</p>
+              <div style={{width:'50%',position:'relative',margin:'20px auto'}}>
+                <p style={{position:'absolute',bottom:'10px',left:'0px'}}>Email:</p>
+                <input type='text' style={{width:'100%',paddingLeft:'70px',color:'white',height:'45px',backgroundColor:'transparent',border:'0.5px solid white', borderWidth:'0px 0px 0.5px',outline:'none'}}/>
+              </div>
+              <div style={{width:'50%',position:'relative',margin:'20px auto'}}>
+                <p style={{position:'absolute',bottom:'10px',left:'0px'}}>Password:</p>
+                <input type='password' style={{width:'100%',paddingLeft:'140px',color:'white',height:'45px',backgroundColor:'transparent',border:'0.5px solid white', borderWidth:'0px 0px 0.5px',outline:'none'}}/>
+              </div>
+              <p>Forgot Password?</p>
+              <div style={{width:'100%',textAlign:'center'}}><button style={{width:'30%',color:'white',backgroundColor:'#000810',borderRadius:'10px',borderWidth:'0px',outine:'none',height:'45px'}}>Sign in</button></div>
+              <p style={{color:'white',marginTop:'35px'}}>
+                              Don't have an account? <Link to="/signup" style={{textDecoration:'none',color:'#007AFF'}}> Sign in</Link>
+              </p>
+            </div>
           </div>
-
        </section>;
 }
