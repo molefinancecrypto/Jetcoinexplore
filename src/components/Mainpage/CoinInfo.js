@@ -58,7 +58,7 @@ function CoinInfo({coin}) {
        <p className='capRank'>{coin[Object.keys(coin)]['market_cap_rank']}</p>
        <p className='launch'>{coin[Object.keys(coin)]['launch']}</p>
        <p className='change' >{coin[Object.keys(coin)]['change']}</p>
-       <div style={{minWidth:'55px',width:'20%',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'55px',height:"55px",padding:'4px',backgroundColor:'rgba(8, 52, 107,0.4)'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
+       <div style={{minWidth:'55px',width:'20%',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-between',width:'55px',height:"30px",padding:'4px',border:'2px solid grey',borderRadius:'10px',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
                                                                                                  <p  style={{fontSize:'15px',color:{colorvote}}}>{votes}</p>
                                                                                               </div>                      
       </div>

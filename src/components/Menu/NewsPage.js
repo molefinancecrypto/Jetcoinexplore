@@ -24,6 +24,16 @@ export default function NewsPage() {
     }
   setnewstoshow(newArray)
   }
+  const scrolltotop = () => {
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+
+  const topdistance = ()=>{
+ let a =  window.scrollY;
+ console.log(a)
+  }
+
 
   const rightpage = ()=>{
     if(pagenumber===numberofPages){
@@ -52,26 +62,37 @@ export default function NewsPage() {
   const navigate = useNavigate();
   if (newstoshow) {return (
     <div style={{width:'90vw',margin:'30px auto',minHeight:'100vh',color:'white'}}>
+      {console.log(window.innerHeight)}
         <div style={{color:"white",width:"100%",textAlign:"left",display:"flex",padding:"15px",boxSizing:"border-box",cursor:'pointer',fontSize:'20px'}} onClick={()=> navigate('/')}><p>{backward}</p>Back</div>
-        {newstoshow[pagenumber-1][`${pagenumber}`].map(newss=><div className='newsItem' >
-                             <div className = 'divForNewsImage' ><img style={{width:'100%',height:'100%',borderRadius:'13px'}} src={newss['urlToImage']} alt='image_for_news_page'/></div>
+        <p style={{width:'90%',margin:'30px auto',textAlign:'center',fontSize:'35px'}}>News Feed</p>
+        <div style={{width:'90%',margin:'20px auto',minHeight:'100vh',paddingTop:'90px',backgroundColor:'#071323',border:'1px solid #0B1F36',display:"flex",flexDirection:'column',justifyContent:'space-between',paddingTop:'35px'}}>
+          <div style={{width:'90%',margin:'0px auto',marginTop:"35px",border:'1px solid #0B1F36',backgroundImage: 'linear-gradient(90.18deg, #040B15 35.76%, rgba(0, 38, 82, 0) 110.28%)'}}>
+            {newstoshow[pagenumber-1][`${pagenumber}`].map(newss=><div className='newsItem' >
+        
                              <div className='divForNewsContent' >
-                                 <p style={{width:'100%',textAlign:'left',letterSpacing:'2px'}}>{newss['title']}</p>
-                                 <p style={{width:'100%',textAlign:'left',letterSpacing:'2px',overflow:'hidden',fontFamily:'NexaTextLight'}}>{newss['description']}</p>
+                                 <p style={{width:'100%',textAlign:'center',letterSpacing:'2px'}}>{newss['title']}</p>
+                                 <p style={{width:'100%',textAlign:'center',letterSpacing:'2px',overflow:'hidden',fontFamily:'NexaTextLight',color:'#BABABA'}}>{newss['description']}</p>
                                  <div style={{display:'flex',justifyContent:'flex',justifyContent:'space-between'}}>
-                                     <p><strong>Date</strong>: {new Date(newss['publishedAt']).getDate()+'/'+new Date(newss['publishedAt']).getMonth()+'/2022'}</p>
-                                     <a href={newss['url']}><p>Read Article</p></a>
+                                     
+                                     <div style={{width:'100%',textAlign:'center',display:'flex',justifyContent:'center'}}><a href={newss['url']} style={{textDecoration:'none'}}><p style={{backgroundColor:'#05101C',borderRadius:'20px',color:'white',width:'200px',textDecoration:'none',height:'60px',display:'flex',justifyContent:'center',alignItems:'center'}}>Read Article</p></a></div>
                                  </div>
                              </div>
+                             <div  className = 'divForNewsImage' >
+                               <img style={{width:'100%',height:'75%',borderRadius:'13px',border:'1px solid #003D84'}} src={newss['urlToImage']} alt='image_for_news_page'/>
+                               <p style={{textAlign:'right'}}><strong>Date</strong>: {new Date(newss['publishedAt']).getDate()+'/'+new Date(newss['publishedAt']).getMonth()+'/2022'}</p>
+                             </div>
                         </div>)}
-                        
-                      {newstoshow && <div style={{display:'flex',justifyContent:'center'}}>
-                        <div style={{width:'60%',display:'flex',justifyContent:'space-around'}}>
+                        </div>
+                        {newstoshow && <div style={{display:'flex',justifyContent:'center',margin:'40px 0px'}}>
+                        <div style={{width:'35%',height:'40px',display:'flex',alignItems:'center',justifyContent:'space-around'}}>
                           <p onClick={leftpage} style={{display:'flex',justifyContent:'center',alignItems:'center'}}>{backward}</p>
                           {newstoshow.map(news => <p  onClick={ ()=> setpagenumber(parseInt(Object.keys(news)))} style={{paddingLeft:'10px',borderRadius:pagenumber==Object.keys(news)?'5px':'0px',border:pagenumber==Object.keys(news)?'1px solid white':'0px solid white', paddingRight:'10px',fontSize:'25px',cursor:'pointer'}}>{Object.keys(news)}</p>)}
                           <p onClick={rightpage} style={{display:'flex',justifyContent:'center',alignItems:'center'}}>{forward}</p>
                         </div>
                       </div>}  
+        </div>
+                        
+    <div onClick={scrolltotop} style={{position:'fixed',top:'85vh',boxShadow: '10px 2px 15px black',zIndex:'20000',right:'20px',display:'flex',alignItems:'center',justifyContent:'center',width:'35px',height:'35px',backgroundColor:'white',borderRadius:'50%'}}><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><polygon points="6,17.59 7.41,19 12,14.42 16.59,19 18,17.59 12,11.59"/><polygon points="6,11 7.41,12.41 12,7.83 16.59,12.41 18,11 12,5"/></g></g></svg></div>                  
     </div>
   ) }
   else{

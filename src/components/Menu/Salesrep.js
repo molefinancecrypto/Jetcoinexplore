@@ -6,6 +6,8 @@ import GoToTop from '../Gototop';
 
 function Salesrep() {
     const navigate = useNavigate();
+
+    
     
     const [salesrepclicked,setsalesrepclicked] = useState('1');
     const [showprofile,setshowprofile] = useState(false);
@@ -22,13 +24,13 @@ function Salesrep() {
                     <p style={{width:'33.33%',display:'flex',justifyContent:'center',alignItems:"center"}}>Telegram Handle</p>
                 </div>
                 
-                <div style={{width:'100%',minHeight:'90%',color:'white',display:'flex',flexDirection:'column',justifyContent:'space-around'}}>
+                <div style={{width:'100%',paddingTop:'15px',minHeight:'90%',color:'white',display:'flex',flexDirection:'column',justifyContent:'space-around'}}>
                     
                     {Salesrepinfo.map(salesrep => 
                     <div  onClick={ ()=>{
                         setshowprofile(true)
                         setsalesrepclicked(salesrep.id)
-                        navigate(`/salesrep`,{state: salesrep})}} style={{cursor:'pointer',backgroundColor:salesrepclicked==salesrep.id?'#0d213a':'transparent',borderRadius:'10px',width:'95%',margin:'15px auto',paddingTop:'15px',paddingBottom:'15px',display:'flex',height:'35px',color:'white',justifyContent:'space-around'}}>
+                        navigate(`/salesrep`,{state: salesrep})}} style={{cursor:'pointer',backgroundColor:salesrepclicked==salesrep.id?'#0d213a':'transparent',borderRadius:'10px',width:'95%',margin:'0px auto',paddingTop:'15px',paddingBottom:'15px',display:'flex',height:'35px',color:'white',justifyContent:'space-around'}}>
                         <p style={{width:'25%',display:'flex',justifyContent:'center',alignItems:"center"}}>{salesrep.name}</p>
                         <p style={{width:'25%',display:'flex',justifyContent:'center',alignItems:"center"}}>{salesrep.mail}</p>
                         <p style={{width:'25%',display:'flex',justifyContent:'center',alignItems:"center"}}>{salesrep.telegram}</p>
@@ -37,7 +39,7 @@ function Salesrep() {
                 
             </div>
 
-            <div style={{width:'20%',height:'55vh',backgroundColor:'#071323',border:'2px solid #112836',borderRadius:'10px'}}>
+            <div style={{width:'20%',height:'40vh',backgroundColor:'#071323',border:'2px solid #112836',borderRadius:'10px'}}>
                         <Salesrepidentity showprofile={showprofile}/>
             </div>
         </div>

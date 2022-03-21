@@ -13,15 +13,10 @@ function Salesrepidentity({showprofile}) {
             <p style={{fontSize:'25px',letterSpacing:'1.5px'}}>{showprofile?data.name:'jeff'}</p>
             <p style={{color:'grey'}}>Sales rep admin</p>
         </div>
-        <div style={{height:'40%',marginBottom:'35px',display:'flex',justifyContent:'space-around',flexDirection:"column"}}>
-            <div>
-                <p style={{textAlign:'left',paddingLeft:'15px'}}><strong>Telegram Handle:</strong></p>
-                <p style={{textAlign:'left',paddingLeft:'15px'}}></p>
-            </div>
-            <div>
-                <p style={{textAlign:'left',paddingLeft:'15px'}}><strong>E-mail:</strong></p>
-                <p style={{textAlign:'left',paddingLeft:'15px'}}></p>
-            </div>
+        <div style={{height:'40%',marginTop:'15px',display:'flex',justifyContent:'space-around'}}>
+        
+        <div style={{width:"40px",height:'40px',borderRadius:'10px',background: '#05101c',boxShadow: '4px 4px 4px rgba(0, 0, 0, 0.25)',display:'flex',justifyContent:'center',alignItems:"center"}}><i class="fa fa-telegram" style={{fontSize:"30px",color:'grey'}} aria-hidden="true"></i></div>
+        <div style={{width:"40px",height:'40px',borderRadius:'10px',background: '#05101c',boxShadow: '4px 4px 4px rgba(0, 0, 0, 0.25)',display:'flex',justifyContent:'center',alignItems:"center"}}><i class="fa fa-envelope-o" style={{fontSize:"30px",color:'grey'}} aria-hidden="true"></i></div>
         </div>
     </div>
   )

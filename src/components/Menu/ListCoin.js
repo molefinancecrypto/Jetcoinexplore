@@ -6,6 +6,7 @@ function ListCoin() {
     const navigate = useNavigate();
     const [sliderposition,setsliderposition] = useState({left:0,info:'block',contracts:'none',Link:'none',addons:'none'})
     const backward = <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>;
+    const mainstar = <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="18px" viewBox="0 0 24 24" width="18px" fill="#FF0000"><g><path d="M0,0h24v24H0V0z" fill="none"/><path d="M0,0h24v24H0V0z" fill="none"/></g><g><path d="M12,17.27L18.18,21l-1.64-7.03L22,9.24l-7.19-0.61L12,2L9.19,8.63L2,9.24l5.46,4.73L5.82,21L12,17.27z"/></g></svg>;
     const info = ()=>{
         setsliderposition({left:0,info:'block',contracts:'none',Link:'none',addons:'none'})
     }
@@ -35,35 +36,35 @@ function ListCoin() {
                 <div style={{width:'100%',height:'80%',marginTop:'40px',display:sliderposition['info']}}>
                     <div style={{width:'90%',margin:'15px auto',boxSizing:'border-box',height:'30%',display:'flex',justifyContent:'space-around'}}>
                         <section style={{textAlign:'left',width:'30%',height:'auto'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:'15px'}}>Coin Name</p>
+                            <p style={{textAlign:'left',color:'white',marginBottom:'15px'}}>Coin Name<sup>{mainstar}</sup></p>
                             <input type='text' placeholder='Ex Bitcoin' style={{height:'45px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section >
                         <section style={{textAlign:'left',width:'30%',height:'auto'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:'15px'}}>Coin Symbol</p>
+                            <p style={{textAlign:'left',color:'white',marginBottom:'15px'}}>Coin Symbol<sup>{mainstar}</sup></p>
                             <input type='text' placeholder='Ex: BTC' style={{height:'45px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                         <section style={{textAlign:'left',width:'30%',height:'auto'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:'15px'}}>Price</p>
+                            <p style={{textAlign:'left',color:'white',marginBottom:'15px'}}>Price<sup>{mainstar}</sup></p>
                             <input type='text' placeholder='$24.50' style={{height:'45px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                     </div>
                     <div style={{width:'90%',margin:'15px auto',boxSizing:'border-box',height:'30%',display:'flex',justifyContent:'space-around'}}>
                         <section style={{textAlign:'left',width:'30%',height:'auto'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:'15px'}}>Market Cap</p>
+                            <p style={{textAlign:'left',color:'white',marginBottom:'15px'}}>Market Cap<sup>{mainstar}</sup></p>
                             <input type='text' placeholder='Ex $20000BTC' style={{height:'45px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                         <section style={{textAlign:'left',width:'30%',height:'auto'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:'15px'}}>Launch Date</p>
+                            <p style={{textAlign:'left',color:'white',marginBottom:'15px'}}>Launch Date<sup>{mainstar}</sup></p>
                             <input type='date' style={{height:'45px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                         <section style={{textAlign:'left',width:'30%',height:'auto'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:'15px'}}>Logo</p>
+                            <p style={{textAlign:'left',color:'white',marginBottom:'15px'}}>Logo<sup>{mainstar}</sup></p>
                             <input type='file' style={{height:'100px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                     </div>
                     <div style={{width:'90%',margin:'15px auto',boxSizing:'border-box',height:'30%',}}>
                         <section style={{textAlign:'left',width:'40%'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:'15px'}}>Description</p>
+                            <p style={{textAlign:'left',color:'white',marginBottom:'15px'}}>Description<sup>{mainstar}</sup></p>
                             <input type='text' placeholder='Ex Bitcoin' style={{height:'150px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                         
@@ -77,7 +78,7 @@ function ListCoin() {
                 <div style={{width:'100%',height:'50vh',marginTop:'40px',position:'relative',display:sliderposition['contracts']}}>
                     <div style={{width:'90%',margin:'15px auto',boxSizing:'border-box',height:'30%',display:'flex',justifyContent:'space-between'}}>
                         <section style={{textAlign:'left',width:'45%',height:'auto'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:'15px'}}>Network/Chain</p>
+                            <p style={{textAlign:'left',color:'white',marginBottom:'15px'}}>Network/Chain<sup>{mainstar}</sup></p>
                             <select name="pets" id="pet-select" style={{height:'45px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}>
                                 <option value="">Enter Chain</option>
                                 <option value="ADA">ADA</option>
@@ -99,7 +100,7 @@ function ListCoin() {
                             </select>
                         </section >
                         <section style={{textAlign:'left',width:'45%',height:'auto'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:'15px'}}>Address</p>
+                            <p style={{textAlign:'left',color:'white',marginBottom:'15px'}}>Address<sup>{mainstar}</sup></p>
                             <input type='text' placeholder='Ex: BTC' style={{height:'45px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                         
@@ -116,35 +117,35 @@ function ListCoin() {
                 <div style={{width:'100%',height:'50vh',marginTop:'40px',position:'relative',display:sliderposition['Link']}}>
                     <div style={{width:'90%',margin:'7px auto',boxSizing:'border-box',height:'25%',display:'flex',justifyContent:'space-between'}}>
                         <section style={{textAlign:'left',width:'30%',height:'auto'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:'10px'}}>Website</p>
+                            <p style={{textAlign:'left',color:'white',marginBottom:'10px'}}>Website<sup>{mainstar}</sup></p>
                             <input type='text' placeholder='Ex: https://www.bitcoin.com' style={{height:'45px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section >
                         <section style={{textAlign:'left',width:'30%',height:'auto'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:'10px'}}>Telegram</p>
+                            <p style={{textAlign:'left',color:'white',marginBottom:'10px'}}>Telegram<sup>{mainstar}</sup></p>
                             <input type='text' placeholder='Ex: https://t.me/bitcoin' style={{height:'45px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                         <section style={{textAlign:'left',width:'30%',height:'auto'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:'10px'}}>Audit Link</p>
+                            <p style={{textAlign:'left',color:'white',marginBottom:'10px'}}>Audit Link<sup>{mainstar}</sup></p>
                             <input type='text' placeholder='Ex: https://www.audit.com' style={{height:'45px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                     </div>
                     <div style={{width:'90%',margin:'7px auto',boxSizing:'border-box',height:'25%',display:'flex',justifyContent:'space-between'}}>
                         <section style={{textAlign:'left',width:'30%',height:'auto'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:'10px'}}>Twitter Link</p>
+                            <p style={{textAlign:'left',color:'white',marginBottom:'10px'}}>Twitter Link<sup>{mainstar}</sup></p>
                             <input type='text' placeholder='Ex: https://www.twitter.com' style={{height:'45px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section >
                         <section style={{textAlign:'left',width:'30%',height:'auto'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:'10px'}}>Discord Link</p>
+                            <p style={{textAlign:'left',color:'white',marginBottom:'10px'}}>Discord Link<sup>{mainstar}</sup></p>
                             <input type='text' placeholder='Ex: https://www.discord.com' style={{height:'45px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                         <section style={{textAlign:'left',width:'30%',height:'auto'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:'10px'}}>Reddit Link</p>
+                            <p style={{textAlign:'left',color:'white',marginBottom:'10px'}}>Reddit Link<sup>{mainstar}</sup></p>
                             <input type='text' placeholder='Ex: https://www.reddit.com' style={{height:'45px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                     </div>
                     <div style={{width:'90%',margin:'7px auto',boxSizing:'border-box',height:'25%',display:'flex',justifyContent:'left'}}>
                         <section style={{textAlign:'left',width:'30%',height:'auto'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:'10px'}}>Custom Chart Link</p>
+                            <p style={{textAlign:'left',color:'white',marginBottom:'10px'}}>Custom Chart Link<sup>{mainstar}</sup></p>
                             <input type='text' placeholder='Ex: https://www.chart.com' style={{height:'45px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section >
                         
@@ -161,11 +162,11 @@ function ListCoin() {
                 <div style={{width:'100%',height:'50vh',marginTop:'40px',position:'relative',display:sliderposition['addons']}}>
                     <div style={{width:'90%',margin:'7px auto',boxSizing:'border-box',height:'25%',display:'flex',justifyContent:'space-between'}}>
                         <section style={{textAlign:'left',width:'45%',height:'auto'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:'10px'}}>Contact Mail</p>
+                            <p style={{textAlign:'left',color:'white',marginBottom:'10px'}}>Contact Mail<sup>{mainstar}</sup></p>
                             <input type='text' placeholder='Ex: bitcoin@gmail.com' style={{height:'45px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section >
                         <section style={{textAlign:'left',width:'45%',height:'auto'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:'10px'}}>Additional Information</p>
+                            <p style={{textAlign:'left',color:'white',marginBottom:'10px'}}>Additional Information<sup>{mainstar}</sup></p>
                             <input type='text' placeholder='' style={{height:'45px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                     </div>

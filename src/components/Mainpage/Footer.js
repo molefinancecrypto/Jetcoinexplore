@@ -41,7 +41,7 @@ export default function Footer() {
               <p>DYOR</p>
               <p>Contact Us</p>
               <p>Advertise</p>
-              <p onClick={()=> navigate('/salesrep')} style={{cursor:'pointer'}}>Sales Rep</p>
+              <p onClick={()=> navigate('/salesrep')} style={{cursor:'pointer'}}>Sales Representative</p>
             </div>
           </div>
           <div className='footerSecondMain'>
