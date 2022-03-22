@@ -8,6 +8,8 @@ import { Newsjson } from '../Newsapi';
 export default function NewsPage() {
   const numberofPages = Math.ceil(Newsjson.length/4);
   const [pagenumber,setpagenumber] = useState(1);
+  const [verticalscroll,setverticalscroll] = useState();
+  const[showscroller,setshowscroller] = useState(false);
   const forward = <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#808080"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg> 
   const backward = <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#808080"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>
   const[newstoshow,setnewstoshow] = useState()
@@ -30,8 +32,15 @@ export default function NewsPage() {
 
 
   const topdistance = ()=>{
- let a =  window.scrollY;
- console.log(a)
+  setverticalscroll(window.scrollY);
+
+  if(verticalscroll>100){
+    setshowscroller(true)
+  }
+  else{
+    setshowscroller(false)
+  }
+
   }
 
 
@@ -57,6 +66,16 @@ export default function NewsPage() {
     funcFornews() 
   },[])
 
+  useEffect(() => {
+    
+    topdistance()
+    window.addEventListener('scroll', topdistance);
+    
+  
+    return () => {
+        window.removeEventListener('scroll', topdistance)
+      
+  }})
   
 
   const navigate = useNavigate();
@@ -92,7 +111,7 @@ export default function NewsPage() {
                       </div>}  
         </div>
                         
-    <div onClick={scrolltotop} style={{position:'fixed',top:'85vh',boxShadow: '10px 2px 15px black',zIndex:'20000',right:'20px',display:'flex',alignItems:'center',justifyContent:'center',width:'35px',height:'35px',backgroundColor:'white',borderRadius:'50%'}}><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><polygon points="6,17.59 7.41,19 12,14.42 16.59,19 18,17.59 12,11.59"/><polygon points="6,11 7.41,12.41 12,7.83 16.59,12.41 18,11 12,5"/></g></g></svg></div>                  
+    {showscroller && <div onClick={scrolltotop} style={{position:'fixed',top:'85vh',boxShadow: '10px 2px 15px black',zIndex:'20000',right:'20px',display:'flex',alignItems:'center',justifyContent:'center',width:'35px',height:'35px',backgroundColor:'white',borderRadius:'50%'}}><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><polygon points="6,17.59 7.41,19 12,14.42 16.59,19 18,17.59 12,11.59"/><polygon points="6,11 7.41,12.41 12,7.83 16.59,12.41 18,11 12,5"/></g></g></svg></div>}               
     </div>
   ) }
   else{
