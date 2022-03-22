@@ -13,13 +13,13 @@ export default function Footer() {
         <div className='footerFirst' >
           <div style={{width:'100%',height:'60%'}}>
              <p style={{width:'100%',textAlign:'left',paddingBottom:'30px'}}><strong>Subscribe to our weekly NewsLetter</strong></p>
-             <div style={{width:'50%',position:'relative'}}><input placeholder='Enter E-mail' style={{paddingLeft:'10px',width:'100%',height:'40px',outline:'none',color:'white',border:"1px solid #02050a", borderRadius:'9px',backgroundColor:'#02050a'}} type='text' /><button style={{width:'25px',position:'absolute',top:'7.5px',backgroundColor:'white',borderRadius:'50%',right:'5px',height:'25px',display:'flex',justifyContent:'center',alignItems:'center'}}><i class="fa fa-telegram" style={{fontSize:"20px"}} aria-hidden="true"></i></button></div>
+             <div style={{width:'75%',maxWidth:'300px',position:'relative'}}><input placeholder='Enter E-mail' style={{paddingLeft:'10px',width:'100%',height:'40px',outline:'none',color:'white',border:"1px solid #02050a", borderRadius:'9px',backgroundColor:'#02050a'}} type='text' /><button style={{width:'25px',position:'absolute',top:'7.5px',backgroundColor:'white',borderRadius:'50%',right:'5px',height:'25px',display:'flex',justifyContent:'center',alignItems:'center'}}><i class="fa fa-telegram" style={{fontSize:"20px"}} aria-hidden="true"></i></button></div>
           </div>
-          <div style={{width:'30%',display:'flex',justifyContent:'space-between'}}>
-          <i class="fa fa-twitter" style={{fontSize:"30px"}} aria-hidden="true"></i>
-          <i class="fa fa-facebook" style={{fontSize:"30px"}} aria-hidden="true"></i>
-          <i class="fa fa-telegram" style={{fontSize:"30px"}} aria-hidden="true"></i>
-          <i class="fa fa-reddit" style={{fontSize:"30px"}} aria-hidden="true"></i>
+          <div style={{width:'50%',display:'flex',justifyContent:'space-between'}}>
+          <a style={{color:'white' ,textDecoration:"none"}} href='https://twitter.com/Jetoken1' target="_blank" ><i class="fa fa-twitter" style={{fontSize:"30px"}} aria-hidden="true"></i></a>
+          <a style={{color:'white' ,textDecoration:"none"}} href='https://www.facebook.com/jetokenofficial/' target="_blank" ><i class="fa fa-facebook" style={{fontSize:"30px"}} aria-hidden="true"></i></a>
+          <a style={{color:'white' ,textDecoration:"none"}} href='https://t.me/Jetokenbsc' target="_blank" ><i class="fa fa-telegram" style={{fontSize:"30px"}} aria-hidden="true"></i></a>
+          <a style={{color:'white' ,textDecoration:"none"}} href='https://www.reddit.com/r/JeToken/' target="_blank" ><i class="fa fa-reddit" style={{fontSize:"30px"}} aria-hidden="true"></i></a>
           </div>
         
         </div>
