@@ -41,7 +41,7 @@ const onfinalsubmit = ()=>{
   
   
 
-return <div style={{width:'100%',minHeight:"85vh",margin:'0px 0px'}}> 
+return <div className='signoverall' > 
           <section className='signinholder'>
 
           <div style={{width:'30%',height:'100%',backgroundColor:"#071323"}}></div>
@@ -71,7 +71,7 @@ return <div style={{width:'100%',minHeight:"85vh",margin:'0px 0px'}}>
             </div>
           </div>
        </section>
-       <section style={{width:"100%",minHeight:"100%", position:"relative"}}>
+       <section className='mobilesignin' >
           <img style={{width:"100%",height:'100vh',objectFit:'cover'}}  src={worldimage} alt='first background image for auth'/>
           <div style={{width:'100%',minHeight:'100%',position:'absolute',top:'0px',backgroundColor:'#05101c9a'}}></div>
           <div style={{position:'absolute',top:'0px',height:"100%",width:"100%",zIndex:'5'}}>
@@ -88,7 +88,7 @@ return <div style={{width:'100%',minHeight:"85vh",margin:'0px 0px'}}>
                 </div>
               </div>
 
-          <div style={{width:'100%',minHeight:"70%",display:'flex',flexDirection:"column",justifyContent:'space-between',padding:'40px 15px',boxSizing:"border-box",backgroundImage: 'linear-gradient(to bottom,#05101c,#0d213a)',borderRadius:'25px 25px 0px 0px'}}>
+          <div style={{width:'100%',boxSizing:'border-box',minHeight:"70%",display:'flex',flexDirection:"column",justifyContent:'space-between',padding:'40px 15px',boxSizing:"border-box",backgroundImage: 'linear-gradient(to bottom,#05101c,#0d213a)',borderRadius:'25px 25px 0px 0px'}}>
             <div style={{width:'100%',height:'50%'}}>
               <div style={{width:'70%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
                 <p style={{marginBottom:'0px',paddingTop:'25px',color:'white'}}>Email:</p>
@@ -99,11 +99,11 @@ return <div style={{width:'100%',minHeight:"85vh",margin:'0px 0px'}}>
                 <p style={{marginBottom:'0px',paddingTop:'25px',color:'white'}}>Password:</p>
                 <input type='password' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none'}}/>
               </div>
-              <p style={{textAlign:'right',color:"#BABABA",marginTop:'10px',width:'70%',margin:'0px auto'}}>Forgot Password</p>
+              <p style={{textAlign:'center',color:"#BABABA",marginTop:'10px',width:'70%',margin:'0px auto'}}>Forgot Password?</p>
             </div>
 
             <div style={{width:'100%',height:'50%',marginTop:"20px",display:"flex",justifyContent:"space-around",flexDirection:"column"}}>
-              <button style={{width:'80%',margin:'0px auto',color:'white',borderRadius:'15px',backgroundColor:"#02050a",outline:"none",height:'45px',borderWidth:"0px"}}>Sign-in</button>
+              <button style={{width:'80%',margin:'20px auto',color:'white',borderRadius:'15px',backgroundColor:"#02050a",outline:"none",height:'45px',borderWidth:"0px"}}>Sign-in</button>
               <div><p style={{color:"white"}}>Don't have an account? &nbsp; &nbsp;</p><Link to="/signup" style={{textDecoration:'none',color:'#007AFF'}}> Sign up</Link></div>
             </div>
 

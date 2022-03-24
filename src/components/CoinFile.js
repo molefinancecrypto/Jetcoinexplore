@@ -18,8 +18,8 @@ function CoinFile() {
   return <section style={{background: 'linear-gradient(180deg, #05101C 0%, #040B15 100%)',marginTop:"10px"}}>
          <FadeIn delay={1000}>
          <div style={{color:"white",paddingLeft:'10%',paddingTop:'20px',width:"100%",justifyContent:"left",display:"flex",boxSizing:"border-box",cursor:'pointer',fontSize:'20px'}} onClick={()=> navigate('/')}><p>{backward}</p>Back</div>
-             <section style={{boxSizing:'border-box',width:'80%',margin:'40px auto',height:'80vh',display:"flex",justifyContent:'space-between'}}>
-                <div style={{width:'40%',borderRadius:"10px",height:'100%',border:'2px solid #0B1F36',display:'flex',flexDirection:'column',justifyContent:'space-around',background: 'linear-gradient(180deg, #05101C 0%, #040B15 100%)'}}>
+             <section className='holderdiv' >
+                <div className='firstdivindiv' >
                     <section>
                         <p><img style={{height:'80px',width:'80px',borderRadius:"50%"}}src={data['img']}/></p>
                         <p style={{color:'white'}}>{data['name']}</p>
@@ -68,7 +68,7 @@ function CoinFile() {
                     </section>
                 </div>
 
-                <div style={{width:'50%',borderRadius:"10px",height:'100%',border:'2px solid #0B1F36',background: 'linear-gradient(180deg, #05101C 0%, #040B15 100%)'}}>
+                <div className='seconddivindiv' >
                     <p style={{textAlign:'center',marginTop:'45px',fontSize:'30px',backgroundColor:'#081728',width:'100%',height:'60px',color:'white'}}>Description</p>
                     <p style={{width:'80%',margin:'40px auto',color:'white',textAlign:'center'}}>The Newest kitty member on BSC! join our community on, we will spread our memes to the moon! the best women dev in BSC experienced team with succesful projects</p>
                 </div>
