@@ -90,12 +90,12 @@ return <div className='signoverall' >
 
           <div style={{width:'100%',boxSizing:'border-box',minHeight:"70%",display:'flex',flexDirection:"column",justifyContent:'space-between',padding:'40px 15px',boxSizing:"border-box",backgroundImage: 'linear-gradient(to bottom,#05101c,#0d213a)',borderRadius:'25px 25px 0px 0px'}}>
             <div style={{width:'100%',height:'50%'}}>
-              <div style={{width:'70%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
+              <div style={{width:'80%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
                 <p style={{marginBottom:'0px',paddingTop:'25px',color:'white'}}>Email:</p>
                 <input type='text' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none'}}/>
               </div>
 
-              <div style={{width:'70%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
+              <div style={{width:'80%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
                 <p style={{marginBottom:'0px',paddingTop:'25px',color:'white'}}>Password:</p>
                 <input type='password' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none'}}/>
               </div>
