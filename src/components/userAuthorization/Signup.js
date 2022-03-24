@@ -97,7 +97,7 @@ const onfinalsubmit = ()=>{
                       <div className='signbuttondiv' >
 
                         <p style={{color:'white',marginTop:'35px'}}>
-                              Already have an account? <Link to="/signin" style={{textDecoration:'none'}}> Sign in</Link>
+                              Already have an account? &nbsp; &nbsp;<Link to="/signin" style={{textDecoration:'none',color:'#007AFF'}}> Sign in</Link>
                         </p>
 
                       </div>

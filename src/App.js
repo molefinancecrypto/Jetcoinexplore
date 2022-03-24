@@ -32,6 +32,7 @@ function App() {
 
   const [news, setnews] = useState('');
   const [windowidth,setwindowidth] = useState('');
+  const [mainpadbottom,setmainpadbottom] = useState(0);
 
 
   const handleResize = ()=> {
@@ -68,6 +69,22 @@ useEffect(() => {
 }
 })
 
+
+/*
+useEffect for padding bottom
+*/
+useEffect(() => {
+    
+  rfheight()
+  window.addEventListener('resize', rfheight);
+  
+
+  return () => {
+      window.removeEventListener('resize', rfheight)
+    
+}
+})
+
  /* const NewsApi = async ()=>{
     const NewsData = await fetch('https://newsapi.org/v2/everything?q=cryptocurrency&apiKey=3b2baf89ff384326b0244cd6f484611b')
     const Data = await NewsData.json();
@@ -88,8 +105,13 @@ useEffect(
   
   const disref = useRef();
   const [showMainAds, setshowMainAds] = useState(false);
+  const refooter = useRef();
 
+const rfheight = ()=>{
 
+  let newPadding = refooter.current.offsetHeight+25;
+  setmainpadbottom(newPadding)
+}
   
   useEffect(
     () =>{
@@ -104,7 +126,7 @@ useEffect(
 
   return (
     <div className="App">
-      <div className='Appsecond'>
+      <div className='Appsecond' style={{position:'relative',height:'100%',paddingBottom:mainpadbottom}}>
       <Header />
       <div style={{height:"calc(100%-50px)"}}>
       <Routes >
@@ -123,6 +145,7 @@ useEffect(
       
       {showMainAds && <div style={{position:'absolute',zIndex:'10000',top:'0px',left:'0px',bottom:'0px',minHeight:'100%',width:'100%',backgroundColor:'rgba(27, 26, 26, 0.46)'}}>
       <p ref={disref} className='biggestAds'>
+        {console.log(mainpadbottom)}
         <p onClick={()=> setshowMainAds(false)} style={{backgroundColor:'white',width:'35px',height:'35px',borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center'}}><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg></p>
         <p  className='mainadContent' >Advertise with us at coinExplore at very affordable rates</p>
       </p>
@@ -144,7 +167,10 @@ useEffect(
       </Routes>
       </div>
       </div>
-      <Footer />
+        <div ref={refooter} style={{position:'absolute',minHeight: '35vh',bottom:'0px',left:'0px',width:'100%'}}>
+          <Footer />
+        </div>
+      
     </div>
   );
 }

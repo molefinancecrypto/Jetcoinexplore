@@ -14,11 +14,7 @@ body{
   font-family: "NexaTextBold";  
 }
 
-.Appsecond{
-  position:relative;
-  padding-bottom:40vh;
-  height:100%
-}
+
 
 .gainers{
   margin-top:30px;
@@ -60,13 +56,7 @@ body{
 }
 
 
-@media(max-width:950px){
-  .Appsecond{
-    position:relative;
-    padding-bottom:60vh;
-    height:100%
-  }
-}
+
 
 @media(max-width:870px){
 
@@ -108,13 +98,7 @@ body{
   
 }
 
-@media(max-width:750px){
-  .Appsecond{
-    position:relative;
-    padding-bottom:145vh;
-    height:100%
-  }
-}
+
 
 @keyframes bannermove{
   from{ transform: translateY(4000px)}

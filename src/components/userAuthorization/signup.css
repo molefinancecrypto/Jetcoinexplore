@@ -4,6 +4,7 @@
     height:calc(100vh-80px);
     width:100%;
     margin:30px auto;
+    margin-bottom: 0px;
     padding:50px;
     padding-top:20px;
     background-color:#05101c;
@@ -120,7 +121,9 @@
     position:absolute;
     bottom:0px;
     left:0px;
-    background:transparent;
+    background-color: transparent;
+    font-size: 17px;
+    padding-left: 10px;
     width:80%;
     height:40px;
     outline:none;
@@ -147,7 +150,7 @@
 
   @media(max-width:850px){
     .secondmain{
-      padding-bottom:60vh;
+      
       height:100%
     }
   }
