@@ -182,6 +182,13 @@
       
   }}
 
+  @media(max-height:580px){
+    .signupoverall{
+        padding-bottom: 230px;
+        
+    }}
+  
+
 
 @media(max-height:500px){
   .signupoverall{
@@ -190,9 +197,30 @@
   }
 }
 
+@media(max-height:460px){
+  .signupoverall{
+      padding-bottom: 330px;
+      
+  }
+}
+
 @media(max-height:400px){
   .signupoverall{
       padding-bottom: 360px;
+      
+  }
+}
+
+@media(max-height:360px){
+  .signupoverall{
+      padding-bottom: 460px;
+      
+  }
+}
+
+@media(max-height:240px){
+  .signupoverall{
+      padding-bottom: 520px;
       
   }
 }
