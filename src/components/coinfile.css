@@ -74,7 +74,7 @@ color:white;letter-spacing:1.5px
     width: 90%;
     margin: 20px auto;
     padding: 20px;
-    height: 100vh
+    min-height: 100vh
   }
 
   .spanforp{
@@ -94,12 +94,12 @@ color:white;letter-spacing:1.5px
 
   .logosholder{
     width: 90%;
-    margin: 0px auto;
+    margin: 20px auto;
     margin-top: 20px;
   }
 
   .valueindolls{
-    margin-top: 20px;
+    margin: 20px;
   }
 }
 
