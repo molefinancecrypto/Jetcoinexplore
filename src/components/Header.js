@@ -108,7 +108,7 @@ function Header() {
   </div>
          
          <div className='menuholder'>
-              {showhamburger?<div onClick={()=>{setshowhamburger(false) }}>{open}</div>:
+              {showhamburger?<div  onClick={()=>{setshowhamburger(false) }}>{open}</div>:
               <div className='divforcanceler'>
                    
                   <div style={{position:'absolute',top:'0px',right:'0px',height:'100vh',width:'70%',backgroundColor:'#05101c'}}>

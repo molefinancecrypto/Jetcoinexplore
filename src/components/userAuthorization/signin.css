@@ -49,10 +49,20 @@
 
     .mobilesignin{
         display: block;
+        height: auto
     }
 
+    .signoverall{
+        width:100%;
+        height:auto;
+        margin:30px auto;
+        margin-bottom: 0px;
+        
+    }
 }
 
+
+/*
 @media(max-height:500px){
     .signoverall{
         width:100%;
@@ -62,3 +72,5 @@
         
     }
 }
+
+*/

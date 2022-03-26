@@ -1,3 +1,8 @@
+*{
+  margin: 0px;
+  padding: 0px
+}
+
 body{
   padding: 0px;
   margin: 0px;
@@ -12,6 +17,7 @@ body{
   scroll-behavior: smooth;
   position: relative;
   font-family: "NexaTextBold";  
+  padding-bottom: 0px;
 }
 
 

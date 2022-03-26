@@ -160,9 +160,16 @@
 @media(max-width:900px){
   .mobilesignin{
     width:100%;
-    min-height:100%;
+    height:auto;
     position:relative;
     display: block;
+} 
+  
+.signupoverall{
+  height: auto;
+  width:100%;
+  margin:30px auto;
+  margin-bottom: 0px;
 }
 
 .authsection{
@@ -176,6 +183,8 @@
 }
 }
 
+ 
+/*
 @media(max-height:700px){
   .signupoverall{
       padding-bottom: 160px;
@@ -225,3 +234,4 @@
   }
 }
 
+*/

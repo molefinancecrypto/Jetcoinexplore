@@ -126,7 +126,7 @@ const rfheight = ()=>{
 
   return (
     <div className="App">
-      <div className='Appsecond' style={{position:'relative',height:'100%',paddingBottom:mainpadbottom}}>
+      <div className='Appsecond' style={{position:'relative',height:'100%',paddingBottom: '40px'}}>
       <Header />
       <div style={{height:"calc(100%-50px)"}}>
       <Routes >
@@ -167,7 +167,7 @@ const rfheight = ()=>{
       </Routes>
       </div>
       </div>
-        <div ref={refooter} style={{position:'absolute',minHeight: '35vh',bottom:'0px',left:'0px',width:'100%'}}>
+        <div ref={refooter} style={{minHeight: '35vh',backgroundColor:'#071321',width:'100%'}}>
           <Footer />
         </div>
       
