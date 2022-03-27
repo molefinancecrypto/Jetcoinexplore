@@ -89,8 +89,8 @@ export default function NewsPage() {
             {newstoshow[pagenumber-1][`${pagenumber}`].map(newss=><div className='newsItem' >
         
                              <div className='divForNewsContent' >
-                                 <p style={{width:'100%',textAlign:'center',letterSpacing:'2px'}}>{newss['title']}</p>
-                                 <p style={{width:'100%',textAlign:'center',letterSpacing:'2px',overflow:'hidden',fontFamily:'NexaTextLight',color:'#BABABA'}}>{newss['description']}</p>
+                                 <p className='title'>{newss['title']}</p>
+                                 <p className='description' >{newss['description']}</p>
                                  <div style={{display:'flex',justifyContent:'flex',justifyContent:'space-between'}}>
                                      
                                      <div style={{width:'100%',textAlign:'center',display:'flex',justifyContent:'center'}}><a href={newss['url']} style={{textDecoration:'none'}}><p style={{backgroundColor:'#05101C',borderRadius:'20px',color:'white',width:'200px',textDecoration:'none',height:'60px',display:'flex',justifyContent:'center',alignItems:'center'}}>Read Article</p></a></div>
@@ -98,7 +98,7 @@ export default function NewsPage() {
                              </div>
                              <div  className = 'divForNewsImage' >
                                <img style={{width:'100%',height:'75%',borderRadius:'13px',border:'1px solid #003D84'}} src={newss['urlToImage']} alt='image_for_news_page'/>
-                               <p style={{textAlign:'right'}}><strong>Date</strong>: {new Date(newss['publishedAt']).getDate()+'/'+new Date(newss['publishedAt']).getMonth()+'/2022'}</p>
+                               <p style={{textAlign:'center',marginTop:"15px"}}><strong>Date</strong>: {new Date(newss['publishedAt']).getDate()+'/'+new Date(newss['publishedAt']).getMonth()+'/2022'}</p>
                              </div>
                         </div>)}
                         </div>

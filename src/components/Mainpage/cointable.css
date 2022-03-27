@@ -176,7 +176,7 @@
     .coinselector{
         display: flex;
         justify-content: space-around;
-        padding: 15px;
+        padding: 2px;
     }
     .tablecoinlogo{
         width: 50px;

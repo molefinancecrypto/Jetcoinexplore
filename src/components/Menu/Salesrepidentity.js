@@ -15,8 +15,8 @@ function Salesrepidentity({showprofile}) {
         </div>
         <div style={{height:'40%',marginTop:'15px',display:'flex',justifyContent:'space-around'}}>
         
-        <div style={{width:"40px",height:'40px',borderRadius:'10px',background: '#05101c',boxShadow: '4px 4px 4px rgba(0, 0, 0, 0.25)',display:'flex',justifyContent:'center',alignItems:"center"}}><i class="fa fa-telegram" style={{fontSize:"30px",color:'grey'}} aria-hidden="true"></i></div>
-        <div style={{width:"40px",height:'40px',borderRadius:'10px',background: '#05101c',boxShadow: '4px 4px 4px rgba(0, 0, 0, 0.25)',display:'flex',justifyContent:'center',alignItems:"center"}}><i class="fa fa-envelope-o" style={{fontSize:"30px",color:'grey'}} aria-hidden="true"></i></div>
+        <div style={{width:"60px",height:'60px',borderRadius:'10px',background: '#05101c',boxShadow: '4px 4px 4px rgba(0, 0, 0, 0.25)',display:'flex',justifyContent:'center',alignItems:"center"}}><i class="fa fa-telegram" style={{fontSize:"50px",color:'grey'}} aria-hidden="true"></i></div>
+        <div style={{width:"60px",height:'60px',borderRadius:'10px',background: '#05101c',boxShadow: '4px 4px 4px rgba(0, 0, 0, 0.25)',display:'flex',justifyContent:'center',alignItems:"center"}}><i class="fa fa-envelope-o" style={{fontSize:"50px",color:'grey'}} aria-hidden="true"></i></div>
         </div>
     </div>
   )
