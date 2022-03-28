@@ -82,8 +82,8 @@ export default CoinsTable;
 
 
 export function PromotedCoin() {
-  const [colorvote,setcolorvote] = useState('#797878 ')
-    const arrowforvote = <svg xmlns="http://www.w3.org/2000/svg" height="17px" viewBox="0 0 24 24" width="17px" fill= {colorvote}><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>;
+  const [colorvote,setcolorvote] = useState('#FFFFFF ')
+  const arrowforvote = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"/></svg>;
   const[coins,setcoins] = useState(CoinObj.slice(0,4));
   const [votes,setvotes] = useState(0);
   const [stars,setstars] = useState(emptystar);
@@ -139,7 +139,7 @@ export function PromotedCoin() {
             <p className='capRank'>{coin[Object.keys(coin)]['market_cap_rank']}</p>
             <p className='launch'>{coin[Object.keys(coin)]['launch']}</p>
             <p className='change'>{coin[Object.keys(coin)]['change']}</p>
-            <div style={{minWidth:'55px',width:'20%',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'55px',height:"45px",padding:'4px',borderRadius:'10px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
+            <div style={{minWidth:'65px',width:'20%',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'65px',height:"40px",padding:'4px',borderRadius:'10px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
                                                                                                  <p  style={{fontSize:'15px',color:{colorvote}}}>{votes}</p>
                                                                                               </div>                      
       </div>

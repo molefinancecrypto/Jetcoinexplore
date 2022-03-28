@@ -7,19 +7,31 @@
     height: 100%;
     box-sizing:border-box;
     display:flex;
+    justify-content: space-between;
     
 }
 
 .footerFirst{
-    width:40%;
-    height:78%;
+    
+    height:40%;
+    margin-top: 40px;
     display:flex;
-    justify-content:space-between;
-    flex-direction:column;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+
+.coinex_footer{
+    height: 70%;
+    text-align:left;
+    display:flex;
+    margin-top: 20px;
+    align-items:center;
+    justify-content: center;
 }
 
 .footerSecond{
-    width:60%;
+    width: 60%;
     height:100%;
     display:flex;
     justify-content:space-around
@@ -40,6 +52,19 @@
     font-size: 20px;
 }
 
+
+.footerThird{
+
+    height:78%;
+    display:flex;
+    justify-content:space-between;
+    flex-direction:column;
+}
+
+.coinexplorefoot{
+    font-size:29px;
+    letter-spacing:1.5px
+}
 
 
 @media (max-width:950px){
@@ -70,7 +95,7 @@
 
     .footerMain{
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         min-height:90vh;
         justify-content: space-between;
         box-sizing: border-box;
@@ -101,4 +126,9 @@
         width: 100%;
         display: block
     }
+    .coinexplorefoot{
+        font-size:23px;
+        letter-spacing:1.5px
+    }
+    
 }

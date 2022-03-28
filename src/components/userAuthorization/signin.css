@@ -6,6 +6,164 @@
     
 }
 
+
+
+
+
+
+
+
+
+
+.authsection{
+    height:calc(100vh-80px);
+    width:100%;
+    margin:30px auto;
+    padding:50px;
+    padding-top:20px;
+    background-color:#05101c;
+    box-sizing:border-box;
+    
+  }
+
+
+  .secondmain{
+    width: 100%;
+    height:100%;
+    display:flex;
+    justify-content:space-between;
+    box-sizing:border-box
+  }
+
+  .leftsideauth{
+    width:30%;
+    height:100%;
+    position:relative;
+    border-radius: 10px 0px 0px 10px;
+    overflow:hidden;
+  }
+
+  .mainbackgroundimg{
+    width:20vw;
+    height:40vh;
+    object-fit:fill;
+    border-radius:10px 0px 0px 10px
+  }
+
+  .mainbackgroundimg img{
+      width: 40vw;
+  }
+
+  .upperrightauth{
+    width: 100%;
+    height:auto
+  }
+
+  .lowerrightauth{
+    width: 100%;
+    height:auto
+  }
+
+
+  .backdivinner{
+    height: 30px;
+    margin-top:25px;
+    color:white;
+    display:flex;
+    justify-content:left;
+    margin-left: 5%;
+  }
+
+
+  .rightsideauth{
+    width:60%;
+    color:white;
+    height:100%;
+    background-image: linear-gradient(to right,#05101c,#0d213a);
+    border-radius:0px 10px 10px 0px
+  }
+
+  .secondrightauth{
+    width:100%;
+    height:70%;
+    margin:40px auto;
+    box-sizing:border-box
+  }
+
+  .lowerrightone{
+    width:100%;
+    margin-top:35px;
+    display:flex;
+    justify-content:space-between
+  }
+
+  .lowerrightonesection{
+    width:50%;
+    height:60px;
+    text-align:
+    left;
+    position:relative
+  }
+
+  .sectioninput{
+    position:absolute;
+    top:0px;
+    left:0px
+  }
+
+  .authinput{
+    position:absolute;
+    bottom:0px;
+    left:0px;
+    background:transparent;
+    width:100%;
+    height:40px;
+    outline:none;
+    color:white;
+    border:0.5px solid white;
+    border-width:0px 0px 0.5px
+  }
+
+  .signbutton{
+    color:white;
+    margin-top:35px;
+    width:130px;
+    height:40px;
+    outline:none;
+    border:1px solid #02050a;
+    border-radius:9px;
+    background-color:#02050a
+  }
+
+  .signbuttondiv{
+    text-align:left
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .mobilesignin{
     width:100%;
     min-height:100%;

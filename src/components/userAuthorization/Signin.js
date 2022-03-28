@@ -42,35 +42,70 @@ const onfinalsubmit = ()=>{
   
 
 return <div className='signoverall' > 
-          <section className='signinholder'>
-
-          <div style={{width:'30%',height:'100%',backgroundColor:"#071323"}}></div>
-          <div style={{width:'70%',height:'100%',backgroundColor:"#0C223B"}}></div>
-          <div style={{position:'absolute',boxSizing:'border-box',display:'flex',justifyContent:'space-between',left:'0px',height:'80%',padding:'30px',top:'10%',width:"85%",backgroundImage: 'linear-gradient(to right,#071323,#0C223B)',boxShadow: '4px 2px 15px black'}}>
-            <div style={{width:'30%',height:'100%',display:'flex',flexDirection:'column',justifyContent:"left",alignItems:'center'}}>
-              <img src={logo} alt='Logo' style={{width:'65px',height:'65px'}}/>
-              <p style={{color:'white',fontSize:'37px',textAlign:"center",marginTop:'20px'}}>Welcome Back!</p>
-              <p style={{color:'grey',textAlign:"center",marginTop:'20px'}}>To keep connected with us pease log-in with your personal informations</p>
-            </div>
-            <div style={{width:'70%',height:'100%',color:'white',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
-              <p style={{fontSize:'27px',marginBottom:'20px'}}>Sign in</p>
-              <p style={{fontSize:'17px',color:'grey'}}>Please sign in to continue</p>
-              <div style={{width:'50%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
-                <p style={{marginBottom:'0px',paddingTop:'25px'}}>Email:</p>
-                <input type='text' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none'}}/>
-              </div>
-              <div style={{width:'50%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
-                <p style={{marginBottom:'0px',paddingTop:'25px'}}>Password:</p>
-                <input type='password' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none'}}/>
-              </div>
-              <p>Forgot Password?</p>
-              <div style={{width:'100%',textAlign:'center'}}><button style={{width:'30%',color:'white',backgroundColor:'#000810',borderRadius:'10px',borderWidth:'0px',outine:'none',height:'45px'}}>Sign in</button></div>
-              <p style={{color:'white',marginTop:'35px'}}>
-                              Don't have an account? &nbsp; &nbsp; <Link to="/signup" style={{textDecoration:'none',color:'#007AFF'}}> Sign up</Link>
-              </p>
-            </div>
+        <section className='authsection' >
+      
+      <div className='secondmain' >
+        
+        <div  className='leftsideauth' >
+          <div onClick={()=> navigate('/')} className='backdivinner' style={{cursor:'pointer'}}>
+            <p>{backward}</p>
+            <p style={{fontSize:'20px'}}>Back</p>
           </div>
-       </section>
+          <img  className='mainbackgroundimg' src={logo} alt='Coinex_logo'/>
+          <div>
+            <p style={{fontSize:'40px',color:'#FFFFFF'}}>Welcome Back!</p>
+            <p style={{fontSize:'15px',color:'grey'}}>To keep connected with us pease log-in with your personal informations</p>
+          </div>
+        </div>
+        <div className='rightsideauth' >
+          <div className='secondrightauth' >
+            <div className='upperrightauth' >
+                <p style={{fontSize:'30px',marginBottom:'30px',textAlign:'left'}}>SIGN IN</p>
+                <div>
+                  <p style={{fontSize:'20px',marginBottom:'10px',textAlign:'left',color:'grey'}}>Please sign in to continue</p>
+                </div>
+            </div>
+            <div className='lowerrightauth'>
+                  <div className='lowerrightone' >
+                      <section className='lowerrightonesection' >
+                        <p className='sectioninput' >Username:</p>
+                        <input className='authinput' type='text' />
+                      </section>
+                  </div>
+                  <div className='lowerrightone'>
+                      <section className='lowerrightonesection' >
+                        <p className='sectioninput'>Password:</p>
+                        <input className='authinput' type='password' />
+                      </section>
+                  </div>
+           
+                  <div className='signbuttondiv'>
+
+                    <input className='signbutton' type='button' value='Sign in' />
+
+                  </div>
+
+                  <div className='signbuttondiv' >
+
+                    <p style={{color:'white',marginTop:'35px'}}>
+                      <Link to="/" style={{textDecoration:'none',color:'#007AFF'}}> Forgot Password?</Link>
+                    </p>
+
+                    <p style={{color:'white',marginTop:'35px'}}>
+                      Don't have an account? <Link to="/signup" style={{textDecoration:'none',color:'#007AFF'}}> Sign up</Link>
+                    </p>
+
+                  </div>
+                </div>
+          </div>
+        </div>
+          
+      
+
+  </div>
+
+</section>
+          
        <section className='mobilesignin' >
           <img style={{width:"100%",height:'550px',objectFit:'cover'}}  src={worldimage} alt='first background image for auth'/>
           <div style={{width:'100%',height:'550px',position:'absolute',top:'0px',backgroundColor:'#05101c9a'}}></div>
@@ -115,3 +150,37 @@ return <div className='signoverall' >
        
     </div>;
 }
+
+
+/*
+<section className='signinholder'>
+
+          <div style={{width:'30%',height:'100%',backgroundColor:"#071323"}}></div>
+          <div style={{width:'70%',height:'100%',backgroundColor:"#0C223B"}}></div>
+          <div style={{position:'absolute',boxSizing:'border-box',display:'flex',justifyContent:'space-between',left:'0px',height:'80%',padding:'30px',top:'10%',width:"85%",backgroundImage: 'linear-gradient(to right,#071323,#0C223B)',boxShadow: '4px 2px 15px black'}}>
+            <div style={{width:'30%',height:'100%',display:'flex',flexDirection:'column',justifyContent:"left",alignItems:'center'}}>
+              <img src={logo} alt='Logo' style={{width:'65px',height:'65px'}}/>
+              <p style={{color:'white',fontSize:'37px',textAlign:"center",marginTop:'20px'}}>Welcome Back!</p>
+              <p style={{color:'grey',textAlign:"center",marginTop:'20px'}}>To keep connected with us pease log-in with your personal informations</p>
+            </div>
+            <div style={{width:'70%',height:'100%',color:'white',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+              <p style={{fontSize:'27px',marginBottom:'20px'}}>Sign in</p>
+              <p style={{fontSize:'17px',color:'grey'}}>Please sign in to continue</p>
+              <div style={{width:'50%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
+                <p style={{marginBottom:'0px',paddingTop:'25px'}}>Email:</p>
+                <input type='text' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none'}}/>
+              </div>
+              <div style={{width:'50%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
+                <p style={{marginBottom:'0px',paddingTop:'25px'}}>Password:</p>
+                <input type='password' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none'}}/>
+              </div>
+              <p>Forgot Password?</p>
+              <div style={{width:'100%',textAlign:'center'}}><button style={{width:'30%',color:'white',backgroundColor:'#000810',borderRadius:'10px',borderWidth:'0px',outine:'none',height:'45px'}}>Sign in</button></div>
+              <p style={{color:'white',marginTop:'35px'}}>
+                              Don't have an account? &nbsp; &nbsp; <Link to="/signup" style={{textDecoration:'none',color:'#007AFF'}}> Sign up</Link>
+              </p>
+            </div>
+          </div>
+       </section>
+
+*/
