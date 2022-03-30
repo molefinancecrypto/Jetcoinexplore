@@ -58,7 +58,7 @@ color:white;letter-spacing:1.5px
 
 .coinformobile{
   box-sizing:border-box;
-  width:90%;
+  width:97%;
   flex-direction: column;
   margin:40px auto;
   height: auto;
@@ -82,9 +82,10 @@ color:white;letter-spacing:1.5px
 }
 
 .seconddivindivmobile{
-  width: 90%;
+  width: auto;
   margin: 0px auto;
-  padding:20px
+  padding:5px;
+  box-sizing: border-box;
 }
 
 
