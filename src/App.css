@@ -23,10 +23,9 @@ body{
 
 
 .gainers{
-  margin-top:30px;
   font-size:35px;
   color:white;
-  margin-top:150px
+  margin-top:60px;
 }
 
 
@@ -95,10 +94,9 @@ body{
     border-radius: 20px;
   }
   .gainers{
-    margin-top:30px;
     font-size:25px;
     color:white;
-    margin-top:150px
+    margin-top:60px
   }
 
   

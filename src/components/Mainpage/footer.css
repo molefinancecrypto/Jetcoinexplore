@@ -61,9 +61,20 @@
     flex-direction:column;
 }
 
+.footerthirdfirst{
+    width:100%;
+    height:60%
+}
+
 .coinexplorefoot{
     font-size:29px;
     letter-spacing:1.5px
+}
+
+.footerthirdfirstpee{
+    width:100%;
+    text-align:left;
+    padding-bottom:0px
 }
 
 
@@ -101,8 +112,14 @@
         box-sizing: border-box;
     }
     .footerFirst{
-       min-height: 20%;
-       margin-bottom: 25px;
+       height: 10%;
+       margin: 0px;
+    }
+
+    .footerthirdfirstpee{
+        width:100%;
+        text-align:left;
+        padding-bottom:0px
     }
     .footerSecond{
         width:100%;
@@ -129,6 +146,11 @@
     .coinexplorefoot{
         font-size:23px;
         letter-spacing:1.5px
+    }
+
+    .footerthirdfirst{
+        width:100%;
+        height:auto
     }
     
 }

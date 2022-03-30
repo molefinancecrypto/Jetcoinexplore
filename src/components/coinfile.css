@@ -5,6 +5,7 @@ margin:40px auto;
 height:80vh;
 display:flex;
 justify-content:space-between;
+padding: 20px
 
 }
 
@@ -55,26 +56,67 @@ background: linear-gradient(180deg, #05101C 0%, #040B15 100%)
 color:white;letter-spacing:1.5px
 }
 
+.coinformobile{
+  box-sizing:border-box;
+  width:90%;
+  flex-direction: column;
+  margin:40px auto;
+  height: auto;
+  justify-content:space-between;
+  display: none;
+}
+
+
+.logosholdermobile{
+  width: 90%;
+  margin: 20px auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sectionwithiconsmobile{
+  flex-direction: column;
+  width:90%;
+  margin: 5px auto
+}
+
+.seconddivindivmobile{
+  width: 90%;
+  margin: 0px auto;
+  padding:20px
+}
 
 
 
 @media(max-width:950px){
-  .holderdiv{
-    flex-direction: column;
-    height: auto;
 
-    
+  .coinformobile{
+    display: flex;
   }
+
+  .holderdiv{
+    box-sizing:border-box;
+    width:90%;
+    flex-direction: column;
+    margin:40px auto;
+    height: auto;
+    display:none;
+    justify-content:space-between;
+    
+    border: 2px solid green
+    
+    }
 
   .barguy{
     display: none
   }
 
   .firstdivindiv{
-    width: 90%;
-    margin: 20px auto;
-    padding: 20px;
-    min-height: 100vh
+    width: 100%;
+    padding: 10px;
+    min-height: 100vh;
+    box-sizing: border-box;
   }
 
   .spanforp{
@@ -82,24 +124,15 @@ color:white;letter-spacing:1.5px
     display: block;
   }
 
-  .seconddivindiv{
-    width: 90%;
-    margin: 0px auto;
-    padding:20px
-  }
+  
 
-  .sectionwithicons{
-    flex-direction: column;
-  }
+  
 
-  .logosholder{
-    width: 90%;
-    margin: 20px auto;
-    margin-top: 20px;
-  }
-
+  
   .valueindolls{
     margin: 20px;
+    text-align: left;
+    margin-left: 0px;
   }
 }
 

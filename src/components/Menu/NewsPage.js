@@ -87,7 +87,7 @@ export default function NewsPage() {
         <div style={{width:'90%',margin:'20px auto',minHeight:'100vh',paddingTop:'90px',backgroundColor:'#071323',border:'1px solid #0B1F36',display:"flex",flexDirection:'column',justifyContent:'space-between',paddingTop:'35px'}}>
           <div style={{width:'90%',margin:'0px auto',marginTop:"35px",border:'1px solid #0B1F36',backgroundImage: 'linear-gradient(90.18deg, #040B15 35.76%, rgba(0, 38, 82, 0) 110.28%)'}}>
             {newstoshow[pagenumber-1][`${pagenumber}`].map(newss=><div className='newsItem' >
-        
+            <p className='mobiledate' ><strong>Date</strong>: {new Date(newss['publishedAt']).getDate()+'/'+new Date(newss['publishedAt']).getMonth()+'/2022'}</p>
                              <div className='divForNewsContent' >
                                  <p className='title'>{newss['title']}</p>
                                  <p className='description' >{newss['description']}</p>
@@ -98,8 +98,10 @@ export default function NewsPage() {
                              </div>
                              <div  className = 'divForNewsImage' >
                                <img style={{width:'100%',height:'75%',borderRadius:'13px',border:'1px solid #003D84'}} src={newss['urlToImage']} alt='image_for_news_page'/>
-                               <p style={{textAlign:'center',marginTop:"15px"}}><strong>Date</strong>: {new Date(newss['publishedAt']).getDate()+'/'+new Date(newss['publishedAt']).getMonth()+'/2022'}</p>
+                               <p className='webdate' ><strong>Date</strong>: {new Date(newss['publishedAt']).getDate()+'/'+new Date(newss['publishedAt']).getMonth()+'/2022'}</p>
                              </div>
+
+                             
                         </div>)}
                         </div>
                         {newstoshow && <div style={{display:'flex',justifyContent:'center',margin:'40px 0px'}}>

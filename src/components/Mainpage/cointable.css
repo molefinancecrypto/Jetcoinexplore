@@ -34,7 +34,7 @@
 
 .highlighted{
     font-size:35px;
-    margin-bottom:30px
+    margin-bottom:0px
 }
 
 .symbol{
@@ -64,6 +64,7 @@
     margin:30px auto;
     margin-bottom:0px;
     box-sizing:border-box;
+    margin-top: 18px;
     
   
     
@@ -185,7 +186,7 @@
 
     .highlighted{
         font-size:25px;
-        margin-bottom:30px
+        margin-bottom:0px
     }
 
     .tableleft{

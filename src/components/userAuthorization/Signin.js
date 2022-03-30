@@ -134,11 +134,12 @@ return <div className='signoverall' >
                 <p style={{marginBottom:'0px',paddingTop:'25px',color:'white'}}>Password:</p>
                 <input type='password' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none'}}/>
               </div>
-              <p style={{textAlign:'center',color:"#BABABA",marginTop:'10px',width:'70%',margin:'0px auto'}}>Forgot Password?</p>
+              
             </div>
 
             <div style={{width:'100%',height:'50%',marginTop:"20px",display:"flex",justifyContent:"space-around",flexDirection:"column"}}>
-              <button style={{width:'80%',margin:'20px auto',color:'white',borderRadius:'15px',backgroundColor:"#02050a",outline:"none",height:'45px',borderWidth:"0px"}}>Sign-in</button>
+              <button style={{width:'80%',margin:'20px auto',marginTop:'10px',color:'white',borderRadius:'15px',backgroundColor:"#02050a",outline:"none",height:'45px',borderWidth:"0px"}}>Sign-in</button>
+              <p style={{textAlign:'center',color:"#007AFF",marginBottom:'10px',width:'70%',margin:'0px auto'}}>Forgot Password?</p>
               <div><p style={{color:"white"}}>Don't have an account? &nbsp; &nbsp;</p><Link to="/signup" style={{textDecoration:'none',color:'#007AFF'}}> Sign up</Link></div>
             </div>
 

@@ -17,7 +17,7 @@ function ListCoin() {
         }
       
     const headerList = [<p>Coin Information</p>,<p>Coin Contracts</p>,<p>Coin Links</p>,<p>Additional Informaton</p>]
-
+    const step = [<p>step 1</p>,<p>step 2</p>,<p>step 3</p>,<p>step 4</p>]
   useEffect(() => {
     
     handleResize()
@@ -61,7 +61,7 @@ function ListCoin() {
                 <p style={{textAlign:"left",paddingLeft:'5%',fontSize:'20px',letterSpacing:"2px"}}><strong>Enlist Your Coin</strong></p>
             </div>
             <div style={{height:windowidth<=900?'auto':'80%',width:windowidth<=900?'97%':'90%',margin:'20px auto',border:'1px solid #112836',backgroundColor:'#071323',borderRadius:'7px',padding:'20px',boxSizing:'border-box'}}>
-                {windowidth<=900?<div style={{width:'100%',textAlign:'center',fontSize:'25px',marginBottom:'20px'}}>{headerList[headertoshow]}</div>:<div style={{display:'flex',position:'relative',border:'0.5px solid grey',borderWidth:'0px 0px 0.5px',paddingTop:'15px',paddingBottom:'15px',justifyContent:'space-around',height:'15%',alignItems:'center',width:'100%'}}>
+                {windowidth<=900?<div style={{width:'100%',position:'relative',textAlign:'center',fontSize:'20px',marginBottom:'20px'}}>{headerList[headertoshow]}<p style={{width:'auto',fontSize:'11px',padding:'5px',borderRadius:'5px',backgroundColor:'white',opacity:'0.4',color:'black',position:'absolute',top:'0.5px',left:'0px'}}>{step[headertoshow]}</p></div>:<div style={{display:'flex',position:'relative',border:'0.5px solid grey',borderWidth:'0px 0px 0.5px',paddingTop:'15px',paddingBottom:'15px',justifyContent:'space-around',height:'15%',alignItems:'center',width:'100%'}}>
                     <p style={{cursor:'pointer'}}>Coin Information</p>
                     <p  style={{cursor:'pointer'}}>Coin Contracts</p>
                     <p style={{cursor:'pointer'}}>Coin Links</p>
@@ -140,7 +140,7 @@ function ListCoin() {
                         </section>
                         
                     </div>
-                    <div style={{width:'90%',display:'flex',justifyContent:'space-between',margin:'35px auto',color:'white'}}>
+                    <div style={{width:'90%',display:'flex',position:windowidth<=900?'static':'absolute',bottom:'15px',left:'5%',justifyContent:'space-between',margin:windowidth<=900?'0px auto':'0px auto',color:'white'}}>
                         <button onClick={info} style={{width:windowidth<=900?'80px':'150px',height:'40px',backgroundColor:'#02050a',outline:'none',border:'2px solid #02050a',borderRadius:'5px',color:'white'}}>Back</button>
                         <button onClick={links} style={{width:windowidth<=900?'80px':'150px',height:'40px',backgroundColor:'#02050a',outline:'none',border:'2px solid #02050a',borderRadius:'5px',color:'white'}}>Continue</button>
                     </div>
@@ -185,7 +185,7 @@ function ListCoin() {
                         </section >
                         
                     </div>
-                    <div style={{width:'90%',display:'flex',justifyContent:'space-between',margin:'0px auto',color:'white'}}>
+                    <div style={{width:'90%',display:'flex',position:windowidth<=900?'static':'absolute',bottom:'15px',left:'5%',justifyContent:'space-between',margin:'0px auto',color:'white'}}>
                         <button onClick={contracts} style={{width:windowidth<=900?'80px':'150px',height:'40px',backgroundColor:'#02050a',outline:'none',border:'2px solid #02050a',borderRadius:'5px',color:'white'}}>Back</button>
                         <button onClick={addons} style={{width:windowidth<=900?'80px':'150px',height:'40px',backgroundColor:'#02050a',outline:'none',border:'2px solid #02050a',borderRadius:'5px',color:'white'}}>Continue</button>
                     </div>
@@ -205,7 +205,7 @@ function ListCoin() {
                             <input type='text' placeholder='' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                     </div>
-                    <div style={{width:'90%',display:'flex',justifyContent:'space-between',margin:'0px auto',color:'white'}}>
+                    <div style={{width:'90%',display:'flex',position:windowidth<=900?'static':'absolute',bottom:'15px',left:'5%',justifyContent:'space-between',margin:'0px auto',color:'white'}}>
                         <button onClick={links} style={{width:windowidth<=900?'80px':'150px',height:'40px',backgroundColor:'#02050a',outline:'none',border:'2px solid #02050a',borderRadius:'5px',color:'white'}}>Back</button>
                         <button  style={{width:windowidth<=900?'80px':'150px',height:'40px',backgroundColor:'#02050a',outline:'none',border:'2px solid #02050a',borderRadius:'5px',color:'white'}}>Add Coin</button>
                     </div>
