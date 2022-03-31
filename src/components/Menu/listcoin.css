@@ -1,12 +1,13 @@
 .listCoinMain{
-    width: 95%;
+    width: 90%;
     margin: 30px auto;
     min-height:100vh;
+    border:1px solid #0B1F36;
     border-radius: 15px;
     color: grey;
     padding: 35px;
     padding-top: 20px;
-    background-color: rgb(10, 24, 41);
+    background-color: #071323;
     margin-bottom: 20px;
     color: white;
     box-sizing: border-box;
@@ -47,12 +48,26 @@
     margin: 0 auto;
   }
 
+  .desc-style{
+    margin-left: 17px;
+    margin-top: 15px;
+  }
+
+  .asterix{
+    font-size: 30px;
+    color: red;
+}
+
 
   @media (max-width:900px){
     .listCoinMain{
         height:auto;
 
     }
+
+    .desc-style{
+        margin-left: 0px;
+      }
   }
 
 

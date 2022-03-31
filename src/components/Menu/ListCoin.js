@@ -58,49 +58,49 @@ function ListCoin() {
   return <div className='listCoinMain'>
             <div style={{width:'100%',display:'flex',justifyContent:'left',flexDirection:'column'}}>
                 <div style={{color:"white",paddingLeft:'5%',width:"100%",justifyContent:"left",display:"flex",boxSizing:"border-box",cursor:'pointer',fontSize:'20px'}} onClick={()=> navigate('/')}><p>{backward}</p>Back</div>
-                <p style={{textAlign:"left",paddingLeft:'5%',fontSize:'20px',letterSpacing:"2px"}}><strong>Enlist Your Coin</strong></p>
+                <p style={{textAlign:"center",paddingLeft:'5%',fontSize:'35px',letterSpacing:"2px"}}><strong>Enlist Your Coin</strong></p>
             </div>
-            <div style={{height:windowidth<=900?'auto':'80%',width:windowidth<=900?'97%':'90%',margin:'20px auto',border:'1px solid #112836',backgroundColor:'#071323',borderRadius:'7px',padding:'20px',boxSizing:'border-box'}}>
+            <div style={{height:windowidth<=900?'auto':'80%',width:windowidth<=900?'97%':'90%',margin:'20px auto',border:'1px solid #112836',backgroundImage: 'linear-gradient(90.18deg, #040B15 35.76%, rgba(6, 17, 31, 10) 110.28%)',borderRadius:'7px',padding:'20px',boxSizing:'border-box'}}>
                 {windowidth<=900?<div style={{width:'100%',position:'relative',textAlign:'center',fontSize:'20px',marginBottom:'20px'}}>{headerList[headertoshow]}<p style={{width:'auto',fontSize:'11px',padding:'5px',borderRadius:'5px',backgroundColor:'white',opacity:'0.4',color:'black',position:'absolute',top:'0.5px',left:'0px'}}>{step[headertoshow]}</p></div>:<div style={{display:'flex',position:'relative',border:'0.5px solid grey',borderWidth:'0px 0px 0.5px',paddingTop:'15px',paddingBottom:'15px',justifyContent:'space-around',height:'15%',alignItems:'center',width:'100%'}}>
                     <p style={{cursor:'pointer'}}>Coin Information</p>
                     <p  style={{cursor:'pointer'}}>Coin Contracts</p>
                     <p style={{cursor:'pointer'}}>Coin Links</p>
                     <p style={{cursor:'pointer'}}>Additional Informaton</p>
-                    <div style={{position:'absolute',backgroundColor:'#062750',width:'25%',height:'2.5px',top:'100%',left:`${sliderposition.left}%`}}></div>
+                    <div style={{position:'absolute',backgroundColor:'#062750',width:'25%',height:'1px',top:'100%',left:`${sliderposition.left}%`}}></div>
                 </div>}
                 <div style={{width:'100%',marginTop:'40px',display:sliderposition['info']}}>
                     <div style={{width:'90%',margin:'25px auto',boxSizing:'border-box',height:'30%',display:windowidth<=900?'block':'flex',justifyContent:'space-around'}}>
-                        <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Coin Name<sup>{mainstar}</sup></p>
-                            <input type='text' placeholder='Ex Bitcoin' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                        <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px',marginTop:'-20px'}}>
+                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Coin Name<sup class="asterix">*</sup></p>
+                            <input type='text' placeholder='Ex: Bitcoin' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section >
-                        <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Coin Symbol<sup>{mainstar}</sup></p>
-                            <input type='text' placeholder='Ex: BTC' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                        <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px',marginTop:'-20px'}}>
+                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Coin Symbol<sup class="asterix">*</sup></p>
+                            <input type='text' placeholder='Ex: BTC' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Price<sup>{mainstar}</sup></p>
-                            <input type='text' placeholder='$24.50' style={{height:'45px',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Price</p>
+                            <input type='text' placeholder='Ex: $24.50' style={{height:'45px',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                     </div>
                     <div style={{width:'90%',margin:'25px auto',boxSizing:'border-box',height:'30%',display:windowidth<=900?'block':'flex',justifyContent:'space-around'}}>
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Market Cap<sup>{mainstar}</sup></p>
-                            <input type='text' placeholder='Ex $20000BTC' style={{height:'45px',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Market Cap</p>
+                            <input type='text' placeholder='Ex: $20000BTC' style={{height:'45px',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
-                        <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Launch Date<sup>{mainstar}</sup></p>
-                            <input type='date' style={{height:'45px',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                        <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px',marginTop:'-20px'}}>
+                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Launch Date<sup class="asterix">*</sup></p>
+                            <input type='date' style={{height:'45px',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
-                        <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Logo<sup>{mainstar}</sup></p>
-                            <input type='file' style={{height:'100px',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                        <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px',marginTop:'-20px'}}>
+                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Logo<sup class="asterix">*</sup></p>
+                            <input type='file' style={{height:'60px',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                     </div>
                     <div style={{width:'90%',margin:'25px auto',boxSizing:'border-box',height:'30%',}}>
-                        <section style={{textAlign:'left',width:windowidth<=900?'100%':'40%'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Description<sup>{mainstar}</sup></p>
-                            <input type='text'  style={{height:'150px',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                        <section className='desc-style' style={{textAlign:'left',width:windowidth<=900?'100%':'40%'}}>
+                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Description</p>
+                            <input type='text'  style={{height:'150px',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                         
                     </div>
@@ -112,9 +112,9 @@ function ListCoin() {
                 
                 <div style={{width:'100%',height:windowidth<=900?'auto':'50vh',marginTop:'40px',position:'relative',display:sliderposition['contracts']}}>
                     <div style={{width:'90%',margin:'15px auto',boxSizing:'border-box',height:'30%',display:windowidth<=900?'block':'flex',justifyContent:'space-between'}}>
-                        <section style={{textAlign:'left',width:windowidth<=900?'100%':'45%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Network/Chain<sup>{mainstar}</sup></p>
-                            <select name="pets" id="pet-select" style={{height:'45px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}>
+                        <section style={{textAlign:'left',width:windowidth<=900?'100%':'45%',height:'auto',marginBottom:windowidth<=900?'25px':'0px',marginTop:'-20px'}}>
+                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Network/Chain<sup class="asterix">*</sup></p>
+                            <select name="pets" id="pet-select" style={{height:'45px',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}>
                                 <option value="">Enter Chain</option>
                                 <option value="ADA">ADA</option>
                                 <option value="Algorand">Algorand</option>
@@ -134,9 +134,9 @@ function ListCoin() {
                                 <option value="spider">Spider</option>
                             </select>
                         </section >
-                        <section style={{textAlign:'left',width:windowidth<=900?'100%':'45%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Address<sup>{mainstar}</sup></p>
-                            <input type='text' placeholder='Ex: BTC' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                        <section style={{textAlign:'left',width:windowidth<=900?'100%':'45%',height:'auto',marginBottom:windowidth<=900?'25px':'0px',marginTop:'-20px'}}>
+                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Address<sup class="asterix">*</sup></p>
+                            <input type='text' placeholder='Ex: BTC' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                         
                     </div>
@@ -151,37 +151,37 @@ function ListCoin() {
 
                 <div style={{width:'100%',height:windowidth<=900?'auto':'50vh',marginTop:'40px',position:'relative',display:sliderposition['Link']}}>
                     <div style={{width:'90%',margin:windowidth<=900?'25px auto':'7px auto',boxSizing:'border-box',height:'25%',display:windowidth<=900?'block':'flex',justifyContent:'space-between'}}>
-                        <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Website<sup>{mainstar}</sup></p>
-                            <input type='text' placeholder='Ex: https://www.bitcoin.com' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                        <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px',marginTop:'-20px'}}>
+                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Website<sup class="asterix">*</sup></p>
+                            <input type='text' placeholder='Ex: https://www.bitcoin.com' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section >
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Telegram<sup>{mainstar}</sup></p>
-                            <input type='text' placeholder='Ex: https://t.me/bitcoin' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Telegram</p>
+                            <input type='text' placeholder='Ex: https://t.me/bitcoin' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Audit Link<sup>{mainstar}</sup></p>
-                            <input type='text' placeholder='Ex: https://www.audit.com' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Audit Link</p>
+                            <input type='text' placeholder='Ex: https://www.audit.com' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                     </div>
                     <div style={{width:'90%',margin:windowidth<=900?'25px auto':'7px auto',boxSizing:'border-box',height:'25%',display:windowidth<=900?'block':'flex',justifyContent:'space-between'}}>
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Twitter Link<sup>{mainstar}</sup></p>
-                            <input type='text' placeholder='Ex: https://www.twitter.com' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Twitter Link</p>
+                            <input type='text' placeholder='Ex: https://www.twitter.com' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section >
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Discord Link<sup>{mainstar}</sup></p>
-                            <input type='text' placeholder='Ex: https://www.discord.com' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Discord Link</p>
+                            <input type='text' placeholder='Ex: https://www.discord.com' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Reddit Link<sup>{mainstar}</sup></p>
-                            <input type='text' placeholder='Ex: https://www.reddit.com' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Reddit Link</p>
+                            <input type='text' placeholder='Ex: https://www.reddit.com' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                     </div>
                     <div style={{width:'90%',margin:windowidth<=900?'25px auto':'7px auto',boxSizing:'border-box',height:'25%',display:windowidth<=900?'block':'flex',justifyContent:'left'}}>
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Custom Chart Link<sup>{mainstar}</sup></p>
-                            <input type='text' placeholder='Ex: https://www.chart.com' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Custom Chart Link</p>
+                            <input type='text' placeholder='Ex: https://www.chart.com' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section >
                         
                     </div>
@@ -196,13 +196,13 @@ function ListCoin() {
 
                 <div style={{width:'100%',height:windowidth<=900?'auto':'50vh',marginTop:'40px',position:'relative',display:sliderposition['addons']}}>
                     <div style={{width:'90%',margin:windowidth<=900?'25px auto':'7px auto',boxSizing:'border-box',height:'25%',display:windowidth<=900?'block':'flex',justifyContent:'space-between'}}>
-                        <section style={{textAlign:'left',width:windowidth<=900?'100%':'45%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Contact Mail<sup>{mainstar}</sup></p>
-                            <input type='text' placeholder='Ex: bitcoin@gmail.com' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                        <section style={{textAlign:'left',width:windowidth<=900?'100%':'45%',height:'auto',marginBottom:windowidth<=900?'25px':'0px',marginTop:'-20px'}}>
+                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Contact Mail<sup class="asterix">*</sup></p>
+                            <input type='text' placeholder='Ex: bitcoin@gmail.com' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section >
                         <section style={{textAlign:'left',width:windowidth<=900?'100%':'45%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
-                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Additional Information<sup>{mainstar}</sup></p>
-                            <input type='text' placeholder='' style={{height:'45px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#0d213a' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                            <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Additional Information</p>
+                            <input type='text' placeholder='' style={{height:'100px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                     </div>
                     <div style={{width:'90%',display:'flex',position:windowidth<=900?'static':'absolute',bottom:'15px',left:'5%',justifyContent:'space-between',margin:'0px auto',color:'white'}}>
