@@ -15,7 +15,9 @@ function CoinFile() {
     const location = useLocation();
     const dat = location.state;
     const data = dat[Object.keys(dat)]
-  return <section style={{background: 'linear-gradient(180deg, #05101C 0%, #040B15 100%)',marginTop:"10px",height:'auto',padding:'20px',paddingBottom:'35px',borderRadius:'15px',width:'90%',margin:'10px auto',boxSizing:'border-box'}}>
+
+    /*background: 'linear-gradient(180deg, #05101C 0%, #040B15 100%)'*/ 
+  return <section style={{backgroundColor:'#05101c',marginTop:"15px",height:'auto',borderRadius:'15px',width:'100%',boxSizing:'border-box'}}>
          <FadeIn delay={1000}>
          <div style={{color:"white",paddingLeft:'10%',paddingTop:'20px',width:"100%",justifyContent:"left",display:"flex",boxSizing:"border-box",cursor:'pointer',fontSize:'20px'}} onClick={()=> navigate('/')}><p>{backward}</p>Back</div>
              <section className='holderdiv' >
@@ -101,8 +103,8 @@ function CoinFile() {
                     <section className='sectionwithiconsmobile' >
                         
                         <div>
-                            <p style={{color:'grey',textAlign:'left'}}>Launch Date</p>
-                            <p style={{color:'white',textAlign:'left'}}>{data['launch']}</p>
+                            <p style={{color:'white',textAlign:'left'}}>Launch Date</p>
+                            <p style={{color:'grey',textAlign:'left'}}>{data['launch']}</p>
 
                         </div>
                         
@@ -110,21 +112,21 @@ function CoinFile() {
                     </section>
                     <section className='sectionwithiconsmobile'>
                         <div>
-                            <p style={{color:'grey',textAlign:'left'}}>Market Cap</p>
-                            <p style={{color:'white',textAlign:'left'}}>${data['market_cap_rank']}</p>
+                            <p style={{color:'white',textAlign:'left'}}>Market Cap</p>
+                            <p style={{color:'grey',textAlign:'left'}}>${data['market_cap_rank']}</p>
 
                         </div>
                         
 
                         <div >
-                            <p style={{color:'grey',textAlign:'left'}}>price &nbsp;&nbsp;&nbsp;<span style={{color:data['change'][0]==='+'?'green':'red'}}>{data['change']}</span></p>
+                            <p style={{color:'white',textAlign:'left',marginTop:'20px'}}>price &nbsp;&nbsp;&nbsp;<span style={{color:data['change'][0]==='+'?'green':'red'}}>{data['change']}</span></p>
                             <p className='valueindolls' >$0.456767345687878</p>
 
                         </div>
                     </section>
 
                     <div className='seconddivindivmobile' >
-                    <p style={{textAlign:'center',marginTop:'45px',fontSize:'30px',backgroundColor:'#081728',width:'100%',height:'60px',color:'white'}}>Description</p>
+                    <p style={{textAlign:'center',marginTop:'45px',fontSize:'30px',border:'2px solid #081728',borderWidth:'0px 0px 2px',width:'100%',height:'60px',color:'white',display:'flex',alignItems:'center',justifyContent:'center'}}>Description</p>
                     <p style={{width:'80%',margin:'40px auto',color:'white',textAlign:'center'}}>The Newest kitty member on BSC! join our community on, we will spread our memes to the moon! the best women dev in BSC experienced team with succesful projects</p>
                 </div>
 
