@@ -51,7 +51,7 @@ return <div className='signoverall' >
             <p>{backward}</p>
             <p style={{fontSize:'20px'}}>Back</p>
           </div>
-          <img  className='mainbackgroundimg' src={logo} alt='Coinex_logo'/>
+          <img  className='mainbackgroundimg' src={logo} alt='Coinex_logo' style={{width:"20vw", height:"40vh", objectFit:"cover"}}/>
           <div>
             <p style={{fontSize:'40px',color:'#FFFFFF'}}>Welcome Back!</p>
             <p style={{fontSize:'15px',color:'grey'}}>To keep connected with us pease log-in with your personal informations</p>
