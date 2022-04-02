@@ -28,7 +28,7 @@ function CoinFile() {
                         <p style={{color:'grey'}}>${data['symbol']}</p>
                     </section>
                     <section style={{width:'90%',margin:'0px auto'}}>
-                        <p style={{color:'white',textAlign:'left'}}>Network:&nbsp;&nbsp; <span className='spanforp' >Binance Smart Chain Contract</span></p>
+                        <p style={{color:'white',textAlign:'left'}}>Network:&nbsp;&nbsp; <span className='spanforp' >Binance Smart Chain</span></p>
                         <p style={{color:'white',textAlign:'left',marginTop:'20px'}}>Contract Address:&nbsp;&nbsp; <span className='spanforp'>0x4edfght5877jhjd90675&nbsp;</span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></p>
                     </section>
                     <section className='sectionwithicons' >
