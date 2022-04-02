@@ -139,9 +139,9 @@ export function PromotedCoin() {
             <p className='capRank'>{coin[Object.keys(coin)]['market_cap_rank']}</p>
             <p className='launch'>{coin[Object.keys(coin)]['launch']}</p>
             <p className='change'>{coin[Object.keys(coin)]['change']}</p>
-            <div style={{minWidth:'65px',width:'20%',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'65px',height:"40px",padding:'4px',borderRadius:'10px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
-                                                                                                 <p  style={{fontSize:'15px',color:{colorvote}}}>{votes}</p>
-                                                                                              </div>                      
+            <div style={{minWidth:'65px',width:'20%',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'65px',height:"20px",paddingBottom:'27px',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
+              <p  style={{fontSize:'15px',color:{colorvote}}}>{votes}</p>
+            </div>                     
       </div>
        </div>
     </div> 

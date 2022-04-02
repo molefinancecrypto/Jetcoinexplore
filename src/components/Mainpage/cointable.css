@@ -88,6 +88,10 @@
     width:20%
 }
 
+.high-votes{
+    width: 20%;
+}
+
 .tableright{
     width:80%;
     display: flex;
@@ -226,6 +230,10 @@
     .tableheader{
         display: flex;
         justify-content: space-around;
+    }
+
+    .high-votes{
+        width: 60%;
     }
     
 }

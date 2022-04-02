@@ -11,7 +11,7 @@ export default function NewsPage() {
   const [verticalscroll,setverticalscroll] = useState();
   const[showscroller,setshowscroller] = useState(false);
   const forward = <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#808080"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg> 
-  const backward = <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>
+  const backward = <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>
   const[newstoshow,setnewstoshow] = useState()
   let newArray = [];
   const funcFornews = ()=>{
@@ -80,17 +80,19 @@ export default function NewsPage() {
 
   const navigate = useNavigate();
   if (newstoshow) {return (
-    <div style={{width:'90vw',margin:'30px auto',minHeight:'100vh',color:'white',backgroundColor:'rgb(10, 24, 41)',borderRadius:'15px'}}>
+    <div style={{width:'100vw',margin:'30px auto',minHeight:'100vh',color:'white'}}>
       {console.log(window.innerHeight)}
-        <div style={{color:"white",width:"100%",textAlign:"left",display:"flex",padding:"15px",paddingLeft:'65px',boxSizing:"border-box",cursor:'pointer',fontSize:'20px'}} onClick={()=> navigate('/')}><p>{backward}</p>Back</div>
-        <p style={{width:'90%',margin:'30px auto',textAlign:'center',fontSize:'35px'}}>News Feed</p>
-        <div style={{width:'90%',margin:'20px auto',minHeight:'100vh',paddingTop:'90px',backgroundColor:'#071323',border:'1px solid #0B1F36',display:"flex",flexDirection:'column',justifyContent:'space-between',paddingTop:'35px'}}>
-          <div style={{width:'90%',margin:'0px auto',marginTop:"35px",border:'1px solid #0B1F36',backgroundImage: 'linear-gradient(90.18deg, #040B15 35.76%, rgba(0, 38, 82, 0) 110.28%)'}}>
+        <div style={{width:'90%',margin:'20px auto',minHeight:'100vh',paddingTop:'90px',backgroundColor:'#071323',border:'1px solid #0B1F36',borderRadius:'10px',display:"flex",flexDirection:'column',justifyContent:'space-between',paddingTop:'35px'}}>
+          <div style={{width:'100%',display:'flex',justifyContent:'left',flexDirection:'column'}}>
+            <div style={{color:"white",paddingLeft:'7%',paddingTop:'10PX',marginTop:'-1.5%',width:"100%",justifyContent:"left",display:"flex",boxSizing:"border-box",cursor:'pointer',fontSize:'20px'}} onClick={()=> navigate('/')}><p>{backward}</p>Back</div>
+            <p style={{textAlign:"center",paddingLeft:'5%',fontSize:'35px',letterSpacing:"2px"}}><strong>News Feed</strong></p>
+          </div>
+          <div style={{width:'85%',margin:'0px auto',marginTop:"35px",border:'1px solid #0B1F36',borderRadius:'10px',backgroundImage: 'linear-gradient(90.18deg, #040B15 35.76%, rgba(6, 17, 31, 10) 110.28%)'}}>
             {newstoshow[pagenumber-1][`${pagenumber}`].map(newss=><div className='newsItem' >
-            <p className='mobiledate' ><strong>Date</strong>: {new Date(newss['publishedAt']).getDate()+'/'+new Date(newss['publishedAt']).getMonth()+'/2022'}</p>
+        
                              <div className='divForNewsContent' >
-                                 <p className='title'>{newss['title']}</p>
-                                 <p className='description' >{newss['description']}</p>
+                                 <p style={{width:'100%',textAlign:'center',letterSpacing:'2px'}}>{newss['title']}</p>
+                                 <p style={{width:'100%',textAlign:'center',letterSpacing:'2px',overflow:'hidden',fontFamily:'NexaTextLight',color:'#BABABA'}}>{newss['description']}</p>
                                  <div style={{display:'flex',justifyContent:'flex',justifyContent:'space-between'}}>
                                      
                                      <div style={{width:'100%',textAlign:'center',display:'flex',justifyContent:'center'}}><a href={newss['url']} style={{textDecoration:'none'}}><p style={{backgroundColor:'#05101C',borderRadius:'20px',color:'white',width:'200px',textDecoration:'none',height:'60px',display:'flex',justifyContent:'center',alignItems:'center'}}>Read Article</p></a></div>
@@ -98,10 +100,8 @@ export default function NewsPage() {
                              </div>
                              <div  className = 'divForNewsImage' >
                                <img style={{width:'100%',height:'75%',borderRadius:'13px',border:'1px solid #003D84'}} src={newss['urlToImage']} alt='image_for_news_page'/>
-                               <p className='webdate' ><strong>Date</strong>: {new Date(newss['publishedAt']).getDate()+'/'+new Date(newss['publishedAt']).getMonth()+'/2022'}</p>
+                               <p style={{textAlign:'right'}}><strong>Date</strong>: {new Date(newss['publishedAt']).getDate()+'/'+new Date(newss['publishedAt']).getMonth()+'/2022'}</p>
                              </div>
-
-                             
                         </div>)}
                         </div>
                         {newstoshow && <div style={{display:'flex',justifyContent:'center',margin:'40px 0px'}}>

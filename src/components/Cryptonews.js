@@ -32,17 +32,17 @@ function Cryptonews({news,windowidth}) {
       <p className='forward'onClick={forwardScroll} >{forward}</p>
       <p className='backward' onClick={backwardScroll}>{backward}</p>
       <div ref={scrollRef} style={{height:"100%",overflowX:'hidden',scrollBehavior:'smooth'}}>
-      <div  style={{width: news.length*windowidth, height:'100%',display:'flex',paddingTop:'5px',boxSizing:'border-box'}}>
+        <div  style={{width: news.length*windowidth, height:'100%',display:'flex',paddingTop:'5px',boxSizing:'border-box'}}>
           
           {news.map(newss => <div key={uuidv4()} ref={itemRef} className='detailPerNews' >
         
-                                <div style={{width:'80%',height:'95%',backgroundColor:'#071323',border:'0.5px solid #112836',padding:'10px',display:'flex',flexDirection:'column',justifyContent:'space-between',borderRadius:'15px'}}>
-                                <img src={newss['urlToImage']} style={{height:'78%', width:'100%',borderRadius:'8px'}}/>
+            <div style={{width:'80%',height:'95%',backgroundColor:'#071323',border:'0.5px solid #112836',padding:'10px',display:'flex',flexDirection:'column',justifyContent:'space-between',borderRadius:'15px'}}>
+                <img src={newss['urlToImage']} style={{height:'78%', width:'100%',borderRadius:'8px'}}/>
                                 
-                                <p style={{color:"white"}}>{newss['title']}</p>
-                                </div>
+                <p style={{color:"white",paddingBottom:'13px',lineHeight:'17px'}}>{newss['title']}</p>
+            </div>
           </div>)}
-      </div>
+        </div>
       </div>
 
   </div>
