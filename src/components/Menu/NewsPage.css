@@ -53,6 +53,13 @@ display:none
 margin-top:15px;
 }
 
+.newsfeed{
+    text-align:center;
+    padding-left:5%;
+    font-size:35px;
+    letter-spacing:2px
+}
+
 
 
 @media(max-width:750px){
@@ -62,6 +69,10 @@ margin-top:15px;
         justify-content: space-between;
         height: auto;
         box-sizing: border-box;
+    }
+
+    .newsfeed{
+        font-size: 22px
     }
     
     .description{

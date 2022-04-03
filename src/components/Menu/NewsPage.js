@@ -85,7 +85,7 @@ export default function NewsPage() {
         <div style={{width:'90%',margin:'20px auto',minHeight:'100vh',paddingTop:'90px',boxSizing:'border-box',backgroundColor:'#071323',border:'1px solid #0B1F36',borderRadius:'10px',display:"flex",flexDirection:'column',justifyContent:'space-between',paddingTop:'35px'}}>
           <div style={{width:'100%',display:'flex',justifyContent:'left',flexDirection:'column'}}>
             <div style={{color:"white",paddingLeft:'7%',paddingTop:'10PX',marginTop:'-1.5%',width:"100%",justifyContent:"left",display:"flex",boxSizing:"border-box",cursor:'pointer',fontSize:'20px'}} onClick={()=> navigate('/')}><p>{backward}</p>Back</div>
-            <p style={{textAlign:"center",paddingLeft:'5%',fontSize:'35px',letterSpacing:"2px"}}><strong>News Feed</strong></p>
+            <p className='newsfeed' ><strong>News Feed</strong></p>
           </div>
           <div style={{width:'85%',margin:'0px auto',marginTop:"35px",border:'1px solid #0B1F36',borderRadius:'10px',backgroundImage: 'linear-gradient(90.18deg, #040B15 35.76%, rgba(6, 17, 31, 10) 110.28%)'}}>
             {newstoshow[pagenumber-1][`${pagenumber}`].map(newss=><div className='newsItem' >
