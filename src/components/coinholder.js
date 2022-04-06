@@ -7,7 +7,10 @@ export  const CoinObj = [
         "symbol": "CATE",
         "market_cap_rank": 549,
         "launch": "2/12/20",
-        "change": '+1.5%',}
+        "change": '+1.5%',
+        "chain": 'BSC',
+        'vote':240,
+        'watchlist': false}
     },
     {
       "two":  {"id": "astroswap",
@@ -17,7 +20,10 @@ export  const CoinObj = [
         "market_cap_rank": 696,
         "img": "https://assets.coingecko.com/coins/images/18816/small/astro.png?1633506850",
         "launch": "3/3/21",
-        "change": '-0.8%'}
+        "change": '-0.8%',
+        "chain": 'BSC',
+        'vote':14050,
+        'watchlist': false}
     },
     {
       "three":  {"id": "wonderland",
@@ -27,7 +33,10 @@ export  const CoinObj = [
         "market_cap_rank": 188,
         "img": "https://assets.coingecko.com/coins/images/18126/small/time.PNG?1630621941",
         "launch": "7/3/22",
-        "change": '+2.3%'}
+        "change": '+2.3%',
+        "chain": 'ETH',
+        'vote':15,
+        'watchlist': false}
     },
     {
        "four": {"id": "insure",
@@ -37,7 +46,10 @@ export  const CoinObj = [
         "market_cap_rank": 297,
         "img": "https://assets.coingecko.com/coins/images/10354/small/logo-grey-circle.png?1614910406",
         "launch": "3/8/19",
-        "change": '+1.9%'}
+        "change": '+1.9%',
+        "chain": 'ETH',
+        'vote':772,
+        'watchlist': false}
     },
     {
        "five": {"id": "fantom",
@@ -47,7 +59,10 @@ export  const CoinObj = [
         "market_cap_rank": 30,
         "img": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
         "launch": '2/11/19',
-        "change": '-0.5%'}
+        "change": '-0.5%',
+        "chain": 'ETH',
+        'vote':240,
+        'watchlist': false}
     },
     {"six":{
         "id": "telos",
@@ -57,7 +72,10 @@ export  const CoinObj = [
         "market_cap_rank": 237,
         "img": "https://assets.coingecko.com/coins/images/7588/small/TLOS_200.png?1629277084",
         "launch": '11/11/21',
-        "change": '-1.5%'
+        "change": '-1.5%',
+        "chain": 'BSC',
+        'vote':177,
+        'watchlist': false
     }},
     {"seven":{
         "id": "orca",
@@ -67,7 +85,10 @@ export  const CoinObj = [
         "market_cap_rank": 577,
         "img": "https://assets.coingecko.com/coins/images/17547/small/Orca_Logo.png?1628781615",
         "launch": '1/3/21',
-        "change": '-1.34%'
+        "change": '-1.34%',
+        "chain": 'ETH',
+        'vote':4744439,
+        'watchlist': false
     }},
     {"eight":{
         "img":'https://assets.coingecko.com/coins/images/15364/small/logo.png?1620647627',
@@ -78,6 +99,9 @@ export  const CoinObj = [
         "market_cap_rank": 677,
         "launch": '2/2/23',
         "change": '-0.05%',
+        "chain": 'BSC',
+        'vote':4,
+        'watchlist': false
     }},
     {"nine":{
         "id": "astroswap",
@@ -87,7 +111,10 @@ export  const CoinObj = [
         "market_cap_rank": 45,
         "img": "https://assets.coingecko.com/coins/images/18816/small/astro.png?1633506850",
         "launch": '3/1/19',
-        "change": '+1.94%'
+        "change": '+1.94%',
+        "chain": 'BSC',
+        'vote':240,
+        'watchlist': false
     }},
     {"ten":{
         "id": "wonderland",
@@ -97,7 +124,10 @@ export  const CoinObj = [
         "market_cap_rank": 177,
         "img": "https://assets.coingecko.com/coins/images/18126/small/time.PNG?1630621941",
         "launch": '7/11/22',
-        "change": '+0.3%'
+        "change": '+0.3%',
+        "chain": 'BSC',
+        'vote':140,
+        'watchlist': false
     }},
     {"eleven":{
         "id": "insure",
@@ -107,7 +137,10 @@ export  const CoinObj = [
         "market_cap_rank": 97,
         "img": "https://assets.coingecko.com/coins/images/10354/small/logo-grey-circle.png?1614910406",
         "launch": '3/8/20',
-        "change": '-0.35%'
+        "change": '-0.35%',
+        "chain": 'ETH',
+        'vote':240,
+        'watchlist': false
     }},
     {"twelve":{
         "id": "fantom",
@@ -117,6 +150,9 @@ export  const CoinObj = [
         "market_cap_rank": 300,
         "img": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
         "launch": '2/7/22',
-        "change": '+0.5%'
+        "change": '+0.5%',
+        "chain": 'ETH',
+        'vote':2400750,
+        'watchlist': false
     }}
 ]

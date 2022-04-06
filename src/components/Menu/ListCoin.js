@@ -100,7 +100,7 @@ function ListCoin() {
                     <div style={{width:'90%',margin:'25px auto',boxSizing:'border-box',height:'30%',}}>
                         <section className='desc-style' style={{textAlign:'left',width:windowidth<=900?'100%':'40%'}}>
                             <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Description</p>
-                            <input type='text'  style={{height:'150px',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                            <textarea  style={{height:'150px',paddingTop:'10px',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                         
                     </div>
@@ -202,7 +202,7 @@ function ListCoin() {
                         </section >
                         <section style={{textAlign:'left',width:windowidth<=900?'100%':'45%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
                             <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Additional Information</p>
-                            <input type='text' placeholder='' style={{height:'100px',boxSizing:'border-box',paddingLeft:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                            <textarea placeholder='' style={{height:'100px',boxSizing:'border-box',paddingLeft:'10px',paddingTop:'10px',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                     </div>
                     <div style={{width:'90%',display:'flex',position:windowidth<=900?'static':'absolute',bottom:'15px',left:'5%',justifyContent:'space-between',margin:'0px auto',color:'white'}}>

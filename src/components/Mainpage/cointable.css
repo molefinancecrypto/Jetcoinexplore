@@ -37,23 +37,26 @@
     margin-bottom:0px
 }
 
-.symbol{
+.chain{
     text-align: center;
-    width:20%
+    width:20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .launch{
     text-align: center;
-    width:20%
+    width:20%;
 }
 
 .capRank{
     text-align:center;
-        width:20%
+    width:20%;
 }
 
 .change{
     text-align:center;
-    width:20%
+    width:20%;
 }
 
 .headerClass{
@@ -85,7 +88,7 @@
 
 .voteheader{
     text-align:center;
-    width:20%
+    width:20%;
 }
 
 .high-votes{
@@ -97,7 +100,7 @@
     display: flex;
     justify-content:space-around;
     align-items: center;
-
+    position: relative;
 
     
 }
@@ -164,7 +167,7 @@
 
 
 @media (max-width:700px){
-    .symbol{
+    .chain{
         display: none
     }
     .launch{

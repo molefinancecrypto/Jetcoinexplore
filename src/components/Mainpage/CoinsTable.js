@@ -1,5 +1,5 @@
 import './cointable.css'
-import React,{useState,useEffect,useRef} from 'react';
+import React,{useState,useEffect,useRef,useContext} from 'react';
 import { CoinObj } from '../coinholder';
 import emptystar from '../../icons/stars/emptystar.png';
 import fullstar from '../../icons/stars/fullstar.png';
@@ -8,10 +8,13 @@ import { ParticularCoin } from '../../contextfolder/Coindata';
 import { v4 as uuidv4 } from 'uuid';
 import CoinInfo from './CoinInfo';
 import { useNavigate } from 'react-router-dom';
+import binancelogo from '../../chainLogo/binanceLogo.png';
+import ethereumlogo from '../../chainLogo/ethereumLogo.png';
+import {Statecontext} from '../CointoviewContext';
 
-const CoinsTable = () => {
+const CoinsTable = ({overallwidth}) => {
     const[coinhold, setcoinhold] = useState( CoinObj );
-    
+      const [coinheader,setcoinheader] = useContext(Statecontext).coinheader;
     const[coins,setcoins] = useState(coinhold);
     const [search,setsearch] = useState('');
     const [buttonColor, setbuttoncolor] = useState(['rgb(2, 2, 30)','#708AF4','#708AF4']);
@@ -19,17 +22,23 @@ const CoinsTable = () => {
     const inputRef = useRef('')
 
     useEffect( ()=>{
-      if(search.length>0){
+      if(coinheader==='first'){
 
-        setcoins(handleSearch())
+        setcoins(coinhold)
       }
+
+      else if(coinheader==='second'){
+        setcoins(coinhold.slice(0,3))
+      }
+      else if(coinheader==='third'){
+        setcoins(coinhold.slice(4,7))
+      }
+
       else{
-       
-        setcoins(CoinObj)
-        setbuttoncolor(['rgb(2, 2, 30)','#708AF4','#708AF4'])
+        setcoins(coinhold.slice(8,11))
       }
       
-    },[search])
+    },[coinheader])
 
     const clickHottest = ()=>{
       setcoinhold(CoinObj);
@@ -70,8 +79,8 @@ const CoinsTable = () => {
       <p className='highlighted'>HIGHLIGHTED</p>
       
       <div className='headerClass'>
-           <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright' ><p className='symbol'>SYMBOL</p> <p className='capRank'>MARKET-CAP</p> <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE</p> <p className='voteheader' >VOTE</p></div></div>
-           { coins.length== 0 ?<div style={{fontSize:'30px'}}>NO MATCHES</div> : <div style={{height:'auto',width:'100%',borderRadius:'0px 0px 10px 10px'}}>{coins.map( coin => <CoinInfo coin={coin} key={uuidv4()}/> )}</div>}
+           <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright' ><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE(24hrs)</p> <p className='voteheader' >VOTE</p></div></div>
+           { coins.length== 0 ?<div style={{fontSize:'30px'}}>NO MATCHES</div> : <div style={{height:'auto',width:'100%',borderRadius:'0px 0px 10px 10px'}}>{coins.map( coin => <CoinInfo overallwidth={overallwidth} coin={coin} key={uuidv4()}/> )}</div>}
       </div>
   </div>;
 };
@@ -81,7 +90,11 @@ export default CoinsTable;
 
 
 
-export function PromotedCoin() {
+export function PromotedCoin({overallwidth}) {
+  const empty = <img src={emptystar} style={{width:'20px',height:'20px'}}/>;
+    const full = <img src={fullstar} style={{width:'20px',height:'20px'}} />;
+    const eth = <img src={ethereumlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+    const binance = <img src={binancelogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
   const [colorvote,setcolorvote] = useState('#FFFFFF ')
   const arrowforvote = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"/></svg>;
   const[coins,setcoins] = useState(CoinObj.slice(0,4));
@@ -126,23 +139,27 @@ export function PromotedCoin() {
 
   return <div style={{width:'90%',margin:'0px auto',marginTop:'-15px'}}>
             <div style={{width:'100%',height:'auto',borderRadius:'10px',margin:"30px auto",marginBottom:'0px',boxSizing:'border-box'}}>
-           <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright'><p className='symbol'>SYMBOL</p> <p className='capRank'>MARKET-CAP</p> <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE</p> <p className='voteheader'>VOTE</p></div></div>  
+           <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright'><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE(24hrs)</p> <p className='voteheader'>VOTE</p></div></div>  
               {  coins.map( coin => <div className='coinselector'  key={uuidv4()}>
     
     <div className='tableleft' >
     <div style={{width:'150px',display:'flex',alignItems:'center',justifyContent:"left",padding:'0px'}}>
       <img className='tablecoinlogo' style={{borderRadius:'50%'}} src={coin[Object.keys(coin)]['img']} alt='coinLogo'/>
-      <p style={{marginLeft:'15px'}}>{coin[Object.keys(coin)]['name']}</p>
+      <div style={{marginLeft:'15px'}}>
+        <p style={{color:'white',textAlign:'left'}}>{coin[Object.keys(coin)]['name']}</p>
+        <p style={{color:'grey',textAlign:'left',fontSize:'12px'}}>{coin[Object.keys(coin)]['symbol']}</p>
+      </div>    
     </div>
     </div>
-       <div className= 'tableright'><p className='symbol'>{coin[Object.keys(coin)]['symbol']}</p>
+       <div className= 'tableright'><p className='chain'><span style={{display:'flex',justifyContent:'center',alignItems:"center"}}>{coin[Object.keys(coin)]['chain'] === 'ETH'? eth:binance}</span> <span style={{display:'flex',justifyContent:'center',alignItems:"center",marginLeft:'4px'}}>{coin[Object.keys(coin)]['chain']}</span></p>
             <p className='capRank'>{coin[Object.keys(coin)]['market_cap_rank']}</p>
             <p className='launch'>{coin[Object.keys(coin)]['launch']}</p>
-            <p className='change'>{coin[Object.keys(coin)]['change']}</p>
-            <div style={{minWidth:'65px',width:'20%',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'65px',height:"20px",paddingBottom:'27px',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
-              <p  style={{fontSize:'15px',color:{colorvote}}}>{votes}</p>
-            </div>                     
-      </div>
+            <p className='change' style={{textAlign:'center',width:'20%',display:overallwidth>700?'block':'none',color:coin[Object.keys(coin)]['change'][0]=== "+"?'green':'red'}}>{coin[Object.keys(coin)]['change']}</p>
+            <div style={{minWidth:'65px',width:'20%',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'75px',height:"20px",paddingBottom:'27px',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
+              <p  style={{fontSize:'15px',color:{colorvote}}}>{coin[Object.keys(coin)]['vote']}</p>
+              </div>                     
+            </div>
+            <div style={{position:'absolute',right:'10px',top:'0px',height:'100%',width:'30px',display:'flex',alignItems:'center',justifyContent:'center'}}>{coin[Object.keys(coin)]['watchlist']?full:empty}</div>
        </div>
     </div> 
     

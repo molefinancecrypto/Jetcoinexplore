@@ -33,9 +33,11 @@ function App() {
   const [news, setnews] = useState('');
   const [windowidth,setwindowidth] = useState('');
   const [mainpadbottom,setmainpadbottom] = useState(0);
+  const [overallwidth,setoverallwidth] = useState();
 
 
   const handleResize = ()=> {
+    setoverallwidth(window.innerWidth)
     if(window.innerWidth>1100){
       let a  = window.innerWidth*0.2667
       setwindowidth(a)
@@ -140,7 +142,7 @@ const rfheight = ()=>{
 
       <div className='gainers'>TOP GAINERS</div>
       
-          <PromotedCoin />
+          <PromotedCoin overallwidth={overallwidth}/>
       
       
       {showMainAds && <div style={{position:'absolute',zIndex:'10000',top:'0px',left:'0px',bottom:'0px',minHeight:'100%',width:'100%',backgroundColor:'rgba(27, 26, 26, 0.46)'}}>
@@ -150,10 +152,10 @@ const rfheight = ()=>{
         <p  className='mainadContent' >Advertise with us at coinExplore at very affordable rates</p>
       </p>
       </div>}
-      <CoinsTable />
+      <CoinsTable overallwidth={overallwidth}/>
       </div>
       }/>
-      <Route path='/coin/:coinpicked' element={<CoinFile/>}/>
+      <Route path='/coin/:coinpicked' element={<CoinFile overallwidth={overallwidth}/>}/>
       <Route path='/signup' element={<Signup/>} />
       <Route path='/signin' element={<Signin/>} />
       <Route path='/addcoin' element={<ListCoin/>} />

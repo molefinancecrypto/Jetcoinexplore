@@ -1,8 +1,9 @@
-import React, {useState,useRef,useEffect} from 'react';
+import React, {useState,useRef,useEffect,useContext} from 'react';
 import logo from '../images/coinexploreTwo.png';
 import './header.css';
 import { useNavigate,NavLink } from 'react-router-dom';
 import avatar from '../icons/avatar.svg';
+import { Statecontext } from './CointoviewContext';
 import {Link} from 'react-router-dom';
 import {CoinObj} from './coinholder';
 import alexisearch from './alexi-icons/alexisearch.png'
@@ -16,6 +17,8 @@ function Header() {
    const [searchvalue,setsearchvalue] = useState('')
    const [coinShown, setcoinShown] = useState(CoinObj.slice(0,5));
    const [coinsToSearch, setcoinsToSearch] = useState('');
+   const [coinheader,setcoinheader] = useContext(Statecontext).coinheader;
+   const liner = <span style={{width:'100%',height:'100%',borderRadius:'20px'}}></span>;
    const open = <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#808080"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>;
    const close = <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#808080"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>;
    const coinToSearch = ()=>{
@@ -140,7 +143,11 @@ function Header() {
     </ul>
   </div>
 
-  
+ <div style={{display:'flex',justifyContent:'space-around',fontSize:'17px',color:'grey',letterSpacing:'1.5px',paddingBottom:'10px'}}>
+    <p style={{color: coinheader === 'first'?'white':'grey',position:'relative',display:'flex',flexDirection:'column'}} onClick={()=>setcoinheader('first')}><span>Today's Best</span> <span style={{display:coinheader==='first'?'block':'none',position:'absolute',bottom:'0px',width:'100%',height:'5px',backgroundColor:'#062750'}}>{liner}</span> </p> 
+    <p style={{color: coinheader === 'second'?'white':'grey',position:'relative',display:'flex',flexDirection:'column'}} onClick={()=>setcoinheader('second')}><span>All Time Best</span> <span style={{display:coinheader==='second'?'block':'none',position:'absolute',bottom:'0px',width:'100%',height:'5px',backgroundColor:'#062750'}}>{liner}</span> </p> 
+    <p style={{color: coinheader === 'third'?'white':'grey',position:'relative',display:'flex',flexDirection:'column'}} onClick={()=>setcoinheader('third')}><span>New Listings</span> <span style={{display:coinheader==='third'?'block':'none',position:'absolute',bottom:'0px',width:'100%',height:'5px',backgroundColor:'#062750'}}>{liner}</span> </p> 
+    <p style={{color: coinheader === 'fourth'?'white':'grey',position:'relative',display:'flex',flexDirection:'column'}} onClick={()=>setcoinheader('fourth')}><span>By Market Cap</span> <span style={{display:coinheader==='fourth'?'block':'none',position:'absolute',bottom:'0px',width:'100%',height:'5px',backgroundColor:'#062750'}}>{liner}</span> </p></div> 
   
      
   

@@ -6,7 +6,7 @@ import './coinfile.css';
 import FadeIn from 'react-fade-in';
 
 
-function CoinFile() {
+function CoinFile({overallwidth}) {
     const homeIcon = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>;
     const backward = <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>;
     const {selector} = ParticularCoin();
@@ -64,9 +64,9 @@ function CoinFile() {
                     </section>
 
                     <section style={{width:'100%',height:'50px',jutifyContent:"center"}}>
-                        <div style={{width:'15%',minWidth:'60px',margin:'0px auto',height:'100%',border:'2px solid white',borderRadius:"15px",display:'flex',flexDirection:"column",alignItems:'center',justifyContent:'center'}}>
+                        <div style={{width:'75px',margin:'0px auto',height:'100%',border:'2px solid white',borderRadius:"12px",fontSize:'15px',display:'flex',flexDirection:"column",alignItems:'center',justifyContent:'center'}}>
                             <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"/></svg></p>
-                            <p style={{color:'white'}}>0</p>
+                            <p style={{color:'white'}}>{data['vote']}</p>
                         </div>
                     </section>
                 </div>
@@ -145,7 +145,7 @@ function CoinFile() {
          
          </FadeIn>
          <div style={{marginTop:'40px'}}></div>
-         <CoinsTable />
+         <CoinsTable overallwidth={overallwidth}/>
          </section>;
 }
 

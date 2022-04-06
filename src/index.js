@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ParticularcoinHolder } from './contextfolder/Coindata';
 import './NEXAFONTS/OTF/Nexa-Bold.otf';
 import './NEXAFONTS/OTF/Nexa-Light.otf';
+import {StateHolder} from '../src/components/CointoviewContext';
 
 
 
@@ -14,9 +15,11 @@ import './NEXAFONTS/OTF/Nexa-Light.otf';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+    <StateHolder>
     <ParticularcoinHolder>
     <App />
     </ParticularcoinHolder>
+    </StateHolder>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
