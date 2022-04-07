@@ -14,14 +14,20 @@ import {Statecontext} from '../CointoviewContext';
 
 const CoinsTable = ({overallwidth}) => {
     const[coinhold, setcoinhold] = useState( CoinObj );
-      const [coinheader,setcoinheader] = useContext(Statecontext).coinheader;
+    const [coinheader,setcoinheader] = useContext(Statecontext).coinheader;
+    const [tableposref,settableposref] = useContext(Statecontext).tableposref;
     const[coins,setcoins] = useState(coinhold);
     const [search,setsearch] = useState('');
     const [buttonColor, setbuttoncolor] = useState(['rgb(2, 2, 30)','#708AF4','#708AF4']);
+    const tableref = useRef('');
     
-    const inputRef = useRef('')
+    const inputRef = useRef('');
 
     useEffect( ()=>{
+      settableposref(tableref)
+    },[])
+    useEffect( ()=>{
+      
       if(coinheader==='first'){
 
         setcoins(coinhold)
@@ -74,9 +80,9 @@ const CoinsTable = ({overallwidth}) => {
       
      
 
-  return <div style={{marginTop:'60px', color:'white',boxSizing:'border-box'}}>
+  return <div ref={tableref} style={{marginTop:'60px', color:'white',boxSizing:'border-box'}}>
     
-      <p className='highlighted'>HIGHLIGHTED</p>
+      <p className='highlighted' onClick={()=> console.log(tableref.current.offsetTop)}>HIGHLIGHTED</p>
       
       <div className='headerClass'>
            <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright' ><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE(24hrs)</p> <p className='voteheader' >VOTE</p></div></div>
@@ -155,11 +161,11 @@ export function PromotedCoin({overallwidth}) {
             <p className='capRank'>{coin[Object.keys(coin)]['market_cap_rank']}</p>
             <p className='launch'>{coin[Object.keys(coin)]['launch']}</p>
             <p className='change' style={{textAlign:'center',width:'20%',display:overallwidth>700?'block':'none',color:coin[Object.keys(coin)]['change'][0]=== "+"?'green':'red'}}>{coin[Object.keys(coin)]['change']}</p>
-            <div style={{minWidth:'65px',width:'20%',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'75px',height:"20px",paddingBottom:'27px',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
+            <div style={{minWidth:'75px',width:'20%',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'75px',height:"20px",paddingBottom:'27px',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
               <p  style={{fontSize:'15px',color:{colorvote}}}>{coin[Object.keys(coin)]['vote']}</p>
               </div>                     
             </div>
-            <div style={{position:'absolute',right:'10px',top:'0px',height:'100%',width:'30px',display:'flex',alignItems:'center',justifyContent:'center'}}>{coin[Object.keys(coin)]['watchlist']?full:empty}</div>
+            <div className='starholder'>{coin[Object.keys(coin)]['watchlist']?full:empty}</div>
        </div>
     </div> 
     

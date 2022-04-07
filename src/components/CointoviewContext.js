@@ -6,9 +6,11 @@ export const Statecontext = createContext();
 
 export const StateHolder = (props)=> {
     const [coinheader,setcoinheader] = useState('first');
+    const [tableposref,settableposref] = useState(null);
+    const [currentlocale,setcurrentlocale] = useState('/');
 
     return(
-        <Statecontext.Provider value={{coinheader:[coinheader,setcoinheader]}}>
+        <Statecontext.Provider value={{currentlocale:[currentlocale,setcurrentlocale],coinheader:[coinheader,setcoinheader],tableposref:[tableposref,settableposref]}}>
             {props.children}
         </Statecontext.Provider>
     )

@@ -70,11 +70,11 @@ function CoinInfo({coin,overallwidth}) {
        <p className='capRank'>{coin[Object.keys(coin)]['market_cap_rank']}</p>
        <p className='launch'>{coin[Object.keys(coin)]['launch']}</p>
        <p className='change' style={{textAlign:'center',width:'20%',display:overallwidth>700?'block':'none',color:coin[Object.keys(coin)]['change'][0]=== "+"?'green':'red'}} >{coin[Object.keys(coin)]['change']}</p>
-       <div className='high-votes' style={{minWidth:'55px',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'75px',height:"20px",paddingBottom:'27px',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
+       <div className='high-votes' style={{minWidth:'65px',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'75px',height:"20px",paddingBottom:'27px',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
           <p style={{fontSize:'15px',color:{colorvote}}}>{coin[Object.keys(coin)]['vote']}</p>
         </div>                        
       </div>
-      <div style={{position:'absolute',right:'10px',top:'0px',height:'100%',width:'30px',display:'flex',alignItems:'center',justifyContent:'center'}}>{coin[Object.keys(coin)]['watchlist']?full:empty}</div>
+      <div className='starholder'>{coin[Object.keys(coin)]['watchlist']?full:empty}</div>
   </div>
   <GoToTop/>
 </div>;

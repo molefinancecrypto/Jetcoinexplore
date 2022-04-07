@@ -1,4 +1,5 @@
-import { useEffect, useRef,useReducer,useState } from 'react';
+import { useEffect, useRef,useReducer,useState} from 'react';
+import { useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import './App.css';
 import CoinsTable from './components/Mainpage/CoinsTable';
@@ -15,6 +16,7 @@ import Footer from './components/Mainpage/Footer';
 import { Newsjson } from './components/Newsapi';
 import Salesrep from './components/Menu/Salesrep';
 import Salesrepidentity from './components/Menu/Salesrepidentity';
+import Getlocation from './components/Getlocation';
 
 
 /*
@@ -34,6 +36,7 @@ function App() {
   const [windowidth,setwindowidth] = useState('');
   const [mainpadbottom,setmainpadbottom] = useState(0);
   const [overallwidth,setoverallwidth] = useState();
+  const userlocation = useLocation();
 
 
   const handleResize = ()=> {
@@ -129,7 +132,7 @@ const rfheight = ()=>{
   return (
     <div className="App">
       <div className='Appsecond' style={{position:'relative',height:'100%',paddingBottom: '40px'}}>
-      <Header />
+      <Header overallwidth={overallwidth}/>
       <div style={{height:"calc(100%-50px)"}}>
       <Routes >
       <Route path='/' element = {
@@ -172,6 +175,7 @@ const rfheight = ()=>{
         <div ref={refooter} style={{minHeight: '35vh',backgroundColor:'#071321',width:'100%'}}>
           <Footer />
         </div>
+        <Getlocation />
       
     </div>
   );

@@ -99,7 +99,6 @@
 
 .searchcoinsmenu{
     position:absolute;
-    
     width:135%;
     height:auto;
     top:0%;
@@ -112,6 +111,18 @@
     box-sizing: border-box;
 }
 
+.tabletoshowmobile{
+    position: relative;
+    width:80%;
+    height:auto;
+    display: block;
+    background-color: rgb(6, 16, 28);
+    border-radius: 10px;
+    padding: 4px;
+    border: 0.1px solid #112836;
+    margin: 10px auto;
+    box-sizing: border-box;
+}
 input#menu{
     display: none;
 }
