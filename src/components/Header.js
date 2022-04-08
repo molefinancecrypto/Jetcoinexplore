@@ -183,10 +183,10 @@ const showtable = ()=>{
    <div style={{position: 'relative',width:'80%',height:'auto',display: overallwidth<=900?'block':'none',backgroundColor: 'rgb(6, 16, 28)',borderRadius: '10px',padding: '4px',border: '0.1px solid #112836',margin: '10px auto',boxSizing: 'border-box'}}>
             <div style={{display:'flex',justifyContent:'space-around',color:'white'}}><p style={{display:'flex',justifyContent:'center',alignItems:'center'}}>{tablemobile==='first'? 'Today Best': tablemobile==='second'?'All Time Best': tablemobile==='third'?'New Listings': 'By Market-Cap'}</p> <p onClick={showtable}>{showtableselectdrop?dropdown : dropup}</p></div>
             <div style={{boxSizing:'border-box',fontSize:'17px',color:'grey', display:showtableselectdrop?'none':'block',position:'absolute',width:'100%',height:'auto',zIndex:'90',top:'35px',left:'0px',padding:'10px',boxShadow: '10px 2px 15px black',backgroundColor: 'rgb(6, 16, 28)',borderRadius:'10px'}}>
-               <p style={{cursor:'pointer'}} onClick={()=>headertablemobile('first')}>Today Best</p>
-               <p style={{cursor:'pointer'}} onClick={()=>headertablemobile('second')}>All time Best</p>
-               <p style={{cursor:'pointer'}} onClick={()=>headertablemobile('third')}>New Listings</p>
-               <p style={{cursor:'pointer'}} onClick={()=>headertablemobile('fourth')}>By Market Cap</p>
+               <p style={{cursor:'pointer',marginBottom:'10px'}} onClick={()=>headertablemobile('first')}>Today Best</p>
+               <p style={{cursor:'pointer',marginBottom:'10px'}} onClick={()=>headertablemobile('second')}>All time Best</p>
+               <p style={{cursor:'pointer',marginBottom:'10px'}} onClick={()=>headertablemobile('third')}>New Listings</p>
+               <p style={{cursor:'pointer',marginBottom:'10px'}} onClick={()=>headertablemobile('fourth')}>By Market Cap</p>
             </div> 
             
       

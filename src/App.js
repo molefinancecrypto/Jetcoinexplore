@@ -143,7 +143,7 @@ const rfheight = ()=>{
                 <AdsBanner />  
             </div>
 
-      <div className='gainers'>TOP GAINERS</div>
+      <div className='gainers'>PROMOTED COINS</div>
       
           <PromotedCoin overallwidth={overallwidth}/>
       

@@ -82,7 +82,7 @@ const CoinsTable = ({overallwidth}) => {
 
   return <div ref={tableref} style={{marginTop:'60px', color:'white',boxSizing:'border-box'}}>
     
-      <p className='highlighted' onClick={()=> console.log(tableref.current.offsetTop)}>HIGHLIGHTED</p>
+      <p className='highlighted' onClick={()=> console.log(tableref.current.offsetTop)}>COINS</p>
       
       <div className='headerClass'>
            <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright' ><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE(24hrs)</p> <p className='voteheader' >VOTE</p></div></div>
@@ -143,7 +143,7 @@ export function PromotedCoin({overallwidth}) {
     },[])
 
 
-  return <div style={{width:'90%',margin:'0px auto',marginTop:'-15px'}}>
+  return <div style={{width:'90%',margin:'0px auto',marginTop:'-15px',boxShadow: '0px 0px 50px #0b1f36',}}>
             <div style={{width:'100%',height:'auto',borderRadius:'10px',margin:"30px auto",marginBottom:'0px',boxSizing:'border-box'}}>
            <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright'><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE(24hrs)</p> <p className='voteheader'>VOTE</p></div></div>  
               {  coins.map( coin => <div className='coinselector'  key={uuidv4()}>
