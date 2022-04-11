@@ -73,7 +73,8 @@
 
 .price{
     text-align: left;
-    width: 16.67%
+    width: 16.67%;
+    padding-left: 60px;
 }
 
 .headerClass{
