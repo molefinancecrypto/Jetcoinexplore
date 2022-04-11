@@ -17,6 +17,7 @@ import { Newsjson } from './components/Newsapi';
 import Salesrep from './components/Menu/Salesrep';
 import Salesrepidentity from './components/Menu/Salesrepidentity';
 import Getlocation from './components/Getlocation';
+import Promoted from './components/Menu/Promoted';
 
 
 /*
@@ -167,6 +168,7 @@ const rfheight = ()=>{
         <Route path=':salesperson' element={<Salesrepidentity/>}/>
 
       </Route>
+      <Route path='/promoted' element={<Promoted/>} />
 
 
       </Routes>

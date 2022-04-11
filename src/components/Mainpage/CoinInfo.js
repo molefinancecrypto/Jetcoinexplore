@@ -68,8 +68,9 @@ function CoinInfo({coin,overallwidth}) {
       </div>
   <div className= 'tableright'><p className='chain'><span style={{display:'flex',justifyContent:'center',alignItems:"center"}}>{coin[Object.keys(coin)]['chain'] === 'ETH'? eth:binance}</span> <span style={{display:'flex',justifyContent:'center',alignItems:"center",marginLeft:'4px'}}>{coin[Object.keys(coin)]['chain']}</span></p>
        <p className='capRank'>{coin[Object.keys(coin)]['market_cap_rank']}</p>
+       <p className='price'>{coin[Object.keys(coin)]['price']}</p>
        <p className='launch'>{coin[Object.keys(coin)]['launch']}</p>
-       <p className='change' style={{textAlign:'center',width:'20%',display:overallwidth>700?'block':'none',color:coin[Object.keys(coin)]['change'][0]=== "+"?'green':'red'}} >{coin[Object.keys(coin)]['change']}</p>
+       <p className='change' style={{textAlign:'center',width:'16.67%',display:overallwidth>700?'block':'none',color:coin[Object.keys(coin)]['change'][0]=== "+"?'green':'red'}} >{coin[Object.keys(coin)]['change']}</p>
        <div className='high-votes' style={{minWidth:'65px',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'75px',height:"20px",paddingBottom:'27px',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
           <p style={{fontSize:'15px',color:{colorvote}}}>{coin[Object.keys(coin)]['vote']}</p>
         </div>                        

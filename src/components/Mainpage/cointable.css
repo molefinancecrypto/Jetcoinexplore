@@ -50,25 +50,30 @@
 
 .chain{
     text-align: center;
-    width:20%;
+    width:16.67%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .launch{
     text-align: center;
-    width:20%;
+    width:16.67%;
 }
 
 .capRank{
     text-align:left;
     padding-left: 60px;
-    width:20%;
+    width:16.67%;
 }
 
 .change{
     text-align:center;
-    width:20%;
+    width:16.67%;
+}
+
+.price{
+    text-align: left;
+    width: 16.67%
 }
 
 .headerClass{
@@ -100,11 +105,11 @@
 
 .voteheader{
     text-align:center;
-    width:20%;
+    width:16.67%;
 }
 
 .high-votes{
-    width: 20%;
+    width: 16.67%;
 }
 
 .tableright{
@@ -184,6 +189,10 @@
     }
 
     .capRank{
+        display: none;
+    }
+
+    .price{
         display: none;
     }
     

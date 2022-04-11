@@ -10,6 +10,7 @@ export  const CoinObj = [
         "change": '+1.5%',
         "chain": 'BSC',
         'vote':240,
+        'price':"$ 0.0005",
         'watchlist': false}
     },
     {
@@ -23,6 +24,7 @@ export  const CoinObj = [
         "change": '-0.8%',
         "chain": 'BSC',
         'vote':14050,
+        'price':"$ 0.000446",
         'watchlist': false}
     },
     {
@@ -36,6 +38,7 @@ export  const CoinObj = [
         "change": '+2.3%',
         "chain": 'ETH',
         'vote':15,
+        'price':"$ 0.0005",
         'watchlist': false}
     },
     {
@@ -49,6 +52,7 @@ export  const CoinObj = [
         "change": '+1.9%',
         "chain": 'ETH',
         'vote':772,
+        'price':"$ 0.00265",
         'watchlist': false}
     },
     {
@@ -62,6 +66,7 @@ export  const CoinObj = [
         "change": '-0.5%',
         "chain": 'ETH',
         'vote':240,
+        'price':"$ 0.000567",
         'watchlist': false}
     },
     {"six":{
@@ -75,6 +80,7 @@ export  const CoinObj = [
         "change": '-1.5%',
         "chain": 'BSC',
         'vote':177,
+        'price':"$ 0.000465",
         'watchlist': false
     }},
     {"seven":{
@@ -88,6 +94,7 @@ export  const CoinObj = [
         "change": '-1.34%',
         "chain": 'ETH',
         'vote':4744439,
+        'price':"$ 0.00067",
         'watchlist': false
     }},
     {"eight":{
@@ -101,6 +108,7 @@ export  const CoinObj = [
         "change": '-0.05%',
         "chain": 'BSC',
         'vote':4,
+        'price':"$ 0.0007",
         'watchlist': false
     }},
     {"nine":{
@@ -114,6 +122,7 @@ export  const CoinObj = [
         "change": '+1.94%',
         "chain": 'BSC',
         'vote':240,
+        'price':"$ 0.1111115",
         'watchlist': false
     }},
     {"ten":{
@@ -127,6 +136,7 @@ export  const CoinObj = [
         "change": '+0.3%',
         "chain": 'BSC',
         'vote':140,
+        'price':"$ 0.000789",
         'watchlist': false
     }},
     {"eleven":{
@@ -140,6 +150,7 @@ export  const CoinObj = [
         "change": '-0.35%',
         "chain": 'ETH',
         'vote':240,
+        'price':"$ 0.130005",
         'watchlist': false
     }},
     {"twelve":{
@@ -153,6 +164,7 @@ export  const CoinObj = [
         "change": '+0.5%',
         "chain": 'ETH',
         'vote':2400750,
+        'price':"$ 0.00078795",
         'watchlist': false
     }}
 ]

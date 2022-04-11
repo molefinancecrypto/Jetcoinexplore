@@ -147,7 +147,7 @@ const showtable = ()=>{
                      <div onClick={()=>{setshowhamburger(true)}} style={{position:'absolute',top:'12px',right:'5px'}}>{close}</div>    
                      <div style={{position:'absolute',textAlign:'left',height:'50%',display:'flex',justifyContent:'space-around',top:'20%',left:'20px',flexDirection:'column',color:"white"}}>
                         <NavLink onClick={()=>{setshowhamburger(true) }} to='/addcoin' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none'}}}>Add Coin</NavLink>
-                        <NavLink onClick={()=>{setshowhamburger(true) }} to='/' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none'}}}>Promote</NavLink>
+                        <NavLink onClick={()=>{setshowhamburger(true) }} to='/promoted' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none'}}}>Promote</NavLink>
                         <NavLink onClick={()=>{setshowhamburger(true) }} to='/newspage' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none'}}}>News</NavLink>
                         <NavLink onClick={()=>{setshowhamburger(true) }} to='/' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none'}}}>Contact Us</NavLink>
                         <NavLink onClick={()=>{setshowhamburger(true) }} to='/signin' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none'}}}>Sign In</NavLink>
@@ -162,7 +162,7 @@ const showtable = ()=>{
 
     <ul className="lister">
        <li className='list'><Link to="/addcoin" style={{color:"white",textDecoration:"none"}}>Add Coin</Link></li>
-       <li className='list'>Promote</li>
+       <li className='list'><Link to="/promoted" style={{color:"white",textDecoration:"none"}}>Promote</Link></li>
        <li className='list'><Link to="/newspage" style={{color:"white",textDecoration:"none"}}>News</Link></li>
        <li className='list'>Contact Us</li>
        <p style={{width:'0.5px',height:"33px",backgroundColor:"white",margin:'0px 5px'}}></p>

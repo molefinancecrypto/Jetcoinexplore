@@ -85,7 +85,7 @@ const CoinsTable = ({overallwidth}) => {
       <p className='highlighted' onClick={()=> console.log(tableref.current.offsetTop)}>COINS</p>
       
       <div className='headerClass'>
-           <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright' ><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE(24hrs)</p> <p className='voteheader' >VOTE</p></div></div>
+           <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright' ><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='price'>PRICE</p> <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE(24hrs)</p> <p className='voteheader' >VOTE</p></div></div>
            { coins.length== 0 ?<div style={{fontSize:'30px'}}>NO MATCHES</div> : <div style={{height:'auto',width:'100%',borderRadius:'0px 0px 10px 10px'}}>{coins.map( coin => <CoinInfo overallwidth={overallwidth} coin={coin} key={uuidv4()}/> )}</div>}
       </div>
   </div>;
@@ -145,7 +145,7 @@ export function PromotedCoin({overallwidth}) {
 
   return <div style={{width:'90%',margin:'0px auto',marginTop:'-15px',boxShadow: '0px 0px 50px #0b1f36',}}>
             <div style={{width:'100%',height:'auto',borderRadius:'10px',margin:"30px auto",marginBottom:'0px',boxSizing:'border-box'}}>
-           <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright'><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE(24hrs)</p> <p className='voteheader'>VOTE</p></div></div>  
+           <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright'><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='price'>PRICE</p>  <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE(24hrs)</p> <p className='voteheader'>VOTE</p></div></div>  
               {  coins.map( coin => <div className='coinselector'  key={uuidv4()}>
     
     <div className='tableleft' >
@@ -159,8 +159,9 @@ export function PromotedCoin({overallwidth}) {
     </div>
        <div className= 'tableright'><p className='chain'><span style={{display:'flex',justifyContent:'center',alignItems:"center"}}>{coin[Object.keys(coin)]['chain'] === 'ETH'? eth:binance}</span> <span style={{display:'flex',justifyContent:'center',alignItems:"center",marginLeft:'4px'}}>{coin[Object.keys(coin)]['chain']}</span></p>
             <p className='capRank'>{coin[Object.keys(coin)]['market_cap_rank']}</p>
+            <p className='price'>{coin[Object.keys(coin)]['price']}</p>
             <p className='launch'>{coin[Object.keys(coin)]['launch']}</p>
-            <p className='change' style={{textAlign:'center',width:'20%',display:overallwidth>700?'block':'none',color:coin[Object.keys(coin)]['change'][0]=== "+"?'green':'red'}}>{coin[Object.keys(coin)]['change']}</p>
+            <p className='change' style={{textAlign:'center',width:'16.67%',display:overallwidth>700?'block':'none',color:coin[Object.keys(coin)]['change'][0]=== "+"?'green':'red'}}>{coin[Object.keys(coin)]['change']}</p>
             <div style={{minWidth:'75px',width:'20%',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'75px',height:"20px",paddingBottom:'27px',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
               <p  style={{fontSize:'15px',color:{colorvote}}}>{coin[Object.keys(coin)]['vote']}</p>
               </div>                     
