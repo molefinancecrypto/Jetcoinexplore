@@ -56,6 +56,8 @@ function App() {
       let c = window.innerWidth*0.80 ;
       setwindowidth(c)
     }
+
+  
     
   
 }
