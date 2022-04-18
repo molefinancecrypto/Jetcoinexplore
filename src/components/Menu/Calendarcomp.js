@@ -1,9 +1,10 @@
-import React,{useState,useRef,useEffect} from 'react';
+import React,{useState,useRef,useEffect,useContext} from 'react';
 import './calendar.css';
 import Calendar from 'react-calendar';
 import { useNavigate, NavLink } from 'react-router-dom';
 import alexisearch from '../alexi-icons/alexisearch.png';
-import {CoinObj} from '../coinholder'
+import {CoinObj} from '../coinholder';
+import { Statecontext } from '../CointoviewContext';
 
 
 export default function Calendarcomp() {
@@ -13,14 +14,49 @@ export default function Calendarcomp() {
   const [searchvalue,setsearchvalue] = useState('');
   const [coinShown, setcoinShown] = useState(CoinObj.slice(0,5));
   const [coinsToSearch, setcoinsToSearch] = useState('');
-
+  const [dayarr,setdayarr] = useContext(Statecontext).dayarr;
   const [date, setDate] = useState('');
+  const [triggerlength,settriggerlength] = useContext(Statecontext).triggerlength;
+  
+ const setter = (val) => {
+   setdayarr(()=>val);
+   settriggerlength(prev=>prev-1);
+   
+ }
 
-  const chnagedate = ()=>{
-     console.log(date);
-     setDate()
-  }
 
+  const clickday = (e)=>{
+   let changingday = `${e.getDate()}-${e.getMonth() + 1}-${e.getFullYear()}`
+   if(dayarr.includes(changingday)){
+      let newarr = dayarr;
+    let idx = newarr.indexOf(changingday);
+    newarr.splice(idx, 1);
+    setter(newarr); 
+   }
+   else{
+    setdayarr(prev=> [...prev,changingday]);
+    settriggerlength(prev=>prev+1)
+    
+    
+   }    
+}
+  
+  const tileClassName = (data) => {
+   const { _, date, view } = data;
+
+   // Check if a date React-Calendar wants to check is on the list of dates to add class to
+   if (view === 'month') {
+       if (dayarr.includes(`${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}`)) {
+           
+           
+           
+           return 'selectedclasstiles';
+       }
+   }
+}
+  
+
+  
   const coinToSearch = ()=>{
    return CoinObj.filter(coin => coin[Object.keys(coin)]['name'].toLowerCase().includes(searchvalue))
 }
@@ -103,12 +139,22 @@ export default function Calendarcomp() {
      </div>
         
   </div>
+  
   <p style={{width:'80%',margin:'5px auto',textAlign:'center'}}>Coin Unavailable? <NavLink to='/addcoin'>Add here</NavLink></p>
 
-    <Calendar onChange={setDate} value={date}/>
-    {date!='' && console.log(`${date.getDate()}`+'-'+`${date.getMonth()}`+'-'+`${date.getFullYear()}`)}
-
+    <Calendar onChange={setDate} value={date} onClickDay={clickday} tileClassName={tileClassName}/>
+    
+    
+   
   <p style={{width:'95%', color:'#BABABA', margin:'10px auto', textAlign:'center'}}><span><strong>Placement: &nbsp; &nbsp;</strong></span> The coin would be displayed on the promoted coin section of outr home page, which in turn in creases visibility to thousands of visitors</p>
     </div>)
 }
 
+
+
+
+/*  
+String: "class1 class2"
+Array of strings: ["class1", "class2 class3"]
+Function: ({ activeStartDate, date, view }) => view === 'month' && date.getDay() === 3 ? 'wednesday
+*/
