@@ -7,7 +7,7 @@ import {CoinObj} from '../coinholder';
 import { Statecontext } from '../CointoviewContext';
 
 
-export default function Calendarcomp() {
+export default function Calendarcomp({overallwidth}) {
   const navigate = useNavigate();
   const [showmenu,setshowmenu] = useState(false);
   const menuref = useRef();
@@ -128,7 +128,7 @@ export default function Calendarcomp() {
         <input  placeholder='SEARCH COINEXPLORE' onChange={changeSearch} type='search' value={searchvalue} style={{width:'70%',marginTop:'15px',marginRight:'25px',paddingLeft:'10px',height:'35px',letterSpacing:'1.5px',fontSize:'13px',boxSizing:'border-box',outline:'none',color:'white',border:"1px solid #02050a", borderRadius:'9px',backgroundColor:'#02050a'}}/>
       </div>
                         {coinShown.map(coin=><div onClick={ ()=>{
-    setsearchvalue(coin[Object.keys(coin)]['name']);console.log(coin[Object.keys(coin)]['name']);setshowmenu(false)}} style={{display:'flex',color:'white',justifyContent:"space-between",width:'80%',margin:'20px auto'}}>
+    setsearchvalue(coin[Object.keys(coin)]['name']);setshowmenu(false)}} style={{display:'flex',color:'white',justifyContent:"space-between",width:'80%',margin:'20px auto'}}>
                                               <div style={{display:'flex',width:'60%',justifyContent:'left'}}>
                                                  <img style={{width:'30px',height:'30px',borderRadius:'50%'}} src={coin[Object.keys(coin)]['img']} alt='logocoin'/>
                                                  <p style={{marginLeft:'15px',fontSize:'17px'}}>{coin[Object.keys(coin)]['name']}</p>
@@ -141,12 +141,12 @@ export default function Calendarcomp() {
   </div>
   
   <p style={{width:'80%',margin:'5px auto',textAlign:'center'}}>Coin Unavailable? <NavLink to='/addcoin'>Add here</NavLink></p>
-
+  <p style={{width:overallwidth>900?'50%':'70%',margin:'20px auto',textAlign:'center'}}>AVAILABLE SLOTS</p>
     <Calendar onChange={setDate} value={date} onClickDay={clickday} tileClassName={tileClassName}/>
     
     
    
-  <p style={{width:'95%', color:'#BABABA', margin:'10px auto', textAlign:'center'}}><span><strong>Placement: &nbsp; &nbsp;</strong></span> The coin would be displayed on the promoted coin section of outr home page, which in turn in creases visibility to thousands of visitors</p>
+  <p style={{width:'85%', color:'#BABABA', margin:'20px auto', textAlign:'center'}}><span><strong>Placement: &nbsp;</strong></span> The coin would be displayed on the promoted coin section of outr home page, which in turn in creases visibility to thousands of visitors</p>
     </div>)
 }
 

@@ -1,6 +1,6 @@
 .searchholdercalendar{
 
-  width:50%;
+  width:80%;
   margin: 15px auto;
   height:10vh;
   display:flex;
@@ -10,7 +10,7 @@
 
 .searchcoinsmenucalendar{
   position:absolute;
-  width:100%;
+  width:130%;
   height:auto;
   top:0%;
   left:0px;
@@ -105,7 +105,7 @@
 
 
 .react-calendar {
-    width: 70%;
+    width: 85%;
     margin: 0px auto;
     background: linear-gradient(180deg, #040B15 15.79%, rgba(3, 13, 24, 0) 131.04%);
     border: 2px solid #0B1F36;

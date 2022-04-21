@@ -170,7 +170,7 @@ const rfheight = ()=>{
         <Route path=':salesperson' element={<Salesrepidentity/>}/>
 
       </Route>
-      <Route path='/promoted' element={<Promoted/>} />
+      <Route path='/promoted' element={<Promoted overallwidth={overallwidth}/>} />
 
 
       </Routes>
