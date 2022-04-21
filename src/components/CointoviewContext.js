@@ -6,7 +6,6 @@ export const Statecontext = createContext();
 
 export const StateHolder = (props)=> {
     const [coinheader,setcoinheader] = useState('first');
-    const [tableposref,settableposref] = useState(null);
     const [currentlocale,setcurrentlocale] = useState('/');
     const  [triggerlength,settriggerlength] = useState(0);
     const  [triggerlengthban,settriggerlengthban] = useState(0);
@@ -16,7 +15,7 @@ export const StateHolder = (props)=> {
 
     return(
         <Statecontext.Provider value={{currentlocale:[currentlocale,setcurrentlocale],triggerlength:[triggerlength,settriggerlength]
-        ,dayarrban:[dayarrban,setdayarrban],triggerlengthban: [triggerlengthban,settriggerlengthban],coinheader:[coinheader,setcoinheader],tableposref:[tableposref,settableposref],dayarr: [dayarr,setdayarr]}}>
+        ,dayarrban:[dayarrban,setdayarrban],triggerlengthban: [triggerlengthban,settriggerlengthban],coinheader:[coinheader,setcoinheader],dayarr: [dayarr,setdayarr]}}>
             {props.children}
         </Statecontext.Provider>
     )

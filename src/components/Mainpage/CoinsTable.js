@@ -15,17 +15,20 @@ import {Statecontext} from '../CointoviewContext';
 const CoinsTable = ({overallwidth}) => {
     const[coinhold, setcoinhold] = useState( CoinObj );
     const [coinheader,setcoinheader] = useContext(Statecontext).coinheader;
-    const [tableposref,settableposref] = useContext(Statecontext).tableposref;
     const[coins,setcoins] = useState(coinhold);
-    const [search,setsearch] = useState('');
-    const [buttonColor, setbuttoncolor] = useState(['rgb(2, 2, 30)','#708AF4','#708AF4']);
     const tableref = useRef('');
     
     const inputRef = useRef('');
 
-    useEffect( ()=>{
-      settableposref(tableref)
-    },[])
+
+    const headertablemobile = (choice)=>{
+      
+       setcoinheader(choice);
+      
+     }
+
+
+    
     useEffect( ()=>{
       
       if(coinheader==='first'){
@@ -45,45 +48,13 @@ const CoinsTable = ({overallwidth}) => {
       }
       
     },[coinheader])
-
-    const clickHottest = ()=>{
-      setcoinhold(CoinObj);
-      setcoins(CoinObj);
-      setbuttoncolor(['rgb(2, 2, 30)','#708AF4','#708AF4'])
-    }
-
-    const clickpromoted = ()=>{
-      setcoinhold(CoinObj.slice(0,4))
-      setcoins(CoinObj.slice(0,4));
-      setbuttoncolor(['#708AF4','rgb(2, 2, 30)','#708AF4'])
-    }
-
-    const clickalltime = ()=>{
-      setcoinhold(CoinObj.slice(5,9))
-      setcoins(CoinObj.slice(5,9));
-      setbuttoncolor(['#708AF4','#708AF4','rgb(2, 2, 30)'])
-      
-    }
-
-    const handleSearch = () =>{
-          return coinhold.filter( (coin)=> (coin[Object.keys(coin)]['name'].toLowerCase().includes(search)||coin[Object.keys(coin)]['symbol'].toLowerCase().includes(search)))
-    }
-
-    const Onchange = (e)=>{
-       setsearch(e.target.value)
-    }
-
-   const inputBorder = ()=>{
-     return '0px solid black'
-   }
-
-      
+    
      
 
-  return <div ref={tableref} style={{marginTop:'60px', color:'white',boxSizing:'border-box'}}>
+  return <div  style={{marginTop:'60px', color:'white',boxSizing:'border-box'}}>
     
       <p className='highlighted' onClick={()=> console.log(tableref.current.offsetTop)}>COINS</p>
-      
+      <div style={{width:'70%',display:'flex',justifyContent:'space-between',margin:'15px auto', borderRadius:'15px',boxSizing:'border-box',border:'2px solid #0B1F36'}}><p style={{border:'0.5px solid #0B1F36',margin:'2px',borderRadius:'15px 0px 0px 15px',borderWidth:'0px 0.5px 0px 0px',padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',color:coinheader==='first'?'white':'#BABABA',backgroundColor:coinheader==='first'?'#112836':'transparent'}} onClick={()=>headertablemobile('first')}>Today's Best</p><p style={{border:'0.5px solid #0B1F36',borderWidth:'0px 0.5px 0px 0px',margin:'2px',padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',color:coinheader==='second'?'white':'#BABABA',backgroundColor:coinheader==='second'?'#112836':'transparent'}} onClick={()=>headertablemobile('second')}>All Time Best</p><p style={{border:'0.5px solid #0B1F36',borderWidth:'0px 0.5px 0px 0px',margin:'2px',padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',color:coinheader==='third'?'white':'#BABABA',backgroundColor:coinheader==='third'?'#112836':'transparent'}} onClick={()=>headertablemobile('third')}>New Listings</p><p style={{padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',margin:'2px',color:coinheader==='fourth'?'white':'#BABABA',backgroundColor:coinheader==='fourth'?'#112836':'transparent',borderRadius:'0px 15px 15px 0px'}} onClick={()=>headertablemobile('fourth')}>By Market Cap</p></div>
       <div className='headerClass'>
            <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright' ><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='price'>PRICE</p> <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE(24hrs)</p> <p className='voteheader' >VOTE</p></div></div>
            { coins.length== 0 ?<div style={{fontSize:'30px'}}>NO MATCHES</div> : <div style={{height:'auto',width:'100%',borderRadius:'0px 0px 10px 10px'}}>{coins.map( coin => <CoinInfo overallwidth={overallwidth} coin={coin} key={uuidv4()}/> )}</div>}
@@ -143,7 +114,7 @@ export function PromotedCoin({overallwidth}) {
     },[])
 
 
-  return <div style={{width:'90%',margin:'0px auto',marginTop:'-15px',boxShadow: '0px 0px 50px #0b1f36',}}>
+  return <div style={{width:'90%',margin:'0px auto',marginTop:'-15px',boxShadow: '0px 0px 50px #0b1f36',borderRadius:'10px 10px 15px 15px'}}>
             <div style={{width:'100%',height:'auto',borderRadius:'10px',margin:"30px auto",marginBottom:'0px',boxSizing:'border-box'}}>
            <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright'><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='price'>PRICE</p>  <p className='launch'>LAUNCH-DATE</p> <p className='change'>CHANGE(24hrs)</p> <p className='voteheader'>VOTE</p></div></div>  
               {  coins.map( coin => <div className='coinselector'  key={uuidv4()}>
