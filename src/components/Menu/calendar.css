@@ -13,7 +13,7 @@
   width:130%;
   height:auto;
   top:0%;
-  left:0px;
+  left:-15%;
   background-color: rgb(6, 16, 28);
   border-radius: 10px;
   display:block;
@@ -246,3 +246,25 @@
   button:hover{
     background-color: transparent;
   }
+
+
+  @media (max-width: 900px){
+    .searchcoinsmenucalendar{
+      position:absolute;
+      width:100%;
+      height:auto;
+      top:0%;
+      left:0%;
+  }
+}
+
+@media (max-width: 600px){
+  .searchcoinsmenucalendar{
+    position:absolute;
+    width:120%;
+    height:auto;
+    top:0%;
+    left:-10%;
+}
+}
+
