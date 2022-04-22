@@ -58,6 +58,13 @@
 .launch{
     text-align: center;
     width:16.67%;
+    
+}
+
+.launchhead{
+    text-align: left;
+    width:16.67%;
+    padding-left: 20px;
 }
 
 .capRank{
@@ -69,12 +76,19 @@
 .change{
     text-align:center;
     width:16.67%;
+    
+}
+
+.changehead{
+    text-align:left;
+    width:16.67%;
+    padding-left: 10px
 }
 
 .price{
     text-align: left;
     width: 16.67%;
-    padding-left: 60px;
+    padding-left: 30px;
 }
 
 .headerClass{
@@ -131,8 +145,6 @@
     padding: 10px;
     align-items: center;
     box-sizing: border-box;
-    
-    
 }
 
 .coinselector{
@@ -194,6 +206,14 @@
     }
 
     .price{
+        display: none;
+    }
+
+    .launchhead{
+        display: none;
+    }
+
+    .changehead{
         display: none;
     }
     

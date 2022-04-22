@@ -4,6 +4,8 @@ import { useParams,useNavigate,useLocation } from 'react-router-dom';
 import CoinsTable from './Mainpage/CoinsTable';
 import './coinfile.css';
 import FadeIn from 'react-fade-in';
+import GoToTop from './Gototop';
+import { PromotedCoin } from './Mainpage/CoinsTable';
 
 
 function CoinFile({overallwidth}) {
@@ -145,7 +147,9 @@ function CoinFile({overallwidth}) {
          
          </FadeIn>
          <div style={{marginTop:'40px'}}></div>
-         <CoinsTable overallwidth={overallwidth}/>
+         <div className='gainers'>PROMOTED COINS</div>
+         <PromotedCoin overallwidth={overallwidth}/>
+         <GoToTop />
          </section>;
 }
 
