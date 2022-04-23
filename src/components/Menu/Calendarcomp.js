@@ -115,9 +115,10 @@ export default function Calendarcomp({overallwidth}) {
 
 
   return (<div>
-
+<p style={{width:'80%',margin:'10px auto',color:'#BABABA',textAlign:'left'}}>What you get: The coin will be displayed on our promo section, on our home page.</p>
 <div className = 'searchholdercalendar' >
-     <div  ref={menuref} style={{width:'100%',height:"35px",position:'relative'}}>
+    
+     <div  ref={menuref} style={{width:'90%',height:"35px",position:'relative'}}>
         <div onClick={rolldownsearch} style={{width:'100%',padding:'7px',paddingLeft:'10px',boxSizing:'border-box',height:'100%',outline:'none',color:'white',border:"1px solid #02050a", borderRadius:'9px',backgroundColor:'#02050a'}}>
             <p style={{display:'flex',justifyContent:'left',alignItems:'center',height:'100%',fontSize:'12px',color:'grey'}}>{searchvalue===''? <p>SEARCH COINEXPLORE</p> :searchvalue }</p> 
             <p style={{height:'35px',width:'35px',display:'flex',justifyContent:'center',alignItems:'center',position:'absolute',right:'0px',bottom:'0px'}}><img src={alexisearch}/></p>  

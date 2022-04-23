@@ -230,8 +230,8 @@ const Calculator = (promoarr,bannerarr)=>{
                     <p style={{width:'100%',display:'flex',justifyContent:'space-around',marginTop:'10px'}}><span>7+ Days</span><span>15% Off</span></p>
                     <p style={{width:'100%',display:'flex',justifyContent:'space-around',marginTop:'10px',marginBottom:'10px'}}><span>14+ Days</span><span>25% Off</span></p>
                 </div>
-                <p style={{textAlign:'center',color:'#BABABA',width:overallwidth>900?'80%':'100%',margin:'5px auto',marginTop:'15px'}}>NB: By completing any purchase or advertising request,you agree that there 
-                                                                will be no refunds issued either in part or full, as expressly stated <span style={{display:'block'}}>in our <a href="#">Terms & Conditions</a></span></p>
+                <p style={{textAlign:'center',color:'#BABABA',width:overallwidth>900?'80%':'100%',margin:'5px auto',marginTop:'15px'}}>NOTE: By completing any purchase or advertising request,you agree that there 
+                                                                will be no refunds issued either in part or full, as expressly stated in our<span style={{display:'block'}}> <a href="#">Terms & Conditions</a></span></p>
                 </div>
             </div>
             <div style={{width:overallwidth>900?'30%':'100%',margin:overallwidth>900?'0px':'30px auto',height:'100%'}}>
