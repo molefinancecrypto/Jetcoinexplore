@@ -231,7 +231,7 @@ const Calculator = (promoarr,bannerarr)=>{
                     <p style={{width:'100%',display:'flex',justifyContent:'space-around',marginTop:'10px',marginBottom:'10px'}}><span>14+ Days</span><span>25% Off</span></p>
                 </div>
                 <p style={{textAlign:'center',color:'#BABABA',width:overallwidth>900?'80%':'100%',margin:'5px auto',marginTop:'15px'}}>NOTE: By completing any purchase or advertising request,you agree that there 
-                                                                will be no refunds issued either in part or full, as expressly stated in our<span style={{display:'block'}}> <a href="#">Terms & Conditions</a></span></p>
+                                                                will be no refunds issued either in part or full, as expressly stated in<span style={{display:'block'}}> our <a href="#"> Terms & Conditions</a></span></p>
                 </div>
             </div>
             <div style={{width:overallwidth>900?'30%':'100%',margin:overallwidth>900?'0px':'30px auto',height:'100%'}}>
@@ -250,11 +250,11 @@ const Calculator = (promoarr,bannerarr)=>{
                     </div>
                     
                 <div>
-                    <div style={{width:overallwidth>900?'90%':'85%',margin:'15px auto',padding:'10px',textAlign:'left',borderRadius:'10px',border:'2px solid #0B1F36'}}>Select payment method</div>
-                    <div style={{width:overallwidth>900?'90%':'85%',margin:'15px auto',padding:'10px',textAlign:'left',borderRadius:'10px',border:'2px solid #0B1F36'}}>Name:</div>
-                    <div style={{width:overallwidth>900?'90%':'85%',margin:'15px auto',padding:'10px',textAlign:'left',borderRadius:'10px',border:'2px solid #0B1F36'}}>E-mail:</div>
+                    <div style={{width:overallwidth>900?'90%':'85%',margin:'15px auto',padding:'10px',textAlign:'left',boxSizing:'border-box',borderRadius:'10px',border:'2px solid #0B1F36'}}>Select payment method</div>
+                    <div style={{width:overallwidth>900?'90%':'85%',margin:'15px auto',padding:'10px',textAlign:'left',boxSizing:'border-box',borderRadius:'10px',border:'2px solid #0B1F36'}}>Name:</div>
+                    <div style={{width:overallwidth>900?'90%':'85%',margin:'15px auto',padding:'10px',textAlign:'left',boxSizing:'border-box',borderRadius:'10px',border:'2px solid #0B1F36'}}>E-mail:</div>
                 </div>
-                <div style={{width:overallwidth>900?'60%':'200px',boxSizing:'border-box',height:'30px',marginLeft:overallwidth>900?'35%':'50px',textAlign:'right',display:'flex',alignItems:'center',justifyContent:'space-around',borderRadius:'10px',backgroundColor:'blue'}}><p style={{display:'flex',justifyContent:'center',alignItems:'center'}}>{cart}</p> <p>Proceed with payment</p></div>
+                <div style={{width:overallwidth>1100?'70%':'200px',boxSizing:'border-box',height:'30px',fontSize:'13px',margin:overallwidth>1100?'0 0 0 25%':'0px auto',textAlign:overallwidth>900?'right':'center',display:'flex',alignItems:'center',justifyContent:overallwidth>900?'space-around':"center",borderRadius:'10px',backgroundColor:'blue'}}><p style={{display:'flex',justifyContent:'center',alignItems:'center'}}>{cart}</p> <p>Proceed with payment</p></div>
                 </div>
             </div>
         </div>
