@@ -16,6 +16,10 @@ const CoinsTable = ({overallwidth}) => {
     const[coinhold, setcoinhold] = useState( CoinObj );
     const [coinheader,setcoinheader] = useContext(Statecontext).coinheader;
     const[coins,setcoins] = useState(coinhold);
+    const dropdown = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 10l5 5 5-5H7z"/></svg>;
+    const dropup = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 14l5-5 5 5H7z"/></svg>;
+    const[todropfilter,settodropfilter] = useState(false);
+    const[chainfilter,setchainfilter] = useState('ALL');
     const tableref = useRef('');
     
     const inputRef = useRef('');
@@ -29,31 +33,58 @@ const CoinsTable = ({overallwidth}) => {
 
 
     
-    useEffect( ()=>{
+    
+    useEffect(()=>{
       
-      if(coinheader==='first'){
+      if(chainfilter==='ALL'){
+        if(coinheader==='first'){
+          setcoins(coinhold)
+        }
 
-        setcoins(coinhold)
+        else if(coinheader==='second'){
+          setcoins(coinhold.slice(0,3))
+        }
+
+        else if(coinheader==='third'){
+          setcoins(coinhold.slice(4,7))
+        }
+
+        else{
+          setcoins(coinhold.slice(8,11))
+        }
+        
       }
+
+
+      else if(coinheader==='first'){
+        setcoins(CoinObj.filter(coin => coin[Object.keys(coin)]['chain']===chainfilter));
+          }
 
       else if(coinheader==='second'){
-        setcoins(coinhold.slice(0,3))
-      }
-      else if(coinheader==='third'){
-        setcoins(coinhold.slice(4,7))
+    setcoins(CoinObj.slice(0,3).filter(coin => coin[Object.keys(coin)]['chain']===chainfilter));
       }
 
-      else{
-        setcoins(coinhold.slice(8,11))
-      }
-      
-    },[coinheader])
+      else if(coinheader==='third'){
+        setcoins(CoinObj.slice(4,7).filter(coin => coin[Object.keys(coin)]['chain']===chainfilter));
+          }
+
+          else{
+            setcoins(CoinObj.slice(8,11).filter(coin => coin[Object.keys(coin)]['chain']===chainfilter));
+          }
     
-     
+    },[chainfilter,coinheader])
 
   return <div  style={{marginTop:'60px', color:'white',boxSizing:'border-box'}}>
     
       <p className='highlighted' onClick={()=> console.log(tableref.current.offsetTop)}>COINS</p>
+      <div style={{width:'fit-content',height:'auto',borderRadius:'10px',border:'2px solid #0B1F36',margin:'10px auto'}}> <div style={{width:'fit-content',display:'flex',justifyContent:'space-around',borderBottom:todropfilter?'1px solid #0B1F36':'0px solid #0B1F36'}}><p style={{borderWidth:'0px 2px 0px 0px',borderRight:todropfilter?'0px solid #0B1F36':'1px solid #0B1F36',padding:'10px'}}>Filter table by chain</p><p style={{color:'#BABABA',padding:'10px',display:'flex'}}><span>{chainfilter}</span><span style={{display:'flex',alignItems:'center'}} onClick={()=>settodropfilter(!todropfilter)}>{todropfilter?dropup: dropdown}</span></p>
+            </div>
+            <div style={{display:todropfilter?'block':'none',paddingTop:'10px',paddingBottom:'10px'}}>
+            <p style={{padding:'10px',fontSize:'13px',textAlign:'left',color:'#BABABA',cursor:'pointer'}} onClick={()=>{setchainfilter('ALL');settodropfilter(!todropfilter)}}>ALL CHAINS</p>
+              <p style={{padding:'10px',fontSize:'13px',textAlign:'left',color:'#BABABA',cursor:'pointer'}} onClick={()=>{setchainfilter('BSC');settodropfilter(!todropfilter)}}>BINANCE SMART CHAIN</p>
+              <p style={{padding:'10px',fontSize:'13px',textAlign:'left',color:'#BABABA',cursor:'pointer'}} onClick={()=>{setchainfilter('ETH');settodropfilter(!todropfilter)}}>ETHEREUM</p>
+            </div>
+      </div>
       <div style={{width:overallwidth>900?'70%':'90%',fontSize:overallwidth>900?'17px':'11px',display:'flex',justifyContent:'space-between',margin:'15px auto', borderRadius:'15px',boxSizing:'border-box',border:'2px solid #0B1F36'}}><p style={{display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',border:'0.5px solid #0B1F36',margin:'2px',borderRadius:'15px 0px 0px 15px',borderWidth:'0px 0.5px 0px 0px',padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',color:coinheader==='first'?'white':'#BABABA',backgroundColor:coinheader==='first'?'#112836':'transparent',cursor:'pointer'}} onClick={()=>headertablemobile('first')}>Today's Best</p><p style={{border:'0.5px solid #0B1F36',borderWidth:'0px 0.5px 0px 0px',margin:'2px',padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',color:coinheader==='second'?'white':'#BABABA',backgroundColor:coinheader==='second'?'#112836':'transparent',display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}} onClick={()=>headertablemobile('second')}>All Time Best</p><p style={{border:'0.5px solid #0B1F36',borderWidth:'0px 0.5px 0px 0px',margin:'2px',padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',color:coinheader==='third'?'white':'#BABABA',backgroundColor:coinheader==='third'?'#112836':'transparent',display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}} onClick={()=>headertablemobile('third')}>New Listings</p><p style={{padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',margin:'2px',color:coinheader==='fourth'?'white':'#BABABA',backgroundColor:coinheader==='fourth'?'#112836':'transparent',borderRadius:'0px 15px 15px 0px',display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}} onClick={()=>headertablemobile('fourth')}>By Market Cap</p></div>
       <div className='headerClass'>
            <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright' ><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='price'>PRICE</p> <p className='launchhead'>LAUNCH-DATE</p> <p className='changehead'>CHANGE(24hrs)</p> <p className='voteheader' >VOTE</p></div></div>
