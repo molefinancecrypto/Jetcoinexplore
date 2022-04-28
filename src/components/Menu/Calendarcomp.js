@@ -115,7 +115,7 @@ export default function Calendarcomp({overallwidth}) {
 
 
   return (<div>
-<p style={{width:'80%',margin:'10px auto',color:'#BABABA',textAlign:'left'}}>What you get: The coin will be displayed on our promo section, on our home page.</p>
+<p style={{width:'80%',margin:'10px auto',color:'#BABABA',textAlign:'left',fontFamily:'NexaTextLight',fontSize:'15px'}}>What you get: The coin will be displayed on our promo section, on our home page.</p>
 <div className = 'searchholdercalendar' >
     
      <div  ref={menuref} style={{width:'90%',height:"35px",position:'relative'}}>
@@ -141,13 +141,13 @@ export default function Calendarcomp({overallwidth}) {
         
   </div>
   
-  <p style={{width:'80%',margin:'5px auto',textAlign:'center'}}>Coin Unavailable? <NavLink to='/addcoin'>Add here</NavLink></p>
-  <p style={{width:overallwidth>900?'50%':'70%',margin:'20px auto',textAlign:'center'}}>AVAILABLE SLOTS</p>
+  <p style={{width:'80%',margin:'0px auto',textAlign:'center',fontSize:'15px',fontFamily:'NexaTextLight'}}>Coin Unavailable? <NavLink to='/addcoin'>Add here</NavLink></p>
+  <p style={{width:overallwidth>900?'50%':'70%',margin:'20px auto',textAlign:'center',marginBottom:'5px'}}>AVAILABLE SLOTS</p>
     <Calendar onChange={setDate} value={date} onClickDay={clickday} tileClassName={tileClassName}/>
     
     
    
-  <p style={{width:'85%', color:'#BABABA', margin:'20px auto', textAlign:'center'}}><span><strong>Placement: &nbsp;</strong></span> The coin would be displayed on the promoted coin section of outr home page, which in turn in creases visibility to thousands of visitors</p>
+  <p style={{width:'85%', color:'#BABABA', margin:'20px auto', textAlign:'center',fontFamily:'NexaTextLight',fontSize:'15px'}}><span><strong>Placement :</strong></span> The coin would be displayed on the promoted coin section of outr home page, which in turn in creases visibility to thousands of visitors</p>
     </div>)
 }
 

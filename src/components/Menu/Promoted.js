@@ -209,29 +209,29 @@ const Calculator = (promoarr,bannerarr)=>{
         <div style={{width:'100%',display:'flex',justifyContent:"space-between",flexDirection:overallwidth>900?'row':'column'}}>
             <div style={{width:overallwidth>900?'65%':'100%',margin:overallwidth>900?'0px':'0px auto',padding:overallwidth>900?'30px':'10px',boxSizing:'border-box',height:'auto',background: 'linear-gradient(180deg, #040B15 15.79%, rgba(3, 13, 24, 0) 131.04%)',border:'2px solid #0B1F36',borderRadius:'10px'}}>
                 <div>
-                    <p style={{textAlign:'center',fontSize:overallwidth>900?'30px':'20px'}}>Advertise</p>
-                    <div style={{width:overallwidth>900?'85%':'95%',height:'auto',margin:'10px auto',border:'2px solid #0B1F36',borderRadius:'10px'}}>
-                        <div style={{border:'2px solid #0B1F36',borderWidth:'0px 0px 1.5px'}}><p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}} onClick={()=> setpromosec(!promosec)}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'15px':'11px'}}>Promoted Section &nbsp; &nbsp; <span style={{backgroundColor:'blue',fontSize:overallwidth>900?'13px':'9px',padding:overallwidth>900?'5px':'3px',borderRadius:'10px'}}>$250/day</span></span> <span style={{fontSize:'25px',cursor:'pointer'}} >{promosec?'-':'+'}</span></p>
+                    <p style={{textAlign:'center',fontSize:overallwidth>900?'30px':'20px',height:'40px'}}>Advertise</p>
+                    <div style={{width:overallwidth>900?'85%':'95%',height:'auto',margin:'5px auto',border:'2px solid #0B1F36',borderRadius:'10px'}}>
+                        <div style={{border:'2px solid #0B1F36',borderWidth:'0px 0px 1.5px'}}><p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}} onClick={()=> setpromosec(!promosec)}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'20px':'11px'}}>Promoted Section &nbsp; &nbsp; <span style={{backgroundColor:'blue',fontSize:overallwidth>900?'13px':'9px',padding:overallwidth>900?'5px':'3px',borderRadius:'10px'}}>$250/day</span></span> <span style={{fontSize:'25px',cursor:'pointer'}} >{promosec?'-':'+'}</span></p>
                             {promosec && <div style={{width:'100%',height:'auto'}}><Calendarcomp overallwidth={overallwidth}/></div>}
                         </div>
-                        <div style={{border:'2px solid #0B1F36',borderWidth:'0px 0px 1.5px'}} ><p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}} onClick={()=> setbanasec(!banasec)}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'15px':'11px'}}>Banner Ad &nbsp; &nbsp; <span style={{backgroundColor:'blue',fontSize:overallwidth>900?'13px':'9px',padding:overallwidth>900?'5px':'3px',borderRadius:'10px'}}>$3000/day</span></span> <span style={{fontSize:'25px',cursor:'pointer'}} >{banasec?'-':'+'}</span></p>
+                        <div style={{border:'2px solid #0B1F36',borderWidth:'0px 0px 1.5px'}} ><p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}} onClick={()=> setbanasec(!banasec)}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'20px':'11px'}}>Banner Ad &nbsp; &nbsp; <span style={{backgroundColor:'blue',fontSize:overallwidth>900?'13px':'9px',padding:overallwidth>900?'5px':'3px',borderRadius:'10px'}}>$3000/day</span></span> <span style={{fontSize:'25px',cursor:'pointer'}} >{banasec?'-':'+'}</span></p>
                             {banasec && <div style={{width:'100%',height:'auto'}}><BannerpromoAds overallwidth={overallwidth}/></div>}
                         </div>
-                        <p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'15px':'11px'}}>Custom Ad &nbsp; &nbsp; <span style={{backgroundColor:'blue',padding:'5px',borderRadius:'10px',fontSize:overallwidth>900?'13px':'9px',padding:overallwidth>900?'5px':'3px'}}>Contact us</span></span> <span style={{fontSize:'25px'}}>+</span></p>
+                        <p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'20px':'11px'}}>Custom Ad &nbsp; &nbsp; <span style={{backgroundColor:'blue',padding:'5px',borderRadius:'10px',fontSize:overallwidth>900?'13px':'9px',padding:overallwidth>900?'5px':'3px'}}>Contact us</span></span> <span style={{fontSize:'25px'}}>+</span></p>
                     </div>
                 </div>
                 <div>
                 <p style={{textAlign:'center',fontSize:overallwidth>900?'30px':'20px',marginTop:'30px'}}>Discounts</p>
                 
-                <p style={{textAlign:'center',color:'#BABABA',width:overallwidth>900?'80%':'100%',margin:'5px auto',marginBottom:'15px'}}>Discounts are calculated based on total frequency of orders.
+                <p style={{textAlign:'center',color:'#BABABA',width:overallwidth>900?'80%':'100%',margin:'5px auto',marginBottom:'15px',fontFamily:'NexaTextLight'}}>Discounts are calculated based on total frequency of orders.
                                                                 There are discounts available for 3+ days, 7+days and 14+ days.</p>
                 <div style={{width:overallwidth>900?'80%':'100%',margin:'5px auto',borderRadius:'10px',border:'2px solid #0B1F36'}}>
                     <p style={{width:'100%',display:'flex',justifyContent:'space-around',marginTop:'10px'}}><span>3+ Days</span><span>10% Off</span></p>
                     <p style={{width:'100%',display:'flex',justifyContent:'space-around',marginTop:'10px'}}><span>7+ Days</span><span>15% Off</span></p>
                     <p style={{width:'100%',display:'flex',justifyContent:'space-around',marginTop:'10px',marginBottom:'10px'}}><span>14+ Days</span><span>25% Off</span></p>
                 </div>
-                <p style={{textAlign:'center',color:'#BABABA',width:overallwidth>900?'80%':'100%',margin:'5px auto',marginTop:'15px'}}>NOTE: By completing any purchase or advertising request,you agree that there 
-                                                                will be no refunds issued either in part or full, as expressly stated in<span style={{display:'block'}}> our <a href="#"> Terms & Conditions</a></span></p>
+                <p style={{textAlign:'center',color:'#BABABA',width:overallwidth>900?'80%':'100%',margin:'5px auto',marginTop:'15px',fontFamily:'NexaTextLight'}}>NOTE: By completing any purchase or advertising request,you agree that there 
+                                                                will be no refunds issued either in part or full, as expressly stated in our <a href="#"> Terms & Conditions</a></p>
                 </div>
             </div>
             <div style={{width:overallwidth>900?'30%':'100%',margin:overallwidth>900?'0px':'30px auto',height:'100%'}}>
@@ -239,7 +239,7 @@ const Calculator = (promoarr,bannerarr)=>{
                     <p style={{textAlign:'center',fontSize:overallwidth>900?'30px':'20px',height:"40px"}}>Orders</p>
 
                     
-                    <div style={{width:'90%',margin:'5px auto',height:'auto',boxSizing:'border-box',borderRadius:'10px',border:'2px solid #0B1F36'}}>
+                    <div style={{width:'90%',margin:'5px auto',height:'auto',boxSizing:'border-box',borderRadius:'10px',border:'2px solid #0B1F36',fontSize:'15px'}}>
                         <div style={{display:'flex',justifyContent:'space-around',width:'100%',padding:'7px',boxSizing:'border-box'}}><p style={{width:'10%',textAlign:'center'}}>#</p><div style={{width:'80%',display:'flex',justifyContent:'space-between'}}><p>Item(s)</p><p>Date</p><p>Price</p></div><p style={{width:'10%',textAlign:'center'}}> </p></div>
                         {orderarray!=[] && orderarray.map(sales=><div style={{display:'flex',justifyContent:'space-around',height:'30px'}}><p style={{width:'10%',textAlign:'center'}}>{orderarray.indexOf(sales)+1}</p><div style={{width:'80%',display:'flex',justifyContent:'space-between'}}><p>{sales['promo']}</p><p>{sales['date']}</p><p>{sales['price']}</p></div><p style={{width:'10%',textAlign:'center'}} onClick={()=>deletesale(sales)} >{del}</p></div>)}
                         <div style={{width:'100%',border:'2px solid #0B1F36',borderWidth:'1.5px 0px 0px'}}>
@@ -249,12 +249,12 @@ const Calculator = (promoarr,bannerarr)=>{
                         </div>
                     </div>
                     
-                <div>
-                    <div style={{width:overallwidth>900?'90%':'85%',margin:'15px auto',padding:'10px',textAlign:'left',boxSizing:'border-box',borderRadius:'10px',border:'2px solid #0B1F36'}}>Select payment method</div>
-                    <div style={{width:overallwidth>900?'90%':'85%',margin:'15px auto',padding:'10px',textAlign:'left',boxSizing:'border-box',borderRadius:'10px',border:'2px solid #0B1F36'}}>Name:</div>
-                    <div style={{width:overallwidth>900?'90%':'85%',margin:'15px auto',padding:'10px',textAlign:'left',boxSizing:'border-box',borderRadius:'10px',border:'2px solid #0B1F36'}}>E-mail:</div>
+                <div style={{fontSize:'15px'}}>
+                    <div style={{width:overallwidth>900?'90%':'85%',fontFamily:'NexaTextLight',margin:'15px auto',padding:'10px',textAlign:'left',boxSizing:'border-box',borderRadius:'10px',border:'2px solid #0B1F36'}}>Select payment method</div>
+                    <div style={{width:overallwidth>900?'90%':'85%',fontFamily:'NexaTextLight',margin:'15px auto',padding:'10px',textAlign:'left',boxSizing:'border-box',borderRadius:'10px',border:'2px solid #0B1F36'}}>Name:</div>
+                    <div style={{width:overallwidth>900?'90%':'85%',fontFamily:'NexaTextLight',margin:'15px auto',padding:'10px',textAlign:'left',boxSizing:'border-box',borderRadius:'10px',border:'2px solid #0B1F36'}}>E-mail:</div>
                 </div>
-                <div style={{width:overallwidth>1100?'70%':'200px',boxSizing:'border-box',height:'30px',fontSize:'13px',margin:overallwidth>1100?'0 0 0 25%':'0px auto',textAlign:overallwidth>900?'right':'center',display:'flex',alignItems:'center',justifyContent:overallwidth>900?'space-around':"center",borderRadius:'10px',backgroundColor:'blue'}}><p style={{display:'flex',justifyContent:'center',alignItems:'center'}}>{cart}</p> <p>Proceed with payment</p></div>
+                <div style={{width:overallwidth>1100?'70%':'200px',boxSizing:'border-box',height:'30px',fontSize:'13px',margin:'0px auto',textAlign:overallwidth>900?'right':'center',display:'flex',alignItems:'center',padding:"5px",justifyContent:overallwidth>900?'space-around':"center",borderRadius:'10px',backgroundColor:'blue'}}><p style={{display:'flex',justifyContent:'center',alignItems:'center'}}>{cart}</p> <p>Proceed with payment</p></div>
                 </div>
             </div>
         </div>

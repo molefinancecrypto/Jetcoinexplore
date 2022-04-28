@@ -76,18 +76,25 @@ const CoinsTable = ({overallwidth}) => {
 
   return <div  style={{marginTop:'60px', color:'white',boxSizing:'border-box'}}>
     
-      <p className='highlighted' onClick={()=> console.log(tableref.current.offsetTop)}>COINS</p>
-      <div style={{width:'fit-content',height:'auto',borderRadius:'10px',border:'2px solid #0B1F36',margin:'10px auto'}}> <div style={{width:'fit-content',display:'flex',justifyContent:'space-around',borderBottom:todropfilter?'1px solid #0B1F36':'0px solid #0B1F36'}}><p style={{borderWidth:'0px 2px 0px 0px',borderRight:todropfilter?'0px solid #0B1F36':'1px solid #0B1F36',padding:'10px'}}>Filter table by chain</p><p style={{color:'#BABABA',padding:'10px',display:'flex'}}><span>{chainfilter}</span><span style={{display:'flex',alignItems:'center'}} onClick={()=>settodropfilter(!todropfilter)}>{todropfilter?dropup: dropdown}</span></p>
+      <p className='highlighted'>COINS</p>
+      <div style={{position:'relative',width:'260px',height:'50px',margin:'10px auto'}}>
+
+      <div style={{width:'100%',position:'absolute',top:'0px',left:'0px',height:'auto',borderRadius:'10px',border:'2px solid #0B1F36',backgroundColor:'#05101c',zIndex:'5'}}> <div style={{width:'100%',display:'flex',justifyContent:'space-around',borderBottom:todropfilter?'1px solid #0B1F36':'0px solid #0B1F36'}}><p style={{borderWidth:'0px 2px 0px 0px',borderRight:todropfilter?'0px solid #0B1F36':'1px solid #0B1F36',padding:'10px'}}>Filter table by chain</p><p style={{color:'#BABABA',padding:'10px',display:'flex',cursor:'pointer',boxSizing:'border-box'}} onClick={()=>settodropfilter(!todropfilter)}><span>{chainfilter}</span><span style={{display:'flex',alignItems:'center'}} >{todropfilter?dropup: dropdown}</span></p>
             </div>
             <div style={{display:todropfilter?'block':'none',paddingTop:'10px',paddingBottom:'10px'}}>
             <p style={{padding:'10px',fontSize:'13px',textAlign:'left',color:'#BABABA',cursor:'pointer'}} onClick={()=>{setchainfilter('ALL');settodropfilter(!todropfilter)}}>ALL CHAINS</p>
               <p style={{padding:'10px',fontSize:'13px',textAlign:'left',color:'#BABABA',cursor:'pointer'}} onClick={()=>{setchainfilter('BSC');settodropfilter(!todropfilter)}}>BINANCE SMART CHAIN</p>
               <p style={{padding:'10px',fontSize:'13px',textAlign:'left',color:'#BABABA',cursor:'pointer'}} onClick={()=>{setchainfilter('ETH');settodropfilter(!todropfilter)}}>ETHEREUM</p>
+              <p style={{padding:'10px',fontSize:'13px',textAlign:'left',color:'#BABABA',cursor:'pointer'}} onClick={()=>{setchainfilter('MTC');settodropfilter(!todropfilter)}}>MATIC</p>
+              <p style={{padding:'10px',fontSize:'13px',textAlign:'left',color:'#BABABA',cursor:'pointer'}} onClick={()=>{setchainfilter('TRX');settodropfilter(!todropfilter)}}>TRX</p>
+              <p style={{padding:'10px',fontSize:'13px',textAlign:'left',color:'#BABABA',cursor:'pointer'}} onClick={()=>{setchainfilter('FTM');settodropfilter(!todropfilter)}}>FTM</p>
+              <p style={{padding:'10px',fontSize:'13px',textAlign:'left',color:'#BABABA',cursor:'pointer'}} onClick={()=>{setchainfilter('KCC');settodropfilter(!todropfilter)}}>KCC</p>
             </div>
+      </div>
       </div>
       <div style={{width:overallwidth>900?'70%':'90%',fontSize:overallwidth>900?'17px':'11px',display:'flex',justifyContent:'space-between',margin:'15px auto', borderRadius:'15px',boxSizing:'border-box',border:'2px solid #0B1F36'}}><p style={{display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',border:'0.5px solid #0B1F36',margin:'2px',borderRadius:'15px 0px 0px 15px',borderWidth:'0px 0.5px 0px 0px',padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',color:coinheader==='first'?'white':'#BABABA',backgroundColor:coinheader==='first'?'#112836':'transparent',cursor:'pointer'}} onClick={()=>headertablemobile('first')}>Today's Best</p><p style={{border:'0.5px solid #0B1F36',borderWidth:'0px 0.5px 0px 0px',margin:'2px',padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',color:coinheader==='second'?'white':'#BABABA',backgroundColor:coinheader==='second'?'#112836':'transparent',display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}} onClick={()=>headertablemobile('second')}>All Time Best</p><p style={{border:'0.5px solid #0B1F36',borderWidth:'0px 0.5px 0px 0px',margin:'2px',padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',color:coinheader==='third'?'white':'#BABABA',backgroundColor:coinheader==='third'?'#112836':'transparent',display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}} onClick={()=>headertablemobile('third')}>New Listings</p><p style={{padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',margin:'2px',color:coinheader==='fourth'?'white':'#BABABA',backgroundColor:coinheader==='fourth'?'#112836':'transparent',borderRadius:'0px 15px 15px 0px',display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}} onClick={()=>headertablemobile('fourth')}>By Market Cap</p></div>
       <div className='headerClass'>
-           <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright' ><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='price'>PRICE</p> <p className='launchhead'>LAUNCH-DATE</p> <p className='changehead'>CHANGE(24hrs)</p> <p className='voteheader' >VOTE</p></div></div>
+           <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright' ><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='price'>PRICE</p> <p className='launchhead'>LAUNCH-DATE</p> <p className='changehead'>CHANGE(24hrs)</p> <p className='voteheader' >VOTE</p> </div> <p className='starholder' > </p></div>
            { coins.length== 0 ?<div style={{fontSize:'30px'}}>NO MATCHES</div> : <div style={{height:'auto',width:'100%',borderRadius:'0px 0px 10px 10px'}}>{coins.map( coin => <CoinInfo overallwidth={overallwidth} coin={coin} key={uuidv4()}/> )}</div>}
       </div>
   </div>;
@@ -147,7 +154,7 @@ export function PromotedCoin({overallwidth}) {
 
   return <div style={{width:'90%',margin:'0px auto',marginTop:'-15px',boxShadow: '0px 0px 50px #0b1f36',borderRadius:'10px 10px 15px 15px'}}>
             <div style={{width:'100%',height:'auto',borderRadius:'10px',margin:"30px auto",marginBottom:'0px',boxSizing:'border-box'}}>
-           <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright'><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='price'>PRICE</p>  <p className='launchhead'>LAUNCH-DATE</p> <p className='changehead'>CHANGE(24hrs)</p> <p className='voteheader'>VOTE</p></div></div>  
+           <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright'><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='price'>PRICE</p>  <p className='launchhead'>LAUNCH-DATE</p> <p className='changehead'>CHANGE(24hrs)</p> <p className='voteheader'>VOTE</p> </div> <p className='starholder' > </p></div>  
               {  coins.map( coin => <div className='coinselector'  key={uuidv4()}>
     
     <div className='tableleft' >
@@ -163,13 +170,13 @@ export function PromotedCoin({overallwidth}) {
             <p className='capRank'>{coin[Object.keys(coin)]['market_cap_rank']}</p>
             <p className='price'>{coin[Object.keys(coin)]['price']}</p>
             <p className='launch'>{coin[Object.keys(coin)]['launch']}</p>
-            <p className='change' style={{textAlign:'center',width:'16.67%',display:overallwidth>700?'block':'none',color:coin[Object.keys(coin)]['change'][0]=== "+"?'green':'red'}}>{coin[Object.keys(coin)]['change']}</p>
-            <div style={{minWidth:'75px',width:'20%',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'75px',height:"20px",paddingBottom:'27px',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
+            <p className='change' style={{textAlign:'center',flex:'1',display:overallwidth>1100?'block':'none',color:coin[Object.keys(coin)]['change'][0]=== "+"?'green':'red'}}>{coin[Object.keys(coin)]['change']}</p>
+            <div style={{display:'flex',flex:'1',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'75px',height:"20px",paddingBottom:'27px',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
               <p  style={{fontSize:'15px',color:{colorvote}}}>{coin[Object.keys(coin)]['vote']}</p>
               </div>                     
             </div>
-            <div className='starholder'>{coin[Object.keys(coin)]['watchlist']?full:empty}</div>
        </div>
+       <div className='starholder'>{coin[Object.keys(coin)]['watchlist']?full:empty}</div>
     </div> 
     
     )}
