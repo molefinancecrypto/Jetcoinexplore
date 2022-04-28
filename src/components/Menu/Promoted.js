@@ -10,6 +10,7 @@ function Promoted({overallwidth}) {
     const navigate = useNavigate();
     const [promosec,setpromosec] = useState(false);
     const [banasec,setbanasec] = useState(false);
+    const [customAd,setcustomAd] = useState(false);
     const [dayarr,setdayarr] = useContext(Statecontext).dayarr;
     const [triggerlength,settriggerlength] = useContext(Statecontext).triggerlength;
     const [orderarray,setorderarray] = useState([]);
@@ -217,7 +218,12 @@ const Calculator = (promoarr,bannerarr)=>{
                         <div style={{border:'2px solid #0B1F36',borderWidth:'0px 0px 1.5px'}} ><p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}} onClick={()=> setbanasec(!banasec)}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'20px':'11px'}}>Banner Ad &nbsp; &nbsp; <span style={{backgroundColor:'blue',fontSize:overallwidth>900?'13px':'9px',padding:overallwidth>900?'5px':'3px',borderRadius:'10px'}}>$3000/day</span></span> <span style={{fontSize:'25px',cursor:'pointer'}} >{banasec?'-':'+'}</span></p>
                             {banasec && <div style={{width:'100%',height:'auto'}}><BannerpromoAds overallwidth={overallwidth}/></div>}
                         </div>
-                        <p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'20px':'11px'}}>Custom Ad &nbsp; &nbsp; <span style={{backgroundColor:'blue',padding:'5px',borderRadius:'10px',fontSize:overallwidth>900?'13px':'9px',padding:overallwidth>900?'5px':'3px'}}>Contact us</span></span> <span style={{fontSize:'25px'}}>+</span></p>
+                        <div ><p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}} onClick={()=> setcustomAd(!customAd)}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'20px':'11px'}}>Custom Ad &nbsp; &nbsp; <span style={{backgroundColor:'blue',padding:'5px',borderRadius:'10px',fontSize:overallwidth>900?'13px':'9px',padding:overallwidth>900?'5px':'3px'}}>Contact us</span></span> <span style={{fontSize:'25px'}}>{customAd?'-':'+'}</span></p>
+                            {customAd && <div style={{width:'100%',height:'auto',textAlign:'center',padding:'10px',boxSizing:'border-box'}}>
+                                            <p style={{width:'auto',padding:'7px',margin:'5px auto',boxSizing:'border-box'}}>Please contact us with more details</p>
+                                            <p style={{width:'fit-content',padding:'10px',backgroundColor:"blue",borderRadius:'5px',margin:'5px auto',fontFamily:'NexaTextLight'}}>Contact Us</p>
+                                         </div>}
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -251,8 +257,8 @@ const Calculator = (promoarr,bannerarr)=>{
                     
                 <div style={{fontSize:'15px'}}>
                     <div style={{width:overallwidth>900?'90%':'85%',fontFamily:'NexaTextLight',margin:'15px auto',padding:'10px',textAlign:'left',boxSizing:'border-box',borderRadius:'10px',border:'2px solid #0B1F36'}}>Select payment method</div>
-                    <div style={{width:overallwidth>900?'90%':'85%',fontFamily:'NexaTextLight',margin:'15px auto',padding:'10px',textAlign:'left',boxSizing:'border-box',borderRadius:'10px',border:'2px solid #0B1F36'}}>Name:</div>
-                    <div style={{width:overallwidth>900?'90%':'85%',fontFamily:'NexaTextLight',margin:'15px auto',padding:'10px',textAlign:'left',boxSizing:'border-box',borderRadius:'10px',border:'2px solid #0B1F36'}}>E-mail:</div>
+                    <div style={{width:overallwidth>900?'90%':'85%',fontFamily:'NexaTextLight',margin:'15px auto',padding:'10px',boxSizing:'border-box',display:'flex',justifyContent:'space-around',borderRadius:'10px',border:'2px solid #0B1F36'}}><span style={{width:'15%',minWidth:'60px'}}>Name:</span> <input type='text' style={{width:'80%',boxSizing:'border-box',padding:'5px',backgroundColor:'transparent',color:'white',outline:'none',borderWidth:'0px 0px 0px'}}/></div>
+                    <div style={{width:overallwidth>900?'90%':'85%',fontFamily:'NexaTextLight',margin:'15px auto',padding:'10px',boxSizing:'border-box',display:'flex',justifyContent:'space-around',borderRadius:'10px',border:'2px solid #0B1F36'}}><span style={{width:'15%',minWidth:'60px'}}>E-mail:</span> <input type='email' style={{width:'80%',boxSizing:'border-box',padding:'5px',backgroundColor:'transparent',color:'white',outline:'none',borderWidth:'0px 0px 0px'}}/></div>
                 </div>
                 <div style={{width:overallwidth>1100?'70%':'200px',boxSizing:'border-box',height:'30px',fontSize:'13px',margin:'0px auto',textAlign:overallwidth>900?'right':'center',display:'flex',alignItems:'center',padding:"5px",justifyContent:overallwidth>900?'space-around':"center",borderRadius:'10px',backgroundColor:'blue'}}><p style={{display:'flex',justifyContent:'center',alignItems:'center'}}>{cart}</p> <p>Proceed with payment</p></div>
                 </div>
