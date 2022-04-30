@@ -8,7 +8,9 @@ import {Link, useNavigate} from 'react-router-dom'
 import GoToTop from '../Gototop';
 import binancelogo from '../../chainLogo/binanceLogo.png';
 import ethereumlogo from '../../chainLogo/ethereumLogo.png';
-
+import ftmlogo from '../../chainLogo/ftmLogo.png';
+import maticlogo from '../../chainLogo/maticLogo.png';
+import trxlogo from '../../chainLogo/trxLogo.png';
 
 function CoinInfo({coin,overallwidth}) {
     const [votes,setvotes] = useState(0);
@@ -26,6 +28,9 @@ function CoinInfo({coin,overallwidth}) {
 
     const eth = <img src={ethereumlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
     const binance = <img src={binancelogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+    const ftm = <img src={ftmlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+    const matic = <img src={maticlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+    const trx = <img src={trxlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
     const StarClick = ()=>{
         if(votevalidation){
           if(votes<=1){
@@ -66,7 +71,7 @@ function CoinInfo({coin,overallwidth}) {
       </div>
       </div>
       </div>
-  <div className= 'tableright'><p className='chain'><span style={{display:'flex',justifyContent:'center',alignItems:"center"}}>{coin[Object.keys(coin)]['chain'] === 'ETH'? eth:binance}</span> <span style={{display:'flex',justifyContent:'center',alignItems:"center",marginLeft:'4px'}}>{coin[Object.keys(coin)]['chain']}</span></p>
+  <div className= 'tableright'><p className='chain'><span style={{display:'flex',justifyContent:'center',alignItems:"center"}}>{coin[Object.keys(coin)]['chain'] === 'ETH'? eth: coin[Object.keys(coin)]['chain'] === 'BSC'?binance :coin[Object.keys(coin)]['chain'] === 'MATIC'?matic:coin[Object.keys(coin)]['chain'] === 'TRX'?trx:ftm}</span> <span style={{display:'flex',justifyContent:'center',alignItems:"center",marginLeft:'4px'}}>{coin[Object.keys(coin)]['chain']}</span></p>
        <p className='capRank'>{coin[Object.keys(coin)]['market_cap_rank']}</p>
        <p className='price'>{coin[Object.keys(coin)]['price']}</p>
        <p className='launch'>{coin[Object.keys(coin)]['launch']}</p>

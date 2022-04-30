@@ -11,20 +11,57 @@ import { useNavigate } from 'react-router-dom';
 import binancelogo from '../../chainLogo/binanceLogo.png';
 import ethereumlogo from '../../chainLogo/ethereumLogo.png';
 import {Statecontext} from '../CointoviewContext';
+import { AllTime } from '../coinholderFolder/AllTime';
+import { TodayBest } from '../coinholderFolder/TodayCoins';
+import { NewListings } from '../coinholderFolder/NewListings';
+import { MarketCap } from '../coinholderFolder/MarketCap';
+//import { funcForpage } from './pagerForCoin';
+import datapager from './pagerForCoin';
 
 const CoinsTable = ({overallwidth}) => {
     const[coinhold, setcoinhold] = useState( CoinObj );
     const [coinheader,setcoinheader] = useContext(Statecontext).coinheader;
-    const[coins,setcoins] = useState(coinhold);
+    const[coins,setcoins] = useState(AllTime);
     const dropdown = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 10l5 5 5-5H7z"/></svg>;
     const dropup = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 14l5-5 5 5H7z"/></svg>;
     const[todropfilter,settodropfilter] = useState(false);
     const[chainfilter,setchainfilter] = useState('ALL');
+    const[coinpageindex,setcoinpageindex] = useState(0);
+    const[coinpage,setcoinpage] = useState(datapager);
     const tableref = useRef('');
     
     const inputRef = useRef('');
+    const forward = <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 0 24 24" width="25px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg> 
+    const backward = <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 0 24 24" width="25px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>
 
+    let newArray = [];
+  const funcForpager = (pager)=>{
+    let idholder = 0;
+    for(let i =0; i<pager.length; i += 8){
+      let newsobj = pager.slice(i,i+8);
+      newArray.push(newsobj)
+    }
+  return newArray;
+  }
 
+  const rightpage = ()=>{
+    if(coinpageindex===coinpage.length-1){
+      setcoinpageindex(0)
+    }
+    else{
+      setcoinpageindex(coinpageindex+1)
+    }
+  }
+
+  const leftpage = ()=>{
+    if(coinpageindex===0){
+      setcoinpageindex(coinpage.length-1)
+    }
+    else{
+      setcoinpageindex(coinpageindex-1)
+    }
+  }
+  
     const headertablemobile = (choice)=>{
       
        setcoinheader(choice);
@@ -38,67 +75,100 @@ const CoinsTable = ({overallwidth}) => {
       
       if(chainfilter==='ALL'){
         if(coinheader==='first'){
-          setcoins(coinhold)
+          const arraypager = funcForpager(TodayBest);
+          setcoinpageindex(0);
+          setcoins(TodayBest);
+          setcoinpage(arraypager)
         }
 
         else if(coinheader==='second'){
-          setcoins(coinhold.slice(0,3))
+          const arraypager = funcForpager(AllTime);
+          setcoinpageindex(0);
+          setcoins(AllTime);
+          setcoinpage(arraypager);
         }
 
         else if(coinheader==='third'){
-          setcoins(coinhold.slice(4,7))
+          const arraypager = funcForpager(NewListings);
+          setcoinpageindex(0);
+          setcoins(NewListings)
+          setcoinpage(arraypager)
         }
 
         else{
-          setcoins(coinhold.slice(8,11))
+          const arraypager = funcForpager(MarketCap);
+          setcoinpageindex(0);
+          setcoins(MarketCap);
+          setcoinpage(arraypager)
         }
         
       }
 
 
       else if(coinheader==='first'){
-        setcoins(CoinObj.filter(coin => coin[Object.keys(coin)]['chain']===chainfilter));
+        const arraypager = TodayBest.filter(coin => coin[Object.keys(coin)]['chain']===chainfilter);
+        const pagedata = funcForpager(arraypager);
+        setcoinpageindex(0);
+        setcoins(TodayBest.filter(coin => coin[Object.keys(coin)]['chain']===chainfilter));
+        setcoinpage(pagedata)
           }
 
       else if(coinheader==='second'){
-    setcoins(CoinObj.slice(0,3).filter(coin => coin[Object.keys(coin)]['chain']===chainfilter));
+        const arraypager = AllTime.filter(coin => coin[Object.keys(coin)]['chain']===chainfilter);
+        const pagedata = funcForpager(arraypager);
+        setcoinpageindex(0);
+    setcoins(AllTime.filter(coin => coin[Object.keys(coin)]['chain']===chainfilter));
+    setcoinpage(pagedata);
       }
 
       else if(coinheader==='third'){
-        setcoins(CoinObj.slice(4,7).filter(coin => coin[Object.keys(coin)]['chain']===chainfilter));
+        const arraypager = NewListings.filter(coin => coin[Object.keys(coin)]['chain']===chainfilter);
+        const pagedata = funcForpager(arraypager);
+        setcoinpageindex(0);
+        setcoins(NewListings.filter(coin => coin[Object.keys(coin)]['chain']===chainfilter));
+        setcoinpage(pagedata)
           }
 
           else{
-            setcoins(CoinObj.slice(8,11).filter(coin => coin[Object.keys(coin)]['chain']===chainfilter));
-          }
-    
+            const arraypager = MarketCap.filter(coin => coin[Object.keys(coin)]['chain']===chainfilter);
+            const pagedata = funcForpager(arraypager);
+            setcoinpageindex(0);
+            setcoins(MarketCap.filter(coin => coin[Object.keys(coin)]['chain']===chainfilter));
+            setcoinpage(pagedata)
+          } 
     },[chainfilter,coinheader])
 
   return <div  style={{marginTop:'60px', color:'white',boxSizing:'border-box'}}>
     
       <p className='highlighted'>COINS</p>
-      <div style={{position:'relative',width:'260px',height:'50px',margin:'10px auto'}}>
+      <div style={{position:'relative',width:'270px',height:'50px',margin:'10px auto'}}>
 
-      <div style={{width:'100%',position:'absolute',top:'0px',left:'0px',height:'auto',borderRadius:'10px',border:'2px solid #0B1F36',backgroundColor:'#05101c',zIndex:'5'}}> <div style={{width:'100%',display:'flex',justifyContent:'space-around',borderBottom:todropfilter?'1px solid #0B1F36':'0px solid #0B1F36'}}><p style={{borderWidth:'0px 2px 0px 0px',borderRight:todropfilter?'0px solid #0B1F36':'1px solid #0B1F36',padding:'10px'}}>Filter table by chain</p><p style={{color:'#BABABA',padding:'10px',display:'flex',cursor:'pointer',boxSizing:'border-box'}} onClick={()=>settodropfilter(!todropfilter)}><span>{chainfilter}</span><span style={{display:'flex',alignItems:'center'}} >{todropfilter?dropup: dropdown}</span></p>
+      <div style={{width:'100%',position:'absolute',top:'0px',left:'0px',height:'auto',borderRadius:'10px',border:'2px solid #0B1F36',backgroundColor:'#05101c',zIndex:'5'}}> <div style={{width:'100%',display:'flex',justifyContent:'space-around',borderBottom:todropfilter?'1px solid #0B1F36':'0px solid #0B1F36'}}><p style={{borderWidth:'0px 2px 0px 0px',borderRight:todropfilter?'0px solid #0B1F36':'1px solid #0B1F36',padding:'10px'}}>Filter table by chain</p><p style={{color:'#BABABA',padding:'10px',display:'flex',cursor:'pointer',width:'auto',boxSizing:'border-box'}} onClick={()=>settodropfilter(!todropfilter)}><span>{chainfilter}</span><span style={{display:'flex',alignItems:'center'}} >{todropfilter?dropup: dropdown}</span></p>
             </div>
             <div style={{display:todropfilter?'block':'none',paddingTop:'10px',paddingBottom:'10px'}}>
             <p style={{padding:'10px',fontSize:'13px',textAlign:'left',color:'#BABABA',cursor:'pointer'}} onClick={()=>{setchainfilter('ALL');settodropfilter(!todropfilter)}}>ALL CHAINS</p>
               <p style={{padding:'10px',fontSize:'13px',textAlign:'left',color:'#BABABA',cursor:'pointer'}} onClick={()=>{setchainfilter('BSC');settodropfilter(!todropfilter)}}>BINANCE SMART CHAIN</p>
               <p style={{padding:'10px',fontSize:'13px',textAlign:'left',color:'#BABABA',cursor:'pointer'}} onClick={()=>{setchainfilter('ETH');settodropfilter(!todropfilter)}}>ETHEREUM</p>
-              <p style={{padding:'10px',fontSize:'13px',textAlign:'left',color:'#BABABA',cursor:'pointer'}} onClick={()=>{setchainfilter('MTC');settodropfilter(!todropfilter)}}>MATIC</p>
+              <p style={{padding:'10px',fontSize:'13px',textAlign:'left',color:'#BABABA',cursor:'pointer'}} onClick={()=>{setchainfilter('MATIC');settodropfilter(!todropfilter)}}>MATIC</p>
               <p style={{padding:'10px',fontSize:'13px',textAlign:'left',color:'#BABABA',cursor:'pointer'}} onClick={()=>{setchainfilter('TRX');settodropfilter(!todropfilter)}}>TRX</p>
               <p style={{padding:'10px',fontSize:'13px',textAlign:'left',color:'#BABABA',cursor:'pointer'}} onClick={()=>{setchainfilter('FTM');settodropfilter(!todropfilter)}}>FTM</p>
-              <p style={{padding:'10px',fontSize:'13px',textAlign:'left',color:'#BABABA',cursor:'pointer'}} onClick={()=>{setchainfilter('KCC');settodropfilter(!todropfilter)}}>KCC</p>
             </div>
       </div>
       </div>
       <div style={{width:overallwidth>900?'70%':'90%',fontSize:overallwidth>900?'17px':'11px',display:'flex',justifyContent:'space-between',margin:'15px auto', borderRadius:'15px',boxSizing:'border-box',border:'2px solid #0B1F36'}}><p style={{display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',border:'0.5px solid #0B1F36',margin:'2px',borderRadius:'15px 0px 0px 15px',borderWidth:'0px 0.5px 0px 0px',padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',color:coinheader==='first'?'white':'#BABABA',backgroundColor:coinheader==='first'?'#112836':'transparent',cursor:'pointer'}} onClick={()=>headertablemobile('first')}>Today's Best</p><p style={{border:'0.5px solid #0B1F36',borderWidth:'0px 0.5px 0px 0px',margin:'2px',padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',color:coinheader==='second'?'white':'#BABABA',backgroundColor:coinheader==='second'?'#112836':'transparent',display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}} onClick={()=>headertablemobile('second')}>All Time Best</p><p style={{border:'0.5px solid #0B1F36',borderWidth:'0px 0.5px 0px 0px',margin:'2px',padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',color:coinheader==='third'?'white':'#BABABA',backgroundColor:coinheader==='third'?'#112836':'transparent',display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}} onClick={()=>headertablemobile('third')}>New Listings</p><p style={{padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',margin:'2px',color:coinheader==='fourth'?'white':'#BABABA',backgroundColor:coinheader==='fourth'?'#112836':'transparent',borderRadius:'0px 15px 15px 0px',display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}} onClick={()=>headertablemobile('fourth')}>By Market Cap</p></div>
       <div className='headerClass'>
            <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright' ><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='price'>PRICE</p> <p className='launchhead'>LAUNCH-DATE</p> <p className='changehead'>CHANGE(24hrs)</p> <p className='voteheader' >VOTE</p> </div> <p className='starholder' > </p></div>
-           { coins.length== 0 ?<div style={{fontSize:'30px'}}>NO MATCHES</div> : <div style={{height:'auto',width:'100%',borderRadius:'0px 0px 10px 10px'}}>{coins.map( coin => <CoinInfo overallwidth={overallwidth} coin={coin} key={uuidv4()}/> )}</div>}
+           { coins.length== 0 ?<div style={{fontSize:'30px'}}>NO MATCHES</div> : coins.length>=8? <div style={{height:'auto',width:'100%',borderRadius:'0px 0px 10px 10px'}}>{coinpage[coinpageindex].map( coin => <CoinInfo overallwidth={overallwidth} coin={coin} key={uuidv4()}/> )}</div> : <div style={{height:'auto',width:'100%',borderRadius:'0px 0px 10px 10px'}}>{coins.map( coin => <CoinInfo overallwidth={overallwidth} coin={coin} key={uuidv4()}/> )}</div>}
+           
       </div>
+      {coins.length>8 && <div style={{width:'30%',minWidth:'270px',margin:'30px auto',display:'flex',justifyContent:'space-around'}}><p style={{display:'flex',justifyContent:'center',alignItems:"center"}} onClick={leftpage}>{backward}</p>{coinpage.map(coin=><p style={{color: coinpageindex===coinpage.indexOf(coin)?'white':'#BABABA',border:coinpageindex===coinpage.indexOf(coin)?'1.5px solid #0B1F36':'0px',cursor:'pointer',padding:'3px 10px'}} onClick={()=>setcoinpageindex(coinpage.indexOf(coin))}>{coinpage.indexOf(coin)+1}</p>)} <p style={{display:'flex',justifyContent:'center',alignItems:'center'}} onClick={rightpage}>{forward}</p></div>}
+      
   </div>;
 };
+
+/* 
+<div style={{width:'35%',margin:'15px auto'}}>{coinpage.map(coin=><p style={{color:'white',padding:'3px'}} onClick={setcoinpageindex(coinpage.indexOf(coin))}>{coinpage.indexOf(coin)+1}</p>)}</div>
+*/
 
 export default CoinsTable;
 
