@@ -80,7 +80,7 @@ export default function NewsPage() {
 
   const navigate = useNavigate();
   if (newstoshow) {return (
-    <div style={{width:'95vw',margin:'30px auto',minHeight:'100vh',color:'white',boxSizing:'border-box'}}>
+    <div style={{width:'96vw',borderRadius:'15px',border:'1px solid #0B1F36',margin:'30px auto',minHeight:'100vh',color:'white',boxSizing:'border-box'}}>
       {console.log(window.innerHeight)}
         <div style={{width:'90%',margin:'20px auto',minHeight:'100vh',paddingTop:'90px',boxSizing:'border-box',backgroundColor:'#071323',border:'1px solid #0B1F36',borderRadius:'10px',display:"flex",flexDirection:'column',justifyContent:'space-between',paddingTop:'35px'}}>
           <div style={{width:'100%',display:'flex',justifyContent:'left',flexDirection:'column'}}>

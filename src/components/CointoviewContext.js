@@ -11,11 +11,14 @@ export const StateHolder = (props)=> {
     const  [triggerlengthban,settriggerlengthban] = useState(0);
     const [dayarr,setdayarr] = useState([]);
     const [dayarrban,setdayarrban] = useState([]);
+    const [dayarrunik,setdayarrunik] = useState([]);
+    const [dayarrbanunik,setdayarrbanunik] = useState([])
     
 
     return(
         <Statecontext.Provider value={{currentlocale:[currentlocale,setcurrentlocale],triggerlength:[triggerlength,settriggerlength]
-        ,dayarrban:[dayarrban,setdayarrban],triggerlengthban: [triggerlengthban,settriggerlengthban],coinheader:[coinheader,setcoinheader],dayarr: [dayarr,setdayarr]}}>
+        ,dayarrban:[dayarrban,setdayarrban],triggerlengthban: [triggerlengthban,settriggerlengthban],coinheader:[coinheader,setcoinheader],dayarr: [dayarr,setdayarr],
+        dayarrunik:[dayarrunik,setdayarrunik],dayarrbanunik:[dayarrbanunik,setdayarrbanunik]}}>
             {props.children}
         </Statecontext.Provider>
     )

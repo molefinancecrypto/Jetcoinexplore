@@ -58,10 +58,10 @@ function ListCoin() {
     }
   return <div className='listCoinMain'>
             <div style={{width:'100%',display:'flex',justifyContent:'left',flexDirection:'column'}}>
-                <div style={{color:"white",paddingLeft:'5%',width:"100%",justifyContent:"left",display:"flex",boxSizing:"border-box",cursor:'pointer',fontSize:'20px'}} onClick={()=> navigate('/')}><p>{backward}</p>Back</div>
+                <div style={{color:"white",paddingLeft:'2.5%',width:"100%",justifyContent:"left",display:"flex",boxSizing:"border-box",cursor:'pointer',fontSize:'20px'}} onClick={()=> navigate('/')}><p>{backward}</p>Back</div>
                 <p className='enlist'><strong>Enlist Your Coin</strong></p>
             </div>
-            <div style={{height:windowidth<=900?'auto':'80%',width:windowidth<=900?'100%':'90%',margin:'20px auto',border:'1px solid #112836',backgroundImage: 'linear-gradient(90.18deg, #040B15 35.76%, rgba(6, 17, 31, 10) 110.28%)',borderRadius:'7px',padding:'20px',boxSizing:'border-box'}}>
+            <div style={{height:windowidth<=900?'auto':'80%',width:windowidth<=900?'100%':'95%',margin:'20px auto',border:'1px solid #112836',backgroundImage: 'linear-gradient(90.18deg, #040B15 35.76%, rgba(6, 17, 31, 10) 110.28%)',borderRadius:'7px',padding:'20px',boxSizing:'border-box'}}>
                 {windowidth<=900?<div style={{width:'100%',position:'relative',textAlign:'center',fontSize:'17px',marginBottom:'20px',paddingTop:'25px'}}>{headerList[headertoshow]}<p style={{width:'auto',fontSize:'11px',padding:'5px',borderRadius:'5px',backgroundColor:'white',opacity:'0.4',color:'black',position:'absolute',top:'0px',left:'0px'}}>{step[headertoshow]}</p></div>:<div style={{display:'flex',position:'relative',border:'0.5px solid grey',borderWidth:'0px 0px 0.5px',paddingTop:'15px',paddingBottom:'15px',justifyContent:'space-around',height:'15%',alignItems:'center',width:'100%'}}>
                     <p style={{cursor:'pointer'}}>Coin Information</p>
                     <p  style={{cursor:'pointer'}}>Coin Contracts</p>

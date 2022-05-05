@@ -16,25 +16,31 @@ export default function Calendarcomp({overallwidth}) {
   const [coinsToSearch, setcoinsToSearch] = useState('');
   const [dayarr,setdayarr] = useContext(Statecontext).dayarr;
   const [date, setDate] = useState('');
+  const [dayarrunik,setdayarrunik] = useContext(Statecontext).dayarrunik;
   const [triggerlength,settriggerlength] = useContext(Statecontext).triggerlength;
   
- const setter = (val) => {
+ const setter = (val,valunik) => {
    setdayarr(()=>val);
    settriggerlength(prev=>prev-1);
+   setdayarrunik(()=>valunik)
    
  }
 
 
   const clickday = (e)=>{
    let changingday = `${e.getDate()}-${e.getMonth() + 1}-${e.getFullYear()}`
+   let identifier = changingday+' '+'promo';
    if(dayarr.includes(changingday)){
       let newarr = dayarr;
+      let unikarray = dayarrunik;
     let idx = newarr.indexOf(changingday);
     newarr.splice(idx, 1);
-    setter(newarr); 
+    unikarray.splice(idx,1)
+    setter(newarr,unikarray); 
    }
    else{
     setdayarr(prev=> [...prev,changingday]);
+    setdayarrunik(prev=> [...prev,identifier])
     settriggerlength(prev=>prev+1)
     
     
