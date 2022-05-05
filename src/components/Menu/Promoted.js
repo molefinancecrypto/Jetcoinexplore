@@ -228,7 +228,7 @@ const Calculator = (promoarr,bannerarr)=>{
                         </div>
                         <div ><p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}} onClick={()=> setcustomAd(!customAd)}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'20px':'11px'}}>Custom Ad &nbsp; &nbsp; </span> <span style={{fontSize:'25px'}}>{customAd?'-':'+'}</span></p>
                             {customAd && <div style={{width:'100%',height:'auto',textAlign:'center',padding:'10px',boxSizing:'border-box'}}>
-                                            <p style={{width:'auto',padding:'7px',margin:'5px auto',boxSizing:'border-box'}}>Please contact us with more details</p>
+                                            <p style={{width:'auto',padding:'7px',margin:'5px auto',boxSizing:'border-box',fontFamily:'NexaTextLight'}}>Please contact us with the details of your customized ad.</p>
                                             <p style={{width:'fit-content',padding:'10px',backgroundColor:"blue",borderRadius:'5px',margin:'5px auto',fontFamily:'NexaTextLight'}}>Contact Us</p>
                                          </div>}
                         </div>

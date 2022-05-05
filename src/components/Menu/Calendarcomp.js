@@ -121,7 +121,7 @@ export default function Calendarcomp({overallwidth}) {
 
 
   return (<div>
-<p style={{width:'80%',margin:'10px auto',color:'#BABABA',textAlign:'left',fontFamily:'NexaTextLight',fontSize:'15px'}}>What you get: The coin will be displayed on our promo section, on our home page.</p>
+<p style={{width:'80%',margin:'10px auto',color:'#BABABA',textAlign:'left',fontFamily:'NexaTextLight',fontSize:'15px'}}>What you get: The coin will be displayed on our ''Promoted Coins'' section, on our home page.</p>
 <div className = 'searchholdercalendar' >
     
      <div  ref={menuref} style={{width:'90%',height:"35px",position:'relative'}}>
