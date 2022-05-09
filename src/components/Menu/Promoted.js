@@ -29,13 +29,12 @@ function Promoted({overallwidth}) {
      if(specificarr['price'] === '$250'){
         let newarr = dayarr;
         let unikarray = dayarrunik;
-        let indx = dayarr.indexOf(specificarr);
+        let indx = dayarr.indexOf(specificarr['date']); 
         newarr.splice(indx, 1);
         unikarray.splice(indx,1);
         setdayarrunik(unikarray)
         setdayarr(newarr);
         settriggerlength(prev=>prev-1);
-        
         //setorderarray(orderarray.filter((_, i) => i !== indx ))
      }
 
@@ -44,7 +43,7 @@ function Promoted({overallwidth}) {
         let tilearray = dayarrban;
         let unikarraybanner = dayarrbanunik;
         //let indx = orderarray.indexOf(specificarr);
-        let ind = dayarrban.indexOf(specificarr);
+        let ind = dayarrban.indexOf(specificarr['date']);
         //newarr.splice(indx, 1);
         unikarraybanner.splice(ind,1);
         tilearray.splice(ind, 1); 
@@ -214,11 +213,11 @@ const Calculator = (promoarr,bannerarr)=>{
   return (
     <div style={{width:'96%',minHeight:'100vh',fontSize:overallwidth>900?'18px':'13px',color:'white',padding:overallwidth>900?'25px':'15px',paddingTop:"20px",boxSizing:'border-box',backgroundColor:'#071323',borderRadius:'15px',margin:'30px auto',border:'1px solid #0B1F36'}}>
         <div style={{color:"white",paddingLeft:'2.5%',width:"100%",justifyContent:"left",display:"flex",boxSizing:"border-box",cursor:'pointer',fontSize:'20px'}} onClick={()=> navigate('/')}><p>{backward}</p>Back</div>
-        <p style={{textAlign:'center',fontSize:overallwidth>900?'37px':'25px',letterSpacing:'1.5px',marginBottom:'20px',color:'white'}}>Promotion</p>
+        <p style={{textAlign:'center',fontSize:overallwidth>900?'37px':'25px',letterSpacing:'1.5px',marginBottom:'20px',color:'white'}}>Advertise</p>
         <div style={{width:'95%',margin:'0px auto',display:'flex',justifyContent:"space-between",flexDirection:overallwidth>900?'row':'column'}}>
             <div style={{width:overallwidth>900?'65%':'100%',margin:overallwidth>900?'0px':'0px auto',padding:overallwidth>900?'30px':'10px',boxSizing:'border-box',height:'auto',background: 'linear-gradient(180deg, #040B15 15.79%, rgba(3, 13, 24, 0) 131.04%)',border:'2px solid #0B1F36',borderRadius:'10px'}}>
                 <div>
-                    <p style={{textAlign:'center',fontSize:overallwidth>900?'30px':'20px',height:'40px'}}>Advertise</p>
+                    <p style={{textAlign:'center',fontSize:overallwidth>900?'30px':'20px',height:'40px'}}></p>
                     <div style={{width:overallwidth>900?'85%':'95%',height:'auto',margin:'5px auto',border:'2px solid #0B1F36',borderRadius:'10px'}}>
                         <div style={{border:'2px solid #0B1F36',borderWidth:'0px 0px 1.5px'}}><p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}} onClick={()=> setpromosec(!promosec)}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'20px':'11px'}}>Promoted Section &nbsp; &nbsp; <span style={{backgroundColor:'blue',fontSize:overallwidth>900?'13px':'9px',padding:overallwidth>900?'5px':'3px',borderRadius:'10px'}}>$250/day</span></span> <span style={{fontSize:'25px',cursor:'pointer'}} >{promosec?'-':'+'}</span></p>
                             {promosec && <div style={{width:'100%',height:'auto'}}><Calendarcomp overallwidth={overallwidth}/></div>}

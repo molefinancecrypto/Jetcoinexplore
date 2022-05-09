@@ -59,7 +59,7 @@ export default function BannerpromoAds({overallwidth}) {
 
   return (
     <div style={{padding:overallwidth>900?'20px':'20px 0px'}}>
-      <p style={{width:'80%',margin:'10px auto',color:'#BABABA',textAlign:'left',fontFamily:'NexaTextLight',fontSize:'15px'}}>What you get: The banner will be displayed in all coin/token pages as well as the home page.</p>
+      <p style={{width:'80%',margin:'10px auto',color:'#BABABA',textAlign:'left',fontFamily:'NexaTextLight',fontSize:'15px'}}>The banner will be displayed in all coin/token pages as well as the home page.</p>
         <div style={{width:overallwidth>900?'50%':'85%',margin:'15px auto',border:'2px solid #0B1F36',borderRadius:'10px'}}>
           <input type='file' style={{width:'100%',marginBottom:'15px',padding:'10px',display:'none'}} id='bannerpromoid'/>
           <p style={{width:'100%',textAlign:'center',padding:'10px',backgroundColor:'#02050a',borderRadius:'10px 10px 0px 0px',fontSize:'17px',boxSizing:'border-box'}}>Banner</p>

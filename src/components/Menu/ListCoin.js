@@ -84,7 +84,7 @@ function ListCoin() {
                             <input type='text' placeholder='Ex: $24.50' style={{height:'45px',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
                     </div>
-                    <div style={{width:'90%',margin:'25px auto',boxSizing:'border-box',height:'30%',display:windowidth<=900?'block':'flex',justifyContent:'space-around'}}>
+                    <div style={{width:'90%',margin:'25px auto',marginBottom:'0px',boxSizing:'border-box',height:'30%',display:windowidth<=900?'block':'flex',justifyContent:'space-around'}}>
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
                             <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Market Cap</p>
                             <input type='text' placeholder='Ex: $20000BTC' style={{height:'45px',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
@@ -96,7 +96,7 @@ function ListCoin() {
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px',marginTop:'-20px'}}>
                             <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Logo<sup class="asterix">*</sup></p>
                             <div style={{width:'100%',backgroundColor:'#071323',borderRadius:'10px'}}>
-                                <input type='file' id='listcoinfile' style={{height:'60px',display:'none',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                                <input type='file' id='listcoinfile' style={{height:'30px',display:'none',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                                 <p style={{width:'100%',textAlign:'center',padding:'5px',backgroundColor:'#02050a',borderRadius:'10px 10px 0px 0px',fontSize:'13px',boxSizing:'border-box'}}>LOGO (png file*)</p>
                                 <label for='listcoinfile' style={{backgroundColor:'red',width:'100px',cursor:'pointer'}}>
                                 <div style={{display:'flex',justifyContent:'space-around',alignItems:'center',width:'60%',margin:'0px auto',padding:'20px'}}><p>{uploader}</p> <p style={{fontSize:'15px'}}>Upload max: 130 * 130</p></div>
@@ -104,12 +104,12 @@ function ListCoin() {
                             </div>
                         </section>
                     </div>
-                    <div style={{width:'90%',margin:'25px auto',boxSizing:'border-box',height:'30%',}}>
+                    <div style={{width:'90%',margin:'0px auto',boxSizing:'border-box',height:'20%',}}>
                         <section className='desc-style' style={{textAlign:'left',width:windowidth<=900?'100%':'40%'}}>
                             <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Description</p>
-                            <textarea  style={{height:'150px',paddingTop:'10px',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
+                            <textarea  style={{height:'100px',paddingTop:'10px',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',textAlign:'left'}}/>
                         </section>
-                        
+                            
                     </div>
                     <div style={{width:'90%',textAlign:'right',margin:'0px auto',color:'white'}}><button onClick={contracts} style={{width:'150px',height:'40px',backgroundColor:'#02050a',outline:'none',border:'2px solid #02050a',borderRadius:'5px',color:'white'}}>Continue</button></div>
                 </div>
