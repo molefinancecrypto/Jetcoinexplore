@@ -1,13 +1,22 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useContext} from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import facebook from './../../socialMedia/facebook.jpg';
 import twitter from './../../socialMedia/twitterLogo.jpg';
 import telegram from './../../socialMedia/telegram.jpg';
 import './footer.css';
-import logo from '../../images/coinexploreTwo.png'
+import logo from '../../images/coinexploreTwo.png';
+import { Statecontext } from '../CointoviewContext';
 
 export default function Footer() {
   const navigate = useNavigate();
+  const [coinheader,setcoinheader] = useContext(Statecontext).coinheader;
+  const [changepagebyfoot,setchangepagebyfoot] = useContext(Statecontext).changepagebyfoot;
+
+  const cointableselector = (choice)=>{
+    setcoinheader(choice);
+    setchangepagebyfoot(!changepagebyfoot);
+    navigate('/')
+  }
   return (
     
         <div className='footerMain' >
@@ -25,7 +34,7 @@ export default function Footer() {
           <div className='footerSecondMain'>
             <p className='footerTopic'><strong>Our Company</strong></p>
             <div className='footSecondContent'>
-              <p>News</p>
+              <p><Link to="/newspage" style={{color:"#BABABA",textDecoration:"none",cursor:'pointer'}}>News</Link></p>
               <p>Terms & Conditions</p>
               <p>Privacy Policy</p>
             </div>
@@ -37,18 +46,18 @@ export default function Footer() {
             <div className='footSecondContent'>
               <p>DYOR</p>
               <p>Contact Us</p>
-              <p>Advertise</p>
+              <p><Link to="/promoted" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>Advertise</Link></p>
               <p onClick={()=> navigate('/salesrep')} style={{cursor:'pointer'}}>Sales Representative</p>
             </div>
           </div>
           <div className='footerSecondMain'>
             <p className='footerTopic' ><strong>Coins</strong></p>
             <div className='footSecondContent'>
-              <p>All Time Ranking</p>
-              <p>Daily Ranking</p>
-              <p>New Listings</p>
-              <p>Submit Coin</p>
-              <p>Update Coin </p>
+              <p style={{cursor:'pointer'}} onClick={()=>cointableselector('first')}>Today's Best</p>
+              <p style={{cursor:'pointer'}} onClick={()=>cointableselector('second')}>All Time Best</p>
+              <p style={{cursor:'pointer'}} onClick={()=>cointableselector('third')}>New Listings</p>
+              <p style={{cursor:'pointer'}} onClick={()=>cointableselector('fourth')}>By Market Cap</p>
+              <p><Link to="/addcoin" style={{color:"#BABABA",textDecoration:"none"}}>Add Coin </Link></p>
             </div>
           </div>
           </div>

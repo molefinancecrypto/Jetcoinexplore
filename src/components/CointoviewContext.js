@@ -12,13 +12,14 @@ export const StateHolder = (props)=> {
     const [dayarr,setdayarr] = useState([]);
     const [dayarrban,setdayarrban] = useState([]);
     const [dayarrunik,setdayarrunik] = useState([]);
-    const [dayarrbanunik,setdayarrbanunik] = useState([])
+    const [dayarrbanunik,setdayarrbanunik] = useState([]);
+    const [changepagebyfoot,setchangepagebyfoot] = useState(false);
     
 
     return(
         <Statecontext.Provider value={{currentlocale:[currentlocale,setcurrentlocale],triggerlength:[triggerlength,settriggerlength]
         ,dayarrban:[dayarrban,setdayarrban],triggerlengthban: [triggerlengthban,settriggerlengthban],coinheader:[coinheader,setcoinheader],dayarr: [dayarr,setdayarr],
-        dayarrunik:[dayarrunik,setdayarrunik],dayarrbanunik:[dayarrbanunik,setdayarrbanunik]}}>
+        dayarrunik:[dayarrunik,setdayarrunik],dayarrbanunik:[dayarrbanunik,setdayarrbanunik],changepagebyfoot:[changepagebyfoot,setchangepagebyfoot]}}>
             {props.children}
         </Statecontext.Provider>
     )

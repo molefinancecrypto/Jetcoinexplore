@@ -80,14 +80,12 @@ export default function NewsPage() {
 
   const navigate = useNavigate();
   if (newstoshow) {return (
-    <div style={{width:'96vw',borderRadius:'15px',border:'1px solid #0B1F36',margin:'30px auto',minHeight:'100vh',color:'white',boxSizing:'border-box'}}>
-      {console.log(window.innerHeight)}
-        <div style={{width:'90%',margin:'20px auto',minHeight:'100vh',paddingTop:'90px',boxSizing:'border-box',backgroundColor:'#071323',border:'1px solid #0B1F36',borderRadius:'10px',display:"flex",flexDirection:'column',justifyContent:'space-between',paddingTop:'35px'}}>
+        <div style={{width:'96%',margin:'30px auto',minHeight:'100vh',padding:'25px',paddingTop:'20px',color:'white',boxSizing:'border-box',backgroundColor:'#071323',border:'1px solid #0B1F36',borderRadius:'15px',display:"flex",flexDirection:'column',justifyContent:'space-between',paddingTop:'35px'}}>
           <div style={{width:'100%',display:'flex',justifyContent:'left',flexDirection:'column'}}>
-            <div style={{color:"white",paddingLeft:'7%',paddingTop:'10PX',marginTop:'-1.5%',width:"100%",justifyContent:"left",display:"flex",boxSizing:"border-box",cursor:'pointer',fontSize:'20px'}} onClick={()=> navigate('/')}><p>{backward}</p>Back</div>
+            <div style={{color:"white",paddingLeft:'2.5%',paddingTop:'10PX',marginTop:'-1.5%',width:"100%",justifyContent:"left",display:"flex",boxSizing:"border-box",cursor:'pointer',fontSize:'20px'}} onClick={()=> navigate('/')}><p>{backward}</p>Back</div>
             <p className='newsfeed' ><strong>News Feed</strong></p>
           </div>
-          <div style={{width:'85%',margin:'0px auto',marginTop:"35px",border:'1px solid #0B1F36',borderRadius:'10px',backgroundImage: 'linear-gradient(90.18deg, #040B15 35.76%, rgba(6, 17, 31, 10) 110.28%)'}}>
+          <div style={{width:'95%',margin:'20px auto',border:'1px solid #0B1F36',borderRadius:'7px',padding:'20px',boxSizing:'border-box',backgroundImage: 'linear-gradient(90.18deg, #040B15 35.76%, rgba(6, 17, 31, 10) 110.28%)'}}>
             {newstoshow[pagenumber-1][`${pagenumber}`].map(newss=><div className='newsItem' >
             <p className='mobiledate'><strong>Date</strong>: {new Date(newss['publishedAt']).getDate()+'/'+new Date(newss['publishedAt']).getMonth()+'/2022'}</p>
                              <div className='divForNewsContent' >
@@ -111,10 +109,10 @@ export default function NewsPage() {
                           <p onClick={rightpage} style={{display:'flex',justifyContent:'center',alignItems:'center'}}>{forward}</p>
                         </div>
                       </div>}  
+
+                      {showscroller && <div onClick={scrolltotop} style={{position:'fixed',top:'85vh',boxShadow: '10px 2px 15px black',zIndex:'20000',right:'20px',display:'flex',alignItems:'center',justifyContent:'center',width:'35px',height:'35px',backgroundColor:'white',borderRadius:'50%'}}><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><polygon points="6,17.59 7.41,19 12,14.42 16.59,19 18,17.59 12,11.59"/><polygon points="6,11 7.41,12.41 12,7.83 16.59,12.41 18,11 12,5"/></g></g></svg></div>} 
         </div>
-                        
-    {showscroller && <div onClick={scrolltotop} style={{position:'fixed',top:'85vh',boxShadow: '10px 2px 15px black',zIndex:'20000',right:'20px',display:'flex',alignItems:'center',justifyContent:'center',width:'35px',height:'35px',backgroundColor:'white',borderRadius:'50%'}}><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><polygon points="6,17.59 7.41,19 12,14.42 16.59,19 18,17.59 12,11.59"/><polygon points="6,11 7.41,12.41 12,7.83 16.59,12.41 18,11 12,5"/></g></g></svg></div>}               
-    </div>
+                    
   ) }
   else{
   return<li><i class="fa-li fa fa-spinner fa-spin"></i>List icons</li>}

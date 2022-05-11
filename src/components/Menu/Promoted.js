@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import Calendarcomp from './Calendarcomp';
 import { Statecontext } from '../CointoviewContext';
 import BannerpromoAds from './BannerpromoAds';
+import GoToTop from '../Gototop';
 
 
 function Promoted({overallwidth}) {
@@ -271,6 +272,7 @@ const Calculator = (promoarr,bannerarr)=>{
                 </div>
             </div>
         </div>
+        <GoToTop />
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import './listcoin.css';
+import GoToTop from '../Gototop';
 
 function ListCoin() {
     const navigate = useNavigate();
@@ -218,6 +219,7 @@ function ListCoin() {
                     </div>
                 </div>
             </div>
+            <GoToTop />
         
     </div>
   
