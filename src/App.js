@@ -180,7 +180,6 @@ const rfheight = ()=>{
           <Footer />
         </div>
         <Getlocation />
-      
     </div>
   );
 }
