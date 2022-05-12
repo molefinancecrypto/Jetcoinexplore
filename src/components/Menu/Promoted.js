@@ -1,4 +1,4 @@
-import React, {useState,useContext,useEffect,useLayoutEffect} from 'react';
+import React, {useState,useContext,useEffect,useRef} from 'react';
 import './promotion.css';
 import {useNavigate} from 'react-router-dom';
 import Calendarcomp from './Calendarcomp';
@@ -24,8 +24,10 @@ function Promoted({overallwidth}) {
     const [dayarrunik,setdayarrunik] = useContext(Statecontext).dayarrunik;
     const [dayarrbanunik,setdayarrbanunik] = useContext(Statecontext).dayarrbanunik;
     const  [triggerlengthban,settriggerlengthban] = useContext(Statecontext).triggerlengthban;
+    const [ordermarginTop,setordermarginTop] = useContext(Statecontext).ordermarginTop;
     const cart = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.55 13c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.37-.66-.11-1.48-.87-1.48H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45zM6.16 6h12.15l-2.76 5H8.53L6.16 6zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>;
-
+    const promocalendarRef = useRef('');
+    const leftholder = useRef('')
  const deletesale = (specificarr)=>{
      if(specificarr['price'] === '$250'){
         let newarr = dayarr;
@@ -110,9 +112,8 @@ useEffect(()=>{
     // setorderarray(orderarray.filter((element, i) => orderarray.includes(element['date']) ))
         /*setorderarray([...orderarray,dayarrban])
         setorderarray(orderarray.filter((element, i) => dayarrban.includes(element['date']) ))*/
-        console.log(orderarray)
+        
    }  
-
 },[triggerlengthban])
 
 
@@ -177,7 +178,22 @@ const Calculator = (promoarr,bannerarr)=>{
     return [totalfunc(promoarr,bannerarr),discountfunc(),realvalue]
 }
 
+//function for moving order section
+const bannermover = ()=>{
+    if(promosec){
+        setpromosec(false)
+    }
+    setbanasec(!banasec);
+    setordermarginTop(0);
+}
 
+const promomover = ()=>{
+    if(banasec){
+        setbanasec(false)
+    }
+    setpromosec(!promosec);
+    setordermarginTop(0)
+}
 
 
 
@@ -216,15 +232,15 @@ const Calculator = (promoarr,bannerarr)=>{
         <div style={{color:"white",paddingLeft:'2.5%',width:"100%",justifyContent:"left",display:"flex",boxSizing:"border-box",cursor:'pointer',fontSize:'20px'}} onClick={()=> navigate('/')}><p>{backward}</p>Back</div>
         <p style={{textAlign:'center',fontSize:overallwidth>900?'37px':'25px',letterSpacing:'1.5px',marginBottom:'20px',color:'white'}}>Advertise</p>
         <div style={{width:'95%',margin:'0px auto',display:'flex',justifyContent:"space-between",flexDirection:overallwidth>900?'row':'column'}}>
-            <div style={{width:overallwidth>900?'65%':'100%',margin:overallwidth>900?'0px':'0px auto',padding:overallwidth>900?'30px':'10px',boxSizing:'border-box',height:'auto',background: 'linear-gradient(180deg, #040B15 15.79%, rgba(3, 13, 24, 0) 131.04%)',border:'2px solid #0B1F36',borderRadius:'10px'}}>
+            <div ref={leftholder} style={{width:overallwidth>900?'65%':'100%',margin:overallwidth>900?'0px':'0px auto',padding:overallwidth>900?'30px':'10px',boxSizing:'border-box',height:'auto',background: 'linear-gradient(180deg, #040B15 15.79%, rgba(3, 13, 24, 0) 131.04%)',border:'2px solid #0B1F36',borderRadius:'10px'}}>
                 <div>
                     <p style={{textAlign:'center',fontSize:overallwidth>900?'30px':'20px',height:'40px'}}></p>
                     <div style={{width:overallwidth>900?'85%':'95%',height:'auto',margin:'5px auto',border:'2px solid #0B1F36',borderRadius:'10px'}}>
-                        <div style={{border:'2px solid #0B1F36',borderWidth:'0px 0px 1.5px'}}><p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}} onClick={()=> setpromosec(!promosec)}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'20px':'11px'}}>Promoted Section &nbsp; &nbsp; <span style={{backgroundColor:'blue',fontSize:overallwidth>900?'13px':'9px',padding:overallwidth>900?'5px':'3px',borderRadius:'10px'}}>$250/day</span></span> <span style={{fontSize:'25px',cursor:'pointer'}} >{promosec?'-':'+'}</span></p>
-                            {promosec && <div style={{width:'100%',height:'auto'}}><Calendarcomp overallwidth={overallwidth}/></div>}
+                        <div style={{border:'2px solid #0B1F36',borderWidth:'0px 0px 1.5px'}}><p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}} onClick={()=> promomover()}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'20px':'11px'}}>Promoted Section &nbsp; &nbsp; <span style={{backgroundColor:'blue',fontSize:overallwidth>900?'13px':'9px',padding:overallwidth>900?'5px':'3px',borderRadius:'10px'}}>$250/day</span></span> <span style={{fontSize:'25px',cursor:'pointer'}} >{promosec?'-':'+'}</span></p>
+                            {promosec && <div ref={promocalendarRef} style={{width:'100%',height:'auto'}}><Calendarcomp overallwidth={overallwidth} promosec={promosec}  leftholder={leftholder}/></div>}
                         </div>
-                        <div style={{border:'2px solid #0B1F36',borderWidth:'0px 0px 1.5px'}} ><p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}} onClick={()=> setbanasec(!banasec)}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'20px':'11px'}}>Banner Ad &nbsp; &nbsp; <span style={{backgroundColor:'blue',fontSize:overallwidth>900?'13px':'9px',padding:overallwidth>900?'5px':'3px',borderRadius:'10px'}}>$3000/day</span></span> <span style={{fontSize:'25px',cursor:'pointer'}} >{banasec?'-':'+'}</span></p>
-                            {banasec && <div style={{width:'100%',height:'auto'}}><BannerpromoAds overallwidth={overallwidth}/></div>}
+                        <div style={{border:'2px solid #0B1F36',borderWidth:'0px 0px 1.5px'}} ><p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}} onClick={()=> bannermover()}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'20px':'11px'}}>Banner Ad &nbsp; &nbsp; <span style={{backgroundColor:'blue',fontSize:overallwidth>900?'13px':'9px',padding:overallwidth>900?'5px':'3px',borderRadius:'10px'}}>$3000/day</span></span> <span style={{fontSize:'25px',cursor:'pointer'}} >{banasec?'-':'+'}</span></p>
+                            {banasec && <div style={{width:'100%',height:'auto'}}><BannerpromoAds overallwidth={overallwidth} banasec={banasec}  leftholder={leftholder}/></div>}
                         </div>
                         <div ><p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}} onClick={()=> setcustomAd(!customAd)}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'20px':'11px'}}>Custom Ad &nbsp; &nbsp; </span> <span style={{fontSize:'25px'}}>{customAd?'-':'+'}</span></p>
                             {customAd && <div style={{width:'100%',height:'auto',textAlign:'center',padding:'10px',boxSizing:'border-box'}}>
@@ -248,8 +264,8 @@ const Calculator = (promoarr,bannerarr)=>{
                                                                 will be no refunds issued either in part or full, as expressly stated in our <a href="#"> Terms & Conditions</a></p>
                 </div>
             </div>
-            <div style={{width:overallwidth>900?'30%':'100%',margin:overallwidth>900?'0px':'30px auto',height:'100%'}}>
-                <div style={{width:'100%',height:'auto',paddingBottom:'20px',paddingTop:'30px',boxSizing:'border-box',background: 'linear-gradient(180deg, #040B15 15.79%, rgba(3, 13, 24, 0) 131.04%)',border:'2px solid #0B1F36',borderRadius:'10px'}}>
+            <div  style={{width:overallwidth>900?'30%':'100%',margin:overallwidth>900?'0px':'30px auto',height:'100%'}}>
+                <div style={{width:'100%',height:'auto',paddingBottom:'20px',paddingTop:'30px',boxSizing:'border-box',marginTop:overallwidth>900?ordermarginTop:'0px',background: 'linear-gradient(180deg, #040B15 15.79%, rgba(3, 13, 24, 0) 131.04%)',border:'2px solid #0B1F36',borderRadius:'10px'}}>
                     <p style={{textAlign:'center',fontSize:overallwidth>900?'30px':'20px',height:"40px"}}>Orders</p>
 
                     

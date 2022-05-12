@@ -7,7 +7,7 @@ import {CoinObj} from '../coinholder';
 import { Statecontext } from '../CointoviewContext';
 
 
-export default function Calendarcomp({overallwidth}) {
+export default function Calendarcomp({overallwidth,promosec,leftholder}) {
   const navigate = useNavigate();
   const [showmenu,setshowmenu] = useState(false);
   const menuref = useRef();
@@ -18,6 +18,9 @@ export default function Calendarcomp({overallwidth}) {
   const [date, setDate] = useState('');
   const [dayarrunik,setdayarrunik] = useContext(Statecontext).dayarrunik;
   const [triggerlength,settriggerlength] = useContext(Statecontext).triggerlength;
+  const [ordermarginTop,setordermarginTop] = useContext(Statecontext).ordermarginTop;
+  const calendarRefPoint = useRef('');
+  const mainholder = useRef('')
   
  const setter = (val,valunik) => {
    setdayarr(()=>val);
@@ -26,6 +29,11 @@ export default function Calendarcomp({overallwidth}) {
    
  }
 
+ useEffect(()=>{
+    if(promosec && overallwidth>900){
+       setordermarginTop(calendarRefPoint.current.offsetTop-leftholder.current.offsetTop)
+    }
+ },[promosec])
 
   const clickday = (e)=>{
    let changingday = `${e.getDate()}-${e.getMonth() + 1}-${e.getFullYear()}`
@@ -120,7 +128,7 @@ export default function Calendarcomp({overallwidth}) {
 )
 
 
-  return (<div>
+  return (<div ref={mainholder}>
 <p style={{width:'80%',margin:'10px auto',color:'#BABABA',textAlign:'left',fontFamily:'NexaTextLight',fontSize:'15px'}}>The coin will be displayed on our ''Promoted Coins'' section, on our home page.</p>
 <div className = 'searchholdercalendar' >
     
@@ -148,7 +156,7 @@ export default function Calendarcomp({overallwidth}) {
   </div>
   
   <p style={{width:'80%',margin:'0px auto',textAlign:'center',fontSize:'15px',fontFamily:'NexaTextLight'}}>Coin Unavailable? <NavLink to='/addcoin'>Add here</NavLink></p>
-  <p style={{width:overallwidth>900?'50%':'70%',margin:'20px auto',textAlign:'center',marginBottom:'5px'}}>AVAILABLE SLOTS</p>
+  <p  ref={calendarRefPoint} style={{width:overallwidth>900?'50%':'70%',margin:'20px auto',textAlign:'center',marginBottom:'5px'}}>AVAILABLE SLOTS</p>
     <Calendar onChange={setDate} value={date} onClickDay={clickday} tileClassName={tileClassName}/>
     
     
