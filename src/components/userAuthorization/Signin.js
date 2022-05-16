@@ -5,6 +5,7 @@ import logo from '../../images/coinexploreTwo.png'
 import { ParticularCoin } from '../../contextfolder/Coindata';
 import CustomInput from '../customHooks/CustomInput';
 import worldimage from './imagesforauth/worldforsigning.jpg';
+import GoToTop from '../Gototop';
 
 
 
@@ -148,7 +149,7 @@ return <div className='signoverall' >
          
         </section>   
        
-       
+       <GoToTop />
     </div>;
 }
 

@@ -1,0 +1,74 @@
+.watchlistcontainer{
+ color: white;
+ min-height: 85vh;
+ width: 100%;
+ box-sizing: border-box;
+}
+
+.watchlistDiv{
+    text-align:center;
+    margin: 10px;
+    font-size:40px
+}
+
+.watchersdiscription{
+    text-align:center;
+    margin:10px;
+    color:#BABABA;
+    font-size:22px
+}
+
+.divforlinkAndDescriptionWatcher{
+    width:80%;
+    display:flex;
+    justify-content:space-between;
+    margin:40px auto
+}
+
+.divforstardescription{
+
+}
+
+.ptagindescription{
+    display:flex;
+    align-items:center;
+    margin-bottom:15px;
+    font-family:NexaTextLight;
+   
+}
+
+.spanfordescription{
+    padding-left: 10px;
+}
+
+
+@media(max-width:1000px){
+    .watchlistDiv{
+        font-size:25px
+    }
+
+    .watchersdiscription{
+        font-size:17px
+    }
+
+    .divforlinkAndDescriptionWatcher{
+        width:80%;
+        display:flex;
+        flex-direction: column;
+        justify-content:space-between;
+        margin:40px auto
+    }
+
+    .divforstardescription{
+        margin-top:30px
+    }
+
+    .ptagindescription{
+        width:85%
+    }
+
+    .spanfordescription{
+        text-align: left;
+    }
+
+}

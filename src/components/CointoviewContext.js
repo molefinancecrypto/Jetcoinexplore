@@ -1,4 +1,8 @@
 import React, {useState, createContext} from 'react';
+import { AllTime } from './coinholderFolder/AllTime';
+import { TodayBest } from './coinholderFolder/TodayCoins';
+import { NewListings } from './coinholderFolder/NewListings';
+import { MarketCap } from './coinholderFolder/MarketCap';
 
 
 
@@ -16,13 +20,19 @@ export const StateHolder = (props)=> {
     const [changepagebyfoot,setchangepagebyfoot] = useState(false);
     const [changefootcheck,setchangefootcheck] = useState(false);
     const [ordermarginTop,setordermarginTop] = useState(0);
+    const [watchlistArray, setwatchlistArray] = useState([]);
+    const [alltime, setallTime] = useState(AllTime);
+    const [todaybest, settodayBest] = useState(TodayBest);
+    const [marketCap,setmarketCap] = useState(MarketCap);
+    const [newlistings,setnewListings] = useState(NewListings)
     
 
     return(
         <Statecontext.Provider value={{currentlocale:[currentlocale,setcurrentlocale],triggerlength:[triggerlength,settriggerlength]
         ,dayarrban:[dayarrban,setdayarrban],triggerlengthban: [triggerlengthban,settriggerlengthban],coinheader:[coinheader,setcoinheader],dayarr: [dayarr,setdayarr],
         dayarrunik:[dayarrunik,setdayarrunik],dayarrbanunik:[dayarrbanunik,setdayarrbanunik],changepagebyfoot:[changepagebyfoot,setchangepagebyfoot]
-        ,changefootcheck:[changefootcheck,setchangefootcheck],ordermarginTop:[ordermarginTop,setordermarginTop]}}>
+        ,changefootcheck:[changefootcheck,setchangefootcheck],ordermarginTop:[ordermarginTop,setordermarginTop],watchlistArray:[watchlistArray,setwatchlistArray]
+        ,alltime:[alltime, setallTime],todaybest:[todaybest, settodayBest],marketCap:[marketCap,setmarketCap],newlistings:[newlistings,setnewListings]}}>
             {props.children}
         </Statecontext.Provider>
     )

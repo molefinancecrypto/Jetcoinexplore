@@ -12,7 +12,7 @@ import ftmlogo from '../../chainLogo/ftmLogo.png';
 import maticlogo from '../../chainLogo/maticLogo.png';
 import trxlogo from '../../chainLogo/trxLogo.png';
 
-function CoinInfo({coin,overallwidth}) {
+function CoinInfo({coin,overallwidth,addToWatchlist}) {
     const [votes,setvotes] = useState(0);
     const empty = <img src={emptystar} style={{width:'20px',height:'20px'}}/>;
   
@@ -31,7 +31,7 @@ function CoinInfo({coin,overallwidth}) {
     const ftm = <img src={ftmlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
     const matic = <img src={maticlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
     const trx = <img src={trxlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
-    const StarClick = ()=>{
+    const voteFunction = ()=>{
         if(votevalidation){
           if(votes<=1){
             setvotes(votes+1);
@@ -76,13 +76,13 @@ function CoinInfo({coin,overallwidth}) {
        <p className='price'>{coin[Object.keys(coin)]['price']}</p>
        <p className='launch'>{coin[Object.keys(coin)]['launch']}</p>
        <p className='change' style={{textAlign:'center',flex: '1',display:overallwidth>1100?'block':'none',color:coin[Object.keys(coin)]['change'][0]=== "+"?'green':'red'}} >{coin[Object.keys(coin)]['change']}</p>
-       <div className='high-votes' style={{flex: '1',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div style={{width:'75px',height:"20px",paddingBottom:'27px',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} onClick={StarClick}>{arrowforvote}</p>
+       <div className='high-votes' style={{flex: '1',display:'flex',alignItems:'center',justifyContent:'center',color:colorvote}}><div onClick={voteFunction} style={{width:'75px',height:"20px",paddingBottom:'27px',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} >{arrowforvote}</p>
           <p style={{fontSize:'15px',color:{colorvote}}}>{coin[Object.keys(coin)]['vote']}</p>
         </div>                        
       </div>
       
   </div>
-  <div className='starholder'>{coin[Object.keys(coin)]['watchlist']?full:empty}</div>
+  <div  onClick={() =>addToWatchlist(coin)} className='starholder'>{coin[Object.keys(coin)]['watchlist']?full:empty}</div>
 </div>;
 }
 

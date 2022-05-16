@@ -4,6 +4,7 @@ import { ParticularCoin } from '../../contextfolder/Coindata';
 import { Link,useNavigate } from 'react-router-dom';
 import worldimage from './imagesforauth/worldforsigning.jpg';
 import bubble from './imagesforauth/bubblesforsigning.jpg';
+import GoToTop from '../Gototop';
 
 
 
@@ -164,6 +165,6 @@ const onfinalsubmit = ()=>{
           </div>
          
         </section>   
-       
+       <GoToTop />
     </div>;
 }

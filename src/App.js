@@ -18,6 +18,7 @@ import Salesrep from './components/Menu/Salesrep';
 import Salesrepidentity from './components/Menu/Salesrepidentity';
 import Getlocation from './components/Getlocation';
 import Promoted from './components/Menu/Promoted';
+import Watchlist from './components/Menu/Watchlist';
 
 
 /*
@@ -171,6 +172,7 @@ const rfheight = ()=>{
 
       </Route>
       <Route path='/promoted' element={<Promoted overallwidth={overallwidth}/>} />
+      <Route path='/watchlist' element={<Watchlist overallwidth={overallwidth}/>} />
 
 
       </Routes>
