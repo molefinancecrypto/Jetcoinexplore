@@ -124,7 +124,43 @@ const CoinsTable = ({overallwidth}) => {
     }
   }
 
+//function to increase vote after authentication
 
+const filterToVote = (cointoFilter,coin,newArray,index) =>{
+  let arrayHolder = cointoFilter.filter(ctf=> ctf !== coin);
+  arrayHolder.splice(index,0,newArray[0]);
+  //arrayHolder[index] = newArray[0];
+  //arrayHolder.unshift(newArray[0]);
+  return arrayHolder;
+}
+
+const topVote = (coin) =>{
+  if(AllTime.includes(coin)){
+    let index = AllTime.indexOf(coin);
+    let Newcoinarr = AllTime.splice(index,1);
+    Newcoinarr[0][Object.keys(Newcoinarr[0])]['vote']++;
+    setAllTime((prev)=>filterToVote(prev,coin,Newcoinarr,index));
+
+  }
+  else if(TodayBest.includes(coin)){
+    let index = TodayBest.indexOf(coin);
+    let Newcoinarr = TodayBest.splice(index,1);
+    Newcoinarr[0][Object.keys(Newcoinarr[0])]['vote']++;
+    setTodayBest((prev)=>filterToVote(prev,coin,Newcoinarr,index));
+  }
+  else if(NewListings.includes(coin)){
+    let index = NewListings.indexOf(coin);
+    let Newcoinarr = NewListings.splice(index,1);
+    Newcoinarr[0][Object.keys(Newcoinarr[0])]['vote']++;
+    setNewListings((prev)=>filterToVote(prev,coin,Newcoinarr,index));
+  }
+  else if(MarketCap.includes(coin)){
+    let index = MarketCap.indexOf(coin);
+    let Newcoinarr = MarketCap.splice(index,1);
+    Newcoinarr[0][Object.keys(Newcoinarr[0])]['vote']++;
+    setMarketCap((prev)=>filterToVote(prev,coin,Newcoinarr,index));
+  }
+}
 
 
 
@@ -262,7 +298,7 @@ const CoinsTable = ({overallwidth}) => {
       <div style={{width:overallwidth>900?'70%':'90%',fontSize:overallwidth>900?'17px':'11px',display:'flex',justifyContent:'space-between',margin:'15px auto', borderRadius:'15px',boxSizing:'border-box',border:'2px solid #0B1F36'}}><p style={{display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',border:'0.5px solid #0B1F36',margin:'2px',borderRadius:'15px 0px 0px 15px',borderWidth:'0px 0.5px 0px 0px',padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',color:coinheader==='first'?'white':'#BABABA',backgroundColor:coinheader==='first'?'#112836':'transparent',cursor:'pointer'}} onClick={()=>headertablemobile('first')}>Today's Best</p><p style={{border:'0.5px solid #0B1F36',borderWidth:'0px 0.5px 0px 0px',margin:'2px',padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',color:coinheader==='second'?'white':'#BABABA',backgroundColor:coinheader==='second'?'#112836':'transparent',display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}} onClick={()=>headertablemobile('second')}>All Time Best</p><p style={{border:'0.5px solid #0B1F36',borderWidth:'0px 0.5px 0px 0px',margin:'2px',padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',color:coinheader==='third'?'white':'#BABABA',backgroundColor:coinheader==='third'?'#112836':'transparent',display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}} onClick={()=>headertablemobile('third')}>New Listings</p><p style={{padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',margin:'2px',color:coinheader==='fourth'?'white':'#BABABA',backgroundColor:coinheader==='fourth'?'#112836':'transparent',borderRadius:'0px 15px 15px 0px',display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}} onClick={()=>headertablemobile('fourth')}>By Market Cap</p></div>
       <div className='headerClass'>
            <div className='tableheader'><p className='headerleft' >NAME</p> <div className='headerright' ><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='price'>PRICE</p> <p className='launchhead'>LAUNCH-DATE</p> <p className='changehead'>CHANGE(24hrs)</p> <p className='voteheader' >VOTE</p> </div> <p className='starholder' > </p></div>
-           { coins.length== 0 ?<div style={{fontSize:'30px'}}>NO MATCHES</div> : coins.length>=8? <div style={{height:'auto',width:'100%',borderRadius:'0px 0px 10px 10px'}}>{coinpage[coinpageindex].map( coin => <CoinInfo addToWatchlist={addToWatchlist} overallwidth={overallwidth} coin={coin} key={uuidv4()}/> )}</div> : <div style={{height:'auto',width:'100%',borderRadius:'0px 0px 10px 10px'}}>{coins.map( coin => <CoinInfo addToWatchlist={addToWatchlist} overallwidth={overallwidth} coin={coin} key={uuidv4()}/> )}</div>}
+           { coins.length== 0 ?<div style={{fontSize:'30px'}}>NO MATCHES</div> : coins.length>=8? <div style={{height:'auto',width:'100%',borderRadius:'0px 0px 10px 10px'}}>{coinpage[coinpageindex].map( coin => <CoinInfo addToWatchlist={addToWatchlist} overallwidth={overallwidth}  topVote= {topVote} coin={coin} key={uuidv4()}/> )}</div> : <div style={{height:'auto',width:'100%',borderRadius:'0px 0px 10px 10px'}}>{coins.map( coin => <CoinInfo addToWatchlist={addToWatchlist} topVote={topVote} overallwidth={overallwidth} coin={coin} key={uuidv4()}/> )}</div>}
            
       </div>
       {coins.length>8 && <div style={{width:'30%',minWidth:'270px',margin:'30px auto',display:'flex',justifyContent:'space-around'}}><p style={{display:'flex',justifyContent:'center',alignItems:"center"}} onClick={leftpage}>{backward}</p>{coinpage.map(coin=><p style={{color: coinpageindex===coinpage.indexOf(coin)?'white':'#BABABA',border:coinpageindex===coinpage.indexOf(coin)?'1.5px solid #0B1F36':'0px',cursor:'pointer',padding:'3px 10px'}} onClick={()=>setcoinpageindex(coinpage.indexOf(coin))}>{coinpage.indexOf(coin)+1}</p>)} <p style={{display:'flex',justifyContent:'center',alignItems:'center'}} onClick={rightpage}>{forward}</p></div>}
@@ -280,6 +316,10 @@ export default CoinsTable;
 
 
 export function PromotedCoin({overallwidth}) {
+  const [AllTime,setAllTime] = useContext(Statecontext).alltime;
+  const [TodayBest,setTodayBest] = useContext(Statecontext).todaybest;
+  const [MarketCap,setMarketCap] = useContext(Statecontext).marketCap;
+  const [NewListings,setNewListings] = useContext(Statecontext).newlistings;
   const empty = <img src={emptystar} style={{width:'20px',height:'20px'}}/>;
     const full = <img src={fullstar} style={{width:'20px',height:'20px'}} />;
     const eth = <img src={ethereumlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
@@ -293,7 +333,48 @@ export function PromotedCoin({overallwidth}) {
   const navigate = useNavigate();
   const [watchlistArray,setwatchlistArray] = useContext(Statecontext).watchlistArray;
   
+  const filterToVote = (cointoFilter,coin,newArray,index) =>{
+    let arrayHolder = cointoFilter.filter(ctf=> ctf !== coin);
+    arrayHolder.splice(index,0,newArray[0]);
+    //arrayHolder[index] = newArray[0];
+    //arrayHolder.unshift(newArray[0]);
+    console.log('voting')
+    return arrayHolder;
+  }
+  
+  const topVote = (coin) =>{
+    if(AllTime.includes(coin)){
+      let index = AllTime.indexOf(coin);
+      let Newcoinarr = AllTime.splice(index,1);
+      Newcoinarr[0][Object.keys(Newcoinarr[0])]['vote'] = 4;
+      setAllTime((prev)=>filterToVote(prev,coin,Newcoinarr,index));
+  
+    }
+    else if(TodayBest.includes(coin)){
+      let index = TodayBest.indexOf(coin);
+      let Newcoinarr = TodayBest.splice(index,1);
+      Newcoinarr[0][Object.keys(Newcoinarr[0])]['vote'] =4;
+      setTodayBest((prev)=>filterToVote(prev,coin,Newcoinarr,index));
+    }
+    else if(NewListings.includes(coin)){
+      let index = NewListings.indexOf(coin);
+      let Newcoinarr = NewListings.splice(index,1);
+      Newcoinarr[0][Object.keys(Newcoinarr[0])]['vote'] = 4;
+      setNewListings((prev)=>filterToVote(prev,coin,Newcoinarr,index));
+    }
+    else if(MarketCap.includes(coin)){
+      let index = MarketCap.indexOf(coin);
+      let Newcoinarr = MarketCap.splice(index,1);
+      Newcoinarr[0][Object.keys(Newcoinarr[0])]['vote'] = 4;
+      
+      setMarketCap((prev)=>filterToVote(prev,coin,Newcoinarr,index));
+    }
 
+    else{
+      console.log('i not wrong')
+    }
+  }
+  
 
 
   //function for watchlist
@@ -309,12 +390,9 @@ export function PromotedCoin({overallwidth}) {
     navigate('/watchlist')
   }
 
-  const voteFunction = ()=>{
+  const voteFunction = (coin)=>{
     if(votevalidation){
-      if(votes<=1){
-        setvotes(votes+1);
-        
-      }
+     topVote(coin)
     }
     else{
       alert('please, sign in first to vote')
@@ -362,7 +440,7 @@ export function PromotedCoin({overallwidth}) {
             <p className='price'>{coin[Object.keys(coin)]['price']}</p>
             <p className='launch'>{coin[Object.keys(coin)]['launch']}</p>
             <p className='change' style={{textAlign:'center',flex:'1',display:overallwidth>1100?'block':'none',color:coin[Object.keys(coin)]['change'][0]=== "+"?'green':'red'}}>{coin[Object.keys(coin)]['change']}</p>
-            <div style={{display:'flex',flex:'1',alignItems:'center',justifyContent:'center',color:colorvote}}><div onClick={voteFunction} style={{width:'75px',height:"20px",paddingBottom:'27px',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} >{arrowforvote}</p>
+            <div style={{display:'flex',flex:'1',alignItems:'center',justifyContent:'center',color:colorvote}}><div onClick={()=>voteFunction(coin)} style={{width:'75px',height:"20px",paddingBottom:'27px',cursor:'pointer',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} >{arrowforvote}</p>
               <p  style={{fontSize:'15px',color:{colorvote}}}>{coin[Object.keys(coin)]['vote']}</p>
               </div>                     
             </div>
