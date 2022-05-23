@@ -19,6 +19,7 @@ import Salesrepidentity from './components/Menu/Salesrepidentity';
 import Getlocation from './components/Getlocation';
 import Promoted from './components/Menu/Promoted';
 import Watchlist from './components/Menu/Watchlist';
+import ContactUs from './components/Menu/ContactUs';
 
 
 /*
@@ -168,9 +169,11 @@ const rfheight = ()=>{
       <Route path='/addcoin' element={<ListCoin/>} />
       <Route path='/newspage' element={<NewsPage />} />
       <Route path='/salesrep' element={<Salesrep/>} >
+      
         <Route path=':salesperson' element={<Salesrepidentity/>}/>
 
       </Route>
+      <Route path='/contactUs' element={<ContactUs overallwidth={overallwidth}/>}/>
       <Route path='/promoted' element={<Promoted overallwidth={overallwidth}/>} />
       <Route path='/watchlist' element={<Watchlist overallwidth={overallwidth}/>} />
 

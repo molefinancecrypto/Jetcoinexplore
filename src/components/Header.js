@@ -146,7 +146,7 @@ function Header({overallwidth}) {
        <li className='list'><Link to="/addcoin" style={{color:"white",textDecoration:"none"}}>Add Coin</Link></li>
        <li className='list'><Link to="/promoted" style={{color:"white",textDecoration:"none"}}>Advertise</Link></li>
        <li className='list'><Link to="/newspage" style={{color:"white",textDecoration:"none"}}>News</Link></li>
-       <li className='list'>Contact Us</li>
+       <li className='list'><Link to="/contactUs" style={{color:"white",textDecoration:"none"}}>Contact Us</Link></li>
        <p style={{width:'0.5px',height:"33px",backgroundColor:"white",margin:'0px 5px'}}></p>
        <li className='list'><Link to="/signin" style={{color:"white",textDecoration:"none"}}>Sign In</Link></li>
        <li className='list'><Link to="/signup" style={{color:"white",textDecoration:"none"}}>Register</Link></li>

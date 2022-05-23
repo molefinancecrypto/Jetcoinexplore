@@ -1,0 +1,82 @@
+.contactHolder{
+    width: 96%;
+    margin: 30px auto;
+    height:70vh;
+    border:1px solid #0B1F36;
+    border-radius: 15px;
+    color: grey;
+    padding: 25px;
+    padding-top: 20px;
+    background-color: #071323;
+    margin-bottom: 20px;
+    color: white;
+    box-sizing: border-box;
+    display:'flex';
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.contactlayerOne{
+    height:auto;
+    width:80%;
+    margin:20px auto;
+    border:1px solid #112836;
+    background-image: linear-gradient(90.18deg, #040B15 35.76%, rgba(6, 17, 31, 10) 110.28%);
+    border-radius:7px;
+    padding:20px;
+    box-sizing:border-box;
+}
+
+.contactlayerTwo{
+    width:100%;
+    height:40vh;
+    align-items:center;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+   
+}
+
+.contactdivOne{
+    width:45%;
+    height:80%;
+    align-items:center;
+    box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between
+}
+
+.contactdivTwo{
+    width:45%;
+    height:80%;
+    box-sizing:border-box
+}
+
+
+@media(max-width: 950px){
+    .contactHolder{
+    min-height:70vh;
+    height: auto;
+    }
+
+    .contactlayerOne{
+        flex-direction: column;
+        width: 100%
+    }
+
+    .contactlayerTwo{
+        height: 90vh;
+        flex-direction: column;
+    }
+
+    .contactdivOne{
+        width: 100%;
+        height: 45%
+    }
+
+    .contactdivTwo{
+        width: 100%;
+        height: 45%
+    }
+}
