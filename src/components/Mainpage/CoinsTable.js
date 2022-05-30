@@ -326,53 +326,28 @@ export function PromotedCoin({overallwidth}) {
     const binance = <img src={binancelogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
   const [colorvote,setcolorvote] = useState('#FFFFFF ')
   const arrowforvote = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"/></svg>;
-  const[coins,setcoins] = useState(CoinObj.slice(0,4));
-  const [votes,setvotes] = useState(0);
-  const [stars,setstars] = useState(emptystar);
+  const[coins,setcoins] = useState(TodayBest.slice(0,4));
   const {votevalidation} = ParticularCoin();
   const navigate = useNavigate();
   const [watchlistArray,setwatchlistArray] = useContext(Statecontext).watchlistArray;
   
-  const filterToVote = (cointoFilter,coin,newArray,index) =>{
+
+  const filterAgent = (cointoFilter,coin,newArray,index) =>{
     let arrayHolder = cointoFilter.filter(ctf=> ctf !== coin);
     arrayHolder.splice(index,0,newArray[0]);
     //arrayHolder[index] = newArray[0];
     //arrayHolder.unshift(newArray[0]);
-    console.log('voting')
     return arrayHolder;
-  }
-  
+}
   const topVote = (coin) =>{
-    if(AllTime.includes(coin)){
-      let index = AllTime.indexOf(coin);
-      let Newcoinarr = AllTime.splice(index,1);
-      Newcoinarr[0][Object.keys(Newcoinarr[0])]['vote'] = 4;
-      setAllTime((prev)=>filterToVote(prev,coin,Newcoinarr,index));
-  
-    }
-    else if(TodayBest.includes(coin)){
+
+     if(TodayBest.includes(coin)){
       let index = TodayBest.indexOf(coin);
       let Newcoinarr = TodayBest.splice(index,1);
-      Newcoinarr[0][Object.keys(Newcoinarr[0])]['vote'] =4;
-      setTodayBest((prev)=>filterToVote(prev,coin,Newcoinarr,index));
+      Newcoinarr[0][Object.keys(Newcoinarr[0])]['vote']++;
+      setTodayBest((prev)=>filterAgent(prev,coin,Newcoinarr,index));
     }
-    else if(NewListings.includes(coin)){
-      let index = NewListings.indexOf(coin);
-      let Newcoinarr = NewListings.splice(index,1);
-      Newcoinarr[0][Object.keys(Newcoinarr[0])]['vote'] = 4;
-      setNewListings((prev)=>filterToVote(prev,coin,Newcoinarr,index));
-    }
-    else if(MarketCap.includes(coin)){
-      let index = MarketCap.indexOf(coin);
-      let Newcoinarr = MarketCap.splice(index,1);
-      Newcoinarr[0][Object.keys(Newcoinarr[0])]['vote'] = 4;
-      
-      setMarketCap((prev)=>filterToVote(prev,coin,Newcoinarr,index));
-    }
-
-    else{
-      console.log('i not wrong')
-    }
+  
   }
   
 
@@ -381,14 +356,47 @@ export function PromotedCoin({overallwidth}) {
 
   const addToWatchlist = (coin)=>{
     if(!watchlistArray.includes(coin)){
-      setwatchlistArray((prev)=>[...prev,coin])
+    
+      if(TodayBest.includes(coin)){
+        let index = TodayBest.indexOf(coin);
+        let Newcoinarr = TodayBest.splice(index,1);
+        Newcoinarr[0][Object.keys(Newcoinarr[0])]['watchlist'] = true;
+        setTodayBest((prev)=>filterAgent(prev,coin,Newcoinarr,index));
+        setwatchlistArray((prev)=>[...prev,Newcoinarr[0]])
+      }
+    
+      //setwatchlistArray((prev)=>[...prev,coin])
+
+      navigate('/watchlist')
     }
     else{
-      alert('coin is already added to your watchlist')
+     
+      if(TodayBest.includes(coin)){
+        let index = TodayBest.indexOf(coin);
+        let Newcoinarr = TodayBest.splice(index,1);
+        Newcoinarr[0][Object.keys(Newcoinarr[0])]['watchlist'] = false;
+        setTodayBest((prev)=>filterAgent(prev,coin,Newcoinarr,index));
+        setwatchlistArray((prev)=> prev.filter(pre=>pre!==coin))
+      }  
     }
-    console.log(watchlistArray)
-    navigate('/watchlist')
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   const voteFunction = (coin)=>{
     if(votevalidation){
@@ -404,21 +412,6 @@ export function PromotedCoin({overallwidth}) {
 
   
 
-  useEffect(
-    ()=>{
-      if(votes===1){
-        setstars(halfstar)
-      }
-
-      if(votes===2){
-        setstars(fullstar)
-      }
-
-    },[votes])
-
-    useEffect( ()=>{
-      setcoins(CoinObj.slice(0,4))
-    },[])
 
 
   return <div style={{width:'90%',margin:'0px auto',marginTop:'-15px',boxShadow: '0px 0px 50px #0b1f36',borderRadius:'10px 10px 15px 15px'}}>

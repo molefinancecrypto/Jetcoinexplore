@@ -29,18 +29,18 @@ export default function ContactUs({overallwidth}) {
         <div className='contactlayerOne'>
             <div className='contactlayerTwo' >
                 <div className='contactdivOne' >
-                    <div style={{width:'100%',height:'45px',display:'flex',justifyContent:'space-between',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
-                        <p style={{marginBottom:'0px',color:'white'}}>Firstname:</p>
-                        <input onChange={changeFirstname} type='text' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',height:'100%',border:'0px solid white',outline:'none'}}/>
+                    <div style={{width:'100%',height:'45px',display:'flex',flexDirection:'column',justifyContent:'space-between',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
+                        <p style={{marginBottom:'0px',textAlign:'left',color:'white'}}>Firstname:</p>
+                        <input onChange={changeFirstname} type='text' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',boxSizing:'border-box',border:'0px solid white',outline:'none'}}/>
                     </div>
 
-                    <div style={{width:'100%',height:'45px',display:'flex',justifyContent:'space-between',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
-                        <p style={{marginBottom:'0px',color:'white'}}>Lastname:</p>
-                        <input onChange={changeLastname} type='text' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',height:'100%',border:'0px solid white',outline:'none'}}/>
+                    <div style={{width:'100%',height:'45px',display:'flex',flexDirection:'column',justifyContent:'space-between',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
+                        <p style={{marginBottom:'0px',textAlign:'left',color:'white'}}>Lastname:</p>
+                        <input onChange={changeLastname} type='text' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',boxSizing:'border-box',border:'0px solid white',outline:'none'}}/>
                     </div>
-                    <div style={{width:'100%',height:'45px',display:'flex',justifyContent:'space-between',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
-                        <p style={{marginBottom:'0px',color:'white'}}>Email:</p>
-                        <input onChange={changeEmail} type='email' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',height:'100%',border:'0px solid white',outline:'none'}}/>
+                    <div style={{width:'100%',height:'45px',display:'flex',flexDirection:'column',justifyContent:'space-between',border:'0.5px solid white',borderWidth:'0px 0px 0.5px',boxSizing:'border-box'}}>
+                        <p style={{marginBottom:'0px',textAlign:'left',color:'white'}}>Email:</p>
+                        <input onChange={changeEmail} type='email' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',boxSizing:'border-box',border:'0px solid white',outline:'none'}}/>
                     </div>
                 </div>
 

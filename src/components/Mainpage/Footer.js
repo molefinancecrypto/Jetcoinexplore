@@ -35,8 +35,8 @@ export default function Footer() {
             <p className='footerTopic'><strong>Our Company</strong></p>
             <div className='footSecondContent'>
               <p><Link to="/newspage" style={{color:"#BABABA",textDecoration:"none",cursor:'pointer'}}>News</Link></p>
-              <p>Terms & Conditions</p>
-              <p>Privacy Policy</p>
+              <p><Link to="/rulesandreg" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>Terms & Conditions</Link></p>
+              <p><Link to="/rulesandreg" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>Privacy Policy</Link></p>
             </div>
           </div>
           
@@ -44,7 +44,7 @@ export default function Footer() {
         <div className='footerSecondMain'>
             <p className='footerTopic' ><strong>Help & Support</strong></p>
             <div className='footSecondContent'>
-              <p>DYOR</p>
+              <p><Link to="/rulesandreg" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>DYOR</Link></p>
               <p onClick={()=> navigate('/contactUs')} >Contact Us</p>
               <p><Link to="/promoted" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>Advertise</Link></p>
               <p onClick={()=> navigate('/salesrep')} style={{cursor:'pointer'}}>Sales Representative</p>

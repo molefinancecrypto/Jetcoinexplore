@@ -20,6 +20,7 @@ import Getlocation from './components/Getlocation';
 import Promoted from './components/Menu/Promoted';
 import Watchlist from './components/Menu/Watchlist';
 import ContactUs from './components/Menu/ContactUs';
+import RulesandReg from './components/Menu/RulesandReg';
 
 
 /*
@@ -176,6 +177,7 @@ const rfheight = ()=>{
       <Route path='/contactUs' element={<ContactUs overallwidth={overallwidth}/>}/>
       <Route path='/promoted' element={<Promoted overallwidth={overallwidth}/>} />
       <Route path='/watchlist' element={<Watchlist overallwidth={overallwidth}/>} />
+      <Route path='/rulesandreg' element={<RulesandReg overallwidth={overallwidth}/>} />
 
 
       </Routes>

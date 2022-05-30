@@ -1,0 +1,17 @@
+.rulesandregMain{
+    width: 96%;
+    margin: 30px auto;
+    min-height:100vh;
+    border:1px solid #0B1F36;
+    border-radius: 15px;
+    color: grey;
+    padding: 25px;
+    padding-top: 20px;
+    background-color: #071323;
+    margin-bottom: 20px;
+    color: white;
+    box-sizing: border-box;
+    display:'flex';
+    flex-direction: column;
+    justify-content: space-around;
+}
