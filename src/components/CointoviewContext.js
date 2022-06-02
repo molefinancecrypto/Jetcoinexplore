@@ -11,8 +11,8 @@ export const Statecontext = createContext();
 export const StateHolder = (props)=> {
     const [coinheader,setcoinheader] = useState('first');
     const [currentlocale,setcurrentlocale] = useState('/');
-    const  [triggerlength,settriggerlength] = useState(0);
-    const  [triggerlengthban,settriggerlengthban] = useState(0);
+    const [triggerlength,settriggerlength] = useState(0);
+    const [triggerlengthban,settriggerlengthban] = useState(0);
     const [dayarr,setdayarr] = useState([]);
     const [dayarrban,setdayarrban] = useState([]);
     const [dayarrunik,setdayarrunik] = useState([]);
@@ -25,6 +25,7 @@ export const StateHolder = (props)=> {
     const [todaybest, settodayBest] = useState(TodayBest);
     const [marketCap,setmarketCap] = useState(MarketCap);
     const [newlistings,setnewListings] = useState(NewListings)
+    const [headertoshow,setheadertoshow] = useState(0)
     
 
     return(
@@ -32,7 +33,7 @@ export const StateHolder = (props)=> {
         ,dayarrban:[dayarrban,setdayarrban],triggerlengthban: [triggerlengthban,settriggerlengthban],coinheader:[coinheader,setcoinheader],dayarr: [dayarr,setdayarr],
         dayarrunik:[dayarrunik,setdayarrunik],dayarrbanunik:[dayarrbanunik,setdayarrbanunik],changepagebyfoot:[changepagebyfoot,setchangepagebyfoot]
         ,changefootcheck:[changefootcheck,setchangefootcheck],ordermarginTop:[ordermarginTop,setordermarginTop],watchlistArray:[watchlistArray,setwatchlistArray]
-        ,alltime:[alltime, setallTime],todaybest:[todaybest, settodayBest],marketCap:[marketCap,setmarketCap],newlistings:[newlistings,setnewListings]}}>
+        ,alltime:[alltime, setallTime],todaybest:[todaybest, settodayBest],marketCap:[marketCap,setmarketCap],newlistings:[newlistings,setnewListings],headertoshow:[headertoshow,setheadertoshow]}}>
             {props.children}
         </Statecontext.Provider>
     )
