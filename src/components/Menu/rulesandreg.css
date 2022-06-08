@@ -21,7 +21,7 @@
 }
 
 .mobilebuttonrandr{
-    border-radius:20px;
+    border-radius:12px;
     padding:5px;
     border:1px solid white;
     font-size:11.5px;
@@ -29,11 +29,13 @@
     margin:0px 5px;
     display:flex;
     justify-content:center;
-    cursor:pointer
+    cursor:pointer;
+    align-items: center;
+    
 }
 
 .mobilebuttonrandrgrey{
-    border-radius:20px;
+    border-radius:12px;
     padding:5px;
     border:1px solid #BABABA;
     font-size:11.5px;
@@ -41,6 +43,8 @@
     margin:0px 5px;
     display:flex;
     justify-content:center;
+    align-items: center;
     cursor:pointer;
-    color: #BABABA
+    color: #BABABA;
+    background-color: #0d213a;
 }
