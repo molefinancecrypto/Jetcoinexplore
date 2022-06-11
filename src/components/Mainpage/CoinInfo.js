@@ -12,7 +12,7 @@ import ftmlogo from '../../chainLogo/ftmLogo.png';
 import maticlogo from '../../chainLogo/maticLogo.png';
 import trxlogo from '../../chainLogo/trxLogo.png';
 
-function CoinInfo({coin,overallwidth,addToWatchlist, topVote}) {
+function CoinInfo({coin,overallwidth,addToWatchlist, topVote,coins}) {
     const [votes,setvotes] = useState(0);
     const empty = <img src={emptystar} style={{width:'20px',height:'20px'}}/>;
   
@@ -60,6 +60,7 @@ function CoinInfo({coin,overallwidth,addToWatchlist, topVote}) {
   return <div className='main'>
   <div className='tableleft' onClick={ ()=>{
     navigate(`/coin/${coin[Object.keys(coin)]['name']}`,{state: coin})}}>
+      <p style={{display:overallwidth<=700?'none':'block'}}>{coins.indexOf(coin)+1}</p>
       <div style={{width:'150px',display:'flex',alignItems:'center',justifyContent:"left",padding:'0px'}}>
       <img className='tablecoinlogo' style={{borderRadius:'50%'}} src={coin[Object.keys(coin)]['img']} alt='coinLogo'/>
       <div style={{marginLeft:'15px'}}>
