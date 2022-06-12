@@ -46,7 +46,7 @@ export default function Footer() {
             <p className='footerTopic' ><strong>Help & Support</strong></p>
             <div className='footSecondContent'>
               <p onClick={()=>{setheadertoshow(1)}}><Link to="/rulesandreg" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>DYOR</Link></p>
-              <p onClick={()=> navigate('/contactUs')} >Contact Us</p>
+              <p onClick={()=> navigate('/contactUs')} style={{cursor:'pointer'}} >Contact Us</p>
               <p><Link to="/promoted" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>Advertise</Link></p>
               <p onClick={()=> navigate('/salesrep')} style={{cursor:'pointer'}}>Sales Representative</p>
             </div>
