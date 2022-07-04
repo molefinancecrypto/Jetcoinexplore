@@ -26,6 +26,7 @@ export const StateHolder = (props)=> {
     const [marketCap,setmarketCap] = useState(MarketCap);
     const [newlistings,setnewListings] = useState(NewListings)
     const [headertoshow,setheadertoshow] = useState(0)
+    const [headerterms,setheaderterms] = useState('')
     
 
     return(
@@ -33,7 +34,8 @@ export const StateHolder = (props)=> {
         ,dayarrban:[dayarrban,setdayarrban],triggerlengthban: [triggerlengthban,settriggerlengthban],coinheader:[coinheader,setcoinheader],dayarr: [dayarr,setdayarr],
         dayarrunik:[dayarrunik,setdayarrunik],dayarrbanunik:[dayarrbanunik,setdayarrbanunik],changepagebyfoot:[changepagebyfoot,setchangepagebyfoot]
         ,changefootcheck:[changefootcheck,setchangefootcheck],ordermarginTop:[ordermarginTop,setordermarginTop],watchlistArray:[watchlistArray,setwatchlistArray]
-        ,alltime:[alltime, setallTime],todaybest:[todaybest, settodayBest],marketCap:[marketCap,setmarketCap],newlistings:[newlistings,setnewListings],headertoshow:[headertoshow,setheadertoshow]}}>
+        ,alltime:[alltime, setallTime],todaybest:[todaybest, settodayBest],marketCap:[marketCap,setmarketCap],newlistings:[newlistings,setnewListings],headertoshow:[headertoshow,setheadertoshow],
+        headerterms:[headerterms,setheaderterms]}}>
             {props.children}
         </Statecontext.Provider>
     )

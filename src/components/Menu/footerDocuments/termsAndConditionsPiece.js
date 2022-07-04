@@ -1,6 +1,6 @@
 import React from 'react'
 
-function termsAndConditionsPiece() {
+function TermsAndConditionsPiece() {
   return (
     <div style={{padding:'20px',height:'100%',fontFamily:'NexaTextLight'}}>
         <p style={{textAlign:'left',fontSize:'25px',fontFamily: "NexaTextBold"}}>Terms & Conditions</p>
@@ -699,4 +699,4 @@ acceptance during the registration process (if applicable) and also by continuin
   )
 }
 
-export default termsAndConditionsPiece
+export default TermsAndConditionsPiece

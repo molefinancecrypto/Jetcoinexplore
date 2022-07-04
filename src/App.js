@@ -21,6 +21,7 @@ import Promoted from './components/Menu/Promoted';
 import Watchlist from './components/Menu/Watchlist';
 import ContactUs from './components/Menu/ContactUs';
 import RulesandReg from './components/Menu/RulesandReg';
+import NewlyAddedCoin from './components/Menu/NewlyAddedCoin';
 
 
 /*
@@ -178,6 +179,7 @@ const rfheight = ()=>{
       <Route path='/promoted' element={<Promoted overallwidth={overallwidth}/>} />
       <Route path='/watchlist' element={<Watchlist overallwidth={overallwidth}/>} />
       <Route path='/rulesandreg' element={<RulesandReg overallwidth={overallwidth}/>} />
+      <Route path='/newlyadcoins' element={<NewlyAddedCoin overallwidth={overallwidth}/>} />
 
 
       </Routes>

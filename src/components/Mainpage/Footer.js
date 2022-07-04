@@ -12,6 +12,7 @@ export default function Footer() {
   const [coinheader,setcoinheader] = useContext(Statecontext).coinheader;
   const [changepagebyfoot,setchangepagebyfoot] = useContext(Statecontext).changepagebyfoot;
   const [headertoshow,setheadertoshow] = useContext(Statecontext).headertoshow;
+  const [headerterms,setheaderterms] = useContext(Statecontext).headerterms
 
   const cointableselector = (choice)=>{
     setcoinheader(choice);
@@ -36,8 +37,9 @@ export default function Footer() {
             <p className='footerTopic'><strong>Our Company</strong></p>
             <div className='footSecondContent'>
               <p><Link to="/newspage" style={{color:"#BABABA",textDecoration:"none",cursor:'pointer'}}>News</Link></p>
-              <p onClick={()=>{setheadertoshow(0)}}><Link to="/rulesandreg" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>Terms & Conditions</Link></p>
-              <p onClick={()=>{setheadertoshow(2)}}><Link to="/rulesandreg" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>Privacy Policy</Link></p>
+              <p onClick={()=>{setheadertoshow(0);setheaderterms('Terms & Conditions')}}><Link to="/rulesandreg" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>Terms & Conditions</Link></p>
+              <p onClick={()=>{setheadertoshow(2);setheaderterms('Privacy Policy')}}><Link to="/rulesandreg" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>Privacy Policy</Link></p>
+              <p onClick={()=> navigate('/newlyadcoins')} style={{cursor:'pointer'}}>Newly Enlisted Coins</p>
             </div>
           </div>
           
@@ -45,10 +47,11 @@ export default function Footer() {
         <div className='footerSecondMain'>
             <p className='footerTopic' ><strong>Help & Support</strong></p>
             <div className='footSecondContent'>
-              <p onClick={()=>{setheadertoshow(1)}}><Link to="/rulesandreg" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>DYOR</Link></p>
+              <p onClick={()=>{setheadertoshow(1);setheaderterms('DYOR')}}><Link to="/rulesandreg" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>DYOR</Link></p>
               <p onClick={()=> navigate('/contactUs')} style={{cursor:'pointer'}} >Contact Us</p>
               <p><Link to="/promoted" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>Advertise</Link></p>
               <p onClick={()=> navigate('/salesrep')} style={{cursor:'pointer'}}>Sales Representative</p>
+              
             </div>
           </div>
           <div className='footerSecondMain'>
