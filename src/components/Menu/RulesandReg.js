@@ -3,9 +3,9 @@ import './rulesandreg.css';
 import GoToTop from '../Gototop';
 import { useNavigate } from 'react-router-dom';
 import { Statecontext } from '../CointoviewContext';
-import TermsAndConditionsPiece from './footerDocuments/TermsAndConditionsPiece';
-import DyorPiece from './footerDocuments/DyorPiece';
-import PrivacyPolicy from './footerDocuments/PrivacyPolicy';
+import TermsHolder from './HolderOfTerms/TermsHolder';
+import DyorHolder from './HolderOfTerms/DyorHolder'
+import PrivacyHolder from './HolderOfTerms/PrivacyHolder'
 
 
 export default function RulesandReg({overallwidth}) {
@@ -57,7 +57,7 @@ export default function RulesandReg({overallwidth}) {
                   <p  style={{cursor:'pointer',textAlign:'center',width:'33.3%'}} onClick={dyor}>DYOR</p>
                   <div style={{position:'absolute',backgroundColor:'#062750',width:'33.3%',height:'1px',top:'100%',left:headerterms==='Terms & Conditions'?'0%':headerterms==='Privacy Policy'?'33.3%':'66.6%'}}></div>
                 </div>
-                <div style={{width:'100%',marginTop:overallwidth<='700px'?'20px':'40px',height:'auto'}}>{headerterms==='Terms & Conditions'?<TermsAndConditionsPiece/>:headerterms==='Privacy Policy'?<PrivacyPolicy/>:<DyorPiece />}</div>
+                <div style={{width:'100%',marginTop:overallwidth<='700px'?'20px':'40px',height:'auto'}}>{headerterms==='Terms & Conditions'?<TermsHolder/>:headerterms==='Privacy Policy'?<PrivacyHolder/>:<DyorHolder />}</div>
 
     </div>
     <GoToTop />
