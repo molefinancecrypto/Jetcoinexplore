@@ -1,4 +1,5 @@
 import React from 'react'
+import GoToTop from '../../Gototop'
 
 function DyorPiece() {
   return (
@@ -115,7 +116,7 @@ function DyorPiece() {
 
 
       </div>
-      
+     <GoToTop /> 
       
     </div>
   )

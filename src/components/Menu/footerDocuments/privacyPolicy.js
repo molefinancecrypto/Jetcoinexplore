@@ -1,12 +1,15 @@
-import React from 'react'
-
+import { Link } from 'react-router-dom'
+import React, {useContext} from 'react'
+import { Statecontext } from '../../CointoviewContext'
+import GoToTop from '../../Gototop'
 function PrivacyPolicy() {
+    const [headerterms,setheaderterms] = useContext(Statecontext).headerterms
   return (
     <div style={{padding:'20px',height:'100%',fontFamily:'NexaTextLight',overflow:"hidden"}}>
         <div>
             <p style={{textAlign:'left',fontSize:'30px',fontFamily: "NexaTextBold"}}>Privacy Policy</p>
             <div style={{marginTop:'20px'}}>
-                <p style={{textAlign:'left',margin:'20px auto'}}>Coinexplore ("we", "our", or "us") can be reached at support@coinexplore.io; one of our top objectives is protecting our visitors' privacy. Using Coinexplore you, as a User, can submit and promote your cryptocurrency coins/tokens. You can also vote for your favorite coins/tokens and check the most voted for coins/tokens on the Platform. In addition, you can create and share a Watchlist of your favorite coins/tokens. You can access our Platform via our Website: coinexplore.iot. The use of the Platform and our Website collectively: our Services.
+                <p style={{textAlign:'left',margin:'20px auto'}}>Coinexplore ("we", "our", or "us") can be reached at <Link to='/'>support@coinexplore.io</Link>; one of our top objectives is protecting our visitors' privacy. Using Coinexplore you, as a User, can submit and promote your cryptocurrency coins/tokens. You can also vote for your favorite coins/tokens and check the most voted for coins/tokens on the Platform. In addition, you can create and share a Watchlist of your favorite coins/tokens. You can access our Platform via our Website: coinexplore.iot. The use of the Platform and our Website collectively: our Services.
                 </p>
                 <p style={{textAlign:'left',margin:'20px auto'}}>This is our Privacy Policy. In this document we explain what kind of Personal Data we collect via our Services. We also explain what role we have in the processing of Personal Data, how long we retain them and what rights you have as a data subject. If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.
                 </p>
@@ -22,7 +25,7 @@ function PrivacyPolicy() {
                 <div style={{marginTop:'15px'}}>
                     <p style={{fontSize:'20px',textAlign:'left'}}>1.1</p>  
                     <p style={{textAlign:'left',margin:'10px auto'}}>By accessing our Site and continuing to access our Site and/or Site Services, you represent that you are above 18 years of age, and legally capable of entering into and being bound by contracts, including but not limited to the Agreement.</p>
-                    <p style={{textAlign:'left',margin:'10px auto'}}>We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity. Coinexplore does not knowingly collect any Personal Identifiable Information from children under the age of 18. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>
+                    <p style={{textAlign:'left',margin:'10px auto'}}>We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity. Coinexplore does not knowingly collect any Personal Identifiable Information from children under the age of 18. If you think that your child provided this kind of information on our website, we strongly encourage you to <Link to='/contactUs' style={{backgroundColor:'yellow',color:'black',padding:'3px',cursor:'pointer'}}>contact us</Link> immediately and we will do our best efforts to promptly remove such information from our records.</p>
                 </div> 
                 <div style={{textAlign:'left',marginTop:'15px'}}>
                     <p style={{fontSize:'20px',textAlign:'left'}}>1.2</p>  
@@ -35,7 +38,7 @@ function PrivacyPolicy() {
                 </div>
                 <div style={{textAlign:'left',marginTop:'15px'}}>
                     <p style={{fontSize:'20px',textAlign:'left'}}>1.4</p>  
-                    <p style={{margin:'10px auto'}}>In the event that you register an account with us, you are fully responsible for ensuring that your account login and passwords are kept strictly confidential and secure, as all activities conducted via your account shall be deemed as all acts duly performed and/or authorized by you without the requirement for any further verifications on our part. Should you become aware of any security breaches or unauthorized access to your account, you must notify us immediately via email to support@coinexplore.io. Nonetheless, you agree that you will be fully responsible for all acts and transactions (including but not limited to postings, Activity Uploads (as defined in the Terms & Conditions), listings, and usage of any of our Site Services that take place via your account prior to your aforesaid notification of security breach to us, and you undertake to honor and see to completion all such acts and transactions that has happened under your account (regardless of whether you have specifically authorized such acts or transactions).
+                    <p style={{margin:'10px auto'}}>In the event that you register an account with us, you are fully responsible for ensuring that your account login and passwords are kept strictly confidential and secure, as all activities conducted via your account shall be deemed as all acts duly performed and/or authorized by you without the requirement for any further verifications on our part. Should you become aware of any security breaches or unauthorized access to your account, you must notify us immediately via email to support@coinexplore.io. Nonetheless, you agree that you will be fully responsible for all acts and transactions (including but not limited to postings, Activity Uploads (as defined in the <span onClick={()=>{setheaderterms('Terms & Conditions')}} style={{backgroundColor:'yellow',color:'black',padding:'3px',cursor:'pointer'}}>Terms & Conditions</span>), listings, and usage of any of our Site Services that take place via your account prior to your aforesaid notification of security breach to us, and you undertake to honor and see to completion all such acts and transactions that has happened under your account (regardless of whether you have specifically authorized such acts or transactions).
                     </p>
                 </div>
                 <div style={{textAlign:'left',marginTop:'15px'}}>
@@ -330,7 +333,7 @@ function PrivacyPolicy() {
                             <li>Port your personal information</li>
                             <li>Request information about the logic involved in our automated decision-making used in our fraud prevention practices and the result of such decisions</li>
                         </ul>
-                        <p style={{margin:'10px auto'}}>For questions about privacy, your rights and choices, and in order to make a request to amend or update your information, please contact us here.</p>
+                        <p style={{margin:'10px auto'}}>For questions about privacy, your rights and choices, and in order to make a request to amend or update your information, please contact us <Link to='/contactUs' style={{backgroundColor:'yellow',color:'black',padding:'3px',cursor:'pointer'}}>here</Link>.</p>
                     </div>
                 </div>
                 <div>
@@ -531,8 +534,8 @@ function PrivacyPolicy() {
             <div style={{marginTop:'50px',textAlign:'left'}}>
                 <p style={{textAlign:'left',fontSize:'25px'}}>6 &nbsp;&nbsp;&nbsp;Contact Us</p> 
                 <div style={{marginTop:'15px'}}>
-                    <p style={{margin:'10px auto'}}>If you have any questions or concerns about our use of your personal information, or wish to inquire about our personal handling practices, please contact us here.
-.For more information about the data controller and/or Representative for personal information we process, please click here.</p>
+                    <p style={{margin:'10px auto'}}>If you have any questions or concerns about our use of your personal information, or wish to inquire about our personal handling practices, please contact us <Link to='/contactUs' style={{backgroundColor:'yellow',color:'black',padding:'3px',cursor:'pointer'}}>here</Link>.
+.For more information about the data controller and/or Representative for personal information we process, please click <Link to='/contactUs' style={{backgroundColor:'yellow',color:'black',padding:'3px',cursor:'pointer'}}>here</Link>.</p>
                 </div>
 
             </div>
@@ -546,6 +549,7 @@ function PrivacyPolicy() {
 
 
         </div>
+        <GoToTop />
     </div>
   )
 }

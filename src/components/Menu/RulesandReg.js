@@ -1,4 +1,4 @@
-import React, { useState,useContext } from 'react';
+import React, { useState,useContext,useEffect } from 'react';
 import './rulesandreg.css';
 import GoToTop from '../Gototop';
 import { useNavigate } from 'react-router-dom';
@@ -42,6 +42,7 @@ export default function RulesandReg({overallwidth}) {
         setheadertoshow(2)
     }
 }
+
   return (
     <div className='rulesandregMain'>
             <div style={{width:'100%',display:'flex',justifyContent:'left',flexDirection:'column'}}>

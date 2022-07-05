@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import './contactUs.css';
 import { useNavigate  } from 'react-router-dom';
+import GoToTop from '../Gototop';
 
 export default function ContactUs({overallwidth}) {
     const [firstname,setfirstname] = useState('')
@@ -29,18 +30,18 @@ export default function ContactUs({overallwidth}) {
         <div className='contactlayerOne'>
             <div className='contactlayerTwo' >
                 <div className='contactdivOne' >
-                    <div style={{width:'100%',height:'45px',display:'flex',flexDirection:'column',justifyContent:'space-between',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
-                        <p style={{marginBottom:'0px',textAlign:'left',color:'white'}}>Firstname:</p>
-                        <input onChange={changeFirstname} type='text' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',boxSizing:'border-box',border:'0px solid white',outline:'none'}}/>
+                    <div style={{width:'100%',display:'flex',flexDirection:'column',justifyContent:'space-between',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
+                        <p style={{marginBottom:'10px',textAlign:'left',color:'white'}}>Firstname:</p>
+                        <input onChange={changeFirstname} type='text' style={{fontSize:'17px',paddingLeft:'5px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',boxSizing:'border-box',border:'0px solid white',outline:'none'}}/>
                     </div>
 
-                    <div style={{width:'100%',height:'45px',display:'flex',flexDirection:'column',justifyContent:'space-between',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
-                        <p style={{marginBottom:'0px',textAlign:'left',color:'white'}}>Lastname:</p>
-                        <input onChange={changeLastname} type='text' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',boxSizing:'border-box',border:'0px solid white',outline:'none'}}/>
+                    <div style={{width:'100%',display:'flex',flexDirection:'column',justifyContent:'space-between',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
+                        <p style={{marginBottom:'10px',textAlign:'left',color:'white'}}>Lastname:</p>
+                        <input onChange={changeLastname} type='text' style={{fontSize:'17px',paddingLeft:'5px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',boxSizing:'border-box',border:'0px solid white',outline:'none'}}/>
                     </div>
-                    <div style={{width:'100%',height:'45px',display:'flex',flexDirection:'column',justifyContent:'space-between',border:'0.5px solid white',borderWidth:'0px 0px 0.5px',boxSizing:'border-box'}}>
-                        <p style={{marginBottom:'0px',textAlign:'left',color:'white'}}>Email:</p>
-                        <input onChange={changeEmail} type='email' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',boxSizing:'border-box',border:'0px solid white',outline:'none'}}/>
+                    <div style={{width:'100%',display:'flex',flexDirection:'column',justifyContent:'space-between',border:'0.5px solid white',borderWidth:'0px 0px 0.5px',boxSizing:'border-box'}}>
+                        <p style={{marginBottom:'10px',textAlign:'left',color:'white'}}>Email:</p>
+                        <input onChange={changeEmail} type='email' style={{fontSize:'17px',paddingLeft:'5px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',boxSizing:'border-box',border:'0px solid white',outline:'none'}}/>
                     </div>
                 </div>
 
@@ -54,7 +55,7 @@ export default function ContactUs({overallwidth}) {
                     
             </div>
         </div>
-    
+      <GoToTop />
     </div>
   )
 }

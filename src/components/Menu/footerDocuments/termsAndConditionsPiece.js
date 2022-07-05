@@ -1,11 +1,15 @@
-import React from 'react'
+import React , {useContext} from 'react'
+import { Statecontext } from '../../CointoviewContext'
+import {useNavigate,Link} from 'react-router-dom'
+import GoToTop from '../../Gototop'
 
 function TermsAndConditionsPiece() {
+    const [headerterms, setheaderterms] = useContext(Statecontext).headerterms
   return (
     <div style={{padding:'20px',height:'100%',fontFamily:'NexaTextLight'}}>
         <p style={{textAlign:'left',fontSize:'25px',fontFamily: "NexaTextBold"}}>Terms & Conditions</p>
 
-        <p style={{margin:'20px auto',textAlign:'left'}}>This Terms & Conditions (“Agreement”), along with our Privacy & Cookie Policy , constitutes a legally binding agreement made between you, whether personally or on behalf of an entity (“user” or “you”) and Coinexplore and its affiliated companies, Websites, applications and tools (collectively, Coinexplore, “we” or “us” or “our”), concerning your access to and use of https://www.coinexplore.io  (‘’Website’’) as well as any other media form, media channel, mobile website or mobile application related or connected thereto (collectively, the “Sites”). The Sites provide the following service: Coinexplore is a media and news website covering cryptocurrencies, NFTs, and more. (“Services”). Supplemental terms and conditions or documents that may be posted on the Sites from time to time, are hereby expressly incorporated into this Agreement by reference.
+        <p style={{margin:'20px auto',textAlign:'left'}}>This Terms & Conditions (“Agreement”), along with our <span onClick={()=>setheaderterms('Privacy Policy')} style={{backgroundColor:'yellow',cursor:'pointer',color:'black',padding:"2px"}}>Privacy & Cookie Policy</span> , constitutes a legally binding agreement made between you, whether personally or on behalf of an entity (“user” or “you”) and Coinexplore and its affiliated companies, Websites, applications and tools (collectively, Coinexplore, “we” or “us” or “our”), concerning your access to and use of <Link to='/'>https://www.coinexplore.io</Link>  (‘’Website’’) as well as any other media form, media channel, mobile website or mobile application related or connected thereto (collectively, the “Sites”). The Sites provide the following service: Coinexplore is a media and news website covering cryptocurrencies, NFTs, and more. (“Services”). Supplemental terms and conditions or documents that may be posted on the Sites from time to time, are hereby expressly incorporated into this Agreement by reference.
         </p>
 
         <p style={{margin:'20px auto',textAlign:'left'}}>The information on the Sites is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation, or where such distribution or use would be subject to any registration requirement within such jurisdiction or country. Users who choose to access the Sites from other areas do so at their own risk and are solely responsible for complying with local laws, if and to the extent that local laws apply.
@@ -60,7 +64,7 @@ acceptance during the registration process (if applicable) and also by continuin
             <div>
                 <p style={{textAlign:'left',marginBottom:'10px',marginTop:'20px'}}>1.5</p>
                 <p style={{textAlign:'left'}}>
-                The market for the digital assets, including but not limited to cryptocurrency as listed on the Website, is still new and uncertain. Unlike most currencies or assets, which are backed by governments or other legal entities, or by other commodities such as gold or silver, digital assets are a unique type of asset, backed by technology and trust. Digital assets are an as-yet autonomous and largely unregulated global system of digital asset service providers and individuals. Investors put their trust in a digital, decentralized and partially anonymous system that relies on peer-to-peer networking and cryptography to maintain its integrity. Consequently, market prices for digital assets can be highly volatile and unpredictable. Whether the future market price for a digital asset will move up or down is a speculation and unknowable and digital assets may even become worthless. There is no central bank or other third party that can take corrective measures to protect the value of a digital asset. The User is aware of this market risk and should be cautious about digital assets. Moreover, the cryptocurrency listed on the Website could potentially be Scams, i.e. designed to either by object or effect induce market participants to invest financial resources that will not be recoverable once investments are made. Each User is responsible to Do Your Own Research (DYOR) regarding any information, specifically regarding cryptocurrency, listed on the Website.
+                The market for the digital assets, including but not limited to cryptocurrency as listed on the Website, is still new and uncertain. Unlike most currencies or assets, which are backed by governments or other legal entities, or by other commodities such as gold or silver, digital assets are a unique type of asset, backed by technology and trust. Digital assets are an as-yet autonomous and largely unregulated global system of digital asset service providers and individuals. Investors put their trust in a digital, decentralized and partially anonymous system that relies on peer-to-peer networking and cryptography to maintain its integrity. Consequently, market prices for digital assets can be highly volatile and unpredictable. Whether the future market price for a digital asset will move up or down is a speculation and unknowable and digital assets may even become worthless. There is no central bank or other third party that can take corrective measures to protect the value of a digital asset. The User is aware of this market risk and should be cautious about digital assets. Moreover, the cryptocurrency listed on the Website could potentially be Scams, i.e. designed to either by object or effect induce market participants to invest financial resources that will not be recoverable once investments are made. Each User is responsible to Do Your Own Research <span onClick={()=>{setheaderterms('dyor')}} style={{backgroundColor:"yellow",padding:"3px",cursor:'pointer',color:'black'}}>(DYOR)</span> regarding any information, specifically regarding cryptocurrency, listed on the Website.
 
 
                 </p>
@@ -195,7 +199,7 @@ acceptance during the registration process (if applicable) and also by continuin
             <div>
                 <p style={{textAlign:'left',marginBottom:'10px',marginTop:'20px'}}>4.2</p>
                 <p style={{textAlign:'left'}}>
-                If any User finds that any Content on the Platform or Website infringes applicable legal and regulatory provisions, in particular in case of clearly illegal content (e.g. defaming, denigrating or infringing upon intellectual property rights), the User shall notify Coinexplore by sending a notice to support@coinexplore.io . In such case, the User must provide Coinexplore with all information necessary to enable us to identify the Content in question and take further actions if necessary, such as:
+                If any User finds that any Content on the Platform or Website infringes applicable legal and regulatory provisions, in particular in case of clearly illegal content (e.g. defaming, denigrating or infringing upon intellectual property rights), the User shall notify Coinexplore by sending a notice to <Link to='/'>support@coinexplore.io</Link> . In such case, the User must provide Coinexplore with all information necessary to enable us to identify the Content in question and take further actions if necessary, such as:
 
                 </p>
             </div>
@@ -286,7 +290,7 @@ acceptance during the registration process (if applicable) and also by continuin
                 <p style={{textAlign:'left',marginBottom:'10px',marginTop:'20px'}}>8.2
                 </p>
                 <p style={{textAlign:'left'}}>
-                The prospective Voter is fully responsible for non-disclosure of its Login Credentials and the use of its Account to unauthorized people or entities. The prospective Voter may not allow use of its Account by 
+                The prospective Voter is fully responsible for non-disclosure of its Login Credentials and the use of its Account to unauthorized people or entities. The prospective Voter may not allow use of its Account by any third party nor others that do not have the authority to represent prospective Voter. The prospective Voter guarantees that any third party that uses its Account is authorized to represent the prospective Voter. If the prospective Voter suspects that its Account’s security has been breached, the prospective Voter shall report this immediately to <Link to='/'>support@coinexplore.io</Link> . 
                 </p>
             </div>
             <div>
@@ -301,7 +305,7 @@ acceptance during the registration process (if applicable) and also by continuin
                 <p style={{textAlign:'left',marginBottom:'10px',marginTop:'20px'}}>8.4
                 </p>
                 <p style={{textAlign:'left'}}>
-                The Voter may request to cancel/terminate its Account by contacting Coinexplore. Coinexplore may need to retain certain information as required by law or as necessary for its business purposes. For more information about the processing of personal data, please see the Privacy & Cookie Policy.
+                The Voter may request to cancel/terminate its Account by contacting Coinexplore. Coinexplore may need to retain certain information as required by law or as necessary for its business purposes. For more information about the processing of personal data, please see the <span onClick={()=>{setheaderterms('Privacy Policy')}} style={{backgroundColor:'yellow',color:'black',padding:"3px",cursor:'pointer'}}>Privacy & Cookie Policy</span>.
 
                 </p>
             </div>
@@ -695,6 +699,7 @@ acceptance during the registration process (if applicable) and also by continuin
                 </p>
 
         </div>
+        <GoToTop />
     </div>
   )
 }
