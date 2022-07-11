@@ -1,5 +1,6 @@
 import React, {useState,useContext,useEffect,useRef} from 'react';
 import './promotion.css';
+import { Link } from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
 import Calendarcomp from './Calendarcomp';
 import { Statecontext } from '../CointoviewContext';
@@ -9,6 +10,8 @@ import GoToTop from '../Gototop';
 
 function Promoted({overallwidth}) {
     const navigate = useNavigate();
+    const [headertoshow,setheadertoshow] = useContext(Statecontext).headertoshow;
+  const [headerterms,setheaderterms] = useContext(Statecontext).headerterms
     const [promosec,setpromosec] = useState(false);
     const [banasec,setbanasec] = useState(false);
     const [customAd,setcustomAd] = useState(false);
@@ -261,7 +264,7 @@ const promomover = ()=>{
                     <p style={{width:'100%',display:'flex',justifyContent:'space-around',marginTop:'10px',marginBottom:'10px'}}><span>14+ Days</span><span>25% Off</span></p>
                 </div>
                 <p style={{textAlign:'center',color:'#BABABA',width:overallwidth>900?'65%':'100%',margin:'5px auto',marginTop:'15px',fontFamily:'NexaTextLight',fontSize:'15px'}}>NOTE: By completing any purchase or advertising request,you agree that there 
-                                                                will be no refunds issued either in part or full, as expressly stated in our <a href="#"> Terms & Conditions</a></p>
+                                                                will be no refunds issued either in part or full, as expressly stated in our <p onClick={()=>{setheadertoshow(0);setheaderterms('Terms & Conditions')}}><Link to="/rulesandreg" style={{color:'rgb(176, 176, 240)'}}> Terms & Conditions</Link></p></p>
                 </div>
             </div>
             <div  style={{width:overallwidth>900?'30%':'100%',margin:overallwidth>900?'0px':'30px auto',height:'100%'}}>

@@ -228,13 +228,6 @@ const topVote = (coin) =>{
           setcoinpage(arraypager);
         }
 
-        else if(coinheader==='third'){
-          const arraypager = funcForpager(NewListings);
-          setcoinpageindex(0);
-          setcoins(NewListings)
-          setcoinpage(arraypager)
-        }
-
         else{
           const arraypager = funcForpager(MarketCap);
           setcoinpageindex(0);
@@ -261,13 +254,7 @@ const topVote = (coin) =>{
     setcoinpage(pagedata);
       }
 
-      else if(coinheader==='third'){
-        const arraypager = NewListings.filter(coin => coin[Object.keys(coin)]['chain']===chainfilter);
-        const pagedata = funcForpager(arraypager);
-        setcoinpageindex(0);
-        setcoins(NewListings.filter(coin => coin[Object.keys(coin)]['chain']===chainfilter));
-        setcoinpage(pagedata)
-          }
+      
 
           else{
             const arraypager = MarketCap.filter(coin => coin[Object.keys(coin)]['chain']===chainfilter);
@@ -295,7 +282,7 @@ const topVote = (coin) =>{
             </div>
       </div>
       </div>
-      <div style={{width:overallwidth>900?'70%':'90%',fontSize:overallwidth>900?'17px':'11px',display:'flex',justifyContent:'space-between',margin:'15px auto', borderRadius:'15px',boxSizing:'border-box',border:'2px solid #0B1F36'}}><p style={{display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',border:'0.5px solid #0B1F36',margin:'2px',borderRadius:'15px 0px 0px 15px',borderWidth:'0px 0.5px 0px 0px',padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',color:coinheader==='first'?'white':'#BABABA',backgroundColor:coinheader==='first'?'#112836':'transparent',cursor:'pointer'}} onClick={()=>headertablemobile('first')}>Today's Best</p><p style={{border:'0.5px solid #0B1F36',borderWidth:'0px 0.5px 0px 0px',margin:'2px',padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',color:coinheader==='second'?'white':'#BABABA',backgroundColor:coinheader==='second'?'#112836':'transparent',display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}} onClick={()=>headertablemobile('second')}>All Time Best</p><p style={{border:'0.5px solid #0B1F36',borderWidth:'0px 0.5px 0px 0px',margin:'2px',padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',color:coinheader==='third'?'white':'#BABABA',backgroundColor:coinheader==='third'?'#112836':'transparent',display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}} onClick={()=>headertablemobile('third')}>New Listings</p><p style={{padding:'10px',width:'25%',textAlign:'center',boxSizing:'border-box',margin:'2px',color:coinheader==='fourth'?'white':'#BABABA',backgroundColor:coinheader==='fourth'?'#112836':'transparent',borderRadius:'0px 15px 15px 0px',display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}} onClick={()=>headertablemobile('fourth')}>By Market Cap</p></div>
+      <div style={{width:overallwidth>900?'70%':'90%',fontSize:overallwidth>900?'17px':'11px',display:'flex',justifyContent:'space-between',margin:'15px auto', borderRadius:'15px',boxSizing:'border-box',border:'2px solid #0B1F36'}}><p style={{display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',border:'0.5px solid #0B1F36',margin:'2px',borderRadius:'15px 0px 0px 15px',borderWidth:'0px 0.5px 0px 0px',padding:'10px',width:'33.3%',textAlign:'center',boxSizing:'border-box',color:coinheader==='first'?'white':'#BABABA',backgroundColor:coinheader==='first'?'#112836':'transparent',cursor:'pointer'}} onClick={()=>headertablemobile('first')}>Today's Best</p><p style={{border:'0.5px solid #0B1F36',borderWidth:'0px 0.5px 0px 0px',margin:'2px',padding:'10px',width:'33.3%',textAlign:'center',boxSizing:'border-box',color:coinheader==='second'?'white':'#BABABA',backgroundColor:coinheader==='second'?'#112836':'transparent',display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}} onClick={()=>headertablemobile('second')}>All Time Best</p><p style={{padding:'10px',width:'33.3%',textAlign:'center',boxSizing:'border-box',margin:'2px',color:coinheader==='third'?'white':'#BABABA',backgroundColor:coinheader==='third'?'#112836':'transparent',borderRadius:'0px 15px 15px 0px',display:overallwidth>900?'block':'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}} onClick={()=>headertablemobile('third')}>By Market Cap</p></div>
       <div className='headerClass'>
            <div className='tableheader'><div className='headerleft' ><p style={{display:overallwidth<=700?'none':"block"}}>S/N</p><p style={{width:'150px',textAlign:'center'}}>NAME</p></div> <div className='headerright' ><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='price'>PRICE</p> <p className='launchhead'>LAUNCH-DATE</p> <p className='changehead'>CHANGE(24hrs)</p> <p className='voteheader' >VOTE</p> </div> <p className='starholder' > </p></div>
            { coins.length== 0 ?<div style={{fontSize:'30px'}}>NO MATCHES</div> : coins.length>=8? <div style={{height:'auto',width:'100%',borderRadius:'0px 0px 10px 10px'}}>{coinpage[coinpageindex].map( coin => <CoinInfo addToWatchlist={addToWatchlist} overallwidth={overallwidth}  topVote= {topVote} coin={coin} coins={coins} key={uuidv4()}/> )}</div> : <div style={{height:'auto',width:'100%',borderRadius:'0px 0px 10px 10px'}}>{coins.map( coin => <CoinInfo addToWatchlist={addToWatchlist} topVote={topVote} overallwidth={overallwidth} coin={coin} coins={coins} key={uuidv4()}/> )}</div>}
@@ -386,7 +373,8 @@ export function PromotedCoin({overallwidth}) {
   useEffect(
     async()=>{
       const newdata = await fetch('https://dev2.coinexplore.io/api/coins/all');
-      const Jsondata = await newdata.json();
+      const Json = await newdata.json();
+      const Jsondata = Json['coins']
       console.log(Jsondata)
       setmaindata(Jsondata)
       console.log(maindata)

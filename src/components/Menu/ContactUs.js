@@ -30,18 +30,18 @@ export default function ContactUs({overallwidth}) {
         <div className='contactlayerOne'>
             <div className='contactlayerTwo' >
                 <div className='contactdivOne' >
-                    <div style={{width:'100%',display:'flex',flexDirection:'column',justifyContent:'space-between',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
-                        <p style={{marginBottom:'10px',textAlign:'left',color:'white'}}>Firstname:</p>
-                        <input onChange={changeFirstname} type='text' style={{fontSize:'17px',paddingLeft:'5px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',boxSizing:'border-box',border:'0px solid white',outline:'none'}}/>
+                    <div style={{width:'100%',marginTop:'10px',display:'flex',flexDirection:'column',justifyContent:'space-between',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
+                        <p style={{marginBottom:'10px',textAlign:'left',color:'white',letterSpacing:'1.5px',fontSize:'20px'}}>First Name:</p>
+                        <input onChange={changeFirstname} type='text' style={{fontSize:'15px',fontFamily:'NexaTextLight',paddingLeft:'5px',backgroundColor:'transparent',width:'100%',color:'white',paddingBottom:'10px',boxSizing:'border-box',border:'0px solid white',outline:'none'}}/>
                     </div>
 
-                    <div style={{width:'100%',display:'flex',flexDirection:'column',justifyContent:'space-between',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
-                        <p style={{marginBottom:'10px',textAlign:'left',color:'white'}}>Lastname:</p>
-                        <input onChange={changeLastname} type='text' style={{fontSize:'17px',paddingLeft:'5px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',boxSizing:'border-box',border:'0px solid white',outline:'none'}}/>
+                    <div style={{width:'100%',marginTop:'10px',display:'flex',flexDirection:'column',justifyContent:'space-between',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
+                        <p style={{marginBottom:'10px',textAlign:'left',color:'white',letterSpacing:'1.5px',fontSize:'20px'}}>Last Name:</p>
+                        <input onChange={changeLastname} type='text' style={{fontSize:'17px',fontFamily:'NexaTextLight',paddingLeft:'5px',backgroundColor:'transparent',width:'100%',color:'white',paddingBottom:'10px',boxSizing:'border-box',border:'0px solid white',outline:'none'}}/>
                     </div>
-                    <div style={{width:'100%',display:'flex',flexDirection:'column',justifyContent:'space-between',border:'0.5px solid white',borderWidth:'0px 0px 0.5px',boxSizing:'border-box'}}>
-                        <p style={{marginBottom:'10px',textAlign:'left',color:'white'}}>Email:</p>
-                        <input onChange={changeEmail} type='email' style={{fontSize:'17px',paddingLeft:'5px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',boxSizing:'border-box',border:'0px solid white',outline:'none'}}/>
+                    <div style={{width:'100%',marginTop:'10px',display:'flex',flexDirection:'column',justifyContent:'space-between',border:'0.5px solid white',borderWidth:'0px 0px 0.5px',boxSizing:'border-box'}}>
+                        <p style={{marginBottom:'10px',textAlign:'left',color:'white',letterSpacing:'1.5px',fontSize:'20px'}}>Email:</p>
+                        <input onChange={changeEmail} type='email' style={{fontSize:'17px',fontFamily:'NexaTextLight',paddingLeft:'5px',backgroundColor:'transparent',width:'100%',color:'white',paddingBottom:'10px',boxSizing:'border-box',border:'0px solid white',outline:'none'}}/>
                     </div>
                 </div>
 

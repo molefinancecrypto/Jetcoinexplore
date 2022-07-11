@@ -38,7 +38,7 @@ export default function Footer() {
             <div className='footSecondContent'>
               <p><Link to="/newspage" style={{color:"#BABABA",textDecoration:"none",cursor:'pointer'}}>News</Link></p>
               <p onClick={()=>{setheadertoshow(0);setheaderterms('Terms & Conditions')}}><Link to="/rulesandreg" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>Terms & Conditions</Link></p>
-              <p onClick={()=>{setheadertoshow(2);setheaderterms('Privacy Policy')}}><Link to="/rulesandreg" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>Privacy Policy</Link></p>
+              <p onClick={()=>{setheadertoshow(2);setheaderterms('Privacy & Cookie Policies')}}><Link to="/rulesandreg" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>Privacy & Cookie Policies</Link></p>
               <p onClick={()=> navigate('/newlyadcoins')} style={{cursor:'pointer'}}>Newly Enlisted Coins</p>
             </div>
           </div>

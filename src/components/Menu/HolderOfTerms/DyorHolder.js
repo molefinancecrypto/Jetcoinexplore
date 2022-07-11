@@ -4,7 +4,7 @@ import GoToTop from '../../Gototop'
 function DyorHolder() {
     return (
         <div style={{textAlign:'left',padding:'20px',height:'100%',fontFamily:'NexaTextLight'}}>
-          <p style={{fontSize:'30px',fontFamily: "NexaTextBold"}}>DO YOUR OWN RESEARCH (DYOR)</p>
+          <p style={{fontSize:'30px',fontFamily: "NexaTextBold"}}>Do Your Own Research (DYOR)</p>
           <div style={{margin:'25px auto'}}>
             <p style={{margin:"10px auto"}}>The crypto world is full of opportunities, especially among new tokens with smaller marketcaps, the upside potential is often much larger than that of BTC or ETH. Everyone hopes to find the next Dogecoin that will increase 100x within a month.</p>
             <p style={{margin:"10px auto"}}>However, there are a lot of risks to consider when investing in smaller projects. Many projects appear to be very promising at first, but turn out to be scams just days later. As a smart investor, always apply DYOR - Do Your Own Research prior to investing.</p>

@@ -6,7 +6,7 @@ function PrivacyPolicy() {
     const [headerterms,setheaderterms] = useContext(Statecontext).headerterms
   return (
     <div style={{padding:'20px',height:'100%',fontFamily:'NexaTextLight',overflow:"hidden"}}>
-        <div>
+        <div style={{marginBottom:"50px"}}>
             <p style={{textAlign:'left',fontSize:'30px',fontFamily: "NexaTextBold"}}>Privacy Policy</p>
             <div style={{marginTop:'20px'}}>
                 <p style={{textAlign:'left',margin:'20px auto'}}>Coinexplore ("we", "our", or "us") can be reached at <Link to='/'>support@coinexplore.io</Link>; one of our top objectives is protecting our visitors' privacy. Using Coinexplore you, as a User, can submit and promote your cryptocurrency coins/tokens. You can also vote for your favorite coins/tokens and check the most voted for coins/tokens on the Platform. In addition, you can create and share a Watchlist of your favorite coins/tokens. You can access our Platform via our Website: coinexplore.iot. The use of the Platform and our Website collectively: our Services.

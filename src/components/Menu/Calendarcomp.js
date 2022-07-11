@@ -155,7 +155,7 @@ export default function Calendarcomp({overallwidth,promosec,leftholder}) {
         
   </div>
   
-  <p style={{width:'80%',margin:'0px auto',textAlign:'center',fontSize:'15px',fontFamily:'NexaTextLight'}}>Coin Unavailable? <NavLink to='/addcoin'>Add here</NavLink></p>
+  <p style={{width:'80%',margin:'0px auto',textAlign:'center',fontSize:'15px',fontFamily:'NexaTextLight'}}>Coin Unavailable? <NavLink to='/addcoin' style={{color:'rgb(176, 176, 240)'}}>Add here</NavLink></p>
   <p  ref={calendarRefPoint} style={{width:overallwidth>900?'50%':'70%',margin:'20px auto',textAlign:'center',marginBottom:'5px'}}>AVAILABLE SLOTS</p>
     <Calendar onChange={setDate} value={date} onClickDay={clickday} tileClassName={tileClassName}/>
     
