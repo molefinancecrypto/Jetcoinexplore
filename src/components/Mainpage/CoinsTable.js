@@ -375,7 +375,6 @@ export function PromotedCoin({overallwidth}) {
       const newdata = await fetch('https://dev2.coinexplore.io/api/coins/all');
       const Json = await newdata.json();
       const Jsondata = Json['coins']
-      console.log(Jsondata)
       setmaindata(Jsondata)
       console.log(maindata)
     },[]
@@ -421,7 +420,7 @@ export function PromotedCoin({overallwidth}) {
     <div className='tableleft' >
     <p style={{display:overallwidth<=700?'none':'block'}}>{maindata.indexOf(coin)+1}</p>
     <div style={{width:'150px',display:'flex',alignItems:'center',justifyContent:"left",padding:'0px'}}>
-      <img className='tablecoinlogo' style={{borderRadius:'50%'}} src={coin['logo']} alt='coinLogo'/>
+      <img className='tablecoinlogo' style={{borderRadius:'50%',width:"50px",height:'50px'}} src={coin['logo']} alt='coinLogo'/>
       <div style={{marginLeft:'15px'}}>
         <p style={{color:'white',textAlign:'left'}}>{coin['name']}</p>
         <p style={{color:'grey',textAlign:'left',fontSize:'12px'}}>{coin['symbol']}</p>
@@ -432,10 +431,10 @@ export function PromotedCoin({overallwidth}) {
             <p className='capRank'>{coin['marketcap']}</p>
             <p className='price'>{coin['price']}</p>
             <p className='launch'>{coin['launchDate']}</p>
-            <p className='change' style={{textAlign:'center',flex:'1',display:overallwidth>1100?'block':'none',color:coin['pricechangepct'][0]=== "+"?'green':'red'}}>{coin['pricechangepct']}</p>
+            <p className='change' style={{textAlign:'center',flex:'1',display:overallwidth>1100?'block':'none',color:coin['pricechangepct'][0]>0?'green':'red'}}><span>{coin['pricechangepct'][0]>0?'+':'-'}</span> {coin['pricechangepct']}</p>
             <div style={{display:'flex',flex:'1',alignItems:'center',justifyContent:'center',color:colorvote}}><div onClick={()=>voteFunction(coin)} style={{width:'75px',height:"20px",paddingBottom:'27px',cursor:'pointer',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} >{arrowforvote}</p>
-            
-              </div>                     
+                <p style={{fontSize:'15px',color:{colorvote}}}>{coin['totalVotes']}</p>
+            </div>                     
             </div>
        </div>
        <div onClick={() => addToWatchlist(coin)}  className='starholder'>{coin['watchlist']?full:empty}</div>

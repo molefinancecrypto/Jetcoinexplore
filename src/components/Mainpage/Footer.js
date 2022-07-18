@@ -50,7 +50,7 @@ export default function Footer() {
               <p onClick={()=>{setheadertoshow(1);setheaderterms('DYOR')}}><Link to="/rulesandreg" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>DYOR</Link></p>
               <p onClick={()=> navigate('/contactUs')} style={{cursor:'pointer'}} >Contact Us</p>
               <p><Link to="/promoted" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>Advertise</Link></p>
-              <p onClick={()=> navigate('/salesrep')} style={{cursor:'pointer'}}>Sales Representative</p>
+              <p onClick={()=> navigate('/salesrep')} style={{cursor:'pointer'}}>Sales Representatives</p>
               
             </div>
           </div>

@@ -55,9 +55,9 @@ export default function RulesandReg({overallwidth}) {
                   <p style={{cursor:'pointer',textAlign:'center',width:'33.3%'}} onClick={ rules}>Terms & Conditions</p>
                   <p style={{cursor:'pointer',textAlign:'center',width:'33.3%'}} onClick={ pcpolicy}>Privacy & Cookie Policies</p>
                   <p  style={{cursor:'pointer',textAlign:'center',width:'33.3%'}} onClick={dyor}>DYOR</p>
-                  <div style={{position:'absolute',backgroundColor:'#062750',width:'33.3%',height:'1px',top:'100%',left:headerterms==='Terms & Conditions'?'0%':headerterms==='Privacy Policy'?'33.3%':'66.6%'}}></div>
+                  <div style={{position:'absolute',backgroundColor:'#062750',width:'33.3%',height:'1px',top:'100%',left:headerterms==='Terms & Conditions'?'0%':headerterms==='Privacy & Cookie Policies'?'33.3%':'66.6%'}}></div>
                 </div>
-                <div style={{width:'100%',marginTop:overallwidth<='700px'?'20px':'40px',height:'auto'}}>{headerterms==='Terms & Conditions'?<TermsHolder/>:headerterms==='Privacy Policy'?<PrivacyHolder/>:<DyorHolder />}</div>
+                <div style={{width:'100%',marginTop:overallwidth<='700px'?'20px':'40px',height:'auto'}}>{headerterms==='Terms & Conditions'?<TermsHolder/>:headerterms==='Privacy & Cookie Policies'?<PrivacyHolder/>:<DyorHolder />}</div>
 
     </div>
     <GoToTop />

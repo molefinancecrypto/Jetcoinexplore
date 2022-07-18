@@ -45,7 +45,7 @@ function Salesrep() {
     return (
     <div style={{minHeight:'100vh',width:'90vw',margin:'0px auto'}}>
         <div style={{color:"white",width:"100%",margin:'0px auto',textAlign:"left",marginBottom:'15px',display:"flex",padding:"15px",boxSizing:"border-box",cursor:'pointer',fontSize:'20px'}} onClick={()=> navigate('/')}><p>{backward}</p>Back</div>
-        <p style={{width:'100%',textAlign:'center',color:'white',fontSize:windowidth<=900?'24px':'35px',letterSpacing:windowidth<=900?'1px':'2px',marginBottom:'15px',boxSizing:'border-box',}}>Sales Representaives</p>
+        <p style={{width:'100%',textAlign:'center',color:'white',fontSize:windowidth<=900?'24px':'35px',letterSpacing:windowidth<=900?'1px':'2px',marginBottom:'15px',boxSizing:'border-box',}}>Sales Representatives</p>
         <div style={{height:'80%',width:'90vw',boxSizing:'border-box',margin:'0px auto',display:'flex',justifyContent:'space-between'}}>
             <div style={{width:windowidth<=900?'100%':'75%',height:'100%',backgroundColor:'#071323',border:'2px solid #112836',borderRadius:'10px'}}>
                 <div style={{width:'100%',height:'60px',display:'flex',color:'white',boxShadow: '0px 2px 15px black'}}>

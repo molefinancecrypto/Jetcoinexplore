@@ -13,29 +13,46 @@ import GoToTop from '../Gototop';
 export default function Signin() {
   
   const backward = <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>
-const [userUsername,setuserUsername] = useState('');
+  const [formData,setFormData] = useState({
+    email: '',
+    password:''})
+  const [userUsername,setuserUsername] = useState('');
  const [usersignupPassword,setusersignupPassword] = useState('');
  const {setvotevalidation} = ParticularCoin();
  const homeIcon = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>;
  const navigate = useNavigate()
 
-
+const{email,password} = formData
 const onchangepassword = (event)=>{
-  setusersignupPassword(event.target.value)
+  setFormData({...formData,...{'password':event.target.value}})
   
 }
 
-const onchangeUsername = (event)=>{
-  setuserUsername(event.target.value)
+const onchangeEmail = (event)=>{
+  setFormData({...formData,...{'email':event.target.value}})
 }
 
 
-const onfinalsubmit = ()=>{
-  if(userUsername==='' ||usersignupPassword=== ''){
+const onfinalsubmit = async(event)=>{
+  event.preventDefault()
+  if(email==='' ||password=== ''){
     alert('please fill in your details')
   }
   else{
-   setvotevalidation(true);
+   
+   const returnObj = await fetch('https://apidev.coinexplore.io/api/login', {
+                                              method: 'POST',
+                                              
+                                              headers: {
+                                                      'Accept': 'application/json',
+                                                      'Content-Type': 'application/json',
+                                                      
+                                                      },
+                                              body: JSON.stringify(formData)
+                                   });
+      //const newobj = await returnObj.json()
+      //console.log(newobj)
+      setvotevalidation(true);
    navigate('/')
   }
 }
@@ -69,14 +86,14 @@ return <div className='signoverall' >
             <div className='lowerrightauth'>
                   <div className='lowerrightone' >
                       <section className='lowerrightonesection' >
-                        <p className='sectioninput' >Username:</p>
-                        <input onChange={onchangeUsername} className='authinput' type='text' />
+                        <p className='sectioninput' >Email:</p>
+                        <input onChange={(event)=>onchangeEmail(event)} className='authinput' type='text' value={formData.email} />
                       </section>
                   </div>
                   <div className='lowerrightone'>
                       <section className='lowerrightonesection' >
                         <p className='sectioninput'>Password:</p>
-                        <input onChange={onchangepassword} className='authinput' type='password' />
+                        <input onChange={(event)=>onchangepassword(event)} className='authinput' type='password' value={formData.password} />
                       </section>
                   </div>
            
@@ -127,8 +144,8 @@ return <div className='signoverall' >
           <div style={{width:'100%',boxSizing:'border-box',height:"70%",display:'flex',flexDirection:"column",justifyContent:'space-between',padding:'40px 15px',boxSizing:"border-box",backgroundImage: 'linear-gradient(to bottom,#0d213a,#05101c)',borderRadius:'25px 25px 0px 0px'}}>
             <div style={{width:'100%',height:'50%'}}>
               <div style={{width:'80%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
-                <p style={{marginBottom:'0px',paddingTop:'25px',color:'white'}}>Username:</p>
-                <input onChange={onchangeUsername} type='text' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none'}}/>
+                <p style={{marginBottom:'0px',paddingTop:'25px',color:'white'}}>Email:</p>
+                <input onChange={onchangeEmail} type='text' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none'}}/>
               </div>
 
               <div style={{width:'80%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
