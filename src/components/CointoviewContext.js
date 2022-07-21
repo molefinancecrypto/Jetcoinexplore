@@ -27,6 +27,7 @@ export const StateHolder = (props)=> {
     const [newlistings,setnewListings] = useState(NewListings)
     const [headertoshow,setheadertoshow] = useState(0)
     const [headerterms,setheaderterms] = useState('')
+    const [userObject,setuserObject] = useState({userEmail:'',userUsername:'',token:''})
     
 
     return(
@@ -35,7 +36,7 @@ export const StateHolder = (props)=> {
         dayarrunik:[dayarrunik,setdayarrunik],dayarrbanunik:[dayarrbanunik,setdayarrbanunik],changepagebyfoot:[changepagebyfoot,setchangepagebyfoot]
         ,changefootcheck:[changefootcheck,setchangefootcheck],ordermarginTop:[ordermarginTop,setordermarginTop],watchlistArray:[watchlistArray,setwatchlistArray]
         ,alltime:[alltime, setallTime],todaybest:[todaybest, settodayBest],marketCap:[marketCap,setmarketCap],newlistings:[newlistings,setnewListings],headertoshow:[headertoshow,setheadertoshow],
-        headerterms:[headerterms,setheaderterms]}}>
+        headerterms:[headerterms,setheaderterms],userObject:[userObject,setuserObject]}}>
             {props.children}
         </Statecontext.Provider>
     )

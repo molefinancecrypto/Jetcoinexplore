@@ -55,7 +55,7 @@ const onfinalsubmit = async (event)=>{
      }
      else{
       console.log(formData)
-      const returnObj = await fetch('https://dev2.coinexplore.io/api/users/add', {
+      const returnObj = await fetch('https://apidev.coinexplore.io/api/users/add', {
                                               method: 'POST',
                                               headers: {
                                                       'Accept': 'application/json',

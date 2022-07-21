@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState, useEffect, useContext} from 'react';
 import './signin.css';
 import { Link,useNavigate } from 'react-router-dom';
 import logo from '../../images/coinexploreTwo.png'
@@ -6,6 +6,7 @@ import { ParticularCoin } from '../../contextfolder/Coindata';
 import CustomInput from '../customHooks/CustomInput';
 import worldimage from './imagesforauth/worldforsigning.jpg';
 import GoToTop from '../Gototop';
+import { Statecontext } from '../CointoviewContext';
 
 
 
@@ -19,6 +20,7 @@ export default function Signin() {
   const [userUsername,setuserUsername] = useState('');
  const [usersignupPassword,setusersignupPassword] = useState('');
  const {setvotevalidation} = ParticularCoin();
+ const [userObject,setuserObject] = useContext(Statecontext).userObject;
  const homeIcon = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>;
  const navigate = useNavigate()
 
@@ -50,10 +52,13 @@ const onfinalsubmit = async(event)=>{
                                                       },
                                               body: JSON.stringify(formData)
                                    });
-      //const newobj = await returnObj.json()
-      //console.log(newobj)
+      const newobj = await returnObj.json()
+      window.localStorage.setItem('userDetails',JSON.stringify(newobj))
+      const userDetail = JSON.parse(window.localStorage.getItem('userDetails'));
+      const {access_token,username,email} = userDetail;
+      setuserObject({...userObject,...{userEmail:email,userUsername:username,token:access_token}})
       setvotevalidation(true);
-   navigate('/')
+      console.log(userObject)
   }
 }
   
@@ -145,12 +150,12 @@ return <div className='signoverall' >
             <div style={{width:'100%',height:'50%'}}>
               <div style={{width:'80%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
                 <p style={{marginBottom:'0px',paddingTop:'25px',color:'white'}}>Email:</p>
-                <input onChange={onchangeEmail} type='text' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none'}}/>
+                <input onChange={(event)=>onchangeEmail(event)} value={formData.email} type='text' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none'}}/>
               </div>
 
               <div style={{width:'80%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
                 <p style={{marginBottom:'0px',paddingTop:'25px',color:'white'}}>Password:</p>
-                <input onChange={onchangepassword} type='password' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none'}}/>
+                <input onChange={(event)=>onchangepassword(event)} value={formData.password} type='password' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none'}}/>
               </div>
               
             </div>

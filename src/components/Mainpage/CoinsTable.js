@@ -35,6 +35,7 @@ const CoinsTable = ({overallwidth}) => {
     const forward = <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 0 24 24" width="25px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg> 
     const backward = <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 0 24 24" width="25px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>
     const [watchlistArray,setwatchlistArray] = useContext(Statecontext).watchlistArray;
+       const [userObject,setuserObject] = useContext(Statecontext).userObject
     let newArray = [];
     const navigate = useNavigate();
   const funcForpager = (pager)=>{
@@ -318,9 +319,10 @@ export function PromotedCoin({overallwidth}) {
   const navigate = useNavigate();
   const [watchlistArray,setwatchlistArray] = useContext(Statecontext).watchlistArray;
   const [maindata,setmaindata] = useState();
+  const [userObject,setuserObject] = useContext(Statecontext).userObject;
   
 
-  const filterAgent = (cointoFilter,coin,newArray,index) =>{
+  /*const filterAgent = (cointoFilter,coin,newArray,index) =>{
     let arrayHolder = cointoFilter.filter(ctf=> ctf !== coin);
     arrayHolder.splice(index,0,newArray[0]);
     //arrayHolder[index] = newArray[0];
@@ -367,7 +369,7 @@ export function PromotedCoin({overallwidth}) {
         setwatchlistArray((prev)=> prev.filter(pre=>pre!==coin))
       }  
     }
-  }
+  }*/
 
 
   useEffect(
@@ -388,14 +390,35 @@ export function PromotedCoin({overallwidth}) {
 
 
 
+  const voteFunction = async(id)=>{
+    if(userObject.token===''){
+      alert('please, sign in first to vote')
+    }
+    else{
+      
+      const returnObj = await fetch(`https://apidev.coinexplore.io/api/users/coins/vote/${id}`, {
+                                              method: 'PUT',
+                                              
+                                              headers: {
+                                                      'Accept': 'application/json',
+                                                      'Content-Type': 'application/json',
+                                                      Authentication: `Bearer ${userObject.token}`
+                                                      
+                                                      },
+                                              
+    
+                                   });
+      const dataHolder = await returnObj.json();
+      console.log(dataHolder)
+    }
+  }
 
 
 
 
 
-
-
-  const voteFunction = (coin)=>{
+/* 
+      const voteFunction = (coin)=>{
     if(votevalidation){
      topVote(coin)
     }
@@ -405,9 +428,7 @@ export function PromotedCoin({overallwidth}) {
     }
   }
 
-
-
-  
+*/  
 
 
 
@@ -431,13 +452,13 @@ export function PromotedCoin({overallwidth}) {
             <p className='capRank'>{coin['marketcap']}</p>
             <p className='price'>{coin['price']}</p>
             <p className='launch'>{coin['launchDate']}</p>
-            <p className='change' style={{textAlign:'center',flex:'1',display:overallwidth>1100?'block':'none',color:coin['pricechangepct'][0]>0?'green':'red'}}><span>{coin['pricechangepct'][0]>0?'+':'-'}</span> {coin['pricechangepct']}</p>
-            <div style={{display:'flex',flex:'1',alignItems:'center',justifyContent:'center',color:colorvote}}><div onClick={()=>voteFunction(coin)} style={{width:'75px',height:"20px",paddingBottom:'27px',cursor:'pointer',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} >{arrowforvote}</p>
+            <p className='change' style={{textAlign:'center',flex:'1',display:overallwidth>1100?'block':'none',color:coin['pricechangepct'][0]>0?'green':'red'}}><span>{coin['pricechangepct'][0]>0?'+':'-'}</span> {`${coin['pricechangepct']}%`}</p>
+            <div style={{display:'flex',flex:'1',alignItems:'center',justifyContent:'center',color:colorvote}}><div onClick={()=>voteFunction(coin['id'])} style={{width:'75px',height:"20px",paddingBottom:'27px',cursor:'pointer',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}><p style={{display:'flex',alignItems:'center',justifyContent:'center'}} >{arrowforvote}</p>
                 <p style={{fontSize:'15px',color:{colorvote}}}>{coin['totalVotes']}</p>
             </div>                     
             </div>
        </div>
-       <div onClick={() => addToWatchlist(coin)}  className='starholder'>{coin['watchlist']?full:empty}</div>
+       <div  className='starholder'>{coin['watchlist']?full:empty}</div>
     </div> 
     
     ) :<i class="fa fa-spinner fa-spin" style={{fontSize:'48px',color:'white'}}></i>}
