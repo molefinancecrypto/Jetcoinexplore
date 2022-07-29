@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import facebook from './../../socialMedia/facebook.jpg';
 import twitter from './../../socialMedia/twitterLogo.jpg';
@@ -12,13 +12,65 @@ export default function Footer() {
   const [coinheader,setcoinheader] = useContext(Statecontext).coinheader;
   const [changepagebyfoot,setchangepagebyfoot] = useContext(Statecontext).changepagebyfoot;
   const [headertoshow,setheadertoshow] = useContext(Statecontext).headertoshow;
-  const [headerterms,setheaderterms] = useContext(Statecontext).headerterms
+  const [headerterms,setheaderterms] = useContext(Statecontext).headerterms;
+  const [userObject,setuserObject] = useContext(Statecontext).userObject;
+  const [newsmail,setnewsmail] = useState('')
 
   const cointableselector = (choice)=>{
     setcoinheader(choice);
     setchangepagebyfoot(!changepagebyfoot);
     navigate('/')
   }
+
+  const setmailonchange = (event)=>{
+    setnewsmail(event.target.value)
+  }
+
+
+  //subscribe function
+  const onfinalsubmit = async(event)=>{
+    event.preventDefault()
+    if(newsmail==='' ){
+      alert('please fill in your mail')
+    }
+    else{
+     if(userObject.token!=='' || userObject.exp*1000> new Date().getTime()){
+      console.log('a')
+      const returnObj = await fetch('https://apidev.coinexplore.io/api/subscribe', {
+        method: 'POST',
+        
+        headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${userObject.token}`
+                },
+        body: JSON.stringify({
+          email:newsmail,
+        })
+     });
+     const newobj = await returnObj.json()
+    if(newobj.success){
+       alert('You have been subscribed successfully!')
+      }
+    else{
+      alert('Please, retry')
+    }
+    }
+
+else{
+  alert('Please, sign in first to send messages')
+}
+     }
+     
+
+    
+  }
+
+
+
+
+
+
   return (
     
         <div className='footerMain' >
@@ -69,7 +121,7 @@ export default function Footer() {
           <div className='footerThird' >
           <div className='footerthirdfirst'>
              <p className='footerthirdfirstpee'><strong>Subscribe to our weekly NewsLetter</strong></p>
-             <div style={{width:'75%',maxWidth:'300px',marginTop:'20px',position:'relative'}}><input placeholder='Enter E-mail' style={{paddingLeft:'10px',width:'100%',height:'40px',outline:'none',color:'white',border:"1px solid #02050a", borderRadius:'9px',backgroundColor:'#02050a'}} type='text' /><button style={{width:'25px',position:'absolute',top:'7.5px',backgroundColor:'black',borderRadius:'50%',right:'5px',height:'25px',display:'flex',justifyContent:'center',alignItems:'center'}}><i class="fa fa-telegram" style={{fontSize:"20px"}} aria-hidden="true"></i></button></div>
+             <div style={{width:'75%',maxWidth:'300px',marginTop:'20px',position:'relative'}}><input placeholder='Enter E-mail' onChange={setmailonchange} value={newsmail} style={{paddingLeft:'10px',width:'100%',height:'40px',outline:'none',color:'white',border:"1px solid #02050a", borderRadius:'9px',backgroundColor:'#02050a'}} type='text' /><button onClick={(event)=>onfinalsubmit(event)} style={{width:'25px',cursor:'pointer',position:'absolute',top:'7.5px',backgroundColor:'black',borderRadius:'50%',right:'5px',height:'25px',display:'flex',justifyContent:'center',alignItems:'center'}}><i class="fa fa-telegram" style={{fontSize:"20px"}} aria-hidden="true"></i></button></div>
           </div>
           <div style={{width:'180px',marginTop:'20px',display:'flex',justifyContent:'space-between'}}>
           <a style={{color:'white' ,textDecoration:"none"}} href='https://twitter.com/Jetoken1' target="_blank" ><i class="fa fa-twitter" style={{fontSize:"30px"}} aria-hidden="true"></i></a>

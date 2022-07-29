@@ -1,4 +1,5 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useContext} from 'react';
+import { Statecontext } from '../CointoviewContext';
 import { useNavigate } from 'react-router-dom';
 import './listcoin.css';
 import GoToTop from '../Gototop';
@@ -41,6 +42,7 @@ function ListCoin() {
     const mainstar = <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="18px" viewBox="0 0 24 24" width="18px" fill="#FF0000"><g><path d="M0,0h24v24H0V0z" fill="none"/><path d="M0,0h24v24H0V0z" fill="none"/></g><g><path d="M12,17.27L18.18,21l-1.64-7.03L22,9.24l-7.19-0.61L12,2L9.19,8.63L2,9.24l5.46,4.73L5.82,21L12,17.27z"/></g></svg>;
     const [windowidth,setwindowidth] = useState(1000);
     const [headertoshow,setheadertoshow] = useState(0);
+    const [userObject,setuserObject] = useContext(Statecontext).userObject;
     const updateCoinObj = (event)=>{
         setenlistCoinObj({...enlistCoinObj,...{[event.target.name] : event.target.value}})
     }
@@ -82,17 +84,23 @@ function ListCoin() {
 
 
     //submit button function
-    const addnewCoin = async()=>{
+    const addnewCoin = async(event)=>{
+        event.preventDefault()
         const addCoinCredentials = await fetch('https://apidev.coinexplore.io/api/users/coins/add', {
             method: 'POST',
             headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${userObject.token}`
                     },
-            body: JSON.stringify(enlistCoinObj)
+            body: JSON.stringify({...enlistCoinObj,...{pricechangepct:enlistCoinObj.price}})
  });
 
-    const addnewCoinObject = await addCoinCredentials.json()
+    const addnewCoinObject = await addCoinCredentials.json();
+    if(addnewCoinObject.success){
+        alert('your coin has been listed succesfully.')
+    }
+    console.log(addnewCoinObject)
     }
 
     const updateCoinObjSocials = (event)=>{
@@ -186,7 +194,7 @@ function ListCoin() {
                     <div style={{position:'absolute',backgroundColor:'#062750',width:'25%',height:'1px',top:'100%',left:`${sliderposition.left}%`}}></div>
                 </div>}
 
-                <form>
+                <form autocomplete='off'>
                 <div style={{width:'100%',marginTop:'40px',display:sliderposition['info']}}>
                     <div style={{width:'90%',margin:'25px auto',boxSizing:'border-box',height:'30%',display:windowidth<=900?'block':'flex',justifyContent:'space-around'}}>
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px',marginTop:'-20px'}}>
@@ -199,13 +207,13 @@ function ListCoin() {
                         </section>
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
                             <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Price</p>
-                            <input name="price" value={enlistCoinObj.price} onChange={(event)=>{updateCoinObj(event)}} type='text' placeholder='Ex: $24.50' style={colorBorderObject.stageOne?filledfield:enlistCoinObj.price===""?unfilledfield:filledfield}/>
+                            <input name="price" value={enlistCoinObj.price} onChange={(event)=>{updateCoinObj(event)}} type='number' placeholder='Ex: $24.50' style={colorBorderObject.stageOne?filledfield:enlistCoinObj.price===""?unfilledfield:filledfield}/>
                         </section>
                     </div>
                     <div style={{width:'90%',margin:'25px auto',marginBottom:'0px',boxSizing:'border-box',height:'30%',display:windowidth<=900?'block':'flex',justifyContent:'space-around'}}>
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
                             <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Market Cap</p>
-                            <input name="marketcap" value={enlistCoinObj.marketcap} onChange={(event)=>{updateCoinObj(event)}} type='text' placeholder='Ex: $20000BTC' style={colorBorderObject.stageOne?filledfield:enlistCoinObj.marketcap===""?unfilledfield:filledfield}/>
+                            <input name="marketcap" value={enlistCoinObj.marketcap} onChange={(event)=>{updateCoinObj(event)}} type='number' placeholder='Ex: $20000BTC' style={colorBorderObject.stageOne?filledfield:enlistCoinObj.marketcap===""?unfilledfield:filledfield}/>
                         </section>
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px',marginTop:'-20px'}}>
                             <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Launch Date<sup class="asterix">*</sup></p>
@@ -214,9 +222,9 @@ function ListCoin() {
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px',marginTop:'-20px'}}>
                             <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Logo<sup class="asterix">*</sup></p>
                             <div style={{width:'100%',backgroundColor:'#071323',borderRadius:'10px'}}>
-                                <input  type='file' id='listcoinfile' style={{height:'30px',display:'none',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:colorBorderObject.stageOne?'rgba(95, 94, 94, 0.698)':enlistCoinObj.symbol?'rgba(95, 94, 94, 0.698)':'red',textAlign:'left'}}/>
+                                <input  type='file' id='logo' name='logo' style={{height:'30px',display:'none',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:colorBorderObject.stageOne?'rgba(95, 94, 94, 0.698)':enlistCoinObj.symbol?'rgba(95, 94, 94, 0.698)':'red',textAlign:'left'}}/>
                                 <p style={{width:'100%',textAlign:'center',padding:'5px',backgroundColor:'#02050a',borderRadius:'10px 10px 0px 0px',fontSize:'13px',boxSizing:'border-box'}}>LOGO (png file*)</p>
-                                <label for='listcoinfile' style={{backgroundColor:'red',width:'100px',cursor:'pointer'}}>
+                                <label for='logo' style={{backgroundColor:'red',width:'100px',cursor:'pointer'}}>
                                 <div style={{display:'flex',justifyContent:'space-around',alignItems:'center',width:'60%',margin:'0px auto',padding:'20px'}}><p>{uploader}</p> <p style={{fontSize:'15px'}}>Upload max: 130 * 130</p></div>
                                 </label>
                             </div>
@@ -337,7 +345,7 @@ function ListCoin() {
                     </div>
                     <div style={{width:'90%',display:'flex',position:windowidth<=900?'static':'absolute',bottom:'15px',left:'5%',justifyContent:'space-between',margin:'0px auto',color:'white'}}>
                         <button onClick={links} style={{width:windowidth<=900?'80px':'150px',height:'40px',backgroundColor:'#02050a',outline:'none',border:'2px solid #02050a',borderRadius:'5px',color:'white'}}>Back</button>
-                        <button  style={{width:windowidth<=900?'80px':'150px',height:'40px',backgroundColor:'#02050a',outline:'none',border:'2px solid #02050a',borderRadius:'5px',color:'white'}}>Add Coin</button>
+                        <button  onClick={(event)=>addnewCoin(event)} style={{width:windowidth<=900?'80px':'150px',height:'40px',backgroundColor:'#02050a',outline:'none',border:'2px solid #02050a',borderRadius:'5px',color:'white'}}>Add Coin</button>
                     </div>
                 </div>
                 </form>

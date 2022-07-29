@@ -15,8 +15,7 @@ function CoinFile({overallwidth}) {
     const { coinpicked } = useParams();
     let navigate = useNavigate();
     const location = useLocation();
-    const dat = location.state;
-    const data = dat[Object.keys(dat)];
+    const data = location.state;
     const arrowforvote = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"/></svg>;
 
     /*background: 'linear-gradient(180deg, #05101C 0%, #040B15 100%)'*/ 
@@ -31,14 +30,14 @@ function CoinFile({overallwidth}) {
                         <p style={{color:'grey'}}>${data['symbol']}</p>
                     </section>
                     <section style={{width:'100%',margin:'0px auto'}}>
-                        <p style={{color:'white',textAlign:'left'}}>Network:&nbsp;&nbsp; <span className='spanforp' >Binance Smart Chain</span></p>
-                        <p style={{color:'white',textAlign:'left',marginTop:'20px'}}>Contract Address:&nbsp;&nbsp; <span className='spanforp'>0x4edfght5877jhjd90675&nbsp;</span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></p>
+                        <p style={{color:'white',textAlign:'left'}}>Network:&nbsp;&nbsp; <span className='spanforp' >{data['chain']}</span></p>
+                        <p style={{color:'white',textAlign:'left',marginTop:'20px'}}>Contract Address:&nbsp;&nbsp; <span className='spanforp'>{data['address']}&nbsp;</span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></p>
                     </section>
                     <section className='sectionwithicons' >
                         
                         <div style={{width:'35%',textAlign:'left'}}>
                             <p style={{color:'white'}}>Launch Date</p>
-                            <p style={{color:'grey'}}>{data['launch']}</p>
+                            <p style={{color:'grey'}}>{data['launchDate']}</p>
 
                         </div>
                         <div className='barguy' >''</div>
@@ -54,14 +53,14 @@ function CoinFile({overallwidth}) {
                     <section className='sectionwithicons'>
                         <div style={{width:'35%',textAlign:'left'}}>
                             <p style={{color:'white'}}>Market Cap</p>
-                            <p style={{color:'grey'}}>${data['market_cap_rank']}</p>
+                            <p style={{color:'grey'}}>${data['marketcap']}</p>
 
                         </div>
                         <div className='barguy'>''</div>
 
                         <div style={{width:'60%',textAlign:'right'}}>
-                            <p style={{color:'white'}}>price &nbsp;&nbsp;&nbsp;<span style={{color:data['change'][0]==='+'?'green':'red'}}>{data['change']}</span></p>
-                            <p className='valueindolls' >$0.456767345687878</p>
+                            <p style={{color:'white'}}>price &nbsp;&nbsp;&nbsp;<span style={{color:data['pricechangepct']>0?'green':'red'}}>{data['pricechangepct']}%</span></p>
+                            <p className='valueindolls' >${data['price']}</p>
 
                         </div>
                     </section>
@@ -69,14 +68,14 @@ function CoinFile({overallwidth}) {
                     <section style={{width:'100%',height:'50px',display:'flex',alignItems:'center',justifyContent:"center"}}>
                     <div style={{width:'75px',height:"20px",paddingBottom:'27px',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}>
                         <p style={{display:'flex',alignItems:'center',justifyContent:'center'}} >{arrowforvote}</p>
-                        <p  style={{fontSize:'15px',color:"white"}}>{data['vote']}</p>
+                        <p  style={{fontSize:'15px',color:"white"}}>{data['totalVotes']}</p>
                     </div> 
                     </section>
                 </div>
 
                 <div className='seconddivindiv' >
                     <p style={{marginTop:'45px',fontSize:'30px',backgroundColor:'#081728',width:'100%',height:'60px',color:'white',display:"flex",alignItems:'center',justifyContent:"center"}}>Description</p>
-                    <p style={{width:'80%',margin:'40px auto',color:'white',textAlign:'center'}}>The Newest kitty member on BSC! join our community on, we will spread our memes to the moon! the best women dev in BSC experienced team with succesful projects</p>
+                    <p style={{width:'80%',margin:'40px auto',color:'white',textAlign:'center'}}>{data['description']}</p>
                 </div>
 
 
@@ -86,7 +85,7 @@ function CoinFile({overallwidth}) {
              <section className='coinformobile' >
                 <div className='firstdivindiv' >
                     <section>
-                        <p><img style={{height:'80px',width:'80px',borderRadius:"50%"}}src={data['img']}/></p>
+                        <p><img style={{height:'80px',width:'80px',borderRadius:"50%"}}src={data['logo']}/></p>
                         <p style={{color:'white'}}>{data['name']}</p>
                         <p style={{color:'grey'}}>${data['symbol']}</p>
                     </section>
@@ -100,14 +99,14 @@ function CoinFile({overallwidth}) {
                         
                         </div>
                     <section style={{width:'90%',margin:'0px auto'}}>
-                        <p style={{color:'white',textAlign:'left'}}>Network:&nbsp;&nbsp; <span className='spanforp' >Binance Smart Chain</span></p>
-                        <p style={{color:'white',textAlign:'left',marginTop:'20px'}}>Contract Address:&nbsp;&nbsp; <span className='spanforp'>0x4edfght5877jhjd90675&nbsp;</span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></p>
+                        <p style={{color:'white',textAlign:'left'}}>Network:&nbsp;&nbsp; <span className='spanforp' >{data['chain']}</span></p>
+                        <p style={{color:'white',textAlign:'left',marginTop:'20px'}}>Contract Address:&nbsp;&nbsp; <span className='spanforp'>{data['address']}&nbsp;</span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></p>
                     </section>
                     <section className='sectionwithiconsmobile' >
                         
                         <div>
                             <p style={{color:'white',textAlign:'left'}}>Launch Date</p>
-                            <p style={{color:'grey',textAlign:'left'}}>{data['launch']}</p>
+                            <p style={{color:'grey',textAlign:'left'}}>{data['launchDate']}</p>
 
                         </div>
                         
@@ -116,27 +115,27 @@ function CoinFile({overallwidth}) {
                     <section className='sectionwithiconsmobile'>
                         <div>
                             <p style={{color:'white',textAlign:'left'}}>Market Cap</p>
-                            <p style={{color:'grey',textAlign:'left'}}>${data['market_cap_rank']}</p>
+                            <p style={{color:'grey',textAlign:'left'}}>${data['marketcap']}</p>
 
                         </div>
                         
 
                         <div >
-                            <p style={{color:'white',textAlign:'left',marginTop:'20px'}}>price &nbsp;&nbsp;&nbsp;<span style={{color:data['change'][0]==='+'?'green':'red'}}>{data['change']}</span></p>
-                            <p className='valueindolls' >$0.456767345687878</p>
+                            <p style={{color:'white',textAlign:'left',marginTop:'20px'}}>price &nbsp;&nbsp;&nbsp;<span style={{color:data['pricechangepct']>0?'green':'red'}}>{data['pricechangepct']}</span></p>
+                            <p className='valueindolls' >${data['price']}</p>
 
                         </div>
                     </section>
 
                     <div className='seconddivindivmobile' >
                     <p style={{marginTop:'45px',fontSize:'30px',border:'2px solid #081728',borderWidth:'0px 0px 2px',width:'100%',height:'60px',color:'white',display:'flex',alignItems:'center',justifyContent:'center'}}>Description</p>
-                    <p style={{width:'80%',margin:'40px auto',color:'white',textAlign:'center'}}>The Newest kitty member on BSC! join our community on, we will spread our memes to the moon! the best women dev in BSC experienced team with succesful projects</p>
+                    <p style={{width:'80%',margin:'40px auto',color:'white',textAlign:'center'}}>{data['description']}</p>
                 </div>
 
                 <section style={{width:'100%',height:'50px',display:'flex',alignItems:'center',justifyContent:"center"}}>
                     <div style={{width:'75px',height:"20px",paddingBottom:'27px',borderRadius:'12px',border:'2px solid #FFFFFF',backgroundColor:'transparent'}}>
                         <p style={{display:'flex',alignItems:'center',justifyContent:'center'}} >{arrowforvote}</p>
-                        <p  style={{fontSize:'15px',color:"white"}}>{data['vote']}</p>
+                        <p  style={{fontSize:'15px',color:"white"}}>{data['totalVotes']}</p>
                     </div> 
                     </section>
                 </div>

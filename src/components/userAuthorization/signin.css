@@ -117,7 +117,8 @@
     outline:none;
     border:1px solid #02050a;
     border-radius:9px;
-    background-color:#02050a
+    background-color:#02050a;
+    cursor: pointer;
   }
 
   .signbuttondiv{

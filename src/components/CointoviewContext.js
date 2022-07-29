@@ -27,7 +27,7 @@ export const StateHolder = (props)=> {
     const [newlistings,setnewListings] = useState(NewListings)
     const [headertoshow,setheadertoshow] = useState(0)
     const [headerterms,setheaderterms] = useState('')
-    const [userObject,setuserObject] = useState({userEmail:'',userUsername:'',token:''})
+    const [userObject,setuserObject] = useState({userEmail:'',userUsername:'',token:'',exp:0})
     
 
     return(

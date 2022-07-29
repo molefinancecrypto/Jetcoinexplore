@@ -30,6 +30,7 @@ function Header({overallwidth}) {
   }
   const avatar = <svg xmlns="http://www.w3.org/2000/svg" fill='white' height="48" width="48"><path d="M11.1 35.25q3.15-2.2 6.25-3.375Q20.45 30.7 24 30.7q3.55 0 6.675 1.175t6.275 3.375q2.2-2.7 3.125-5.45Q41 27.05 41 24q0-7.25-4.875-12.125T24 7q-7.25 0-12.125 4.875T7 24q0 3.05.95 5.8t3.15 5.45ZM24 25.5q-2.9 0-4.875-1.975T17.15 18.65q0-2.9 1.975-4.875T24 11.8q2.9 0 4.875 1.975t1.975 4.875q0 2.9-1.975 4.875T24 25.5ZM24 44q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 24q0-4.15 1.575-7.775t4.3-6.35q2.725-2.725 6.375-4.3Q19.9 4 24 4q4.15 0 7.775 1.575t6.35 4.3q2.725 2.725 4.3 6.35Q44 19.85 44 24q0 4.1-1.575 7.75-1.575 3.65-4.3 6.375-2.725 2.725-6.35 4.3Q28.15 44 24 44Zm0-3q2.75 0 5.375-.8t5.175-2.8q-2.55-1.8-5.2-2.75-2.65-.95-5.35-.95-2.7 0-5.35.95-2.65.95-5.2 2.75 2.55 2 5.175 2.8Q21.25 41 24 41Zm0-18.5q1.7 0 2.775-1.075t1.075-2.775q0-1.7-1.075-2.775T24 14.8q-1.7 0-2.775 1.075T20.15 18.65q0 1.7 1.075 2.775T24 22.5Zm0-3.85Zm0 18.7Z"/></svg>;
 
+  const ndate = new Date()
   //setcoinsToSearch()
 /* 
   if(tableposref !== ' ')
@@ -42,16 +43,32 @@ function Header({overallwidth}) {
 
    useEffect(
       ()=>{
-         if(window.localStorage.getItem('userDetails')){
+         const registeredUserObject = JSON.parse(window.localStorage.getItem('userDetails'));
+         console.log(registeredUserObject)
+         console.log('a')
+         //console.log(registeredUserObject.exp < new Date().getTime())
+         if(registeredUserObject){
+            console.log('b')
 
-            const userDetail = JSON.parse(window.localStorage.getItem('userDetails'));
-            const {access_token,username,email} = userDetail;
-            setuserObject({...userObject,...{userEmail:email,userUsername:username,token:access_token}})
+            if(registeredUserObject.exp*1000 > new Date().getTime()){
+               console.log('c')
+               const userDetail = JSON.parse(window.localStorage.getItem('userDetails'));
+            const {access_token,username,email,exp} = userDetail;
+            setuserObject({...userObject,...{userEmail:email,userUsername:username,token:access_token,exp}})
+            }
+            else{
+               console.log('d')
+               setuserObject({...userObject,...{userEmail:'',userUsername:'',token:'',exp: 0}})
+               window.localStorage.removeItem('userDetails')
+            }
+            
          }
          else{
-            setuserObject({...userObject,...{userEmail:'',userUsername:'',token:''}})
+            console.log('e')
+            setuserObject({...userObject,...{userEmail:'',userUsername:'',token:'',exp:0}})
+            window.localStorage.removeItem('userDetails')
          }
-      },[window.localStorage.getItem('userDetails')])
+      },[userObject.token,showLogout])
    
 
    useEffect(
@@ -141,14 +158,17 @@ function Header({overallwidth}) {
               <div className='divforcanceler'>
                    
                   <div style={{position:'absolute',top:'0px',right:'0px',height:'100vh',width:'70%',backgroundColor:'#05101c'}}>
-                     <div onClick={()=>{setshowhamburger(true)}} style={{position:'absolute',top:'12px',right:'5px'}}>{close}</div>    
+                     <div onClick={()=>{setshowhamburger(true)}} style={{position:'absolute',top:'12px',right:'5px'}}>{close}</div> 
+                     
                      <div style={{position:'absolute',textAlign:'left',height:'50%',display:'flex',justifyContent:'space-around',top:'20%',left:'20px',flexDirection:'column',color:"white"}}>
+                     <p style={{textAlign:'left',fontFamily:'NexaTextLight',display:userObject.token===''?'none':'block',marginBottom:'30px'}}>{`Welcome to CoinExplore ${userObject.userEmail}`}</p>   
                         <NavLink onClick={()=>{setshowhamburger(true) }} to='/addcoin' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none'}}}>Add Coin</NavLink>
                         <NavLink onClick={()=>{setshowhamburger(true) }} to='/promoted' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none'}}}>Advertise</NavLink>
                         <NavLink onClick={()=>{setshowhamburger(true) }} to='/newspage' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none'}}}>News</NavLink>
                         <NavLink onClick={()=>{setshowhamburger(true) }} to='/contactUs' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none'}}}>Contact Us</NavLink>
-                        <NavLink onClick={()=>{setshowhamburger(true) }} to='/signin' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none'}}}>Sign In</NavLink>
-                        <NavLink onClick={()=>{setshowhamburger(true) }} to='/signup' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none'}}}>Register</NavLink>
+                        <NavLink onClick={()=>{setshowhamburger(true) }} to='/signin' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none',display:userObject.token===''?'block':'none'}}}>Sign In</NavLink>
+                        <NavLink onClick={()=>{setshowhamburger(true) }} to='/signup' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none',display:userObject.token===''?'block':'none'}}}>Register</NavLink>
+                        <NavLink onClick={()=>{setshowhamburger(true) }} to='/userwatchlist' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none',display:userObject.token===''?'none':'block'}}}>Watchlist</NavLink>
                      </div>
                   
                   </div>  
@@ -167,10 +187,11 @@ function Header({overallwidth}) {
        <li className='list'><Link to="/signup" style={{color:"white",textDecoration:"none",display:userObject.token===''?'block':'none'}}>Register</Link></li>
        <div style={{display:userObject.token===''?'none':'block',position:'relative'}}>
          <p onClick={()=>setshowLogout(!showLogout)}>{avatar}</p>
-         <div  style={{position:'absolute',display:showLogout?'block':'none',right:'0px',top:'48px',width:'420px',fontFamily:'NexaTextLight',padding:"5px",paddingTop:'15px',boxSizing:'border-box',height:'120px',borderRadius:'10px',border:'2px solid #0B1F36',backgroundColor:'#05101c',zIndex:'5'}}>
+         <div  style={{position:'absolute',display:showLogout?'block':'none',right:'0px',top:'48px',width:'420px',fontFamily:'NexaTextLight',padding:"5px",paddingTop:'15px',boxSizing:'border-box',height:'140px',borderRadius:'10px',border:'2px solid #0B1F36',backgroundColor:'#05101c',zIndex:'5'}}>
                <p style={{textAlign:'left'}}>{`Welcome to CoinExplore ${userObject.userEmail}`}</p>
                
                <p onClick={()=>{window.localStorage.removeItem('userDetails');setshowLogout(!showLogout)}} style={{marginTop:'15px',textAlign:'left',cursor:'pointer'}}>Log Out</p>
+               <p onClick={()=>{navigate('/userwatchlist');setshowLogout(!showLogout)}} style={{marginTop:'15px',textAlign:'left',cursor:'pointer'}}>Watchlist</p>
          </div>
       </div>
     </ul>

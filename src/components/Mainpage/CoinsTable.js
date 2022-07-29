@@ -316,10 +316,12 @@ export function PromotedCoin({overallwidth}) {
   const arrowforvote = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"/></svg>;
   const[coins,setcoins] = useState(TodayBest.slice(0,4));
   const {votevalidation} = ParticularCoin();
-  const navigate = useNavigate();
-  const [watchlistArray,setwatchlistArray] = useContext(Statecontext).watchlistArray;
+  const [triggerAfterVotes,setTriggerAfterVotes] = useState(false);
   const [maindata,setmaindata] = useState();
   const [userObject,setuserObject] = useContext(Statecontext).userObject;
+  const userDetails = JSON.parse(window.localStorage.getItem('userDetails'));
+  const navigate = useNavigate();
+         
   
 
   /*const filterAgent = (cointoFilter,coin,newArray,index) =>{
@@ -373,18 +375,172 @@ export function PromotedCoin({overallwidth}) {
 
 
   useEffect(
-    async()=>{
-      const newdata = await fetch('https://dev2.coinexplore.io/api/coins/all');
-      const Json = await newdata.json();
-      const Jsondata = Json['coins']
-      setmaindata(Jsondata)
-      console.log(maindata)
-    },[]
+    
+      async()=>{
+
+        if(userObject.token===''){
+        const newdata = await fetch('https://apidev.coinexplore.io/api/coins/list/all');
+        const Json = await newdata.json();
+        const Jsondata = Json['coins']
+        console.log('a new')
+        setmaindata(Jsondata)
+      }
+
+      else{
+
+         if(userObject.exp*1000> new Date().getTime()){
+          console.log('b new')
+          const newdata = await fetch('https://apidev.coinexplore.io/api/users/coins',
+          {
+            method: 'GET',
+            
+            headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${userObject.token}`
+                    
+                    },
+            
+    
+    
+        });
+          const Json = await newdata.json();
+          
+            const Jsondata = Json['coins']
+            console.log(Jsondata)
+            setmaindata(Jsondata)
+          
+          
+         }
+
+         else{
+          console.log('c new')  
+        const newdata = await fetch('https://apidev.coinexplore.io/api/coins/list/all');
+        const Json = await newdata.json();
+        const Jsondata = Json['coins']
+        setmaindata(Jsondata)
+         }
+        
+        
+      }
+    }
+    
+    ,[triggerAfterVotes,userObject.token]
   )
 
 
+const coinToWatchlist = async(id,coin)=>{
+  if(userObject.token===''){
+    alert('please, sign in first to add coin to watchlist')
+  }
+
+  else{
+
+    if(userObject.exp*1000> new Date().getTime()){
+      if(coin['watchListDate']){
+        console.log(coin['watchListDate'])
+        const returnObj = await fetch(`https://apidev.coinexplore.io/api/users/coins/watchlist/${id}`,
+        {
+          method: 'DELETE',
+          
+          headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                  Authorization: `Bearer ${userObject.token}`
+                  
+                  },
+      })
+      const dataHolder = await returnObj.json();
+      console.log(dataHolder)
+      if(dataHolder.success){
+        setTriggerAfterVotes(!triggerAfterVotes)
+      }
+      
+      }
+      else{
+        
+        const returnObj = await fetch(`https://apidev.coinexplore.io/api/users/coins/watchlist/${id}`,
+        {
+          method: 'POST',
+          
+          headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                  Authorization: `Bearer ${userObject.token}`
+                  
+                  },
+      })
+      const dataHolder = await returnObj.json();
+      console.log(dataHolder)
+      if(dataHolder.success){
+        setTriggerAfterVotes(!triggerAfterVotes)
+      }
+      
+
+      }
+  
+    }
+    else{
+      setuserObject({...userObject,...{userEmail:'',userUsername:'',token:'',exp: 0}})
+        window.localStorage.removeItem('userDetails')
+    }  
+  }
+}
 
 
+//check the individual coins file
+
+const filePerCoin = async(id)=>{
+  if(userObject.token===''){
+    const returnObj = await fetch(`https://apidev.coinexplore.io/api/coins/${id}`,
+    {
+      method: 'GET',
+      
+      headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              },
+  })
+  const dataHolder = await returnObj.json();
+  const coin = dataHolder['coin']
+  console.log(dataHolder['coin'])
+  navigate(`/coin/${coin['name']}`,{state: coin})
+  }
+
+  else{
+    if(userObject.exp*1000> new Date().getTime()){
+      const returnObj = await fetch(`https://apidev.coinexplore.io/api/users/${id}`,
+      {
+        method: 'GET',
+        
+        headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${userObject.token}`
+                },
+    })
+    const dataHolder = await returnObj.json();
+    const coin = dataHolder['coin']
+    console.log(dataHolder['coin'])
+    navigate(`/coin/${coin['name']}`,{state: coin})
+    }
+    else{
+      const returnObj = await fetch(`https://apidev.coinexplore.io/api/coins/${id}`,
+      {
+        method: 'GET',
+        
+        headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                },
+    })
+    const dataHolder = await returnObj.json();
+    const coin = dataHolder['coin']
+    console.log(dataHolder['coin'])
+    navigate(`/coin/${coin['name']}`,{state: coin})
+    }
+  }
+}
 
 
 
@@ -402,7 +558,7 @@ export function PromotedCoin({overallwidth}) {
                                               headers: {
                                                       'Accept': 'application/json',
                                                       'Content-Type': 'application/json',
-                                                      Authentication: `Bearer ${userObject.token}`
+                                                      Authorization: `Bearer ${userObject.token}`
                                                       
                                                       },
                                               
@@ -410,6 +566,10 @@ export function PromotedCoin({overallwidth}) {
                                    });
       const dataHolder = await returnObj.json();
       console.log(dataHolder)
+      if(dataHolder.success){
+        setTriggerAfterVotes(!triggerAfterVotes)
+      }
+      console.log(triggerAfterVotes)
     }
   }
 
@@ -433,12 +593,14 @@ export function PromotedCoin({overallwidth}) {
 
 
   return <div style={{width:'90%',margin:'0px auto',marginTop:'-15px',boxShadow: '0px 0px 50px #0b1f36',borderRadius:'10px 10px 15px 15px'}}>
+            
             <div style={{width:'100%',height:'auto',borderRadius:'10px',margin:"30px auto",marginBottom:'0px',boxSizing:'border-box'}}>
            <div className='tableheader'><div className='headerleft' ><p style={{display:overallwidth<=700?'none':"block"}}>S/N</p><p style={{width:'150px',textAlign:'center'}}>NAME</p></div> <div className='headerright'><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='price'>PRICE</p>  <p className='launchhead'>LAUNCH-DATE</p> <p className='changehead'>CHANGE(24hrs)</p> <p className='voteheader'>VOTE</p> </div> <p className='starholder' > </p></div>  
           { maindata?
              maindata.map( coin => <div className='coinselector'  key={uuidv4()}>
     
-    <div className='tableleft' >
+    <div className='tableleft' onClick={()=>filePerCoin(coin['id']) }>
+      
     <p style={{display:overallwidth<=700?'none':'block'}}>{maindata.indexOf(coin)+1}</p>
     <div style={{width:'150px',display:'flex',alignItems:'center',justifyContent:"left",padding:'0px'}}>
       <img className='tablecoinlogo' style={{borderRadius:'50%',width:"50px",height:'50px'}} src={coin['logo']} alt='coinLogo'/>
@@ -458,7 +620,7 @@ export function PromotedCoin({overallwidth}) {
             </div>                     
             </div>
        </div>
-       <div  className='starholder'>{coin['watchlist']?full:empty}</div>
+       <div  className='starholder' onClick={()=>coinToWatchlist(coin['id'],coin) }>{coin['watchListDate']?full:empty}</div>
     </div> 
     
     ) :<i class="fa fa-spinner fa-spin" style={{fontSize:'48px',color:'white'}}></i>}

@@ -61,7 +61,7 @@ const onfinalsubmit = async (event)=>{
                                                       'Accept': 'application/json',
                                                       'Content-Type': 'application/json'
                                                       },
-                                              body: JSON.stringify(formData)
+                                              body: JSON.stringify({...formData,...{username:formData.username}})
                                    });
       const newobj = await returnObj.json()
 
@@ -75,8 +75,7 @@ const onfinalsubmit = async (event)=>{
                                               body: JSON.stringify({activation_key:"123456",email:formData.email})
                                    });
       const activateObjJson = await activateObj.json()
-      console.log(newobj)
-      console.log(activateObjJson)
+      alert('You have succesfully registered, please sign in.')
       setvotevalidation(true);
       navigate('/')
       
