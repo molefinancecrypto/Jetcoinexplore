@@ -31,6 +31,8 @@ background: linear-gradient(180deg, #05101C 0%, #040B15 100%)
 
 .spanforp{
   color: grey;
+  width: 80%;
+  overflow: hidden;
 }
 
 .sectionwithicons{

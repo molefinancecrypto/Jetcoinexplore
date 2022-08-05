@@ -72,25 +72,58 @@ function Header({overallwidth}) {
    
 
    useEffect(
-      ()=>{
-         let newvar = coinToSearch();
-         console.log(coinsToSearch)
-         if(newvar.length>5){
-            setcoinShown(newvar.slice(0,5))
-         }
-         else if(newvar.length<=5 &&newvar.length != 0){
+      async()=>{
+         if(userObject.token===''){
+            if(searchvalue===""){
+               const searchObj = await fetch(`https://apidev.coinexplore.io/api/coins/search?q=`)
+               const objnew = await searchObj.json()
+               setcoinShown(objnew['coins'])
+            }
+            else{
    
-            setcoinShown(newvar)
+               const searchObj = await fetch(`https://apidev.coinexplore.io/api/coins/search?q=${searchvalue}`)
+               const objnew = await searchObj.json()
+               setcoinShown(objnew['coins'])
+               console.log(objnew)
+            }
          }
-   
-         else if(searchvalue == ''){
-            setcoinShown(CoinObj.slice(0,5))
+         else{
+            if(userObject.exp*1000> new Date().getTime()){
+               if(searchvalue===""){
+                  const searchObj = await fetch(`https://apidev.coinexplore.io/api/coins/search?q=`)
+                  const objnew = await searchObj.json()
+                  console.log(objnew)
+                  setcoinShown(objnew['coins'])
+                  console.log(coinShown)
+               }
+               else{
+      
+                  const searchObj = await fetch(`https://apidev.coinexplore.io/api/coins/search?q=${searchvalue}`)
+                  const objnew = await searchObj.json()
+                  setcoinShown(objnew['coins'])
+                  console.log(objnew)
+               }
+            }
+            else{
+               if(searchvalue===""){
+                  const searchObj = await fetch(`https://apidev.coinexplore.io/api/coins/search?q=`)
+                  const objnew = await searchObj.json()
+                  setcoinShown(objnew['coins'])
+               }
+               else{
+      
+                  const searchObj = await fetch(`https://apidev.coinexplore.io/api/coins/search?q=${searchvalue}`)
+                  const objnew = await searchObj.json()
+                  setcoinShown(objnew['coins'])
+                  console.log(objnew)
+               }
+            }
          }
+         
       },[searchvalue])
 
    const changeSearch = (e)=>{
       setsearchvalue(e.target.value)
-      
    }
 
    const closeshowmenu = ()=>{
@@ -100,6 +133,56 @@ function Header({overallwidth}) {
    const rolldownsearch = ()=> {
       setshowmenu(true)
       
+   }
+
+
+
+   const gotoCoin = async(id)=>{
+      if(userObject.token===''){
+         const returnObj = await fetch(`https://apidev.coinexplore.io/api/coins/${id}`,
+         {
+           method: 'GET',
+           
+           headers: {
+                   'Accept': 'application/json',
+                   'Content-Type': 'application/json',
+                   },
+       })
+       const dataHolder = await returnObj.json();
+       const coin = dataHolder['coin']
+       navigate(`/coin/${coin['name']}`,{state: coin})
+      }
+      else{
+         if(userObject.exp*1000> new Date().getTime()){
+           const returnObj = await fetch(`https://apidev.coinexplore.io/api/coins/${id}`,
+           {
+             method: 'GET',
+             
+             headers: {
+                     'Accept': 'application/json',
+                     'Content-Type': 'application/json',
+                     Authorization: `Bearer ${userObject.token}`
+                     },
+         })
+         const dataHolder = await returnObj.json();
+         const coin = dataHolder['coin']
+         navigate(`/coin/${coin['name']}`,{state: coin})
+         }
+         else{
+           const returnObj = await fetch(`https://apidev.coinexplore.io/api/coins/${id}`,
+           {
+             method: 'GET',
+             
+             headers: {
+                     'Accept': 'application/json',
+                     'Content-Type': 'application/json',
+                     },
+         })
+         const dataHolder = await returnObj.json();
+         const coin = dataHolder['coin']
+         navigate(`/coin/${coin['name']}`,{state: coin})
+         }
+       }
    }
 
    useEffect(
@@ -140,13 +223,12 @@ function Header({overallwidth}) {
         <p onClick={closeshowmenu} style={{width:'50px',marginTop:'15px',}}><svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 0 24 24" width="35px" fill="#808080"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg></p>
         <input  placeholder='SEARCH COINEXPLORE' onChange={changeSearch} type='search' value={searchvalue} style={{width:'70%',marginTop:'15px',marginRight:'25px',paddingLeft:'10px',height:'35px',letterSpacing:'1.5px',fontSize:'13px',boxSizing:'border-box',outline:'none',color:'white',border:"1px solid #02050a", borderRadius:'9px',backgroundColor:'#02050a'}}/>
       </div>
-                        {coinShown.map(coin=><div onClick={ ()=>{
-    navigate(`/coin/${coin[Object.keys(coin)]['name']}`,{state: coin});setshowmenu(false)}} style={{display:'flex',color:'white',justifyContent:"space-between",width:'80%',margin:'20px auto'}}>
+                        {coinShown.map(coin=><div onClick={ ()=>{gotoCoin(coin['id'])}} style={{display:'flex',color:'white',justifyContent:"space-between",width:'80%',margin:'20px auto'}}>
                                               <div style={{display:'flex',width:'60%',justifyContent:'left'}}>
-                                                 <img style={{width:'30px',height:'30px',borderRadius:'50%'}} src={coin[Object.keys(coin)]['img']} alt='logocoin'/>
-                                                 <p style={{marginLeft:'15px',fontSize:'17px'}}>{coin[Object.keys(coin)]['name']}</p>
+                                                 <img style={{width:'30px',height:'30px',borderRadius:'50%'}} src={coin['logo']} alt='logocoin'/>
+                                                 <p style={{marginLeft:'15px',fontSize:'17px'}}>{coin['name']}</p>
                                               </div>
-                                              <p>{coin[Object.keys(coin)]['coin_id']}</p>
+                                              <p>{coin['symbol']}</p>
                                            </div>)}</div>}
         
      </div>
@@ -169,6 +251,7 @@ function Header({overallwidth}) {
                         <NavLink onClick={()=>{setshowhamburger(true) }} to='/signin' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none',display:userObject.token===''?'block':'none'}}}>Sign In</NavLink>
                         <NavLink onClick={()=>{setshowhamburger(true) }} to='/signup' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none',display:userObject.token===''?'block':'none'}}}>Register</NavLink>
                         <NavLink onClick={()=>{setshowhamburger(true) }} to='/userwatchlist' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none',display:userObject.token===''?'none':'block'}}}>Watchlist</NavLink>
+                        <span onClick={()=>{window.localStorage.removeItem('userDetails');setshowLogout(!showLogout);setshowhamburger(true) }} style={{ color: 'white',display:userObject.token===''?'none':'block',cursor:'pointer'}}>Log Out</span>
                      </div>
                   
                   </div>  

@@ -509,14 +509,14 @@ const filePerCoin = async(id)=>{
 
   else{
     if(userObject.exp*1000> new Date().getTime()){
-      const returnObj = await fetch(`https://apidev.coinexplore.io/api/users/${id}`,
+      
+      const returnObj = await fetch(`https://apidev.coinexplore.io/api/coins/${id}`,
       {
         method: 'GET',
         
         headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${userObject.token}`
+                'Content-Type': 'application/json'
                 },
     })
     const dataHolder = await returnObj.json();
