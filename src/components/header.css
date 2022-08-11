@@ -40,6 +40,18 @@
     z-index: 2000;
 }
 
+.menuSector{
+    position:absolute;
+    top:0px;
+    right:0px;
+    height:100vh;
+    width:250px;
+    background-color:#05101c;
+    animation-name:sidebarmove;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
 .hamburgerinactive{
     text-decoration:none;
     color:white
@@ -68,6 +80,7 @@
     align-items: center;
     display:none;
     padding-top: 10px;
+
 }
 
 
@@ -198,3 +211,7 @@ input#menu{
     }
 }
     
+@keyframes sidebarmove{
+    from{ transform: translateX(250px)}
+    to{ transform: translateX(0px)}
+  }

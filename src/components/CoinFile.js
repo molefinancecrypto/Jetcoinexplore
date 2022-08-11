@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useRef} from 'react';
 import { ParticularCoin } from '../contextfolder/Coindata';
 import { useParams,useNavigate,useLocation } from 'react-router-dom';
 import CoinsTable from './Mainpage/CoinsTable';
@@ -9,12 +9,28 @@ import { PromotedCoin } from './Mainpage/CoinsTable';
 
 
 function CoinFile({overallwidth}) {
+    const coinAd = useRef('')
     const homeIcon = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>;
     const backward = <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>;
     const {selector} = ParticularCoin();
     const { coinpicked } = useParams();
     let navigate = useNavigate();
     const location = useLocation();
+
+    //copy address to clickboard
+    const addressClick = (text)=>{
+
+        if ('clipboard' in navigator){
+             navigator.clipboard.writeText(text).then((val)=>alert('address copied successfully!'));
+            
+        }
+        else {
+            return document.execCommand('copy', true, text);
+          }
+        
+    }
+
+    //
     const data = location.state;
     const arrowforvote = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"/></svg>;
 
@@ -31,7 +47,7 @@ function CoinFile({overallwidth}) {
                     </section>
                     <section style={{width:'100%',margin:'0px auto'}}>
                         <p style={{color:'white',textAlign:'left'}}>Network:&nbsp;&nbsp; <span className='spanforp' >{data['chain']}</span></p>
-                        <p style={{color:'white',textAlign:'left',marginTop:'20px',overflow:'hidden'}}>Contract Address:&nbsp;&nbsp; <span className='spanforp'>{data['address']}&nbsp;</span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></p>
+                        <p style={{color:'white',textAlign:'left',marginTop:'20px',overflow:'hidden',display:'flex',alignItems:"center",justifyContent:"center"}}>Contract Address:&nbsp;&nbsp; <input ref={coinAd} type='text' style={{height: '45px',boxSizing : 'border-box',backgroundColor:'#071323' ,outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',}} className='spanforp' value= {data['address']} />&nbsp;<span onClick={()=>addressClick(data['address'])} className='copyIconHolder' ><svg  style={{cursor:'pointer',border:'0.5px solid #081728'}} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></span></p>
                     </section>
                     <section className='sectionwithicons' >
                         

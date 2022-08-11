@@ -239,7 +239,7 @@ function Header({overallwidth}) {
               {showhamburger?<div  onClick={()=>{setshowhamburger(false) }}>{open}</div>:
               <div className='divforcanceler'>
                    
-                  <div style={{position:'absolute',top:'0px',right:'0px',height:'100vh',width:'70%',backgroundColor:'#05101c'}}>
+                  <div className='menuSector' >
                      <div onClick={()=>{setshowhamburger(true)}} style={{position:'absolute',top:'12px',right:'5px'}}>{close}</div> 
                      
                      <div style={{position:'absolute',textAlign:'left',height:'50%',display:'flex',justifyContent:'space-around',top:'20%',left:'20px',flexDirection:'column',color:"white"}}>
