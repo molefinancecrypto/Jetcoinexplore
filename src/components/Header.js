@@ -131,9 +131,8 @@ useEffect(()=>{
    if(alertobj.message!==''){
 
       //setalertobj({...alertobj,...{pass:true}})
-      console.log('trial a')
       
-      const time = setTimeout(() =>{setalertobj({...alertobj,...{pass:false}});console.log('trial b')} , 5000);
+      const time = setTimeout(() =>{setalertobj({...alertobj,...{pass:false}})} , 5000);
       
       
        return(()=>clearTimeout(time))
@@ -158,6 +157,7 @@ useEffect(()=>{
 
 
    const gotoCoin = async(id)=>{
+      try{
       if(userObject.token===''){
          const returnObj = await fetch(`https://apidev.coinexplore.io/api/coins/${id}`,
          {
@@ -202,6 +202,10 @@ useEffect(()=>{
          const coin = dataHolder['coin']
          navigate(`/coin/${coin['name']}`,{state: coin})
          }
+       }}
+
+       catch(error){
+         setalertobj({...alertobj,...{message:'please, check your internet connections again',trigger:!alertobj.trigger,pass:true}})
        }
    }
 
@@ -263,7 +267,7 @@ useEffect(()=>{
         <p onClick={closeshowmenu} style={{width:'50px',marginTop:'15px',}}><svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 0 24 24" width="35px" fill="#808080"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg></p>
         <input  placeholder='SEARCH COINEXPLORE' onChange={changeSearch} type='search' value={searchvalue} style={{width:'70%',marginTop:'15px',marginRight:'25px',paddingLeft:'10px',height:'35px',letterSpacing:'1.5px',fontSize:'13px',boxSizing:'border-box',outline:'none',color:'white',border:"1px solid #02050a", borderRadius:'9px',backgroundColor:'#02050a'}}/>
       </div>
-                        {coinShown.map(coin=><div onClick={ ()=>{gotoCoin(coin['id'])}} style={{display:'flex',color:'white',justifyContent:"space-between",width:'80%',margin:'20px auto'}}>
+                        {coinShown.map(coin=><div onClick={ ()=>{gotoCoin(coin['id']);setshowmenu(false)}} style={{display:'flex',color:'white',justifyContent:"space-between",width:'80%',margin:'20px auto'}}>
                                               <div style={{display:'flex',width:'60%',justifyContent:'left'}}>
                                                  <img style={{width:'30px',height:'30px',borderRadius:'50%'}} src={coin['logo']} alt='logocoin'/>
                                                  <p style={{marginLeft:'15px',fontSize:'17px'}}>{coin['name']}</p>
