@@ -7,6 +7,7 @@ import { Statecontext } from './CointoviewContext';
 import {Link} from 'react-router-dom';
 import {CoinObj} from './coinholder';
 import alexisearch from './alexi-icons/alexisearch.png';
+import Alert from './Menu/Alert';
 
 
 
@@ -17,6 +18,7 @@ function Header({overallwidth}) {
    const menuref = useRef();
    const [showLogout, setshowLogout] = useState(false);
    const [currentlocale,setcurrentlocale] = useContext(Statecontext).currentlocale;
+   const[alertobj,setalertobj] = useContext(Statecontext).alertobj
    const [searchvalue,setsearchvalue] = useState('')
    const [coinShown, setcoinShown] = useState(CoinObj.slice(0,5));
    const [coinsToSearch, setcoinsToSearch] = useState('');
@@ -25,6 +27,7 @@ function Header({overallwidth}) {
    const dropdown = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 10l5 5 5-5H7z"/></svg>;
    const dropup = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 14l5-5 5 5H7z"/></svg>;
    const [userObject,setuserObject] = useContext(Statecontext).userObject;
+   const mobilemenuref = useRef();
    const coinToSearch = ()=>{
      return CoinObj.filter(coin => coin[Object.keys(coin)]['name'].toLowerCase().includes(searchvalue))
   }
@@ -122,6 +125,23 @@ function Header({overallwidth}) {
          
       },[searchvalue])
 
+
+//useEffect to trigger alert messages
+useEffect(()=>{
+   if(alertobj.message!==''){
+
+      //setalertobj({...alertobj,...{pass:true}})
+      console.log('trial a')
+      
+      const time = setTimeout(() =>{setalertobj({...alertobj,...{pass:false}});console.log('trial b')} , 5000);
+      
+      
+       return(()=>clearTimeout(time))
+      }
+       
+      
+},[alertobj.trigger])
+   
    const changeSearch = (e)=>{
       setsearchvalue(e.target.value)
    }
@@ -191,6 +211,7 @@ function Header({overallwidth}) {
             if(!menuref.current.contains(event.target)){
                setshowmenu(false)
             }
+            
          }
          document.addEventListener('mousedown',checkwhereclicked);
 
@@ -200,7 +221,26 @@ function Header({overallwidth}) {
       }
    )
 
+
+   useEffect(
+      ()=>{
+         let checkwhereclicked = (event)=>{
+           
+            if(!mobilemenuref.current.contains(event.target)){
+               setshowLogout(false)
+            }
+         }
+         document.addEventListener('mousedown',checkwhereclicked);
+
+         return ()=>{
+            document.removeEventListener('mousedown',checkwhereclicked)
+         }
+      }
+   )
+
+
   return <div className='headerwrapper'>
+            {alertobj.pass && <Alert />}
             <div className='headercontainer'>
                <div  onClick={()=> navigate('/')} className='logoandtitleholder'>
         
@@ -260,7 +300,7 @@ function Header({overallwidth}) {
 
            
 
-    <ul className="lister">
+    <ul className={userObject.token===''?"lister":"listerWithToken"}>
        <li className='list'><Link to="/addcoin" style={{color:"white",textDecoration:"none"}}>Add Coin</Link></li>
        <li className='list'><Link to="/promoted" style={{color:"white",textDecoration:"none"}}>Advertise</Link></li>
        <li className='list'><Link to="/newspage" style={{color:"white",textDecoration:"none"}}>News</Link></li>
@@ -268,9 +308,9 @@ function Header({overallwidth}) {
        <p style={{width:'0.5px',height:"33px",backgroundColor:"white",margin:'0px 5px'}}></p>
        <li className='list'><Link to="/signin" style={{color:"white",textDecoration:"none",display:userObject.token===''?'block':'none'}}>Sign In</Link></li>
        <li className='list'><Link to="/signup" style={{color:"white",textDecoration:"none",display:userObject.token===''?'block':'none'}}>Register</Link></li>
-       <div style={{display:userObject.token===''?'none':'block',position:'relative'}}>
+       <div ref={mobilemenuref} style={{display:userObject.token===''?'none':'block',position:'relative',marginRight:'10px'}}>
          <p onClick={()=>setshowLogout(!showLogout)}>{avatar}</p>
-         <div  style={{position:'absolute',display:showLogout?'block':'none',right:'0px',top:'48px',width:'420px',fontFamily:'NexaTextLight',padding:"5px",paddingTop:'15px',boxSizing:'border-box',height:'140px',borderRadius:'10px',border:'2px solid #0B1F36',backgroundColor:'#05101c',zIndex:'5'}}>
+         <div style={{position:'absolute',display:showLogout?'block':'none',right:'0px',top:'48px',width:'420px',color:"white",fontFamily:'NexaTextLight',padding:"5px",paddingTop:'15px',boxSizing:'border-box',height:'140px',borderRadius:'10px',border:'2px solid #0B1F36',backgroundColor:'#05101c',zIndex:'5'}}>
                <p style={{textAlign:'left'}}>{`Welcome to CoinExplore ${userObject.userEmail}`}</p>
                
                <p onClick={()=>{window.localStorage.removeItem('userDetails');setshowLogout(!showLogout)}} style={{marginTop:'15px',textAlign:'left',cursor:'pointer'}}>Log Out</p>

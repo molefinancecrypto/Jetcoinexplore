@@ -43,6 +43,7 @@ function ListCoin() {
     const [windowidth,setwindowidth] = useState(1000);
     const [headertoshow,setheadertoshow] = useState(0);
     const [userObject,setuserObject] = useContext(Statecontext).userObject;
+    const[alertobj,setalertobj] = useContext(Statecontext).alertobj
     const updateCoinObj = (event)=>{
         setenlistCoinObj({...enlistCoinObj,...{[event.target.name] : event.target.value}})
     }
@@ -98,7 +99,8 @@ function ListCoin() {
 
     const addnewCoinObject = await addCoinCredentials.json();
     if(addnewCoinObject.success){
-        alert('your coin has been listed succesfully.')
+        setalertobj({...alertobj,...{message:'your coin has been listed succesfully.',trigger:!alertobj.trigger,pass:true}})
+    
     }
     console.log(addnewCoinObject)
     }
@@ -138,7 +140,9 @@ function ListCoin() {
         event.preventDefault()
         if(name===""||symbol===""||marketcap===""||price===""||launchDate===""||description===""){
             setcolorBorderObject({...colorBorderObject,...{stageOne:false}})
-            alert('fill all fields')
+            setalertobj({...alertobj,...{message:'fill all fields.',trigger:!alertobj.trigger,pass:true}})
+            console.log(alertobj)
+            
         }
         else{
             setsliderposition({left:25,info:'none',contracts:'block',Link:'none',addons:'none'})
@@ -153,7 +157,8 @@ function ListCoin() {
         event.preventDefault()
         if(chain===''||address===''){
             setcolorBorderObject({...colorBorderObject,...{stageTwo:false}})
-            alert('ensure you fill all fields')
+            setalertobj({...alertobj,...{message:'ensure you fill all fields.',trigger:!alertobj.trigger,pass:true}})
+            
         }
         else{
             setcolorBorderObject({...colorBorderObject,...{stageTwo:true}})
@@ -168,7 +173,8 @@ function ListCoin() {
         event.preventDefault()
         if(website===''){
             setcolorBorderObject({...colorBorderObject,...{stageThree:false}})
-                alert('please fill-in website field')
+            setalertobj({...alertobj,...{message:'please fill-in website field.',trigger:!alertobj.trigger,pass:true}})
+            
         }
         else{
             setcolorBorderObject({...colorBorderObject,...{stageThree:true}})

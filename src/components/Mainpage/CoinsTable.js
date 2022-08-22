@@ -306,6 +306,7 @@ export default CoinsTable;
 export function PromotedCoin({overallwidth}) {
   const [AllTime,setAllTime] = useContext(Statecontext).alltime;
   const [TodayBest,setTodayBest] = useContext(Statecontext).todaybest;
+  const[alertobj,setalertobj] = useContext(Statecontext).alertobj;
   const [MarketCap,setMarketCap] = useContext(Statecontext).marketCap;
   const [NewListings,setNewListings] = useContext(Statecontext).newlistings;
   const empty = <img src={emptystar} style={{width:'20px',height:'20px'}}/>;
@@ -431,7 +432,8 @@ export function PromotedCoin({overallwidth}) {
 
 const coinToWatchlist = async(id,coin)=>{
   if(userObject.token===''){
-    alert('please, sign in first to add coin to watchlist')
+    setalertobj({...alertobj,...{message:'please, sign in first to add coin to watchlist',trigger:!alertobj.trigger,pass:true}})
+  
   }
 
   else{
@@ -548,31 +550,38 @@ const filePerCoin = async(id)=>{
 
   const voteFunction = async(id)=>{
     if(userObject.token===''){
-      alert('please, sign in first to vote')
+      setalertobj({...alertobj,...{message:'please, sign in first to vote',trigger:!alertobj.trigger,pass:true}})
+      
     }
     else{
+      try{
+
+        const returnObj = await fetch(`https://apidev.coinexplore.io/api/users/coins/vote/${id}`, {
+                                                method: 'PUT',
+                                                
+                                                headers: {
+                                                        'Accept': 'application/json',
+                                                        'Content-Type': 'application/json',
+                                                        Authorization: `Bearer ${userObject.token}`
+                                                        
+                                                        },
+                                                
       
-      const returnObj = await fetch(`https://apidev.coinexplore.io/api/users/coins/vote/${id}`, {
-                                              method: 'PUT',
-                                              
-                                              headers: {
-                                                      'Accept': 'application/json',
-                                                      'Content-Type': 'application/json',
-                                                      Authorization: `Bearer ${userObject.token}`
-                                                      
-                                                      },
-                                              
-    
-                                   });
-      const dataHolder = await returnObj.json();
-      console.log(dataHolder)
-      if(dataHolder.success){
-        setTriggerAfterVotes(!triggerAfterVotes)
+                                     });
+        const dataHolder = await returnObj.json();
+        console.log(dataHolder)
+        if(dataHolder.success){
+          setTriggerAfterVotes(!triggerAfterVotes)
+        }
+        console.log(triggerAfterVotes)
       }
-      console.log(triggerAfterVotes)
+    
+
+      catch(error){
+        setalertobj({...alertobj,...{message:'please, wait for the next 12hours to vote again',trigger:!alertobj.trigger,pass:true}})
+      }
     }
   }
-
 
 
 

@@ -1,5 +1,6 @@
-import React, {useRef, useState,useEffect} from 'react';
+import React, {useRef, useState,useEffect,useContext} from 'react';
 import './signup.css'
+import { Statecontext } from '../CointoviewContext';
 import { ParticularCoin } from '../../contextfolder/Coindata';
 import { Link,useNavigate } from 'react-router-dom';
 import worldimage from './imagesforauth/worldforsigning.jpg';
@@ -9,8 +10,8 @@ import GoToTop from '../Gototop';
 
 
 export default function Signup() {
-  
-  const backward = <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>
+const[alertobj,setalertobj] = useContext(Statecontext).alertobj  
+const backward = <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>
  const [formData,setFormData] = useState({
   name: "",
   email: '',
@@ -47,11 +48,13 @@ const onchangeEmail = (event)=>{
 const onfinalsubmit = async (event)=>{
      event.preventDefault()
      if(username==='' ||password=== ''||email=== ''||confirm_password===''){
-       alert('please fill in your details')
+      setalertobj({...alertobj,...{message:'please fill in all details'}})
+       
      }
 
      else if(password!== confirm_password){
-      alert("Your password don't match")
+      setalertobj({...alertobj,...{message:"Your password don't match"}})
+  
      }
      else{
       console.log(formData)
@@ -64,6 +67,7 @@ const onfinalsubmit = async (event)=>{
                                               body: JSON.stringify({...formData,...{username:formData.username}})
                                    });
       const newobj = await returnObj.json()
+      console.log(newobj)
 
 
       const activateObj = await fetch('https://apidev.coinexplore.io/api/activate', {
@@ -75,7 +79,9 @@ const onfinalsubmit = async (event)=>{
                                               body: JSON.stringify({activation_key:"123456",email:formData.email})
                                    });
       const activateObjJson = await activateObj.json()
-      alert('You have succesfully registered, please sign in.')
+      console.log(activateObjJson)
+      setalertobj({...alertobj,...{message:"You have succesfully registered, please sign in."}})
+      
       setvotevalidation(true);
       navigate('/')
       

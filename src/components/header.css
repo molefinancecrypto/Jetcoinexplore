@@ -65,9 +65,22 @@
 .lister{
     width:40%;
     display:flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     list-style: none;
     align-items: center;
+}
+
+.listerWithToken{
+    width:30%;
+    display:flex;
+    justify-content: space-evenly;
+    list-style: none;
+    align-items: center;
+}
+
+.listerWithToken:hover{
+    color: grey;
+    cursor: pointer;
 }
 
 .list:hover{
@@ -175,6 +188,10 @@ input#menu{
 
  .lister{
      display: none;
+ }
+
+ .listerWithToken{
+    display:none
  }
 
  .menuholder{

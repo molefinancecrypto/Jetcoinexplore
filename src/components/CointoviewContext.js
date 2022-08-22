@@ -10,6 +10,7 @@ export const Statecontext = createContext();
 
 export const StateHolder = (props)=> {
     const [coinheader,setcoinheader] = useState('first');
+    const [alertobj,setalertobj] = useState({pass:false,message:'',trigger:false})
     const [currentlocale,setcurrentlocale] = useState('/');
     const [triggerlength,settriggerlength] = useState(0);
     const [triggerlengthban,settriggerlengthban] = useState(0);
@@ -36,7 +37,7 @@ export const StateHolder = (props)=> {
         dayarrunik:[dayarrunik,setdayarrunik],dayarrbanunik:[dayarrbanunik,setdayarrbanunik],changepagebyfoot:[changepagebyfoot,setchangepagebyfoot]
         ,changefootcheck:[changefootcheck,setchangefootcheck],ordermarginTop:[ordermarginTop,setordermarginTop],watchlistArray:[watchlistArray,setwatchlistArray]
         ,alltime:[alltime, setallTime],todaybest:[todaybest, settodayBest],marketCap:[marketCap,setmarketCap],newlistings:[newlistings,setnewListings],headertoshow:[headertoshow,setheadertoshow],
-        headerterms:[headerterms,setheaderterms],userObject:[userObject,setuserObject]}}>
+        headerterms:[headerterms,setheaderterms],userObject:[userObject,setuserObject],alertobj:[alertobj,setalertobj]}}>
             {props.children}
         </Statecontext.Provider>
     )

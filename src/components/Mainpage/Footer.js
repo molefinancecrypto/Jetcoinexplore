@@ -91,7 +91,7 @@ else{
               <p><Link to="/newspage" style={{color:"#BABABA",textDecoration:"none",cursor:'pointer'}}>News</Link></p>
               <p onClick={()=>{setheadertoshow(0);setheaderterms('Terms & Conditions')}}><Link to="/rulesandreg" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>Terms & Conditions</Link></p>
               <p onClick={()=>{setheadertoshow(2);setheaderterms('Privacy & Cookie Policies')}}><Link to="/rulesandreg" style={{color:"#BABABA",cursor:'pointer',textDecoration:"none"}}>Privacy & Cookie Policies</Link></p>
-              <p onClick={()=> navigate('/newlyadcoins')} style={{cursor:'pointer'}}>Newly Enlisted Coins</p>
+              <p onClick={()=> navigate('/newlyadcoins')} style={{cursor:'pointer'}}>New Listings</p>
             </div>
           </div>
           
@@ -111,8 +111,7 @@ else{
             <div className='footSecondContent'>
               <p style={{cursor:'pointer'}} onClick={()=>cointableselector('first')}>Today's Best</p>
               <p style={{cursor:'pointer'}} onClick={()=>cointableselector('second')}>All Time Best</p>
-              <p style={{cursor:'pointer'}} onClick={()=>cointableselector('third')}>New Listings</p>
-              <p style={{cursor:'pointer'}} onClick={()=>cointableselector('fourth')}>By Market Cap</p>
+              <p style={{cursor:'pointer'}} onClick={()=>cointableselector('third')}>By Market Cap</p>
               <p><Link to="/addcoin" style={{color:"#BABABA",textDecoration:"none"}}>Add Coin </Link></p>
             </div>
           </div>

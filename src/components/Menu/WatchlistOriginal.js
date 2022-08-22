@@ -18,6 +18,7 @@ export default function WatchlistOriginal({overallwidth}) {
 const navigate = useNavigate()
 const [watchlistArray,setwatchlistArray] = useState()
 const [triggerAfterVotes,setTriggerAfterVotes] = useState(false);
+const[alertobj,setalertobj] = useContext(Statecontext).alertobj
 const [userObject,setuserObject] = useContext(Statecontext).userObject;
 const [loaderid,setloaderid] = useState('');
 const eth = <img src={ethereumlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
@@ -48,6 +49,7 @@ const empty = <img src={emptystar} style={{width:'20px',height:'20px'}}/>;
       if(dataHolder.success){
         setloaderid(id)
         setTriggerAfterVotes(!triggerAfterVotes)
+        setalertobj({...alertobj,...{message:'coin has been removed from watchlist',trigger:true}})
       }
 
     }
@@ -78,6 +80,7 @@ useEffect(
           const jsonData = await returnObj.json()
           console.log(jsonData)
           setwatchlistArray(jsonData)
+          
           setloaderid('')
         
     },[triggerAfterVotes,userObject.token]
@@ -89,7 +92,8 @@ useEffect(
     
   const voteFunction = async(id)=>{
     if(userObject.token===''){
-      alert('please, sign in first to vote')
+      setalertobj({...alertobj,...{message:'please, sign in first to vote',trigger:true}})
+      
     }
     else{
       

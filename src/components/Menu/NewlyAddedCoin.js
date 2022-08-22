@@ -91,7 +91,7 @@ function NewlyAddedCoin({overallwidth}) {
 
 
       return <div style={{width:'95%',height:'500px',paddingTop:'35px',margin:'10px auto',boxSizing:"border-box"}}>
-                <div style={{marginTop:'35px'}}><p style={{textAlign:'center',color:'white',fontSize:overallwidth>'700px'?'35px':'25px',letterSpacing:"1.5px",marginBottom:'15px'}}>Newly Added Coins</p>
+                <div style={{marginTop:'35px'}}><p style={{textAlign:'center',color:'white',fontSize:overallwidth>'700px'?'35px':'25px',letterSpacing:"1.5px",marginBottom:'15px'}}>New Listings</p>
                 <div style={{width:'90%',margin:'0px auto',marginTop:'-15px',boxShadow: '0px 0px 50px #0b1f36',borderRadius:'10px 10px 15px 15px'}}>
                   <div style={{width:'100%',height:'auto',borderRadius:'10px',margin:"30px auto",marginBottom:'0px',boxSizing:'border-box'}}>
                     <div className='tableheader'><div className='headerleft' ><p style={{display:overallwidth<=700?'none':"block"}}>S/N</p><p style={{width:'150px',textAlign:'center'}}>NAME</p></div> <div className='headerright'><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='price'>PRICE</p>  <p className='launchhead'>LAUNCH-DATE</p> <p className='changehead'>CHANGE(24hrs)</p> <p className='voteheader'>VOTE</p> </div> <p className='starholder' > </p></div>  

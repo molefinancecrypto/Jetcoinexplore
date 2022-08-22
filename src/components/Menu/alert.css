@@ -1,0 +1,38 @@
+.alertholder{
+    position:fixed;
+    background-color: transparent;
+    z-index: 200;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top:35px;
+    width: 350px;
+    height: 100px;
+    
+}
+
+.alertcontent{
+    background-color: #071321;
+    font-family: NexaTextLight;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+    color:white;
+    border-radius: 7px;
+    height:auto;
+    padding: 10px;
+    margin: 35px auto;
+    border: 0.2px solid #708AF4;
+    animation-name: alert;
+    animation-duration: 5s;
+    
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes alert{
+    from{ transform: translateY(-200px)}
+    25%{ transform: translateY(0px) }
+    50%{ transform: translateY(0px) }
+    75%{ transform: translateY(0px) }
+    to{transform: translateY(-200px) }
+  }
