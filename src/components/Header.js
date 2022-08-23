@@ -244,7 +244,7 @@ useEffect(()=>{
 
 
   return <div className='headerwrapper'>
-            {alertobj.pass && <Alert />}
+            {alertobj.pass && <Alert overallwidth={overallwidth}/>}
             <div className='headercontainer'>
                <div  onClick={()=> navigate('/')} className='logoandtitleholder'>
         

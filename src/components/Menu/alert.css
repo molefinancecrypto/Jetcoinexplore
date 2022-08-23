@@ -10,6 +10,21 @@
     
 }
 
+.alertholdermobile{
+    position:fixed;
+    background-color: transparent;
+    z-index: 200;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top:35px;
+    width: 230px;
+    height: 100px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
 .alertcontent{
     background-color: #071321;
     font-family: NexaTextLight;
