@@ -10,6 +10,7 @@ export default function ContactUs({overallwidth}) {
     const [email,setemail] = useState('')
     const [message,setmessage] = useState('')
     const [userObject,setuserObject] = useContext(Statecontext).userObject;
+    const[alertobj,setalertobj] = useContext(Statecontext).alertobj;
 
     const navigate = useNavigate()
     const changeFirstname = (event)=>{
@@ -31,38 +32,42 @@ export default function ContactUs({overallwidth}) {
       const onfinalsubmit = async(event)=>{
         event.preventDefault()
         if(email==='' ||firstname=== ''||lastname===''||message===''){
-          alert('please fill in your details')
+          setalertobj({...alertobj,...{message:'please fill in your details',trigger:!alertobj.trigger,pass:true}})
+          
         }
         else{
-         if(userObject.token!=='' || userObject.exp*1000> new Date().getTime()){
-          console.log('a')
-          const returnObj = await fetch('https://apidev.coinexplore.io/api/contact', {
-            method: 'POST',
-            
-            headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${userObject.token}`
-                    },
-            body: JSON.stringify({
-              firstname,
-              lastname,
-              email,
-              message
-            })
-         });
-         const newobj = await returnObj.json()
-        if(newobj.success){
-           alert('Your message has been sent succesfully!')
-          }
-        else{
-          alert('Please, retry')
-        }
-        }
+          try{
 
-    else{
-      alert('Please, sign in first to send messages')
-    }
+            if(userObject.token!=='' || userObject.exp*1000> new Date().getTime()){
+             console.log('a')
+             const returnObj = await fetch('https://apidev.coinexplore.io/api/contact', {
+               method: 'POST',
+               
+               headers: {
+                       'Accept': 'application/json',
+                       'Content-Type': 'application/json',
+                       Authorization: `Bearer ${userObject.token}`
+                       },
+               body: JSON.stringify({
+                 firstname,
+                 lastname,
+                 email,
+                 message
+               })
+            });
+            const newobj = await returnObj.json()
+           if(newobj.success){
+             setalertobj({...alertobj,...{message:'Your message has been sent succesfully!',trigger:!alertobj.trigger,pass:true}})
+              
+             }        
+           }
+       else{
+         setalertobj({...alertobj,...{message:'Please, sign in first to send messages',trigger:!alertobj.trigger,pass:true}})     
+       }
+          }
+          catch(error){
+            setalertobj({...alertobj,...{message:'Please,check your internet connections properly',trigger:!alertobj.trigger,pass:true}})     
+          }
          }
          
     

@@ -159,13 +159,13 @@ return <div className='signoverall' >
           <div style={{width:'100%',boxSizing:'border-box',height:"70%",display:'flex',flexDirection:"column",justifyContent:'space-between',padding:'40px 15px',boxSizing:"border-box",backgroundImage: 'linear-gradient(to bottom,#0d213a,#05101c)',borderRadius:'25px 25px 0px 0px'}}>
             <div style={{width:'100%',height:'50%'}}>
               <div style={{width:'80%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
-                <p style={{marginBottom:'0px',paddingTop:'25px',color:'white'}}>Email:</p>
-                <input onChange={(event)=>onchangeEmail(event)} value={formData.email} type='text' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none'}}/>
+                <p style={{marginBottom:'0px',color:'white',paddingTop:'17px'}}>Email:</p>
+                <input onChange={(event)=>onchangeEmail(event)} value={formData.email} type='text' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none',paddingBottom:'15px'}}/>
               </div>
 
               <div style={{width:'80%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
-                <p style={{marginBottom:'0px',paddingTop:'25px',color:'white'}}>Password:</p>
-                <input onChange={(event)=>onchangepassword(event)} value={formData.password} type='password' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none'}}/>
+                <p style={{marginBottom:'0px',paddingTop:'17px',color:'white'}}>Password:</p>
+                <input onChange={(event)=>onchangepassword(event)} value={formData.password} type='password' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none',paddingBottom:'15px'}}/>
               </div>
               
             </div>
