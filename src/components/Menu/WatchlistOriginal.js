@@ -49,7 +49,7 @@ const empty = <img src={emptystar} style={{width:'20px',height:'20px'}}/>;
       if(dataHolder.success){
         setloaderid(id)
         setTriggerAfterVotes(!triggerAfterVotes)
-        setalertobj({...alertobj,...{message:'coin has been removed from watchlist',trigger:true}})
+        setalertobj({...alertobj,...{message:'coin has been removed from watchlist',trigger:!alertobj.trigger,pass:true}})
       }
 
     }
@@ -92,11 +92,14 @@ useEffect(
     
   const voteFunction = async(id)=>{
     if(userObject.token===''){
-      setalertobj({...alertobj,...{message:'please, sign in first to vote',trigger:true}})
+      setalertobj({...alertobj,...{message:'please, sign in first to vote',trigger:!alertobj.trigger,pass:true}})
       
     }
     else{
-      
+
+      try{
+
+     
       const returnObj = await fetch(`https://apidev.coinexplore.io/api/users/coins/vote/${id}`, {
                                               method: 'PUT',
                                               
@@ -115,6 +118,10 @@ useEffect(
       }
       console.log(dataHolder)
     }
+  catch(error){
+    setalertobj({...alertobj,...{message:'please, wait for the next 12hours to vote again',trigger:!alertobj.trigger,pass:true}})
+  }
+  }
   }
     return (
         <div className='watchlistcontainer'>

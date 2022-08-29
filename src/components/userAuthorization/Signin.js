@@ -53,13 +53,19 @@ console.log(returnObj.status)
 
 
 const newobj = await returnObj.json()
-window.localStorage.setItem('userDetails',JSON.stringify(newobj))
-const userDetail = JSON.parse(window.localStorage.getItem('userDetails'));
-console.log(userDetail)
-const {access_token,username,email,exp} = userDetail;
-setuserObject({...userObject,...{userEmail:email,userUsername:username,token:access_token,exp}})
-setalertobj({...alertobj,...{message:'you are succesfully logged-in',trigger:!alertobj.trigger,pass:true}})
-navigate('/')
+if(!newobj.success){
+  setalertobj({...alertobj,...{message:'Username or Password Incorrect',trigger:!alertobj.trigger,pass:true}})
+}
+else{
+
+  window.localStorage.setItem('userDetails',JSON.stringify(newobj))
+  const userDetail = JSON.parse(window.localStorage.getItem('userDetails'));
+  console.log(userDetail)
+  const {access_token,username,email,exp} = userDetail;
+  setuserObject({...userObject,...{userEmail:email,userUsername:username,token:access_token,exp}})
+  setalertobj({...alertobj,...{message:'you are succesfully logged-in',trigger:!alertobj.trigger,pass:true}})
+  navigate('/')
+}
    }
 
    catch(error){

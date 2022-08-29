@@ -48,16 +48,19 @@ const onchangeEmail = (event)=>{
 const onfinalsubmit = async (event)=>{
      event.preventDefault()
      if(username==='' ||password=== ''||email=== ''||confirm_password===''){
-      setalertobj({...alertobj,...{message:'please fill in all details'}})
+      setalertobj({...alertobj,...{message:'please fill in all details',trigger:!alertobj.trigger,pass:true}})
        
      }
 
      else if(password!== confirm_password){
-      setalertobj({...alertobj,...{message:"Your password don't match"}})
+      setalertobj({...alertobj,...{message:"Your password don't match",trigger:!alertobj.trigger,pass:true}})
   
      }
      else{
       console.log(formData)
+      try{
+
+      
       const returnObj = await fetch('https://apidev.coinexplore.io/api/users/add', {
                                               method: 'POST',
                                               headers: {
@@ -80,12 +83,17 @@ const onfinalsubmit = async (event)=>{
                                    });
       const activateObjJson = await activateObj.json()
       console.log(activateObjJson)
-      setalertobj({...alertobj,...{message:"You have succesfully registered, please sign in."}})
+      setalertobj({...alertobj,...{message:"You have succesfully registered, please sign in.",trigger:!alertobj.trigger,pass:true}})
       
       setvotevalidation(true);
       navigate('/')
       
      }
+    catch(error){
+      setalertobj({...alertobj,...{message:"Please, check your internet connection.",trigger:!alertobj.trigger,pass:true}})
+    }
+
+    }
 }
   
 

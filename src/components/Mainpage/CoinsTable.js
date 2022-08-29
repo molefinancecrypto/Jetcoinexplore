@@ -379,6 +379,9 @@ export function PromotedCoin({overallwidth}) {
     
       async()=>{
 
+        try{
+
+       
         if(userObject.token===''){
         const newdata = await fetch('https://apidev.coinexplore.io/api/coins/list/all');
         const Json = await newdata.json();
@@ -400,18 +403,12 @@ export function PromotedCoin({overallwidth}) {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${userObject.token}`
                     
-                    },
-            
-    
-    
+                    },   
         });
-          const Json = await newdata.json();
-          
+          const Json = await newdata.json();         
             const Jsondata = Json['coins']
             console.log(Jsondata)
-            setmaindata(Jsondata)
-          
-          
+            setmaindata(Jsondata)         
          }
 
          else{
@@ -423,6 +420,9 @@ export function PromotedCoin({overallwidth}) {
          }
         
         
+      } }
+      catch(error){
+        setalertobj({...alertobj,...{message:'please, check your internet connections',trigger:!alertobj.trigger,pass:true}})
       }
     }
     

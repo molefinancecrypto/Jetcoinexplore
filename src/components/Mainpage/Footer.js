@@ -10,6 +10,7 @@ import { Statecontext } from '../CointoviewContext';
 export default function Footer() {
   const navigate = useNavigate();
   const [coinheader,setcoinheader] = useContext(Statecontext).coinheader;
+  const[alertobj,setalertobj] = useContext(Statecontext).alertobj;
   const [changepagebyfoot,setchangepagebyfoot] = useContext(Statecontext).changepagebyfoot;
   const [headertoshow,setheadertoshow] = useContext(Statecontext).headertoshow;
   const [headerterms,setheaderterms] = useContext(Statecontext).headerterms;
@@ -31,7 +32,7 @@ export default function Footer() {
   const onfinalsubmit = async(event)=>{
     event.preventDefault()
     if(newsmail==='' ){
-      alert('please fill in your mail')
+      setalertobj({...alertobj,...{message:'please fill in your mail',trigger:!alertobj.trigger,pass:true}})
     }
     else{
      if(userObject.token!=='' || userObject.exp*1000> new Date().getTime()){
@@ -50,15 +51,16 @@ export default function Footer() {
      });
      const newobj = await returnObj.json()
     if(newobj.success){
-       alert('You have been subscribed successfully!')
+      setalertobj({...alertobj,...{message:'You have been subscribed successfully!',trigger:!alertobj.trigger,pass:true}})
       }
     else{
-      alert('Please, retry')
+      setalertobj({...alertobj,...{message:'please, retry',trigger:!alertobj.trigger,pass:true}})
     }
     }
 
 else{
-  alert('Please, sign in first to send messages')
+  setalertobj({...alertobj,...{message:'Please, sign in first to send messages',trigger:!alertobj.trigger,pass:true}})
+
 }
      }
      
