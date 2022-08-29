@@ -63,6 +63,7 @@ function ListCoin() {
         borderWidth:'0px 0px 0px',
         borderColor:'rgba(95, 94, 94, 0.698)',
         textAlign:'left',
+        paddingTop:'5px'
         
     }
 
@@ -78,7 +79,8 @@ function ListCoin() {
         color:'white',
         borderWidth:'1.5px',
         borderColor:'red',
-        textAlign:'left'
+        textAlign:'left',
+        paddingTop:'5px'
     }
 
     //styles for fields
@@ -90,8 +92,8 @@ function ListCoin() {
         const addCoinCredentials = await fetch('https://apidev.coinexplore.io/api/users/coins/add', {
             method: 'POST',
             headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
+                    'Accept': '*/*',
+                    'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${userObject.token}`
                     },
             body: JSON.stringify({...enlistCoinObj,...{pricechangepct:enlistCoinObj.price}})
