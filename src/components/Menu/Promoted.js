@@ -6,6 +6,7 @@ import Calendarcomp from './Calendarcomp';
 import { Statecontext } from '../CointoviewContext';
 import BannerpromoAds from './BannerpromoAds';
 import GoToTop from '../Gototop';
+import PopUpBanner from './PopUpBanner';
 
 
 function Promoted({overallwidth}) {
@@ -14,12 +15,14 @@ function Promoted({overallwidth}) {
   const [headerterms,setheaderterms] = useContext(Statecontext).headerterms
     const [promosec,setpromosec] = useState(false);
     const [banasec,setbanasec] = useState(false);
+    const [popbanner,setpopbanner] = useState(false);
     const [customAd,setcustomAd] = useState(false);
     const [dayarr,setdayarr] = useContext(Statecontext).dayarr;
     const [triggerlength,settriggerlength] = useContext(Statecontext).triggerlength;
     const [orderarray,setorderarray] = useState([]);
     const [checker,setchecker] = useState(0);
     const [checkerban,setcheckerban] = useState(0);
+    const [checkerpop,setcheckerpop] = useState(0);
     const [subtotal,setsubtotal] = useState(0);
     const [discount,setdiscount] = useState(0);
     const [total,settotal] = useState(0);
@@ -27,12 +30,15 @@ function Promoted({overallwidth}) {
     const [dayarrunik,setdayarrunik] = useContext(Statecontext).dayarrunik;
     const [dayarrbanunik,setdayarrbanunik] = useContext(Statecontext).dayarrbanunik;
     const  [triggerlengthban,settriggerlengthban] = useContext(Statecontext).triggerlengthban;
+    const [triggerlengthpop,settriggerlengthpop] = useContext(Statecontext).triggerlengthpop;
     const [ordermarginTop,setordermarginTop] = useContext(Statecontext).ordermarginTop;
+    const[dayarrpopup,setdayarrpopup] = useContext(Statecontext).dayarrpopup;
+    const[dayarrpopunik,setdayarrpopunik] = useContext(Statecontext).dayarrpopunik;
     const cart = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.55 13c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.37-.66-.11-1.48-.87-1.48H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45zM6.16 6h12.15l-2.76 5H8.53L6.16 6zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>;
     const promocalendarRef = useRef('');
     const leftholder = useRef('')
  const deletesale = (specificarr)=>{
-     if(specificarr['price'] === '$250'){
+     if(specificarr['promo'] === 'promo spot'){
         let newarr = dayarr;
         let unikarray = dayarrunik;
         let indx = dayarr.indexOf(specificarr['date']); 
@@ -44,7 +50,7 @@ function Promoted({overallwidth}) {
         //setorderarray(orderarray.filter((_, i) => i !== indx ))
      }
 
-     else if(specificarr['price'] === '$350'){
+     else if(specificarr['promo'] === 'banner spot'){
         //let newarr = orderarray;
         let tilearray = dayarrban;
         let unikarraybanner = dayarrbanunik;
@@ -58,6 +64,20 @@ function Promoted({overallwidth}) {
         setdayarrban(tilearray);
         settriggerlengthban(prev=>prev-1);
         
+     }
+
+     else{
+        let tilearray = dayarrpopup;
+        let unikarraypopup = dayarrpopunik;
+        //let indx = orderarray.indexOf(specificarr);
+        let ind = dayarrpopup.indexOf(specificarr['date']);
+        //newarr.splice(indx, 1);
+        unikarraypopup.splice(ind,1);
+        tilearray.splice(ind, 1); 
+        //setorderarray(newarr);
+        setdayarrpopunik(unikarraypopup)
+        setdayarrpopup(tilearray);
+        settriggerlengthpop(prev=>prev-1);
      }
         
  }
@@ -81,7 +101,7 @@ useEffect(()=>{
    else if(checker-1 === triggerlength){
     setchecker(triggerlength);
     console.log('decrement trigger');
-    setorderarray(orderarray.filter((element,i) => dayarrunik.includes(element.id) || dayarrbanunik.includes(element.id)))
+    setorderarray(orderarray.filter((element,i) => dayarrunik.includes(element.id) || dayarrbanunik.includes(element.id) || dayarrpopunik.includes(element.id)))
    }  
    console.log(orderarray)
 },[triggerlength])
@@ -111,7 +131,7 @@ useEffect(()=>{
     setcheckerban(triggerlengthban);
     console.log('decrement triggerban')
     //setdayarrban(dayarrban.filter((element, i) => dayarrban.includes(element['date']) ))
-    setorderarray( orderarray.filter((element,i) => dayarrunik.includes(element.id) || dayarrbanunik.includes(element.id)))
+    setorderarray( orderarray.filter((element,i) => dayarrunik.includes(element.id) || dayarrbanunik.includes(element.id) || dayarrpopunik.includes(element.id)))
     // setorderarray(orderarray.filter((element, i) => orderarray.includes(element['date']) ))
         /*setorderarray([...orderarray,dayarrban])
         setorderarray(orderarray.filter((element, i) => dayarrban.includes(element['date']) ))*/
@@ -120,8 +140,39 @@ useEffect(()=>{
 },[triggerlengthban])
 
 
+//useEffect for pop-up section
+
+const foreacharraypop = (items,identity)=>{
+    const foreachobj = {'date':items,price:'$350',promo:'pop-up spot',id:dayarrpopunik[identity]};
+    setorderarray([...orderarray,foreachobj])
+    //console.log(orderarray)
+    console.log('increment');
+    
+}  
+
+
+useEffect(()=>{
+    if(checkerpop===0 || checkerpop+1 === triggerlengthpop){
+     setcheckerpop(triggerlengthpop);
+     dayarrpopup.forEach(element => {
+         foreacharraypop(element,dayarrpopup.indexOf(element))
+     })
+    }
+ 
+    else if(checkerpop-1 === triggerlengthpop){
+     setcheckerpop(triggerlengthpop);
+     console.log('decrement triggerpop')
+     //setdayarrban(dayarrban.filter((element, i) => dayarrban.includes(element['date']) ))
+     setorderarray( orderarray.filter((element,i) => dayarrunik.includes(element.id) || dayarrbanunik.includes(element.id) || dayarrpopunik.includes(element.id)))
+     // setorderarray(orderarray.filter((element, i) => orderarray.includes(element['date']) ))
+         /*setorderarray([...orderarray,dayarrban])
+         setorderarray(orderarray.filter((element, i) => dayarrban.includes(element['date']) ))*/
+         
+    }  
+ },[triggerlengthpop])
+
 //region for cost calculator
-const Calculator = (promoarr,bannerarr)=>{
+const Calculator = (promoarr,bannerarr,poparr)=>{
 
     const promocalculation = (promo)=>{
         let promocost;
@@ -160,10 +211,29 @@ const Calculator = (promoarr,bannerarr)=>{
     
         return bannercost;
     }
+
+    const popcalculation = (popper)=>{
+        let popcost;
+        if(popper.length >=0 && popper.length<=3){
+            popcost = 0;
+        }
+        else if(popper.length>3 && popper.length<=7){
+             popcost = (popper.length * 250 * 0.1)
+        }
     
-    const totalfunc = (promo,banner)=>{
+        else if(popper.length>7 && popper.length<=10){
+            popcost = (popper.length * 250 * 0.15)
+        }
+        else if(popper.length>10){
+            popcost = (popper.length * 250 * 0.25)
+        }
+    
+        return popcost;
+    }
+    
+    const totalfunc = (promo,banner,popper)=>{
         let totalcost;
-        totalcost = (promo.length * 250) + (banner.length * 350);
+        totalcost = (promo.length * 250) + (banner.length * 350) +(popper.length*350);
         return totalcost;
     }
     
@@ -171,14 +241,15 @@ const Calculator = (promoarr,bannerarr)=>{
         let discountvalue;
         let discountfirst = promocalculation(promoarr);
         let discountsecond = bannercalculation(bannerarr);
-        discountvalue = discountfirst+discountsecond;
+        let discountthird = popcalculation(poparr)
+        discountvalue = discountfirst+discountsecond+discountthird;
 
         return discountvalue;
     }
 
-    let realvalue = totalfunc(promoarr,bannerarr) - discountfunc()
+    let realvalue = totalfunc(promoarr,bannerarr,poparr) - discountfunc()
 
-    return [totalfunc(promoarr,bannerarr),discountfunc(),realvalue]
+    return [totalfunc(promoarr,bannerarr,poparr),discountfunc(),realvalue]
 }
 
 //function for moving order section
@@ -198,6 +269,13 @@ const promomover = ()=>{
     setordermarginTop(0)
 }
 
+const popupmover = ()=>{
+    if(popbanner){
+        setpopbanner(false)
+    }
+    setpopbanner(!popbanner)
+    setordermarginTop(0)
+}
 
 
 
@@ -220,12 +298,12 @@ const promomover = ()=>{
 
        console.log(total)
         settotal(subtotal-discount)*/
-        const [subtotalvalue,discountvalue,totalvalue] = Calculator(dayarr,dayarrban);
+        const [subtotalvalue,discountvalue,totalvalue] = Calculator(dayarr,dayarrban,dayarrpopup);
         setsubtotal(subtotalvalue);
         setdiscount(discountvalue);
         settotal(totalvalue);
         
-   },[triggerlength,triggerlengthban])
+   },[triggerlength,triggerlengthban,triggerlengthpop])
  
     
     const del = <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#FF0000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14.12 10.47L12 12.59l-2.13-2.12-1.41 1.41L10.59 14l-2.12 2.12 1.41 1.41L12 15.41l2.12 2.12 1.41-1.41L13.41 14l2.12-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"/></svg>;
@@ -242,8 +320,11 @@ const promomover = ()=>{
                         <div className='classForPromo' ><p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}} onClick={()=> promomover()}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'20px':'11px'}}>Promoted Section &nbsp; &nbsp; <span style={{backgroundColor:'blue',fontSize:overallwidth>900?'13px':'9px',padding:overallwidth>900?'5px':'3px',borderRadius:'10px'}}>$250/day</span></span> <span style={{fontSize:'25px',cursor:'pointer'}} >{promosec?'-':'+'}</span></p>
                             {promosec && <div ref={promocalendarRef} style={{width:'100%',height:'auto'}}><Calendarcomp overallwidth={overallwidth} promosec={promosec}  leftholder={leftholder}/></div>}
                         </div>
-                        <div className='classForBanner' style={{border:'2px solid #0B1F36',borderWidth:'0px 0px 1.5px'}} ><p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}} onClick={()=> bannermover()}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'20px':'11px'}}>Banner Ad &nbsp; &nbsp; <span style={{backgroundColor:'blue',fontSize:overallwidth>900?'13px':'9px',padding:overallwidth>900?'5px':'3px',borderRadius:'10px'}}>$3000/day</span></span> <span style={{fontSize:'25px',cursor:'pointer'}} >{banasec?'-':'+'}</span></p>
+                        <div className='classForBanner' style={{border:'2px solid #0B1F36',borderWidth:'0px 0px 1.5px'}} ><p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}} onClick={()=> bannermover()}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'20px':'11px'}}>Banner Ad &nbsp; &nbsp; <span style={{backgroundColor:'blue',fontSize:overallwidth>900?'13px':'9px',padding:overallwidth>900?'5px':'3px',borderRadius:'10px'}}>$350/day</span></span> <span style={{fontSize:'25px',cursor:'pointer'}} >{banasec?'-':'+'}</span></p>
                             {banasec && <div style={{width:'100%',height:'auto'}}><BannerpromoAds overallwidth={overallwidth} banasec={banasec}  leftholder={leftholder}/></div>}
+                        </div>
+                        <div style={{border:'2px solid #0B1F36',borderWidth:'0px 0px 1.5px'}}> <p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}} onClick={()=> popupmover()}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'20px':'11px'}}>Pop-Up Banner Ad &nbsp; &nbsp; <span style={{backgroundColor:'blue',fontSize:overallwidth>900?'13px':'9px',padding:overallwidth>900?'5px':'3px',borderRadius:'10px'}}>$350/day</span></span> <span style={{fontSize:'25px',cursor:'pointer'}} >{popbanner?'-':'+'}</span></p>
+                            {popbanner && <div style={{width:'100%',height:'auto'}}><PopUpBanner overallwidth={overallwidth} popbanner={popbanner}  leftholder={leftholder}/></div>}
                         </div>
                         <div ><p style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px',boxSizing:'border-box'}} onClick={()=> setcustomAd(!customAd)}><span style={{width:'100%',textAlign:'left',boxSizing:'border-box',fontSize:overallwidth>900?'20px':'11px'}}>Custom Ad &nbsp; &nbsp; </span> <span style={{fontSize:'25px'}}>{customAd?'-':'+'}</span></p>
                             {customAd && <div style={{width:'100%',height:'auto',textAlign:'center',padding:'10px',boxSizing:'border-box'}}>

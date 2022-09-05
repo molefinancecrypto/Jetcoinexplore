@@ -14,10 +14,13 @@ export const StateHolder = (props)=> {
     const [currentlocale,setcurrentlocale] = useState('/');
     const [triggerlength,settriggerlength] = useState(0);
     const [triggerlengthban,settriggerlengthban] = useState(0);
+    const [triggerlengthpop,settriggerlengthpop] = useState(0);
     const [dayarr,setdayarr] = useState([]);
     const [dayarrban,setdayarrban] = useState([]);
+    const [dayarrpopup,setdayarrpopup] = useState([]);
     const [dayarrunik,setdayarrunik] = useState([]);
     const [dayarrbanunik,setdayarrbanunik] = useState([]);
+    const [dayarrpopunik,setdayarrpopunik] = useState([]);
     const [changepagebyfoot,setchangepagebyfoot] = useState(false);
     const [changefootcheck,setchangefootcheck] = useState(false);
     const [ordermarginTop,setordermarginTop] = useState(0);
@@ -37,7 +40,7 @@ export const StateHolder = (props)=> {
         dayarrunik:[dayarrunik,setdayarrunik],dayarrbanunik:[dayarrbanunik,setdayarrbanunik],changepagebyfoot:[changepagebyfoot,setchangepagebyfoot]
         ,changefootcheck:[changefootcheck,setchangefootcheck],ordermarginTop:[ordermarginTop,setordermarginTop],watchlistArray:[watchlistArray,setwatchlistArray]
         ,alltime:[alltime, setallTime],todaybest:[todaybest, settodayBest],marketCap:[marketCap,setmarketCap],newlistings:[newlistings,setnewListings],headertoshow:[headertoshow,setheadertoshow],
-        headerterms:[headerterms,setheaderterms],userObject:[userObject,setuserObject],alertobj:[alertobj,setalertobj]}}>
+        headerterms:[headerterms,setheaderterms],userObject:[userObject,setuserObject],alertobj:[alertobj,setalertobj],dayarrpopup:[dayarrpopup,setdayarrpopup],dayarrpopunik:[dayarrpopunik,setdayarrpopunik],triggerlengthpop:[triggerlengthpop,settriggerlengthpop]}}>
             {props.children}
         </Statecontext.Provider>
     )
