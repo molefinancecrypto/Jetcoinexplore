@@ -25,7 +25,7 @@ export default function PopUpBanner({overallwidth,leftholder,popbanner}) {
      
        const clickday = (e)=>{
         let changingday = `${e.getDate()}-${e.getMonth() + 1}-${e.getFullYear()}`
-        let identifier = changingday+' '+'pop-up banner'
+        let identifier = changingday+' '+'pop-up'
         if(dayarrpopup.includes(changingday)){
            let newarr = dayarrpopup;
            let unikarrbanner = dayarrpopunik;

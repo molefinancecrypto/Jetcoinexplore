@@ -26,6 +26,7 @@ function Promoted({overallwidth}) {
     const [subtotal,setsubtotal] = useState(0);
     const [discount,setdiscount] = useState(0);
     const [total,settotal] = useState(0);
+    const [paymentSector,setpaymentSector] = useState({main:false,crypto:false});
     const[dayarrban,setdayarrban] = useContext(Statecontext).dayarrban;
     const [dayarrunik,setdayarrunik] = useContext(Statecontext).dayarrunik;
     const [dayarrbanunik,setdayarrbanunik] = useContext(Statecontext).dayarrbanunik;
@@ -37,8 +38,10 @@ function Promoted({overallwidth}) {
     const cart = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.55 13c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.37-.66-.11-1.48-.87-1.48H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45zM6.16 6h12.15l-2.76 5H8.53L6.16 6zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>;
     const promocalendarRef = useRef('');
     const leftholder = useRef('')
- const deletesale = (specificarr)=>{
-     if(specificarr['promo'] === 'promo spot'){
+    const arrowDown = <svg xmlns="http://www.w3.org/2000/svg" height="35" width="35" fill="#FFFFFF"><path d="m24 30.75-12-12 2.15-2.15L24 26.5l9.85-9.85L36 18.8Z"/></svg>;
+    const arrowTop = <svg xmlns="http://www.w3.org/2000/svg" height="35" width="35" fill="#FFFFFF"><path d="m18.75 36-2.15-2.15 9.9-9.9-9.9-9.9 2.15-2.15L30.8 23.95Z"/></svg>
+    const deletesale = (specificarr)=>{
+     if(specificarr['promo'] === 'promo'){
         let newarr = dayarr;
         let unikarray = dayarrunik;
         let indx = dayarr.indexOf(specificarr['date']); 
@@ -50,7 +53,7 @@ function Promoted({overallwidth}) {
         //setorderarray(orderarray.filter((_, i) => i !== indx ))
      }
 
-     else if(specificarr['promo'] === 'banner spot'){
+     else if(specificarr['promo'] === 'banner'){
         //let newarr = orderarray;
         let tilearray = dayarrban;
         let unikarraybanner = dayarrbanunik;
@@ -83,12 +86,17 @@ function Promoted({overallwidth}) {
  }
 
 const foreacharray = (items,identifier)=>{
-    const foreachobj = {'date':items,price:'$250',promo:'promo spot',id:dayarrunik[identifier]};
+    const foreachobj = {'date':items,price:'$250',promo:'promo',id:dayarrunik[identifier]};
     setorderarray([...orderarray,foreachobj])
     //console.log(orderarray)
     console.log('increment');
     
 }    
+
+//function for payment block
+const payment = ()=>{
+    
+}
 
 useEffect(()=>{
    if(checker===0 || checker+1 === triggerlength){
@@ -112,7 +120,7 @@ useEffect(()=>{
 //useEffect for the banner section
 
 const foreacharrayban = (items,identity)=>{
-    const foreachobj = {'date':items,price:'$350',promo:'banner spot',id:dayarrbanunik[identity]};
+    const foreachobj = {'date':items,price:'$350',promo:'banner',id:dayarrbanunik[identity]};
     setorderarray([...orderarray,foreachobj])
     //console.log(orderarray)
     console.log('increment');
@@ -143,7 +151,7 @@ useEffect(()=>{
 //useEffect for pop-up section
 
 const foreacharraypop = (items,identity)=>{
-    const foreachobj = {'date':items,price:'$350',promo:'pop-up spot',id:dayarrpopunik[identity]};
+    const foreachobj = {'date':items,price:'$350',promo:'pop-up',id:dayarrpopunik[identity]};
     setorderarray([...orderarray,foreachobj])
     //console.log(orderarray)
     console.log('increment');
@@ -153,7 +161,9 @@ const foreacharraypop = (items,identity)=>{
 
 useEffect(()=>{
     if(checkerpop===0 || checkerpop+1 === triggerlengthpop){
-     setcheckerpop(triggerlengthpop);
+     setcheckerpop
+     
+     (triggerlengthpop);
      dayarrpopup.forEach(element => {
          foreacharraypop(element,dayarrpopup.indexOf(element))
      })
@@ -364,7 +374,24 @@ const popupmover = ()=>{
                     </div>
                     
                 <div style={{fontSize:'15px'}}>
-                    <div style={{width:overallwidth>900?'90%':'85%',fontFamily:'NexaTextLight',margin:'15px auto',padding:'10px',textAlign:'left',boxSizing:'border-box',borderRadius:'10px',border:'2px solid #0B1F36'}}>Select payment method</div>
+                    <div style={{width:overallwidth>900?'90%':'85%',fontFamily:'NexaTextLight',margin:'15px auto',padding:'10px',textAlign:'left',boxSizing:'border-box',borderRadius:'10px',border:'2px solid #0B1F36'}}>
+                        <div style={{width:'100%',display:'flex',justifyContent:'space-around',alignItems:'center'}}><p>Select payment method</p><p style={{fontSize:'35px',cursor:'pointer'}} onClick={()=>{setpaymentSector({...paymentSector,...{main:!paymentSector.main}})}}>{paymentSector.main? arrowDown :arrowTop}</p></div>
+                        {paymentSector.main && <div style={{width:'100%',display:'flex',justifyContent:'space-between',flexDirection:'column',}}>
+                            <div>
+                                <p style={{paddingLeft:'5px',paddingRight:'5px',boxSizing:'border-box',display:'flex',justifyContent:'space-between',width:'100%'}}><span style={{textAlign:'left'}}>Crypto</span><span style={{textAlign:'right'}} onClick={()=>{setpaymentSector({...paymentSector,...{crypto:!paymentSector.crypto}})}}>&gt;</span></p>
+                                {paymentSector.crypto && <div><p style={{display:'flex', justifyContent:'space-between',paddingLeft:'5px',paddingRight:'5px',alignItems:'center'}}>
+                                    <span style={{textAlign:'left'}}>Address</span>
+                                    <input type='text' style={{height: '45px',boxSizing : 'border-box',backgroundColor:'#071323' ,outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',}} className='spanforp' value= '0x7a394F2d92d387393bCFD902464077559E87AaA0' />
+                                    </p>
+                                    <p style={{display:'flex', justifyContent:'space-between',alignItems:'center',paddingLeft:'5px',paddingRight:'5px'}}><span style={{textAlign:'left'}}>Chain</span><span style={{textAlign:'right'}}><input type='text' style={{height: '45px',boxSizing : 'border-box',backgroundColor:'#071323' ,outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',}} className='spanforp' value= 'BSC' /></span></p>
+                                    
+                                    </div>}
+                            </div>
+                            <p style={{paddingLeft:'5px',paddingRight:'5px',display:'flex',justifyContent:'space-between'}}><span style={{textAlign:'left'}}>Bank payment</span><span style={{textAlign:'right'}}>&gt;</span></p>
+                            <p style={{paddingLeft:'5px',paddingRight:'5px',display:'flex',justifyContent:'space-between'}}><span style={{textAlign:'left'}}>Credit Card</span><span style={{textAlign:'right'}}>&gt;</span></p>
+                        </div>}
+                        
+                    </div>
                     <div style={{width:overallwidth>900?'90%':'85%',fontFamily:'NexaTextLight',margin:'15px auto',padding:'10px',boxSizing:'border-box',display:'flex',justifyContent:'space-around',borderRadius:'10px',border:'2px solid #0B1F36'}}><span style={{width:'15%',minWidth:'60px'}}>Name:</span> <input type='text' style={{width:'80%',boxSizing:'border-box',padding:'5px',backgroundColor:'transparent',color:'white',outline:'none',borderWidth:'0px 0px 0px'}}/></div>
                     <div style={{width:overallwidth>900?'90%':'85%',fontFamily:'NexaTextLight',margin:'15px auto',padding:'10px',boxSizing:'border-box',display:'flex',justifyContent:'space-around',borderRadius:'10px',border:'2px solid #0B1F36'}}><span style={{width:'15%',minWidth:'60px'}}>E-mail:</span> <input type='email' style={{width:'80%',boxSizing:'border-box',padding:'5px',backgroundColor:'transparent',color:'white',outline:'none',borderWidth:'0px 0px 0px'}}/></div>
                 </div>
