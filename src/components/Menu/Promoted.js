@@ -378,17 +378,17 @@ const popupmover = ()=>{
                         <div style={{width:'100%',display:'flex',justifyContent:'space-around',alignItems:'center'}}><p>Select payment method</p><p style={{fontSize:'35px',cursor:'pointer'}} onClick={()=>{setpaymentSector({...paymentSector,...{main:!paymentSector.main}})}}>{paymentSector.main? arrowDown :arrowTop}</p></div>
                         {paymentSector.main && <div style={{width:'100%',display:'flex',justifyContent:'space-between',flexDirection:'column',}}>
                             <div>
-                                <p style={{paddingLeft:'5px',paddingRight:'5px',boxSizing:'border-box',display:'flex',justifyContent:'space-between',width:'100%'}}><span style={{textAlign:'left'}}>Crypto</span><span style={{textAlign:'right'}} onClick={()=>{setpaymentSector({...paymentSector,...{crypto:!paymentSector.crypto}})}}>&gt;</span></p>
+                                <p style={{paddingLeft:'5px',paddingRight:'5px',boxSizing:'border-box',display:'flex',justifyContent:'space-between',width:'100%'}}><span style={{textAlign:'left'}}>Crypto </span><span style={{textAlign:'right',cursor:'pointer'}} onClick={()=>{setpaymentSector({...paymentSector,...{crypto:!paymentSector.crypto}})}}>{paymentSector.crypto?'-':'+'}</span></p>
                                 {paymentSector.crypto && <div><p style={{display:'flex', justifyContent:'space-between',paddingLeft:'5px',paddingRight:'5px',alignItems:'center'}}>
-                                    <span style={{textAlign:'left'}}>Address</span>
+                                    <span style={{textAlign:'left',fontSize:'13px'}}>Address &nbsp;:</span>
                                     <input type='text' style={{height: '45px',boxSizing : 'border-box',backgroundColor:'#071323' ,outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',}} className='spanforp' value= '0x7a394F2d92d387393bCFD902464077559E87AaA0' />
                                     </p>
-                                    <p style={{display:'flex', justifyContent:'space-between',alignItems:'center',paddingLeft:'5px',paddingRight:'5px'}}><span style={{textAlign:'left'}}>Chain</span><span style={{textAlign:'right'}}><input type='text' style={{height: '45px',boxSizing : 'border-box',backgroundColor:'#071323' ,outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',}} className='spanforp' value= 'BSC' /></span></p>
+                                    <p style={{display:'flex', justifyContent:'space-between',alignItems:'center',paddingLeft:'5px',paddingRight:'5px'}}><span style={{textAlign:'left',fontSize:'13px'}}>Chain &nbsp;&nbsp;:</span><span style={{textAlign:'right'}}><input type='text' style={{height: '45px',boxSizing : 'border-box',backgroundColor:'#071323' ,outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',marginTop:'5px',boxSizing:'border-box',textAlign:"center"}} className='spanforp' value= 'BSC' /></span></p>
                                     
                                     </div>}
                             </div>
-                            <p style={{paddingLeft:'5px',paddingRight:'5px',display:'flex',justifyContent:'space-between'}}><span style={{textAlign:'left'}}>Bank payment</span><span style={{textAlign:'right'}}>&gt;</span></p>
-                            <p style={{paddingLeft:'5px',paddingRight:'5px',display:'flex',justifyContent:'space-between'}}><span style={{textAlign:'left'}}>Credit Card</span><span style={{textAlign:'right'}}>&gt;</span></p>
+                            <p style={{paddingLeft:'5px',paddingRight:'5px',display:'flex',justifyContent:'space-between'}}><span style={{textAlign:'left'}}>Bank payment</span><span style={{textAlign:'right'}}>+</span></p>
+                            <p style={{paddingLeft:'5px',paddingRight:'5px',display:'flex',justifyContent:'space-between'}}><span style={{textAlign:'left'}}>Credit Card</span><span style={{textAlign:'right'}}>+</span></p>
                         </div>}
                         
                     </div>
