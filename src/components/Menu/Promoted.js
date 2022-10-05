@@ -86,7 +86,7 @@ function Promoted({overallwidth}) {
  }
 
 const foreacharray = (items,identifier)=>{
-    const foreachobj = {'date':items,price:'$250',promo:'promo',id:dayarrunik[identifier]};
+    const foreachobj = {'date':items,price:'$100',promo:'promo',id:dayarrunik[identifier]};
     setorderarray([...orderarray,foreachobj])
     //console.log(orderarray)
     console.log('increment');
@@ -120,7 +120,7 @@ useEffect(()=>{
 //useEffect for the banner section
 
 const foreacharrayban = (items,identity)=>{
-    const foreachobj = {'date':items,price:'$350',promo:'banner',id:dayarrbanunik[identity]};
+    const foreachobj = {'date':items,price:'$150',promo:'banner',id:dayarrbanunik[identity]};
     setorderarray([...orderarray,foreachobj])
     //console.log(orderarray)
     console.log('increment');
@@ -151,7 +151,7 @@ useEffect(()=>{
 //useEffect for pop-up section
 
 const foreacharraypop = (items,identity)=>{
-    const foreachobj = {'date':items,price:'$350',promo:'pop-up',id:dayarrpopunik[identity]};
+    const foreachobj = {'date':items,price:'$225',promo:'pop-up',id:dayarrpopunik[identity]};
     setorderarray([...orderarray,foreachobj])
     //console.log(orderarray)
     console.log('increment');
@@ -186,18 +186,18 @@ const Calculator = (promoarr,bannerarr,poparr)=>{
 
     const promocalculation = (promo)=>{
         let promocost;
-        if(promo.length >= 0 && promo.length<=3){
+        if(promo.length >= 0 && promo.length<3){
             promocost = 0;
         }
-        else if(promo.length>3 && promo.length<=7){
-            promocost = (promo.length * 250 * 0.1)
+        else if(promo.length>=3 && promo.length<7){
+            promocost = (promo.length * 100 * 0.1)
         }
     
-        else if(promo.length>7 && promo.length<=10){
-            promocost = (promo.length * 250 * 0.15)
+        else if(promo.length>=7 && promo.length<10){
+            promocost = (promo.length * 100 * 0.15)
         }
-        else if(promo.length>10){
-            promocost = (promo.length * 250 * 0.25)
+        else if(promo.length>=10){
+            promocost = (promo.length * 100 * 0.25)
         }
     
         return promocost;
@@ -205,18 +205,18 @@ const Calculator = (promoarr,bannerarr,poparr)=>{
     
     const bannercalculation = (banner)=>{
         let bannercost;
-        if(banner.length >=0 && banner.length<=3){
+        if(banner.length >=0 && banner.length<3){
             bannercost = 0;
         }
-        else if(banner.length>3 && banner.length<=7){
-            bannercost = (banner.length * 250 * 0.1)
+        else if(banner.length>=3 && banner.length<7){
+            bannercost = (banner.length * 150 * 0.1)
         }
     
-        else if(banner.length>7 && banner.length<=10){
-            bannercost = (banner.length * 250 * 0.15)
+        else if(banner.length>=7 && banner.length<10){
+            bannercost = (banner.length * 150 * 0.15)
         }
-        else if(banner.length>10){
-            bannercost = (banner.length * 250 * 0.25)
+        else if(banner.length>=10){
+            bannercost = (banner.length * 150 * 0.25)
         }
     
         return bannercost;
@@ -224,18 +224,18 @@ const Calculator = (promoarr,bannerarr,poparr)=>{
 
     const popcalculation = (popper)=>{
         let popcost;
-        if(popper.length >=0 && popper.length<=3){
+        if(popper.length >=0 && popper.length<3){
             popcost = 0;
         }
-        else if(popper.length>3 && popper.length<=7){
-             popcost = (popper.length * 250 * 0.1)
+        else if(popper.length>=3 && popper.length<7){
+             popcost = (popper.length * 225 * 0.1)
         }
     
-        else if(popper.length>7 && popper.length<=10){
-            popcost = (popper.length * 250 * 0.15)
+        else if(popper.length>=7 && popper.length<10){
+            popcost = (popper.length * 225 * 0.15)
         }
-        else if(popper.length>10){
-            popcost = (popper.length * 250 * 0.25)
+        else if(popper.length>=10){
+            popcost = (popper.length * 225 * 0.25)
         }
     
         return popcost;
@@ -243,7 +243,7 @@ const Calculator = (promoarr,bannerarr,poparr)=>{
     
     const totalfunc = (promo,banner,popper)=>{
         let totalcost;
-        totalcost = (promo.length * 250) + (banner.length * 350) +(popper.length*350);
+        totalcost = (promo.length * 100) + (banner.length * 150) +(popper.length*225);
         return totalcost;
     }
     
@@ -264,24 +264,27 @@ const Calculator = (promoarr,bannerarr,poparr)=>{
 
 //function for moving order section
 const bannermover = ()=>{
-    if(promosec){
+    if(promosec || popbanner){
         setpromosec(false)
+        setpopbanner(false)
     }
     setbanasec(!banasec);
     setordermarginTop(0);
 }
 
 const promomover = ()=>{
-    if(banasec){
+    if(banasec || popbanner){
         setbanasec(false)
+        setpopbanner(false)
     }
     setpromosec(!promosec);
     setordermarginTop(0)
 }
 
 const popupmover = ()=>{
-    if(popbanner){
-        setpopbanner(false)
+    if(promosec || banasec){
+        setpromosec(false)
+        setbanasec(false)
     }
     setpopbanner(!popbanner)
     setordermarginTop(0)
@@ -387,8 +390,6 @@ const popupmover = ()=>{
                                     
                                     </div>}
                             </div>
-                            <p style={{paddingLeft:'5px',paddingRight:'5px',display:'flex',justifyContent:'space-between'}}><span style={{textAlign:'left'}}>Bank payment</span><span style={{textAlign:'right'}}>+</span></p>
-                            <p style={{paddingLeft:'5px',paddingRight:'5px',display:'flex',justifyContent:'space-between'}}><span style={{textAlign:'left'}}>Credit Card</span><span style={{textAlign:'right'}}>+</span></p>
                         </div>}
                         
                     </div>

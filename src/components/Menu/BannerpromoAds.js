@@ -69,7 +69,7 @@ export default function BannerpromoAds({overallwidth,leftholder,banasec}) {
       <p style={{width:'80%',margin:'10px auto',color:'#BABABA',textAlign:'left',fontFamily:'NexaTextLight',fontSize:'15px'}}>The banner will be displayed in all coin/token pages as well as the home page.</p>
         <div style={{width:overallwidth>900?'50%':'85%',margin:'15px auto',border:'2px solid #0B1F36',borderRadius:'10px'}}>
           <input type='file' style={{width:'100%',marginBottom:'15px',padding:'10px',display:'none'}} id='bannerpromoid'/>
-          <p style={{width:'100%',textAlign:'center',padding:'10px',backgroundColor:'#02050a',borderRadius:'10px 10px 0px 0px',fontSize:'17px',boxSizing:'border-box'}}>Banner</p>
+          <p ref={promocalendarRef} style={{width:'100%',textAlign:'center',padding:'10px',backgroundColor:'#02050a',borderRadius:'10px 10px 0px 0px',fontSize:'17px',boxSizing:'border-box'}}>Banner</p>
           <label for='bannerpromoid' style={{backgroundColor:'red',width:'100px',cursor:'pointer'}}>
           <div style={{display:'flex',alignItems:'center',justifyContent:'space-around',width:overallwidth>900?'60%':'80%',margin:'0px auto',padding:'20px'}}><p>{uploader}</p> <p style={{fontSize:'15px'}}>Upload max: 130 * 130</p></div>  
           </label> 
@@ -77,7 +77,7 @@ export default function BannerpromoAds({overallwidth,leftholder,banasec}) {
         </div>
         <div style={{width:overallwidth>900?'60%':'85%',border:'2px solid #0B1F36',padding:'10px 5px',borderRadius:'10px',margin:'10px auto',display:'flex',justifyContent:'space-around'}}><p>Ad redirect:</p> &nbsp; <input type='text' placeholder='https://tt.me/coinexplore' style={{backgroundColor:'transparent',width:'50%',fontSize:'13px',color:'white',outline:'none',borderWidth:'0px 0px 0px',letterSpacing:'1.5px'}}/></div>
         <p style={{width:'80%',margin:'5px auto',textAlign:'center',fontFamily:'NexaTextLight',fontSize:'15px'}}>Coin Unavailable? <NavLink to='/addcoin' style={{color:'rgb(176, 176, 240)'}}>Add here</NavLink></p>
-        <p ref={promocalendarRef} style={{width:overallwidth>900?'50%':'70%',margin:'20px auto',textAlign:'center',marginBottom:'5px'}}>AVAILABLE SLOTS</p>
+        <p  style={{width:overallwidth>900?'50%':'70%',margin:'20px auto',textAlign:'center',marginBottom:'5px'}}>AVAILABLE SLOTS</p>
         <Calendar onChange={setDate} value={date} onClickDay={clickday} tileClassName={tileClassName}/>
     </div>
   )
