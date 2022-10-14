@@ -609,7 +609,7 @@ const filePerCoin = async(id)=>{
              maindata.map( coin => <div className='coinselector'  key={uuidv4()}>
     
     <div className='tableleft' onClick={()=>filePerCoin(coin['id']) }>
-      {console.log(coin)}
+      
     <p style={{display:overallwidth<=700?'none':'block'}}>{maindata.indexOf(coin)+1}</p>
     <div style={{width:'150px',display:'flex',alignItems:'center',justifyContent:"left",padding:'0px'}}>
       <img className='tablecoinlogo' style={{borderRadius:'50%',width:"50px",height:'50px'}} src={coin['logo']} alt='coinLogo'/>

@@ -41,9 +41,19 @@ function ListCoin() {
     const [windowidth,setwindowidth] = useState(1000);
     const [headertoshow,setheadertoshow] = useState(0);
     const [userObject,setuserObject] = useContext(Statecontext).userObject;
-    const[alertobj,setalertobj] = useContext(Statecontext).alertobj
+    const[alertobj,setalertobj] = useContext(Statecontext).alertobj;
+    
+
+
+
     const updateCoinObj = (event)=>{
         setenlistCoinObj({...enlistCoinObj,...{[event.target.name] : event.target.value}})
+        
+    }
+
+    const uploadImg = (event)=>{
+        setenlistCoinObj({...enlistCoinObj,...{[event.target.name] : event.target.files[0]}})
+       
     }
 
     //styles for fields
@@ -85,26 +95,54 @@ function ListCoin() {
 
 
     //submit button function
+
+    //'Content-Type': 'multipart/form-data',
+   
+
+
     const addnewCoin = async(event)=>{
+        //const formData = new FormData();
+        //formData.append('myFile', enlistCoinObj.myFile)
         event.preventDefault()
-        console.log(enlistCoinObj)
+        const formData = new FormData();
+        formData.append('name', enlistCoinObj.name);
+        formData.append('symbol', enlistCoinObj.symbol);
+        formData.append('price', enlistCoinObj.price);
+        formData.append('marketcap', enlistCoinObj.marketcap);
+        formData.append('pricechangepct', enlistCoinObj.pricechangepct);
+        formData.append('launchDate', enlistCoinObj.launchDate);
+        formData.append('logo', enlistCoinObj.logo);
+        formData.append('description', enlistCoinObj.description);
+        formData.append('chain', enlistCoinObj.chain);
+        formData.append('address', enlistCoinObj.address);
+        formData.append('additionalInformation', enlistCoinObj.additionalInformation);
+        formData.append('website', enlistCoinObj.website);
+        formData.append('telegram', enlistCoinObj.telegram);
+        formData.append('twitter', enlistCoinObj.twitter);
+        formData.append('discord', enlistCoinObj.discord);
+        formData.append('reddit', enlistCoinObj.reddit);
+        formData.append('chart', enlistCoinObj.chart);
+        formData.append('email', enlistCoinObj.email);
+
         const addCoinCredentials = await fetch('https://apidev.coinexplore.io/api/users/coins/add', {
             method: 'POST',                    
             headers: {
-                    
+                    'Accept': '*/*',
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${userObject.token}`
                     },
-            body: JSON.stringify(enlistCoinObj)
- });
+            body: formData
+        });
     console.log(addCoinCredentials)
     const addnewCoinObject = await addCoinCredentials.json();
     if(addnewCoinObject.success){
+        console.log('succesful')
         setalertobj({...alertobj,...{message:'your coin has been listed succesfully.',trigger:!alertobj.trigger,pass:true}})
     
     }
     console.log(addnewCoinObject)
     }
+    
 
     const updateCoinObjSocials = (event)=>{
         setenlistCoinObj({...enlistCoinObj,...{socials:{...enlistCoinObj.socials,...{[event.target.name] : event.target.value}}}})
@@ -229,7 +267,7 @@ function ListCoin() {
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px',marginTop:'-20px'}}>
                             <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Logo<sup class="asterix">*</sup></p>
                             <div style={{width:'100%',backgroundColor:'#071323',borderRadius:'10px'}}>
-                                <input  type='file' id='logo' name='logo' style={{height:'30px',display:'none',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:colorBorderObject.stageOne?'rgba(95, 94, 94, 0.698)':enlistCoinObj.symbol?'rgba(95, 94, 94, 0.698)':'red',textAlign:'left'}}/>
+                                <input  type='file' id='logo' onChange={(event)=>{uploadImg(event)}} name='logo' style={{height:'30px',display:'none',paddingLeft:'10px',boxSizing:'border-box',borderRadius:'10px',width:'100%',fontSize:'15px',backgroundColor:'#071323' ,color:'white',outline:'none',borderWidth:'0px 0px 0px',borderColor:colorBorderObject.stageOne?'rgba(95, 94, 94, 0.698)':enlistCoinObj.symbol?'rgba(95, 94, 94, 0.698)':'red',textAlign:'left'}}/>
                                 <p style={{width:'100%',textAlign:'center',padding:'5px',backgroundColor:'#02050a',borderRadius:'10px 10px 0px 0px',fontSize:'13px',boxSizing:'border-box'}}>LOGO (png file*)</p>
                                 <label for='logo' style={{backgroundColor:'red',width:'100px',cursor:'pointer'}}>
                                 <div style={{display:'flex',justifyContent:'space-around',alignItems:'center',width:'60%',margin:'0px auto',padding:'20px'}}><p>{uploader}</p> <p style={{fontSize:'15px'}}>Upload max: 130 * 130</p></div>
