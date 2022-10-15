@@ -126,8 +126,7 @@ function ListCoin() {
         const addCoinCredentials = await fetch('https://apidev.coinexplore.io/api/users/coins/add', {
             method: 'POST',                    
             headers: {
-                    'Accept': '*/*',
-                    'Content-Type': 'multipart/form-data',
+                    'Accept': '*/*',                    
                     Authorization: `Bearer ${userObject.token}`
                     },
             body: formData
