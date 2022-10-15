@@ -9,9 +9,6 @@ import './NEXAFONTS/OTF/Nexa-Bold.otf';
 import './NEXAFONTS/OTF/Nexa-Light.otf';
 import {StateHolder} from '../src/components/CointoviewContext';
 
-
-
-
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

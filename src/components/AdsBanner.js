@@ -5,13 +5,12 @@ import defi from '../images/Banner/defiBanner.jpg';
 import luno from '../images/Banner/lunoBanner.jpg';
 import nft from '../images/Banner/nftBanner.jpg'
 
-
 function AdsBanner() {
     
-       const items = [<img style={{width:'100%',height:'120px',objectFit:'cover',borderRadius:'10px'}} src={defi}/>,
-                    <img style={{width:'100%',height:'120px',objectFit:'cover',borderRadius:'10px'}} src={eth}/>,
-                    <img style={{width:'100%',height:'120px',objectFit:'cover',borderRadius:'10px'}} src={nft}/>,
-                    <img style={{width:'100%',height:'120px',objectFit:'cover',borderRadius:'10px'}} src={luno}/>]
+       const items = [<img alt="defi" style={{width:'100%',height:'120px',objectFit:'cover',borderRadius:'10px'}} src={defi}/>,
+                    <img alt="eth" style={{width:'100%',height:'120px',objectFit:'cover',borderRadius:'10px'}} src={eth}/>,
+                    <img alt="nft" style={{width:'100%',height:'120px',objectFit:'cover',borderRadius:'10px'}} src={nft}/>,
+                    <img alt="luno" style={{width:'100%',height:'120px',objectFit:'cover',borderRadius:'10px'}} src={luno}/>]
 
 
      const responsive = {
@@ -38,7 +37,3 @@ function AdsBanner() {
 }
 
 export default AdsBanner;
-
-const handleDragStart = (e) => e.preventDefault();
-
- 

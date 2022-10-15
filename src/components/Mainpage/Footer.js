@@ -1,8 +1,5 @@
 import React, {useContext, useState} from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import facebook from './../../socialMedia/facebook.jpg';
-import twitter from './../../socialMedia/twitterLogo.jpg';
-import telegram from './../../socialMedia/telegram.jpg';
 import './footer.css';
 import logo from '../../images/coinexploreTwo.png';
 import { Statecontext } from '../CointoviewContext';

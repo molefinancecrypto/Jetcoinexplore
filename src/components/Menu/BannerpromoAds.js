@@ -43,7 +43,7 @@ export default function BannerpromoAds({overallwidth,leftholder,banasec}) {
      }
        
        const tileClassName = (data) => {
-        const { _, date, view } = data;
+        const { date, view } = data;
      
         // Check if a date React-Calendar wants to check is on the list of dates to add class to
         if (view === 'month') {
@@ -61,7 +61,7 @@ export default function BannerpromoAds({overallwidth,leftholder,banasec}) {
     if(banasec && overallwidth>900){
       setordermarginTop(promocalendarRef.current.offsetTop-leftholder.current.offsetTop)
     }
-  },[banasec])
+  },[banasec,leftholder,overallwidth,setordermarginTop])
 
 
   return (

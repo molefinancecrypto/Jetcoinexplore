@@ -1,7 +1,4 @@
 import React, {useState,useContext, createContext} from 'react';
-import { useNavigate } from 'react-router-dom';
-import { CoinObj } from '../components/coinholder';
-
         const Coindata = createContext();
 
         export function ParticularCoin(){

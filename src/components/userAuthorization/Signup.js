@@ -1,4 +1,4 @@
-import React, {useRef, useState,useEffect,useContext} from 'react';
+import React, {useState,useContext} from 'react';
 import './signup.css'
 import { Statecontext } from '../CointoviewContext';
 import { ParticularCoin } from '../../contextfolder/Coindata';
@@ -6,8 +6,6 @@ import { Link,useNavigate } from 'react-router-dom';
 import worldimage from './imagesforauth/worldforsigning.jpg';
 import bubble from './imagesforauth/bubblesforsigning.jpg';
 import GoToTop from '../Gototop';
-
-
 
 export default function Signup() {
 const[alertobj,setalertobj] = useContext(Statecontext).alertobj  
@@ -22,7 +20,6 @@ confirm_password:''})
 /*const [usersignupEmail,setusersignupEmail] = useState('');
  const [usersignupPassword,setusersignupPassword] = useState('');*/
  const {setvotevalidation} = ParticularCoin();
- const homeIcon = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>;
  let navigate = useNavigate()
 
 const onchangepassword = (event)=>{
@@ -103,9 +100,9 @@ const onfinalsubmit = async (event)=>{
       
           <div className='secondmain' >
             <div  className='leftsideauth' >
-               <img  className='mainbackgroundimg'  src={worldimage} alt='first background image for auth'/>
+               <img className='mainbackgroundimg'  src={worldimage} alt='first background for auth'/>
                <div className='secondimgholder' >
-                  <img className='secondimg'  src={bubble} alt='second background image for auth'/>  
+                  <img className='secondimg'  src={bubble} alt='second background for auth'/>  
                </div> 
               <div className='backdiv' >
                 <div onClick={()=> navigate('/')} className='backdivinner' >
@@ -174,7 +171,7 @@ const onfinalsubmit = async (event)=>{
     </section>
 
     <section className='mobilesignin' >
-          <img style={{width:"100%",height:"800px",objectFit:'cover'}}  src={worldimage} alt='first background image for auth'/>
+          <img style={{width:"100%",height:"800px",objectFit:'cover'}}  src={worldimage} alt='first background for auth'/>
           <div style={{width:'100%',height:"800px",position:'absolute',top:'0px',backgroundColor:'#05101c9a'}}></div>
           <div style={{position:'absolute',top:'0px',height:"800px",width:"100%",zIndex:'5'}}>
               <div style={{width:"100%",paddingBottom:'25px',boxSizing:'border-box',minHeight:'25%',backgroundImage:'linear-gradient(to bottom,#05101c,transparent)'}}>
@@ -191,7 +188,7 @@ const onfinalsubmit = async (event)=>{
                 </div>
               </div>
 
-          <div style={{width:'100%',boxSizing:'border-box',height:"75%",display:'flex',flexDirection:"column",justifyContent:'space-between',padding:'40px 15px',boxSizing:"border-box",backgroundImage: 'linear-gradient(to bottom,#0d213a,#05101c)',borderRadius:'25px 25px 0px 0px'}}>
+          <div style={{width:'100%',boxSizing:'border-box',height:"75%",display:'flex',flexDirection:"column",justifyContent:'space-between',padding:'40px 15px',backgroundImage: 'linear-gradient(to bottom,#0d213a,#05101c)',borderRadius:'25px 25px 0px 0px'}}>
             <div style={{width:'100%',height:'50%'}}>
 
             <div style={{width:'80%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>

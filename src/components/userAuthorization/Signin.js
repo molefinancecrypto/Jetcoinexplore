@@ -1,13 +1,10 @@
-import React,{useState, useEffect, useContext} from 'react';
+import React,{useState, useContext} from 'react';
 import './signin.css';
 import { Link,useNavigate } from 'react-router-dom';
 import logo from '../../images/coinexploreTwo.png'
 import worldimage from './imagesforauth/worldforsigning.jpg';
 import GoToTop from '../Gototop';
 import { Statecontext } from '../CointoviewContext';
-
-
-
 
 export default function Signin() {
   
@@ -17,7 +14,6 @@ export default function Signin() {
     password:''})
     const[alertobj,setalertobj] = useContext(Statecontext).alertobj
  const [userObject,setuserObject] = useContext(Statecontext).userObject;
- const homeIcon = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>;
  const navigate = useNavigate()
 
 const{email,password} = formData
@@ -146,7 +142,7 @@ return <div className='signoverall' >
 </section>
           
        <section className='mobilesignin' >
-          <img style={{width:"100%",height:'550px',objectFit:'cover'}}  src={worldimage} alt='first background image for auth'/>
+          <img style={{width:"100%",height:'550px',objectFit:'cover'}}  src={worldimage} alt='first background for auth'/>
           <div style={{width:'100%',height:'550px',position:'absolute',top:'0px',backgroundColor:'#05101c9a'}}></div>
           <div style={{position:'absolute',top:'0px',height:"550px",width:"100%",zIndex:'5'}}>
               <div style={{width:"100%",boxSizing:'border-box',height:'30%',backgroundImage:'linear-gradient(to bottom,#05101c,transparent)'}}>
@@ -162,7 +158,7 @@ return <div className='signoverall' >
                 </div>
               </div>
 
-          <div style={{width:'100%',boxSizing:'border-box',height:"70%",display:'flex',flexDirection:"column",justifyContent:'space-between',padding:'40px 15px',boxSizing:"border-box",backgroundImage: 'linear-gradient(to bottom,#0d213a,#05101c)',borderRadius:'25px 25px 0px 0px'}}>
+          <div style={{width:'100%',boxSizing:'border-box',height:"70%",display:'flex',flexDirection:"column",justifyContent:'space-between',padding:'40px 15px',backgroundImage: 'linear-gradient(to bottom,#0d213a,#05101c)',borderRadius:'25px 25px 0px 0px'}}>
             <div style={{width:'100%',height:'50%'}}>
               <div style={{width:'80%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
                 <p style={{marginBottom:'0px',color:'white',paddingTop:'17px'}}>Email:</p>

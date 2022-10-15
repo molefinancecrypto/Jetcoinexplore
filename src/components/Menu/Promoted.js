@@ -91,11 +91,6 @@ const foreacharray = (items,identifier)=>{
     //console.log(orderarray)
     console.log('increment');
     
-}    
-
-//function for payment block
-const payment = ()=>{
-    
 }
 
 useEffect(()=>{
@@ -112,10 +107,7 @@ useEffect(()=>{
     setorderarray(orderarray.filter((element,i) => dayarrunik.includes(element.id) || dayarrbanunik.includes(element.id) || dayarrpopunik.includes(element.id)))
    }  
    console.log(orderarray)
-},[triggerlength])
-
-
-
+},[triggerlength,checker,dayarr,dayarrban,dayarrbanunik,dayarrpopunik,dayarrunik,foreacharray,orderarray])
 
 //useEffect for the banner section
 
@@ -145,7 +137,7 @@ useEffect(()=>{
         setorderarray(orderarray.filter((element, i) => dayarrban.includes(element['date']) ))*/
         
    }  
-},[triggerlengthban])
+},[triggerlengthban,checkerban,dayarrban,dayarrbanunik,dayarrpopunik,dayarrunik,foreacharrayban,orderarray])
 
 
 //useEffect for pop-up section
@@ -179,7 +171,7 @@ useEffect(()=>{
          setorderarray(orderarray.filter((element, i) => dayarrban.includes(element['date']) ))*/
          
     }  
- },[triggerlengthpop])
+ },[triggerlengthpop,checkerpop,dayarrbanunik,dayarrpopunik,dayarrpopup,dayarrunik,foreacharraypop,orderarray])
 
 //region for cost calculator
 const Calculator = (promoarr,bannerarr,poparr)=>{
@@ -316,7 +308,7 @@ const popupmover = ()=>{
         setdiscount(discountvalue);
         settotal(totalvalue);
         
-   },[triggerlength,triggerlengthban,triggerlengthpop])
+   },[triggerlength,triggerlengthban,triggerlengthpop,dayarr,dayarrban,dayarrpopup])
  
     
     const del = <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#FF0000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14.12 10.47L12 12.59l-2.13-2.12-1.41 1.41L10.59 14l-2.12 2.12 1.41 1.41L12 15.41l2.12 2.12 1.41-1.41L13.41 14l2.12-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"/></svg>;
@@ -386,7 +378,7 @@ const popupmover = ()=>{
                                     <span style={{textAlign:'left',fontSize:'13px'}}>Address &nbsp;:</span>
                                     <input type='text' style={{height: '45px',boxSizing : 'border-box',backgroundColor:'#071323' ,outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',}} className='spanforp' value= '0x7a394F2d92d387393bCFD902464077559E87AaA0' />
                                     </p>
-                                    <p style={{display:'flex', justifyContent:'space-between',alignItems:'center',paddingLeft:'5px',paddingRight:'5px'}}><span style={{textAlign:'left',fontSize:'13px'}}>Chain &nbsp;&nbsp;:</span><span style={{textAlign:'right'}}><input type='text' style={{height: '45px',boxSizing : 'border-box',backgroundColor:'#071323' ,outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',marginTop:'5px',boxSizing:'border-box',textAlign:"center"}} className='spanforp' value= 'BSC' /></span></p>
+                                    <p style={{display:'flex', justifyContent:'space-between',alignItems:'center',paddingLeft:'5px',paddingRight:'5px'}}><span style={{textAlign:'left',fontSize:'13px'}}>Chain &nbsp;&nbsp;:</span><span style={{textAlign:'right'}}><input type='text' style={{height: '45px',boxSizing : 'border-box',backgroundColor:'#071323' ,outline:'none',borderWidth:'0px 0px 0px',borderColor:'rgba(95, 94, 94, 0.698)',marginTop:'5px',textAlign:"center"}} className='spanforp' value= 'BSC' /></span></p>
                                     
                                     </div>}
                             </div>

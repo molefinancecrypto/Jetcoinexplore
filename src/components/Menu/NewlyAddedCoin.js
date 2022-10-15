@@ -13,21 +13,17 @@ import GoToTop from '../Gototop';
 
 
 function NewlyAddedCoin({overallwidth}) {
-    const [AllTime,setAllTime] = useContext(Statecontext).alltime;
     const [TodayBest,setTodayBest] = useContext(Statecontext).todaybest;
-    const [MarketCap,setMarketCap] = useContext(Statecontext).marketCap;
-    const [NewListings,setNewListings] = useContext(Statecontext).newlistings;
-    const empty = <img src={emptystar} style={{width:'20px',height:'20px'}}/>;
-    const full = <img src={fullstar} style={{width:'20px',height:'20px'}} />;
-    const eth = <img src={ethereumlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
-    const binance = <img src={binancelogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+    const empty = <img alt="emptystar" src={emptystar} style={{width:'20px',height:'20px'}}/>;
+    const full = <img alt="fullstar" src={fullstar} style={{width:'20px',height:'20px'}} />;
+    const eth = <img alt="ethlogo" src={ethereumlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+    const binance = <img alt="binancelogo" src={binancelogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
     const [colorvote,setcolorvote] = useState('#FFFFFF ')
     const arrowforvote = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"/></svg>;
     const[coins,setcoins] = useState(TodayBest.slice(0,4));
     const {votevalidation} = ParticularCoin();
     const navigate = useNavigate();
     const [watchlistArray,setwatchlistArray] = useContext(Statecontext).watchlistArray;
-    const [maindata,setmaindata] = useState();
 
 
     const filterAgent = (cointoFilter,coin,newArray,index) =>{

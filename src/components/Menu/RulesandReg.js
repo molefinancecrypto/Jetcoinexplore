@@ -1,4 +1,4 @@
-import React, { useState,useContext,useEffect } from 'react';
+import React, { useState,useContext } from 'react';
 import './rulesandreg.css';
 import GoToTop from '../Gototop';
 import { useNavigate } from 'react-router-dom';
@@ -14,11 +14,7 @@ export default function RulesandReg({overallwidth}) {
   const backward = <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>;
   const [sliderposition,setsliderposition] = useState({left:0,info:'block',contracts:'none',Link:'none',addons:'none'})
 
-  const navigate = useNavigate()
-  const headerList = [<p>Terms & conditions</p>,<p>DYOR</p>,<p>Privacy & Cookie Policies</p>]
-    
-
-
+  const navigate = useNavigate()    
 
     const rules = ()=>{
       setsliderposition({left:0,info:'block',contracts:'none',Link:'none',addons:'none'});

@@ -1,9 +1,6 @@
-import React, {useRef,useEffect,useState} from 'react';
+import React, {useRef} from 'react';
 import "./cryptonews.css";
 import { v4 as uuidv4 } from 'uuid';
-import backicon from './alexi-icons/alexileft.png'
-
-
 
 function Cryptonews({news,windowidth}) {
        
@@ -37,7 +34,7 @@ function Cryptonews({news,windowidth}) {
           {news.map(newss => <div key={uuidv4()} ref={itemRef} className='detailPerNews' >
         
             <div className='individualNewsBlock' onClick={()=>newss['url']}>
-                <img src={newss['urlToImage']} style={{height:'78%', width:'100%',borderRadius:'8px'}}/>
+                <img alt="newsimage" src={newss['urlToImage']} style={{height:'78%', width:'100%',borderRadius:'8px'}}/>
                                 
                 <p style={{color:"white",overflow:'hidden',height:'20%',padding:'5px',boxSizing:'border-box'}}>{newss['title']}</p>
             </div>
