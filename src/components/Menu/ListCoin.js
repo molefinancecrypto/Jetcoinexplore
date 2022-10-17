@@ -128,7 +128,7 @@ function ListCoin() {
             method: 'POST',                    
             headers: {
                     'Accept': '*/*',
-                    'Content-Type': 'multipart/form-data',
+                
                     Authorization: `Bearer ${userObject.token}`
                     },
             body: formData
