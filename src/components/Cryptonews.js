@@ -36,11 +36,11 @@ function Cryptonews({news,windowidth}) {
           
           {news.map(newss => <div key={uuidv4()} ref={itemRef} className='detailPerNews' >
         
-            <div className='individualNewsBlock' onClick={()=>newss['url']}>
+            <a href={newss['url']} className='urlHoldingNews'><div className='individualNewsBlock'>
                 <img src={newss['urlToImage']} style={{height:'78%', width:'100%',borderRadius:'8px'}}/>
                                 
                 <p style={{color:"white",overflow:'hidden',height:'20%',padding:'5px',boxSizing:'border-box'}}>{newss['title']}</p>
-            </div>
+            </div></a>
           </div>)}
         </div>
       </div>

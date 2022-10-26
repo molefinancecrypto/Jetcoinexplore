@@ -42,6 +42,7 @@ function ListCoin() {
     const [headertoshow,setheadertoshow] = useState(0);
     const [userObject,setuserObject] = useContext(Statecontext).userObject;
     const[alertobj,setalertobj] = useContext(Statecontext).alertobj;
+    const [triggerAfterVotes,setTriggerAfterVotes] = useContext(Statecontext).triggerAfterVotes
     
 
 
@@ -137,6 +138,7 @@ function ListCoin() {
     const addnewCoinObject = await addCoinCredentials.json();
     if(addnewCoinObject.success){
         console.log('succesful')
+        setTriggerAfterVotes(!triggerAfterVotes)
         setalertobj({...alertobj,...{message:'your coin has been listed succesfully.',trigger:!alertobj.trigger,pass:true}})
     
     }

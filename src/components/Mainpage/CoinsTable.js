@@ -309,6 +309,7 @@ export function PromotedCoin({overallwidth}) {
   const[alertobj,setalertobj] = useContext(Statecontext).alertobj;
   const [MarketCap,setMarketCap] = useContext(Statecontext).marketCap;
   const [NewListings,setNewListings] = useContext(Statecontext).newlistings;
+  const [triggerAfterVotes,setTriggerAfterVotes] = useContext(Statecontext).triggerAfterVotes
   const empty = <img src={emptystar} style={{width:'20px',height:'20px'}}/>;
   const full = <img src={fullstar} style={{width:'20px',height:'20px'}} />;
   const eth = <img src={ethereumlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
@@ -317,7 +318,6 @@ export function PromotedCoin({overallwidth}) {
   const arrowforvote = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"/></svg>;
   const[coins,setcoins] = useState(TodayBest.slice(0,4));
   const {votevalidation} = ParticularCoin();
-  const [triggerAfterVotes,setTriggerAfterVotes] = useState(false);
   const [maindata,setmaindata] = useState();
   const [userObject,setuserObject] = useContext(Statecontext).userObject;
   const userDetails = JSON.parse(window.localStorage.getItem('userDetails'));
@@ -408,6 +408,7 @@ export function PromotedCoin({overallwidth}) {
           const Json = await newdata.json();         
             const Jsondata = Json['coins']
             console.log(Jsondata)
+            console.log(`length of data${Jsondata.length}`)
             setmaindata(Jsondata)         
          }
 

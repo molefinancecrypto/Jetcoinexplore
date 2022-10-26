@@ -12,6 +12,7 @@ export const StateHolder = (props)=> {
     const [coinheader,setcoinheader] = useState('first');
     const [alertobj,setalertobj] = useState({pass:false,message:'',trigger:false})
     const [currentlocale,setcurrentlocale] = useState('/');
+    const [triggerAfterVotes,setTriggerAfterVotes] = useState(false);
     const [triggerlength,settriggerlength] = useState(0);
     const [triggerlengthban,settriggerlengthban] = useState(0);
     const [triggerlengthpop,settriggerlengthpop] = useState(0);
@@ -36,7 +37,7 @@ export const StateHolder = (props)=> {
 
     return(
         <Statecontext.Provider value={{currentlocale:[currentlocale,setcurrentlocale],triggerlength:[triggerlength,settriggerlength]
-        ,dayarrban:[dayarrban,setdayarrban],triggerlengthban: [triggerlengthban,settriggerlengthban],coinheader:[coinheader,setcoinheader],dayarr: [dayarr,setdayarr],
+        ,dayarrban:[dayarrban,setdayarrban],triggerAfterVotes:[triggerAfterVotes,setTriggerAfterVotes],triggerlengthban: [triggerlengthban,settriggerlengthban],coinheader:[coinheader,setcoinheader],dayarr: [dayarr,setdayarr],
         dayarrunik:[dayarrunik,setdayarrunik],dayarrbanunik:[dayarrbanunik,setdayarrbanunik],changepagebyfoot:[changepagebyfoot,setchangepagebyfoot]
         ,changefootcheck:[changefootcheck,setchangefootcheck],ordermarginTop:[ordermarginTop,setordermarginTop],watchlistArray:[watchlistArray,setwatchlistArray]
         ,alltime:[alltime, setallTime],todaybest:[todaybest, settodayBest],marketCap:[marketCap,setmarketCap],newlistings:[newlistings,setnewListings],headertoshow:[headertoshow,setheadertoshow],
