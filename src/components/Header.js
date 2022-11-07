@@ -317,8 +317,9 @@ useEffect(()=>{
          <div style={{position:'absolute',display:showLogout?'block':'none',right:'0px',top:'48px',width:'420px',color:"white",fontFamily:'NexaTextLight',padding:"5px",paddingTop:'15px',boxSizing:'border-box',height:'140px',borderRadius:'10px',border:'2px solid #0B1F36',backgroundColor:'#05101c',zIndex:'5'}}>
                <p style={{textAlign:'left'}}>{`Welcome to CoinExplore ${userObject.userEmail}`}</p>
                
-               <p onClick={()=>{window.localStorage.removeItem('userDetails');setshowLogout(!showLogout)}} style={{marginTop:'15px',textAlign:'left',cursor:'pointer'}}>Log Out</p>
                <p onClick={()=>{navigate('/userwatchlist');setshowLogout(!showLogout)}} style={{marginTop:'15px',textAlign:'left',cursor:'pointer'}}>Watchlist</p>
+               <p onClick={()=>{window.localStorage.removeItem('userDetails');setshowLogout(!showLogout)}} style={{marginTop:'15px',textAlign:'left',cursor:'pointer'}}>Log Out</p>
+               
          </div>
       </div>
     </ul>

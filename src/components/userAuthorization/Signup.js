@@ -48,7 +48,7 @@ const onchangeEmail = (event)=>{
 const onfinalsubmit = async (event)=>{
      event.preventDefault()
      if(username==='' ||password=== ''||email=== ''||confirm_password===''){
-      setalertobj({...alertobj,...{message:'please fill in all details',trigger:!alertobj.trigger,pass:true}})
+      setalertobj({...alertobj,...{message:'Fill in all details',trigger:!alertobj.trigger,pass:true}})
        
      }
 
@@ -83,7 +83,7 @@ const onfinalsubmit = async (event)=>{
                                    });
       const activateObjJson = await activateObj.json()
       console.log(activateObjJson)
-      setalertobj({...alertobj,...{message:"You have succesfully registered, please sign in.",trigger:!alertobj.trigger,pass:true}})
+      setalertobj({...alertobj,...{message:"Succesfully registered, sign in.",trigger:!alertobj.trigger,pass:true}})
       
       setvotevalidation(true);
       navigate('/')

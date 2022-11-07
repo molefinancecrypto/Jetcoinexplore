@@ -84,7 +84,7 @@ function NewlyAddedCoin({overallwidth}) {
          topVote(coin)
         }
         else{
-          alert('please, sign in first to vote')
+          alert('Please, sign in first to vote')
           navigate('/signin')
         }
       }

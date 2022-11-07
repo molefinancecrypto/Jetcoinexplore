@@ -423,7 +423,7 @@ export function PromotedCoin({overallwidth}) {
         
       } }
       catch(error){
-        setalertobj({...alertobj,...{message:'please, check your internet connections',trigger:!alertobj.trigger,pass:true}})
+        setalertobj({...alertobj,...{message:'Please, check your internet connections.',trigger:!alertobj.trigger,pass:true}})
       }
     }
     
@@ -433,7 +433,7 @@ export function PromotedCoin({overallwidth}) {
 
 const coinToWatchlist = async(id,coin)=>{
   if(userObject.token===''){
-    setalertobj({...alertobj,...{message:'please, sign in first to add coin to watchlist',trigger:!alertobj.trigger,pass:true}})
+    setalertobj({...alertobj,...{message:'Please, sign in first to add coin to watchlist.',trigger:!alertobj.trigger,pass:true}})
   
   }
 
@@ -551,7 +551,7 @@ const filePerCoin = async(id)=>{
 
   const voteFunction = async(id)=>{
     if(userObject.token===''){
-      setalertobj({...alertobj,...{message:'please, sign in first to vote',trigger:!alertobj.trigger,pass:true}})
+      setalertobj({...alertobj,...{message:'Please, sign in first to vote.',trigger:!alertobj.trigger,pass:true}})
       
     }
     else{
@@ -579,7 +579,7 @@ const filePerCoin = async(id)=>{
     
 
       catch(error){
-        setalertobj({...alertobj,...{message:'please, wait for the next 12hours to vote again',trigger:!alertobj.trigger,pass:true}})
+        setalertobj({...alertobj,...{message:'Please, wait for the next 12hours to vote again.',trigger:!alertobj.trigger,pass:true}})
       }
     }
   }

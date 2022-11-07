@@ -34,7 +34,7 @@ const onchangeEmail = (event)=>{
 const onfinalsubmit = async(event)=>{
   event.preventDefault()
   if(email==='' ||password=== ''){
-    setalertobj({...alertobj,...{message:'please fill in all details',trigger:!alertobj.trigger,pass:true}})
+    setalertobj({...alertobj,...{message:'Please fill in all details',trigger:!alertobj.trigger,pass:true}})
     console.log(alertobj)
   }
   else{
@@ -53,8 +53,9 @@ console.log(returnObj.status)
 
 
 const newobj = await returnObj.json()
+console.log(newobj)
 if(!newobj.success){
-  setalertobj({...alertobj,...{message:'Username or Password Incorrect',trigger:!alertobj.trigger,pass:true}})
+  setalertobj({...alertobj,...{message:'Username or Password incorrect.',trigger:!alertobj.trigger,pass:true}})
 }
 else{
 
@@ -63,14 +64,14 @@ else{
   console.log(userDetail)
   const {access_token,username,email,exp} = userDetail;
   setuserObject({...userObject,...{userEmail:email,userUsername:username,token:access_token,exp}})
-  setalertobj({...alertobj,...{message:'you are succesfully logged-in',trigger:!alertobj.trigger,pass:true}})
+  setalertobj({...alertobj,...{message:'Succesfully Login',trigger:!alertobj.trigger,pass:true}})
   navigate('/')
 }
    }
 
    catch(error){
       
-        setalertobj({...alertobj,...{message:'please,check your network connections',trigger:!alertobj.trigger,pass:true}})
+        setalertobj({...alertobj,...{message:'Please,check your network connections',trigger:!alertobj.trigger,pass:true}})
    }
    
       
