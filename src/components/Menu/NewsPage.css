@@ -14,7 +14,8 @@
 .title{
     width:100%;
     text-align:center;
-    letter-spacing:2px
+    letter-spacing:2px;
+    font-size: 25px;
 }
 
 .description{
@@ -92,6 +93,7 @@ margin-top:15px;
 
     .title{
         margin-bottom: 20px;
+        font-size: 20px;
     }
 
     .divForNewsContent{
