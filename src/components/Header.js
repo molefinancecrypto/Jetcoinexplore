@@ -44,6 +44,17 @@ function Header({overallwidth}) {
 */
 
 
+//navigate to add_coin or not depending on the availability of a token
+const navAddcoin  = ()=>{
+   if(userObject.token===''){
+      setalertobj({...alertobj,...{message:'Please, Sign in.',trigger:!alertobj.trigger,pass:true}})
+      navigate('/')
+   }
+   else{
+      navigate('/addcoin')
+   }
+} 
+
    useEffect(
       ()=>{
          const registeredUserObject = JSON.parse(window.localStorage.getItem('userDetails'));
@@ -305,7 +316,7 @@ useEffect(()=>{
            
 
     <ul className={userObject.token===''?"lister":"listerWithToken"}>
-       <li className='list'><Link to="/addcoin" style={{color:"white",textDecoration:"none"}}>Add Coin</Link></li>
+       <li className='list' onClick={()=>navAddcoin()} style={{color:userObject.token===''?"grey":"white",textDecoration:"none"}}>Add Coin</li>
        <li className='list'><Link to="/promoted" style={{color:"white",textDecoration:"none"}}>Advertise</Link></li>
        <li className='list'><Link to="/newspage" style={{color:"white",textDecoration:"none"}}>News</Link></li>
        <li className='list'><Link to="/contactUs" style={{color:"white",textDecoration:"none"}}>Contact Us</Link></li>
