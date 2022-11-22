@@ -23,6 +23,7 @@ import ContactUs from './components/Menu/ContactUs';
 import RulesandReg from './components/Menu/RulesandReg';
 import NewlyAddedCoin from './components/Menu/NewlyAddedCoin';
 import WatchlistOriginal from './components/Menu/WatchlistOriginal';
+import ForgotPassword from './components/userAuthorization/ForgotPassword';
 
 
 /*
@@ -170,6 +171,7 @@ const rfheight = ()=>{
       <Route path='/coin/:coinpicked' element={<CoinFile overallwidth={overallwidth}/>}/>
       <Route path='/signup' element={<Signup/>} />
       <Route path='/signin' element={<Signin/>} />
+      <Route path='/forgotpassword' element={<ForgotPassword/>} />
       <Route path='/addcoin' element={<ListCoin/>} />
       <Route path='/newspage' element={<NewsPage />} />
       <Route path='/salesrep' element={<Salesrep/>} >
