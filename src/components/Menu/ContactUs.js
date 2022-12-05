@@ -114,7 +114,7 @@ export default function ContactUs({overallwidth}) {
                 
             </div>
             <div>
-                  <button onClick={onfinalsubmit} style={{width:overallwidth<=900?'100px':'250px',padding:'3.5px',height:'40px',cursor:'pointer',backgroundColor:'#02050a',outline:'none',border:'2px solid #02050a',borderRadius:'5px',color:'white'}}>submit</button>    
+                  <button onClick={onfinalsubmit} style={{width:overallwidth<=900?'100px':'250px',padding:'3.5px',height:'40px',cursor:'pointer',backgroundColor:'#02050a',outline:'none',border:'2px solid #02050a',borderRadius:'5px',color:'white',fontSize:'20px'}}>Submit</button>    
                 </div>
         </div>
       <GoToTop />

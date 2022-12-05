@@ -27,11 +27,18 @@ function NewlyAddedCoin({overallwidth}) {
     const navigate = useNavigate();
     const [watchlistArray,setwatchlistArray] = useContext(Statecontext).watchlistArray;
     const [maindata,setmaindata] = useState();
-
-
+    const [pagesForCoins,setpagesForCoins] = useState();
+    const [pageNavigator,setpageNavigator] = useState([0,10])
+    const forward = <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 0 24 24" width="25px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg> 
+    const backward = <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 0 24 24" width="25px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>
+    const[pageIndex,setpageindex] = useState(1) //the page on focus
+    const [pageArray,setpageArray] = useState([]) //the array containing the pages id to be iterated with .map
+    const [allcoins,setallcoins] = useState()
+    const [coinlength,setcoinlength] = useState(0)
     //function to call newly enlisted coins
 
     const enlistedCoins = async()=>{
+     
       const returnObj = await fetch('https://apidev.coinexplore.io/api/coins/list/latest',
       {
         method: 'GET',
@@ -44,19 +51,127 @@ function NewlyAddedCoin({overallwidth}) {
                 },
     })
     const Json = await returnObj.json(); 
-    console.log(Json['coins'])        
-    setcoins(Json['coins'])
+    setcoinlength(Json['coins'].length)
+    setallcoins(Json['coins'])
+    calcpage(Json['coins'])
+    coinSplice()
+    
     }
 
+    //func to generate coinSplice displayed
+    const coinSplice = ()=>{
+        const data = allcoins.slice(pageNavigator[0],pageNavigator[1])
+        setcoins(data)
+    }
+
+    //func to calculate pages
+    const calcpage = (totalarr)=>{
+
+      setpagesForCoins(Math.ceil(totalarr.length/10))    
+    }
     //useEffect for enlistedCoins
 
     useEffect(()=>{
         enlistedCoins()
-    },[])
+        loopArray(pageIndex,pagesForCoins)
+    },[pagesForCoins])
+
+
+    //useEffect for pageing control
+
+    useEffect(()=>{
+      loopArray(pageIndex,pagesForCoins)
+      {allcoins && coinSplice()}
+      
+  },[pageIndex,pageNavigator])
+
+
+
+    //function to arrange coin array to be looped
+    const loopArray = (pageFocus,pagesForCoins)=>{
+      const middlenumb = Math.ceil((3+pagesForCoins)/2)
+
+      if( pageFocus===1 || pageFocus===2 || pageFocus===3 ||pageFocus===pagesForCoins ){
+        
+        setpageArray([1,2,3,'..',middlenumb,'..',pagesForCoins])
+      }
+      
+        else if( pageFocus===4 ){
+          
+          setpageArray([1,2,3,4,'..',pagesForCoins])
+        }
+        else if(pageFocus===pagesForCoins-1 ){
+          const numb = pagesForCoins-1
+          setpageArray([1,2,3,'..',numb,pagesForCoins])
+        }
+        else{
+         
+            setpageArray([1,2,3,'..',pageFocus,'..',pagesForCoins])
+          
+        }
+    }
+
 
     
+    //function to move coin page forward
+    const rightpage = ()=>{
+      if(pageIndex*10 === pagesForCoins*10){
+        setpageindex(1)
+        
+        setpageNavigator([0,10])
+        
+      }
+
+      else if(pageIndex === pagesForCoins-1){
+        setpageindex((pageIndex)=>pageIndex+1)
+        
+        setpageNavigator((pageNavigator)=>[pageNavigator[1],coinlength])
+        
+      }
+
+      else{
+        setpageindex((pageIndex)=>pageIndex+1)
+        setpageNavigator((pageNavigator)=>[pageNavigator[0]+10,pageNavigator[1]+10])
+        
+      }
+    }
       
-    
+  //function to move coin page backward
+  const leftpage = ()=>{
+    if(pageIndex === 1){
+      setpageindex(pagesForCoins)
+      const val = pagesForCoins*10 - coinlength
+      const subtract = 10 - val 
+      setpageNavigator([coinlength-subtract,coinlength])
+      
+    }
+    else{
+      setpageindex((pageIndex)=>pageIndex-1)
+      
+      setpageNavigator((pageNavigator)=>[pageNavigator[0]-10,pageNavigator[0]])
+      
+    }
+  }
+
+  //function on clicking on coin page
+  const clickPage = (numb)=>{
+      if(isNaN(numb)){
+
+      }
+      else if(numb === pagesForCoins){
+      setpageindex(numb)
+      const val = pagesForCoins*10 - coinlength
+      const subtract = 10 - val 
+      setpageNavigator([coinlength-subtract,coinlength])
+      }
+      else{
+        setpageindex(numb)
+        const val  = numb*10
+        setpageNavigator([val-10,val])
+
+      }
+  }
+
     
       //function for watchlist
       const coinToWatchlist = async(id,coin)=>{
@@ -69,7 +184,7 @@ function NewlyAddedCoin({overallwidth}) {
       
           if(userObject.exp*1000> new Date().getTime()){
             if(coin['watchListDate']){
-              console.log(coin['watchListDate'])
+              
               const returnObj = await fetch(`https://apidev.coinexplore.io/api/users/coins/watchlist/${id}`,
               {
                 method: 'DELETE',
@@ -82,7 +197,7 @@ function NewlyAddedCoin({overallwidth}) {
                         },
             })
             const dataHolder = await returnObj.json();
-            console.log(dataHolder)
+            
             if(dataHolder.success){
               setTriggerAfterVotes(!triggerAfterVotes)
             }
@@ -102,7 +217,7 @@ function NewlyAddedCoin({overallwidth}) {
                         },
             })
             const dataHolder = await returnObj.json();
-            console.log(dataHolder)
+        
             if(dataHolder.success){
               setTriggerAfterVotes(!triggerAfterVotes)
             }
@@ -146,11 +261,11 @@ function NewlyAddedCoin({overallwidth}) {
           
                                          });
             const dataHolder = await returnObj.json();
-            console.log(dataHolder)
+    
             if(dataHolder.success){
               setTriggerAfterVotes(!triggerAfterVotes)
             }
-            console.log(triggerAfterVotes)
+        
           }
         
     
@@ -171,7 +286,8 @@ function NewlyAddedCoin({overallwidth}) {
                     { coins=== null ?<i class="fa fa-spinner fa-spin" style={{fontSize:'48px',color:'white'}}></i> :coins.map( coin => <div className='coinselector'  key={uuidv4()}>
 
                       <div className='tableleft'>
-                        <p style={{display:overallwidth<=700?'none':'block'}}>{coins.indexOf(coin)+1}</p>
+                        
+                        <p style={{display:overallwidth<=700?'none':'block'}}>{pageNavigator[0] + coins.indexOf(coin)+1}</p>
                         <div style={{width:'150px',display:'flex',alignItems:'center',justifyContent:"left",padding:'0px'}}>
                           <img className='logo' style={{borderRadius:'50%',width:"50px",height:'50px'}} src={coin['logo']} alt='coinLogo'/>
                           <div style={{marginLeft:'15px'}}>
@@ -195,7 +311,9 @@ function NewlyAddedCoin({overallwidth}) {
                       <div onClick={() => coinToWatchlist(coin['id'],coin)}  className='starholder'>{coin['watchlist']?full:empty}</div>
                   </div> )}
                   </div>
+                  
                 </div>
+                {pagesForCoins>=7 && <div style={{width:'30%',minWidth:'270px',margin:'30px auto',display:'flex',justifyContent:'space-around'}}><p style={{display:'flex',justifyContent:'center',alignItems:"center",cursor:'pointer'}} onClick={leftpage}>{backward}</p>{pageArray.map(coin=><p key={uuidv4()} style={{color: pageIndex===pageArray[pageArray.indexOf(coin)]?'white':'#BABABA',border:pageIndex===pageArray[pageArray.indexOf(coin)]?'1.5px solid #0B1F36':'0px',cursor:'pointer',padding:'3px 10px'}} onClick={()=>clickPage(coin)}>{coin}</p>)} <p style={{display:'flex',justifyContent:'center',alignItems:'center',cursor:'pointer'}} onClick={rightpage}>{forward}</p></div>}
                 </div>
                 <GoToTop />
               </div>
