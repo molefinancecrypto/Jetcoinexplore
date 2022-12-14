@@ -9,12 +9,16 @@ import binancelogo from '../../chainLogo/binanceLogo.png';
 import ethereumlogo from '../../chainLogo/ethereumLogo.png';
 import {Statecontext} from '../CointoviewContext';
 import GoToTop from '../Gototop';
+import alexisearch from '../alexi-icons/alexisearch.png';
 //import { funcForpage } from './pagerForCoin';
 
 
 function NewlyAddedCoin({overallwidth}) {
   const [userObject,setuserObject] = useContext(Statecontext).userObject;
     const[alertobj,setalertobj] = useContext(Statecontext).alertobj;
+    const [showmenu,setshowmenu] = useState(false);
+    const [searchvalue,setsearchvalue] = useState('')
+    const [coinShown, setcoinShown] = useState();
     const [triggerAfterVotes,setTriggerAfterVotes] = useState(false);
     const empty = <img src={emptystar} style={{width:'20px',height:'20px'}}/>;
     const full = <img src={fullstar} style={{width:'20px',height:'20px'}} />;
@@ -86,27 +90,88 @@ function NewlyAddedCoin({overallwidth}) {
   },[pageIndex,pageNavigator])
 
 
+  //useEffecy for searching throgh newly enlisted coins
+  useEffect(
+    async()=>{
+       if(userObject.token===''){
+          if(searchvalue===""){
+             const searchObj = await fetch(`https://apidev.coinexplore.io/api/coins/search?q=`)
+             const objnew = await searchObj.json()
+             setcoinShown(objnew['coins'])
+          }
+          else{
+ 
+             const searchObj = await fetch(`https://apidev.coinexplore.io/api/coins/search?q=${searchvalue}`)
+             const objnew = await searchObj.json()
+             setcoinShown(objnew['coins'])
+             console.log(objnew)
+          }
+       }
+       else{
+          if(userObject.exp*1000> new Date().getTime()){
+             if(searchvalue===""){
+                const searchObj = await fetch(`https://apidev.coinexplore.io/api/coins/search?q=`)
+                const objnew = await searchObj.json()
+                console.log(objnew)
+                setcoinShown(objnew['coins'])
+                console.log(coinShown)
+             }
+             else{
+    
+                const searchObj = await fetch(`https://apidev.coinexplore.io/api/coins/search?q=${searchvalue}`)
+                const objnew = await searchObj.json()
+                setcoinShown(objnew['coins'])
+                console.log(objnew)
+             }
+          }
+          else{
+             if(searchvalue===""){
+                const searchObj = await fetch(`https://apidev.coinexplore.io/api/coins/search?q=`)
+                const objnew = await searchObj.json()
+                setcoinShown(objnew['coins'])
+             }
+             else{
+    
+                const searchObj = await fetch(`https://apidev.coinexplore.io/api/coins/search?q=${searchvalue}`)
+                const objnew = await searchObj.json()
+                setcoinShown(objnew['coins'])
+                console.log(objnew)
+             }
+          }
+       }
+       
+    },[searchvalue])
+
+    const changeSearch = (e)=>{
+      setsearchvalue(e.target.value)
+   }
+
+   const closeshowmenu = ()=>{
+      setshowmenu(false)
+   }
+
+   const rolldownsearch = ()=> {
+    setshowmenu(true)
+    
+ }
 
     //function to arrange coin array to be looped
     const loopArray = (pageFocus,pagesForCoins)=>{
       const middlenumb = Math.ceil((3+pagesForCoins)/2)
 
-      if( pageFocus===1 || pageFocus===2 || pageFocus===3 ||pageFocus===pagesForCoins ){
+        if( pageFocus>=1 && pageFocus<=4 ){
         
-        setpageArray([1,2,3,'..',middlenumb,'..',pagesForCoins])
-      }
+          setpageArray([1,2,3,4,5,6,'...',pagesForCoins-1,pagesForCoins])
+        }
       
-        else if( pageFocus===4 ){
+        else if(pageFocus>=pagesForCoins-3 && pageFocus<= pagesForCoins ){
           
-          setpageArray([1,2,3,4,'..',pagesForCoins])
+          setpageArray([1,2,'...',pagesForCoins-5,pagesForCoins-4,pagesForCoins-3,pagesForCoins-2,pagesForCoins-1,pagesForCoins])
         }
-        else if(pageFocus===pagesForCoins-1 ){
-          const numb = pagesForCoins-1
-          setpageArray([1,2,3,'..',numb,pagesForCoins])
-        }
+        
         else{
          
-            setpageArray([1,2,3,'..',pageFocus,'..',pagesForCoins])
+          setpageArray([1,2,'...',pageFocus-1,pageFocus,pageFocus+1,'...',pagesForCoins-1,pagesForCoins])
           
         }
     }
@@ -152,6 +217,62 @@ function NewlyAddedCoin({overallwidth}) {
       
     }
   }
+
+  //function to navigate coin searched for
+  const gotoCoin = async(id)=>{
+    try{
+    if(userObject.token===''){
+       const returnObj = await fetch(`https://apidev.coinexplore.io/api/coins/${id}`,
+       {
+         method: 'GET',
+         
+         headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json',
+                 },
+     })
+     const dataHolder = await returnObj.json();
+     const coin = dataHolder['coin']
+     navigate(`/coin/${coin['name']}`,{state: coin})
+    }
+    else{
+       if(userObject.exp*1000> new Date().getTime()){
+         const returnObj = await fetch(`https://apidev.coinexplore.io/api/coins/${id}`,
+         {
+           method: 'GET',
+           
+           headers: {
+                   'Accept': 'application/json',
+                   'Content-Type': 'application/json',
+                   Authorization: `Bearer ${userObject.token}`
+                   },
+       })
+       const dataHolder = await returnObj.json();
+       const coin = dataHolder['coin']
+       navigate(`/coin/${coin['name']}`,{state: coin})
+       }
+       else{
+         const returnObj = await fetch(`https://apidev.coinexplore.io/api/coins/${id}`,
+         {
+           method: 'GET',
+           
+           headers: {
+                   'Accept': 'application/json',
+                   'Content-Type': 'application/json',
+                   },
+       })
+       const dataHolder = await returnObj.json();
+       const coin = dataHolder['coin']
+       navigate(`/coin/${coin['name']}`,{state: coin})
+       }
+     }}
+
+     catch(error){
+       setalertobj({...alertobj,...{message:'please, check your internet connections again',trigger:!alertobj.trigger,pass:true}})
+     }
+ }
+
+
 
   //function on clicking on coin page
   const clickPage = (numb)=>{
@@ -279,7 +400,27 @@ function NewlyAddedCoin({overallwidth}) {
 
 
       return <div style={{width:'95%',minHeight:'100vh',paddingTop:'35px',margin:'10px auto',boxSizing:"border-box"}}>
-                <div style={{marginTop:'35px'}}><p style={{textAlign:'center',color:'white',fontSize:overallwidth>'700px'?'35px':'25px',letterSpacing:"1.5px",marginBottom:'15px'}}>New Listings</p>
+                <div style={{marginTop:'35px'}}>
+                  <p style={{textAlign:'center',color:'white',fontSize:overallwidth>'700px'?'35px':'25px',letterSpacing:"1.5px",marginBottom:'15px'}}>New Listings</p>
+                  <div style={{margin:'15px auto',width:overallwidth>900?'30%':'80%',height:"40px",position:'relative'}}>
+                  <div onClick={rolldownsearch} style={{width:'100%',adding:'7px',paddingLeft:'10px',boxSizing:'border-box',height:'100%',outline:'none',color:'white',border:"1px solid #02050a", borderRadius:'9px',backgroundColor:'#02050a'}}>
+                    <p style={{display:'flex',justifyContent:'left',paddingLeft:"15px",alignItems:'center',height:'100%',fontSize:'12px',color:'grey'}}>SEARCH COINEXPLORE</p> 
+                    <p style={{height:'35px',width:'35px',display:'flex',justifyContent:'center',alignItems:'center',position:'absolute',right:'0px',bottom:'0px'}}><img src={alexisearch}/></p>  
+                  </div>
+                  {showmenu && <div className='searchcoinsmenunewlistings' >
+                    <div style={{display:'flex',width:'100%',justifyContent:'space-around',boxSizing:'border-box'}}>
+                      <p onClick={closeshowmenu} style={{width:'50px',marginTop:'15px',}}><svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 0 24 24" width="35px" fill="#808080"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg></p>
+                      <input  placeholder='SEARCH COINEXPLORE' onChange={changeSearch} type='search' value={searchvalue} style={{width:'70%',marginTop:'15px',marginRight:'25px',paddingLeft:'10px',height:'35px',letterSpacing:'1.5px',fontSize:'13px',boxSizing:'border-box',outline:'none',color:'white',border:"1px solid #02050a", borderRadius:'9px',backgroundColor:'#02050a'}}/>
+                    </div>
+                    {coinShown && coinShown.slice(0,7).map(coin=><div onClick={ ()=>{gotoCoin(coin['id']);setshowmenu(false)}} style={{display:'flex',color:'white',justifyContent:"space-between",width:'80%',margin:'20px auto'}}>
+                      <div style={{display:'flex',width:'60%',justifyContent:'left'}}>
+                         <img style={{width:'30px',height:'30px',borderRadius:'50%'}} src={coin['logo']} alt='logocoin'/>
+                                                 <p style={{marginLeft:'15px',fontSize:'17px'}}>{coin['name']}</p>
+                                              </div>
+                                              <p>{coin['symbol']}</p>
+                                           </div>)}</div>}
+                                           </div>
+        
                 <div style={{width:'90%',margin:'0px auto',marginTop:'-15px',boxShadow: '0px 0px 50px #0b1f36',borderRadius:'10px 10px 15px 15px'}}>
                   <div style={{width:'100%',height:'auto',borderRadius:'10px',margin:"30px auto",marginBottom:'0px',boxSizing:'border-box'}}>
                     <div className='tableheader'><div className='headerleft' ><p style={{display:overallwidth<=700?'none':"block"}}>S/N</p><p style={{width:'150px',textAlign:'center'}}>NAME</p></div> <div className='headerright'><p className='chain'>CHAIN</p> <p className='capRank'>MARKET-CAP</p> <p className='price'>PRICE</p>  <p className='launchhead'>LAUNCH-DATE</p> <p className='changehead'>CHANGE(24hrs)</p> <p className='voteheader'>VOTE</p> </div> <p className='starholder' > </p></div>  

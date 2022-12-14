@@ -85,7 +85,7 @@ const navAddcoin  = ()=>{
       },[userObject.token,showLogout])
    
 
-   useEffect(
+   /*useEffect(
       async()=>{
          if(userObject.token===''){
             if(searchvalue===""){
@@ -134,7 +134,7 @@ const navAddcoin  = ()=>{
             }
          }
          
-      },[searchvalue])
+      },[searchvalue])*/
 
 
 //useEffect to trigger alert messages
@@ -220,6 +220,9 @@ useEffect(()=>{
        }
    }
 
+
+
+   
    useEffect(
       ()=>{
          let checkwhereclicked = (event)=>{

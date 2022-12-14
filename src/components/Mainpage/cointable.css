@@ -153,6 +153,22 @@
     
 }
 
+
+.searchcoinsmenunewlistings{
+    position:absolute;
+    width:100%;
+    height:auto;
+    overflow: hidden;
+    top:0%;
+    left:0px;
+    background-color: rgb(6, 16, 28);
+    border-radius: 10px;
+    display:block;
+    z-index: 100;
+    box-shadow: 10px 2px 15px black;
+    box-sizing: border-box;
+}
+
 .coinselector{
     display:flex;
     justify-content: center;
