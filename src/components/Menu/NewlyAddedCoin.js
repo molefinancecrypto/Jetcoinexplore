@@ -1,5 +1,5 @@
 import '../Mainpage/cointable.css'
-import React,{useState,useContext, useEffect} from 'react';
+import React,{useState,useContext,useRef, useEffect} from 'react';
 import emptystar from '../../icons/stars/emptystar.png';
 import fullstar from '../../icons/stars/fullstar.png';
 import { ParticularCoin } from '../../contextfolder/Coindata';
@@ -39,6 +39,7 @@ function NewlyAddedCoin({overallwidth}) {
     const [pageArray,setpageArray] = useState([]) //the array containing the pages id to be iterated with .map
     const [allcoins,setallcoins] = useState()
     const [coinlength,setcoinlength] = useState(0)
+    const menuref = useRef();
     //function to call newly enlisted coins
 
     const enlistedCoins = async()=>{
@@ -141,6 +142,24 @@ function NewlyAddedCoin({overallwidth}) {
        }
        
     },[searchvalue])
+
+
+    //this useEffect triggers for when any mouse event occurs in respect to the search bar
+    useEffect(
+      ()=>{
+         let checkwhereclicked = (event)=>{
+            if(!menuref.current.contains(event.target)){
+               setshowmenu(false)
+            }
+            
+         }
+         document.addEventListener('mousedown',checkwhereclicked);
+
+         return ()=>{
+            document.removeEventListener('mousedown',checkwhereclicked)
+         }
+      }
+   )
 
     const changeSearch = (e)=>{
       setsearchvalue(e.target.value)
@@ -407,7 +426,7 @@ function NewlyAddedCoin({overallwidth}) {
                     <p style={{display:'flex',justifyContent:'left',paddingLeft:"15px",alignItems:'center',height:'100%',fontSize:'12px',color:'grey'}}>SEARCH COINEXPLORE</p> 
                     <p style={{height:'35px',width:'35px',display:'flex',justifyContent:'center',alignItems:'center',position:'absolute',right:'0px',bottom:'0px'}}><img src={alexisearch}/></p>  
                   </div>
-                  {showmenu && <div className='searchcoinsmenunewlistings' >
+                  {showmenu && <div className='searchcoinsmenunewlistings' ref={menuref}>
                     <div style={{display:'flex',width:'100%',justifyContent:'space-around',boxSizing:'border-box'}}>
                       <p onClick={closeshowmenu} style={{width:'50px',marginTop:'15px',}}><svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 0 24 24" width="35px" fill="#808080"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg></p>
                       <input  placeholder='SEARCH COINEXPLORE' onChange={changeSearch} type='search' value={searchvalue} style={{width:'70%',marginTop:'15px',marginRight:'25px',paddingLeft:'10px',height:'35px',letterSpacing:'1.5px',fontSize:'13px',boxSizing:'border-box',outline:'none',color:'white',border:"1px solid #02050a", borderRadius:'9px',backgroundColor:'#02050a'}}/>
