@@ -56,21 +56,19 @@ export default function BannerpromoAds({overallwidth,leftholder,banasec}) {
         }
      }
 
-     const calendarObj = {month:[11,12,1],days:[3,14,7,27]}
+     
      //function to disable a day
      const disableDay = ({ _, date, view }) => {
       
       // Check if a date React-Calendar wants to check is on the list of dates to add class to
       //console.log(typeof(date.getDay()) )
-      
+      const today = new Date()
     
-      if (calendarObj.month.includes(date.getMonth()+1)  && calendarObj.days.includes(date.getDate())){
+      if (date <= today.setDate(today.getDate()+2)){
+        
         return date.getDate()
       }
-      //console.log(`the month is ${date.getMonth()}`)
-      //console.log('a')
-      //console.log(`the year is ${date.getFullYear()}`)
-      //console.log(date.getDay())}
+   
      }
    
 
