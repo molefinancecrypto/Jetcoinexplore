@@ -387,6 +387,7 @@ export function PromotedCoin({overallwidth}) {
         const Json = await newdata.json();
         const Jsondata = Json['coins']
         console.log('a new')
+        console.log(Jsondata)
         setmaindata(Jsondata)
       }
 
