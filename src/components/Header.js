@@ -6,8 +6,14 @@ import avatar from '../icons/avatar.svg';
 import { Statecontext } from './CointoviewContext';
 import {Link} from 'react-router-dom';
 import {CoinObj} from './coinholder';
+import { v4 as uuidv4 } from 'uuid'
 import alexisearch from './alexi-icons/alexisearch.png';
 import Alert from './Menu/Alert';
+import imageOne from '../coinExploreImg/imageOne.jpg';
+import imageTwo from '../coinExploreImg/imageTwo.jpg';
+import imageThree from '../coinExploreImg/imageThree.jpg';
+import imageFour from '../coinExploreImg/imageFour.jpg';
+import imageFive from '../coinExploreImg/imageFive.jpg'
 
 
 
@@ -137,6 +143,8 @@ const navAddcoin  = ()=>{
       },[searchvalue])*/
 
 
+const imagesForMiniBanner = [imageOne,imageTwo,imageThree,imageFour,imageFive]
+
 //useEffect to trigger alert messages
 useEffect(()=>{
    if(alertobj.message!==''){
@@ -259,6 +267,11 @@ useEffect(()=>{
 
   return <div className='headerwrapper'>
             {alertobj.pass && <Alert overallwidth={overallwidth}/>}
+            <div style={{width:'100%',position:'absolute',top:'0px',display:'flex',alignItems:'center',justifyContent:'space-around',left:'0px',height:'45px',boxSizing:'border-box',backgroundColor:"#01060c"}}>
+            {imagesForMiniBanner.map(image =>
+               <img src={image} style={{width:'18%',borderRadius:'5px',height:'25px',objectFit:'cover'}} key = {uuidv4()}/> 
+            )} 
+            </div>
             <div className='headercontainer'>
                <div  onClick={()=> navigate('/')} className='logoandtitleholder'>
         
