@@ -267,11 +267,7 @@ useEffect(()=>{
 
   return <div className='headerwrapper'>
             {alertobj.pass && <Alert overallwidth={overallwidth}/>}
-            <div style={{width:'100%',position:'absolute',top:'0px',display:'flex',alignItems:'center',justifyContent:'space-around',left:'0px',height:'45px',boxSizing:'border-box',backgroundColor:"#01060c"}}>
-            {imagesForMiniBanner.map(image =>
-               <img src={image} style={{width:'18%',borderRadius:'5px',height:'25px',objectFit:'cover'}} key = {uuidv4()}/> 
-            )} 
-            </div>
+            
             <div className='headercontainer'>
                <div  onClick={()=> navigate('/')} className='logoandtitleholder'>
         

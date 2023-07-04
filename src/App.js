@@ -152,11 +152,6 @@ const rfheight = ()=>{
                 {windowidth &&  <Cryptonews news={news} windowidth={windowidth}/>}
                 <AdsBanner />  
             </div>
-
-      <div className='gainers'>PROMOTED COINS</div>
-      
-          <PromotedCoin overallwidth={overallwidth}/>
-      
       
       {showMainAds && <div style={{position:'absolute',zIndex:'10000',top:'0px',left:'0px',bottom:'0px',minHeight:'100%',width:'100%',backgroundColor:'rgba(27, 26, 26, 0.46)'}}>
       <p ref={disref} className='biggestAds'>

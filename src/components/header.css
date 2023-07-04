@@ -1,6 +1,6 @@
 .headerwrapper{
     width:100%;
-    min-height:90px;
+    height:60px;
     
     background-color:  #071321;
     box-shadow: 10px 2px 15px black;
@@ -11,13 +11,12 @@
 .headercontainer{
     padding: 5px 20px;
     width: 100%;
-    padding-top: 40px;
+    align-items: center;
     color: white;
     display: flex;
     box-sizing: border-box;
     justify-content: space-between;
     height: 100%;
-   
 }
 
 .logoandtitleholder{
