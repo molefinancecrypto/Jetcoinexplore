@@ -1,4 +1,4 @@
-import { useEffect, useRef,useReducer,useState} from 'react';
+import { useEffect, useRef,useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import './App.css';
@@ -122,7 +122,6 @@ useEffect(
   const refooter = useRef();
 
 const rfheight = ()=>{
-
   let newPadding = refooter.current.offsetHeight+25;
   setmainpadbottom(newPadding)
 }

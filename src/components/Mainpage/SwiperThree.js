@@ -9,7 +9,7 @@ function SwiperThree() {
   {CoinObj.slice(8,12).map(val => <div key={uuidv4()} style={{display:'flex',justifyContent:'space-around',backgroundColor:'white',color:'black',width:"220px",height:'65px',marginTop:'15px',borderRadius:'10px',marginLeft:'7.5px',marginRight:'7.5px',padding:'7px',boxSizing:"border-box"}}>
                                           <div style={{height:'100%'}}>
                                               <div style={{width:'30px',height:'30px'}}>
-                                                  <img className='imglogo' src={val[Object.keys(val)]['img']} />
+                                                  <img alt="logo" className='imglogo' src={val[Object.keys(val)]['img']} />
                                               </div>
                                               <p style={{fontSize:'17px',marginTop:'3px',color:'black'}}>
                                                   <strong>{val[Object.keys(val)]['symbol']}</strong>

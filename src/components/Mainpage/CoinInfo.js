@@ -1,11 +1,10 @@
-import React, {useState, useEffect,useContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import './cointable.css';
 import emptystar from '../../icons/stars/emptystar.png';
 import fullstar from '../../icons/stars/fullstar.png';
 import halfstar from '../../icons/stars/halfstar.png';
 import { ParticularCoin } from '../../contextfolder/Coindata';
-import {Link, useNavigate} from 'react-router-dom'
-import GoToTop from '../Gototop';
+import {useNavigate} from 'react-router-dom'
 import binancelogo from '../../chainLogo/binanceLogo.png';
 import ethereumlogo from '../../chainLogo/ethereumLogo.png';
 import ftmlogo from '../../chainLogo/ftmLogo.png';
@@ -14,23 +13,22 @@ import trxlogo from '../../chainLogo/trxLogo.png';
 
 function CoinInfo({coin,overallwidth,addToWatchlist, topVote,coins}) {
     const [votes,setvotes] = useState(0);
-    const empty = <img src={emptystar} style={{width:'20px',height:'20px'}}/>;
+    const empty = <img alt="emptystar" src={emptystar} style={{width:'20px',height:'20px'}}/>;
   
-    const full = <img src={fullstar} style={{width:'20px',height:'20px'}} />;
+    const full = <img alt="fullstar" src={fullstar} style={{width:'20px',height:'20px'}} />;
     const [colorvote,setcolorvote] = useState('#FFFFFF ')
     const [stars,setstars] = useState(emptystar);
     const arrowforvote = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"/></svg>;
-    const [direction,setdirection] = useState('');
     const navigate = useNavigate();
     const {votevalidation} = ParticularCoin();
     //#B6B3B3
     //#fffff
 
-    const eth = <img src={ethereumlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
-    const binance = <img src={binancelogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
-    const ftm = <img src={ftmlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
-    const matic = <img src={maticlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
-    const trx = <img src={trxlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+    const eth = <img alt="ethlogo" src={ethereumlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+    const binance = <img alt="binancelogo" src={binancelogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+    const ftm = <img alt="ftmlogo" src={ftmlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+    const matic = <img alt="maticlogo" src={maticlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+    const trx = <img alt="trxlogo" src={trxlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
     const voteFunction = (coin)=>{
         if(votevalidation){
           topVote(coin)

@@ -14,6 +14,11 @@ import alexisearch from '../alexi-icons/alexisearch.png';
 
 
 function NewlyAddedCoin({overallwidth}) {
+    const [TodayBest,setTodayBest] = useContext(Statecontext).todaybest;
+    const empty = <img alt="emptystar" src={emptystar} style={{width:'20px',height:'20px'}}/>;
+    const full = <img alt="fullstar" src={fullstar} style={{width:'20px',height:'20px'}} />;
+    const eth = <img alt="ethlogo" src={ethereumlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+    const binance = <img alt="binancelogo" src={binancelogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
   const [userObject,setuserObject] = useContext(Statecontext).userObject;
     const[alertobj,setalertobj] = useContext(Statecontext).alertobj;
     const [showmenu,setshowmenu] = useState(false);
@@ -30,6 +35,7 @@ function NewlyAddedCoin({overallwidth}) {
     const {votevalidation} = ParticularCoin();
     const navigate = useNavigate();
     const [watchlistArray,setwatchlistArray] = useContext(Statecontext).watchlistArray;
+
     const [maindata,setmaindata] = useState();
     const [pagesForCoins,setpagesForCoins] = useState();
     const [pageNavigator,setpageNavigator] = useState([0,10])
@@ -41,6 +47,7 @@ function NewlyAddedCoin({overallwidth}) {
     const [coinlength,setcoinlength] = useState(0)
     const menuref = useRef();
     //function to call newly enlisted coins
+
 
     const enlistedCoins = async()=>{
      

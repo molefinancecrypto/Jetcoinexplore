@@ -1,10 +1,7 @@
 import './cointable.css'
 import React,{useState,useEffect,useRef,useContext} from 'react';
-import { CoinObj } from '../coinholder';
 import emptystar from '../../icons/stars/emptystar.png';
 import fullstar from '../../icons/stars/fullstar.png';
-import halfstar from '../../icons/stars/halfstar.png'
-import { ParticularCoin } from '../../contextfolder/Coindata';
 import { v4 as uuidv4 } from 'uuid';
 import CoinInfo from './CoinInfo';
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +16,6 @@ const CoinsTable = ({overallwidth}) => {
   const [TodayBest,setTodayBest] = useContext(Statecontext).todaybest;
   const [MarketCap,setMarketCap] = useContext(Statecontext).marketCap;
   const [NewListings,setNewListings] = useContext(Statecontext).newlistings;
-    const[coinhold, setcoinhold] = useState( CoinObj );
     const [coinheader,setcoinheader] = useContext(Statecontext).coinheader;
     const[coins,setcoins] = useState(AllTime);
     const dropdown = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 10l5 5 5-5H7z"/></svg>;
@@ -31,21 +27,10 @@ const CoinsTable = ({overallwidth}) => {
     const tableref = useRef('');
     const [changepagebyfoot,setchangepagebyfoot] = useContext(Statecontext).changepagebyfoot
     const [changefootcheck,setchangefootcheck] = useContext(Statecontext).changefootcheck
-    const inputRef = useRef('');
     const forward = <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 0 24 24" width="25px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg> 
     const backward = <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 0 24 24" width="25px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>
     const [watchlistArray,setwatchlistArray] = useContext(Statecontext).watchlistArray;
-       const [userObject,setuserObject] = useContext(Statecontext).userObject
-    let newArray = [];
     const navigate = useNavigate();
-  const funcForpager = (pager)=>{
-    let idholder = 0;
-    for(let i =0; i<pager.length; i += 8){
-      let newsobj = pager.slice(i,i+8);
-      newArray.push(newsobj)
-    }
-  return newArray;
-  }
 
 
   const filterAgent = (cointoFilter,coin,newArray,index) =>{
@@ -193,27 +178,38 @@ const topVote = (coin) =>{
       
      }
 
-     const pagechangedfromfooter = (rf)=>{
-      setchangefootcheck(changepagebyfoot);
-       window.scrollTo(0,rf.current.offsetTop)
-     }
+     
 
 
     //usEffect to scroll to cointable from footer 
 
     useEffect(()=>{
+      const pagechangedfromfooter = (rf)=>{
+        setchangefootcheck(changepagebyfoot);
+         window.scrollTo(0,rf.current.offsetTop)
+       }
+
       if(changefootcheck === changepagebyfoot){
         window.scrollTo(0,0)
       }
       else{
         pagechangedfromfooter(tableref)
       }
-    },[changepagebyfoot])
+    },[changepagebyfoot,changefootcheck,setchangefootcheck])
 
     
     
     useEffect(()=>{
-      
+      let newArray = [];
+
+      const funcForpager = (pager)=>{
+        for(let i =0; i<pager.length; i += 8){
+          let newsobj = pager.slice(i,i+8);
+          newArray.push(newsobj)
+        }
+      return newArray;
+      }
+
       if(chainfilter==='ALL'){
         if(coinheader==='first'){
           const arraypager = funcForpager(TodayBest);
@@ -264,7 +260,7 @@ const topVote = (coin) =>{
             setcoins(MarketCap.filter(coin => coin[Object.keys(coin)]['chain']===chainfilter));
             setcoinpage(pagedata)
           } 
-    },[chainfilter,coinheader])
+    },[chainfilter,coinheader,AllTime,MarketCap,TodayBest])
 
   return <div  ref={tableref} style={{marginTop:'60px', color:'white',boxSizing:'border-box'}}>
     
@@ -304,8 +300,6 @@ export default CoinsTable;
 
 
 export function PromotedCoin({overallwidth}) {
-  const [AllTime,setAllTime] = useContext(Statecontext).alltime;
-  const [TodayBest,setTodayBest] = useContext(Statecontext).todaybest;
   const[alertobj,setalertobj] = useContext(Statecontext).alertobj;
   const [MarketCap,setMarketCap] = useContext(Statecontext).marketCap;
   const [NewListings,setNewListings] = useContext(Statecontext).newlistings;
@@ -320,7 +314,6 @@ export function PromotedCoin({overallwidth}) {
   const {votevalidation} = ParticularCoin();
   const [maindata,setmaindata] = useState();
   const [userObject,setuserObject] = useContext(Statecontext).userObject;
-  const userDetails = JSON.parse(window.localStorage.getItem('userDetails'));
   const navigate = useNavigate();
          
   

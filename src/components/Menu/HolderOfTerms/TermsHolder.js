@@ -1,6 +1,6 @@
 import React , {useContext,useState,useEffect} from 'react'
 import { Statecontext } from '../../CointoviewContext'
-import {useNavigate,Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import GoToTop from '../../Gototop'
 
 function TermsHolder() {

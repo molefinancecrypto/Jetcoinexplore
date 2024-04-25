@@ -4,20 +4,12 @@ import './swipeone.css';
 import { v4 as uuidv4 } from 'uuid';
 
 function SwiperOne() {
-
-    const checkcolor = (val) => {
-        if(val[Object.keys(val)]<0)
-        return 'red';
-        else{
-            return 'green';
-        }
-    }
   return <div style={{display:'flex',width:'950px'}}>
        
     {CoinObj.slice(0,4).map(val => <div key={uuidv4()} style={{display:'flex',justifyContent:'space-around',backgroundColor:'white',color:'black',width:"220px",height:'65px',marginTop:'15px',borderRadius:'10px',marginLeft:'7.5px',marginRight:'7.5px',padding:'7px',boxSizing:"border-box"}}>
                                             <div style={{height:'100%'}}>
                                                 <div style={{width:'30px',height:'30px'}}>
-                                                    <img className='imglogo' src={val[Object.keys(val)]['img']} />
+                                                    <img alt="logo" className='imglogo' src={val[Object.keys(val)]['img']} />
                                                 </div>
                                                 <p style={{fontSize:'17px',marginTop:'3px',color:'black'}}>
                                                     <strong>{val[Object.keys(val)]['symbol']}</strong>

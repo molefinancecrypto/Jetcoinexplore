@@ -1,4 +1,4 @@
-import React, {useState,useContext,useEffect} from 'react';
+import React, {useState,useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Statecontext } from '../CointoviewContext';
 import './watchlist.css';
@@ -19,13 +19,13 @@ function Watchlist({overallwidth}) {
   const [MarketCap,setMarketCap] = useContext(Statecontext).marketCap;
   const [NewListings,setNewListings] = useContext(Statecontext).newlistings;
     const [watchlistArray,setwatchlistArray] = useContext(Statecontext).watchlistArray;
-    const eth = <img src={ethereumlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
-    const binance = <img src={binancelogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
-    const ftm = <img src={ftmlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
-    const matic = <img src={maticlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
-    const trx = <img src={trxlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
-    const empty = <img src={emptystar} style={{width:'20px',height:'100%'}}/>;
-    const full = <img src={fullstar} style={{width:'20px',height:'100%'}} />;
+    const eth = <img alt="ethlogo" src={ethereumlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+    const binance = <img alt="binancelogo" src={binancelogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+    const ftm = <img alt="ftmlogo" src={ftmlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+    const matic = <img alt="maticlogo" src={maticlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+    const trx = <img alt="trxlogo" src={trxlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+    const empty = <img alt="emptystar" src={emptystar} style={{width:'20px',height:'100%'}}/>;
+    const full = <img alt="fullstar" src={fullstar} style={{width:'20px',height:'100%'}} />;
     const [votes,setvotes] = useState(0);
     const {votevalidation} = ParticularCoin();
     const navigate = useNavigate()

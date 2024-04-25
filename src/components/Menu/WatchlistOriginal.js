@@ -1,32 +1,26 @@
 import React, {useState,useContext,useEffect} from 'react';
-import {  useNavigate } from 'react-router-dom';
 import { Statecontext } from '../CointoviewContext';
 import './watchlist.css';
 import emptystar from '../../icons/stars/emptystar.png';
 import fullstar from '../../icons/stars/fullstar.png';
 import GoToTop from '../Gototop';
 import { v4 as uuidv4 } from 'uuid';
-import { ParticularCoin } from '../../contextfolder/Coindata';
 import binancelogo from '../../chainLogo/binanceLogo.png';
 import ethereumlogo from '../../chainLogo/ethereumLogo.png';
-import ftmlogo from '../../chainLogo/ftmLogo.png';
-import maticlogo from '../../chainLogo/maticLogo.png';
-import trxlogo from '../../chainLogo/trxLogo.png';
 
 export default function WatchlistOriginal({overallwidth}) {
 
-const navigate = useNavigate()
 const [watchlistArray,setwatchlistArray] = useState()
 const [triggerAfterVotes,setTriggerAfterVotes] = useState(false);
 const[alertobj,setalertobj] = useContext(Statecontext).alertobj
 const [userObject,setuserObject] = useContext(Statecontext).userObject;
 const [loaderid,setloaderid] = useState('');
-const eth = <img src={ethereumlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
-  const binance = <img src={binancelogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
-  const [colorvote,setcolorvote] = useState('#FFFFFF ')
-  const arrowforvote = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"/></svg>;
-const empty = <img src={emptystar} style={{width:'20px',height:'20px'}}/>;
-  const full = <img src={fullstar} style={{width:'20px',height:'20px'}} />;
+const eth = <img alt="ethlogo" src={ethereumlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+const binance = <img alt="binancelogo" src={binancelogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+const [colorvote,setcolorvote] = useState('#FFFFFF ')
+const arrowforvote = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"/></svg>;
+const empty = <img alt="emptystar" src={emptystar} style={{width:'20px',height:'20px'}}/>;
+const full = <img alt="fullstar" src={fullstar} style={{width:'20px',height:'20px'}} />;
 
   const coinToWatchlist = async(id,coin)=>{
 

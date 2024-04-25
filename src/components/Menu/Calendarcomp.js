@@ -1,14 +1,13 @@
 import React,{useState,useRef,useEffect,useContext} from 'react';
 import './calendar.css';
 import Calendar from 'react-calendar';
-import { useNavigate, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import alexisearch from '../alexi-icons/alexisearch.png';
 import {CoinObj} from '../coinholder';
 import { Statecontext } from '../CointoviewContext';
 
 
 export default function Calendarcomp({overallwidth,promosec,leftholder}) {
-  const navigate = useNavigate();
   const [showmenu,setshowmenu] = useState(false);
   const menuref = useRef();
   const [searchvalue,setsearchvalue] = useState('');
@@ -33,7 +32,7 @@ export default function Calendarcomp({overallwidth,promosec,leftholder}) {
     if(promosec && overallwidth>900){
        setordermarginTop(calendarRefPoint.current.offsetTop-leftholder.current.offsetTop)
     }
- },[promosec])
+ },[promosec,leftholder,overallwidth,setordermarginTop])
 
   const clickday = (e)=>{
    let changingday = `${e.getDate()}-${e.getMonth() + 1}-${e.getFullYear()}`
@@ -105,7 +104,7 @@ const disableDay = ({ _, date, view }) => {
        else if(searchvalue == ''){
           setcoinShown(CoinObj.slice(0,5))
        }
-    },[searchvalue])
+    },[searchvalue,coinToSearch,coinsToSearch])
 
 
 
