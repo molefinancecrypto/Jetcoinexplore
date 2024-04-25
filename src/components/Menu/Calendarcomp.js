@@ -69,6 +69,19 @@ export default function Calendarcomp({overallwidth,promosec,leftholder}) {
 }
   
 
+//function to disable a day
+const disableDay = ({ _, date, view }) => {
+      
+   // Check if a date React-Calendar wants to check is on the list of dates to add class to
+   //console.log(typeof(date.getDay()) )
+   const today = new Date()
+ 
+   if (date <= today.setDate(today.getDate()+2)){
+     
+     return date.getDate()
+   }
+
+  }
   
   const coinToSearch = ()=>{
    return CoinObj.filter(coin => coin[Object.keys(coin)]['name'].toLowerCase().includes(searchvalue))
@@ -155,8 +168,8 @@ export default function Calendarcomp({overallwidth,promosec,leftholder}) {
   </div>
   
   <p style={{width:'80%',margin:'0px auto',textAlign:'center',fontSize:'15px',fontFamily:'NexaTextLight'}}>Coin Unavailable? <NavLink to='/addcoin' style={{color:'rgb(176, 176, 240)'}}>Add here</NavLink></p>
-  <p  ref={calendarRefPoint} style={{width:overallwidth>900?'50%':'70%',margin:'20px auto',textAlign:'center',marginBottom:'5px'}}>AVAILABLE SLOTS</p>
-    <Calendar onChange={setDate} value={date} onClickDay={clickday} tileClassName={tileClassName}/>
+  <p  ref={calendarRefPoint} style={{width:overallwidth>900?'50%':'70%',margin:'20px auto',textAlign:'center',marginBottom:'15px'}}>AVAILABLE SLOTS</p>
+    <Calendar onChange={setDate} value={date} onClickDay={clickday} tileClassName={tileClassName} tileDisabled={disableDay}/>
     
     
    

@@ -41,6 +41,7 @@ function ListCoin() {
     const [headertoshow,setheadertoshow] = useState(0);
     const [userObject,setuserObject] = useContext(Statecontext).userObject;
     const[alertobj,setalertobj] = useContext(Statecontext).alertobj;
+    const [triggerAfterVotes,setTriggerAfterVotes] = useContext(Statecontext).triggerAfterVotes
     
 
 
@@ -74,12 +75,45 @@ function ListCoin() {
         
     }
 
+    const filledfieldDate = {
+
+        height: '45px',
+        boxSizing : 'border-box',
+        paddingLeft:'10px',
+        borderRadius:'10px 0px 0px 10px',
+        width:'100%',
+        fontSize:'15px',
+        backgroundColor:'#071323' ,
+        color:'white',
+        outline:'none',
+        borderWidth:'0px 0px 0px',
+        borderColor:'rgba(95, 94, 94, 0.698)',
+        textAlign:'left',
+        paddingTop:'5px'
+        
+    }
+
 
     const unfilledfield = {
         height: '45px',
         boxSizing : 'border-box',
         paddingLeft:'10px',
         borderRadius:'10px',
+        width:'100%',
+        fontSize:'15px',
+        backgroundColor:'#071323' ,
+        color:'white',
+        borderWidth:'1.5px',
+        borderColor:'red',
+        textAlign:'left',
+        paddingTop:'5px'
+    }
+
+    const unfilledfieldDate = {
+        height: '45px',
+        boxSizing : 'border-box',
+        paddingLeft:'10px',
+        borderRadius:'10px 0px 0px 10px',
         width:'100%',
         fontSize:'15px',
         backgroundColor:'#071323' ,
@@ -102,6 +136,15 @@ function ListCoin() {
     const addnewCoin = async(event)=>{
         //const formData = new FormData();
         //formData.append('myFile', enlistCoinObj.myFile)
+        if(userObject.token===''){
+            //fix situation for when field isnt filled
+            event.preventDefault()
+            setalertobj({...alertobj,...{message:'You are not Signed in.',trigger:!alertobj.trigger,pass:true}})
+        }
+
+        else{
+
+        
         event.preventDefault()
         const formData = new FormData();
         formData.append('name', enlistCoinObj.name);
@@ -127,6 +170,7 @@ function ListCoin() {
             method: 'POST',                    
             headers: {
                     'Accept': '*/*',                    
+                    'Accept': '*/*',
                     Authorization: `Bearer ${userObject.token}`
                     },
             body: formData
@@ -135,11 +179,13 @@ function ListCoin() {
     const addnewCoinObject = await addCoinCredentials.json();
     if(addnewCoinObject.success){
         console.log('succesful')
+        setTriggerAfterVotes(!triggerAfterVotes)
         setalertobj({...alertobj,...{message:'your coin has been listed succesfully.',trigger:!alertobj.trigger,pass:true}})
     
     }
     console.log(addnewCoinObject)
     }
+}
     
 
     const updateCoinObjSocials = (event)=>{
@@ -250,7 +296,7 @@ function ListCoin() {
                         </section>
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
                             <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Price</p>
-                            <input name="pricechangepct" value={enlistCoinObj.pricechangepct} onChange={(event)=>{updateCoinObj(event)}} type='number' placeholder='Ex: $24.50' style={colorBorderObject.stageOne?filledfield:enlistCoinObj.price===""?unfilledfield:filledfield}/>
+                            <div style={{display:"flex"}}><span style={{backgroundColor:'#071323',height:'45px',width:'25px',display:'flex',alignItems:'center',justifyContent:'center',borderRadius:'10px 0px 0px 10px'}}>$</span><input name="pricechangepct" value={enlistCoinObj.pricechangepct} onChange={(event)=>{updateCoinObj(event)}} type='number' placeholder='Ex: $24.50' style={colorBorderObject.stageOne?{...filledfieldDate,...{borderRadius:'0px 10px 10px 0px',display:'flex',alignItems:'flex',justifyContent:'left'}}:enlistCoinObj.price===""?{...unfilledfieldDate,...{borderRadius:'0px 10px 10px 0px',display:'flex',alignItems:'flex',justifyContent:'left'}}:{...filledfieldDate,...{borderRadius:'0px 10px 10px 0px',display:'flex',alignItems:'flex',justifyContent:'left'}}}/></div>
                         </section>
                     </div>
                     <div style={{width:'90%',margin:'25px auto',marginBottom:'0px',boxSizing:'border-box',height:'30%',display:windowidth<=900?'block':'flex',justifyContent:'space-around'}}>
@@ -260,7 +306,7 @@ function ListCoin() {
                         </section>
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px',marginTop:'-20px'}}>
                             <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Launch Date<sup class="asterix">*</sup></p>
-                            <input name="launchDate" value={enlistCoinObj.launchDate} onChange={(event)=>{updateCoinObj(event)}} type='date' style={colorBorderObject.stageOne?filledfield:enlistCoinObj.launchDate===""?unfilledfield:filledfield}/>
+                            <div style={{display:'flex'}}><input name="launchDate" value={enlistCoinObj.launchDate} onChange={(event)=>{updateCoinObj(event)}} type='date' style={colorBorderObject.stageOne?filledfieldDate:enlistCoinObj.launchDate===""?unfilledfieldDate:filledfieldDate}/><span style={{width:'25px',height:'45px',backgroundColor:'#071323',borderRadius:'0px 10px 10px 0px'}}></span></div>
                         </section>
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px',marginTop:'-20px'}}>
                             <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'15px'}}>Logo<sup class="asterix">*</sup></p>
@@ -329,7 +375,7 @@ function ListCoin() {
                     <div style={{width:'90%',margin:windowidth<=900?'25px auto':'7px auto',boxSizing:'border-box',height:'25%',display:windowidth<=900?'block':'flex',justifyContent:'space-between'}}>
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px',marginTop:'-20px'}}>
                             <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Website<sup class="asterix">*</sup></p>
-                            <input name="website" value={enlistCoinObj.website} onChange={(event)=>{updateCoinObj(event)}} type='text' placeholder='Ex: https://www.bitcoin.com' style={colorBorderObject.stageThree?filledfield:enlistCoinObj.socials.website===""?unfilledfield:filledfield}/>
+                            <input name="website" value={enlistCoinObj.website} onChange={(event)=>{updateCoinObj(event)}} type='text' placeholder='Ex: https://www.bitcoin.com' style={colorBorderObject.stageThree?filledfield:enlistCoinObj.website===""?unfilledfield:filledfield}/>
                         </section >
                         <section style={{textAlign:windowidth<=900?'center':'left',width:windowidth<=900?'100%':'30%',height:'auto',marginBottom:windowidth<=900?'25px':'0px'}}>
                             <p style={{textAlign:'left',color:'white',marginBottom:windowidth<=900?'5px':'10px'}}>Telegram</p>

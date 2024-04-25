@@ -301,13 +301,17 @@ export default CoinsTable;
 
 export function PromotedCoin({overallwidth}) {
   const[alertobj,setalertobj] = useContext(Statecontext).alertobj;
-  const empty = <img alt="emptystar" src={emptystar} style={{width:'20px',height:'20px'}}/>;
-  const full = <img alt="fullstar" src={fullstar} style={{width:'20px',height:'20px'}} />;
-  const eth = <img alt="ethlogo" src={ethereumlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
-  const binance = <img alt="binancelogo" src={binancelogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+  const [MarketCap,setMarketCap] = useContext(Statecontext).marketCap;
+  const [NewListings,setNewListings] = useContext(Statecontext).newlistings;
+  const [triggerAfterVotes,setTriggerAfterVotes] = useContext(Statecontext).triggerAfterVotes
+  const empty = <img src={emptystar} style={{width:'20px',height:'20px'}}/>;
+  const full = <img src={fullstar} style={{width:'20px',height:'20px'}} />;
+  const eth = <img src={ethereumlogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
+  const binance = <img src={binancelogo} style={{width:'20px',height:'20px',borderRadius:'50%'}}/>;
   const [colorvote,setcolorvote] = useState('#FFFFFF ')
   const arrowforvote = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"/></svg>;
-  const [triggerAfterVotes,setTriggerAfterVotes] = useState(false);
+  const[coins,setcoins] = useState(TodayBest.slice(0,4));
+  const {votevalidation} = ParticularCoin();
   const [maindata,setmaindata] = useState();
   const [userObject,setuserObject] = useContext(Statecontext).userObject;
   const navigate = useNavigate();
@@ -376,6 +380,7 @@ export function PromotedCoin({overallwidth}) {
         const Json = await newdata.json();
         const Jsondata = Json['coins']
         console.log('a new')
+        console.log(Jsondata)
         setmaindata(Jsondata)
       }
 
@@ -397,6 +402,7 @@ export function PromotedCoin({overallwidth}) {
           const Json = await newdata.json();         
             const Jsondata = Json['coins']
             console.log(Jsondata)
+            console.log(`length of data${Jsondata.length}`)
             setmaindata(Jsondata)         
          }
 
@@ -411,7 +417,7 @@ export function PromotedCoin({overallwidth}) {
         
       } }
       catch(error){
-        setalertobj({...alertobj,...{message:'please, check your internet connections',trigger:!alertobj.trigger,pass:true}})
+        setalertobj({...alertobj,...{message:'Please, check your internet connections.',trigger:!alertobj.trigger,pass:true}})
       }
     }
     
@@ -421,7 +427,7 @@ export function PromotedCoin({overallwidth}) {
 
 const coinToWatchlist = async(id,coin)=>{
   if(userObject.token===''){
-    setalertobj({...alertobj,...{message:'please, sign in first to add coin to watchlist',trigger:!alertobj.trigger,pass:true}})
+    setalertobj({...alertobj,...{message:'Please, sign in first to add coin to watchlist.',trigger:!alertobj.trigger,pass:true}})
   
   }
 
@@ -539,7 +545,7 @@ const filePerCoin = async(id)=>{
 
   const voteFunction = async(id)=>{
     if(userObject.token===''){
-      setalertobj({...alertobj,...{message:'please, sign in first to vote',trigger:!alertobj.trigger,pass:true}})
+      setalertobj({...alertobj,...{message:'Please, sign in first to vote.',trigger:!alertobj.trigger,pass:true}})
       
     }
     else{
@@ -567,7 +573,7 @@ const filePerCoin = async(id)=>{
     
 
       catch(error){
-        setalertobj({...alertobj,...{message:'please, wait for the next 12hours to vote again',trigger:!alertobj.trigger,pass:true}})
+        setalertobj({...alertobj,...{message:'Please, wait for the next 12hours to vote again.',trigger:!alertobj.trigger,pass:true}})
       }
     }
   }
@@ -586,7 +592,7 @@ const filePerCoin = async(id)=>{
     }
   }
 
-*/  
+*/   
 
 
 

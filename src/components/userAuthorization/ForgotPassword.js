@@ -1,4 +1,4 @@
-import React,{useState, useContext} from 'react';
+import React,{useState, useEffect, useContext} from 'react';
 import './signin.css';
 import { Link,useNavigate } from 'react-router-dom';
 import logo from '../../images/coinexploreTwo.png'
@@ -6,21 +6,31 @@ import worldimage from './imagesforauth/worldforsigning.jpg';
 import GoToTop from '../Gototop';
 import { Statecontext } from '../CointoviewContext';
 
-export default function Signin() {
+
+
+
+export default function ForgotPassword() {
   
   const backward = <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>
   const [formData,setFormData] = useState({
     email: '',
-    password:''})
+    newpassword:'',
+    confirmpassword:''})
     const[alertobj,setalertobj] = useContext(Statecontext).alertobj
  const [userObject,setuserObject] = useContext(Statecontext).userObject;
+ const homeIcon = <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>;
  const navigate = useNavigate()
 
-const{email,password} = formData
-const onchangepassword = (event)=>{
-  setFormData({...formData,...{'password':event.target.value}})
+const{email,newpassword,confirmpassword} = formData
+const onchangenewpassword = (event)=>{
+  setFormData({...formData,...{'newpassword':event.target.value}})
   
 }
+
+const onchangeconfirmpassword = (event)=>{
+    setFormData({...formData,...{'confirmpassword':event.target.value}})
+    
+  }
 
 const onchangeEmail = (event)=>{
   setFormData({...formData,...{'email':event.target.value}})
@@ -29,7 +39,7 @@ const onchangeEmail = (event)=>{
 
 const onfinalsubmit = async(event)=>{
   event.preventDefault()
-  if(email==='' ||password=== ''){
+  /*if(email==='' ||newpassword=== ''|| confirmpassword===''){
     setalertobj({...alertobj,...{message:'Please fill in all details',trigger:!alertobj.trigger,pass:true}})
     console.log(alertobj)
   }
@@ -72,7 +82,7 @@ else{
    
       
       
-  }
+  }*/
 }
   
   
@@ -96,9 +106,9 @@ return <div className='signoverall' >
         <div className='rightsideauth' >
           <div className='secondrightauth' >
             <div className='upperrightauth' >
-                <p style={{fontSize:'30px',marginBottom:'30px',textAlign:'left'}}>SIGN IN</p>
+                <p style={{fontSize:'30px',marginBottom:'30px',textAlign:'left'}}>FORGOT PASSWORD?</p>
                 <div>
-                  <p style={{fontSize:'20px',marginBottom:'10px',textAlign:'left',color:'grey'}}>Please sign in to continue</p>
+                  <p style={{fontSize:'20px',marginBottom:'10px',textAlign:'left',color:'grey'}}>Please fill to create new password</p>
                 </div>
             </div>
             <div className='lowerrightauth'>
@@ -110,21 +120,27 @@ return <div className='signoverall' >
                   </div>
                   <div className='lowerrightone'>
                       <section className='lowerrightonesection' >
-                        <p className='sectioninput'>Password:</p>
-                        <input onChange={(event)=>onchangepassword(event)} className='authinput' type='password' value={formData.password} />
+                        <p className='sectioninput'>New Password:</p>
+                        <input onChange={(event)=>onchangenewpassword(event)} className='authinput' type='password' value={formData.newpassword} />
+                      </section>
+                  </div>
+                  <div className='lowerrightone'>
+                      <section className='lowerrightonesection' >
+                        <p className='sectioninput'>Confirm Password:</p>
+                        <input onChange={(event)=>onchangeconfirmpassword(event)} className='authinput' type='password' value={formData.confirmpassword} />
                       </section>
                   </div>
            
                   <div className='signbuttondiv'>
 
-                    <input onClick={onfinalsubmit} className='signbutton' type='button' value='Sign in' />
+                    <input onClick={onfinalsubmit} className='signbutton' type='button' value='Submit' />
 
                   </div>
 
                   <div className='signbuttondiv' >
 
                     <p style={{color:'white',marginTop:'35px'}}>
-                      <Link to="/forgotpassword" style={{textDecoration:'none',color:'#007AFF'}}> Forgot Password?</Link>
+                      <Link to="/signin" style={{textDecoration:'none',color:'#007AFF'}}> Need to Sign-in?</Link>
                     </p>
 
                     <p style={{color:'white',marginTop:'35px'}}>
@@ -143,23 +159,23 @@ return <div className='signoverall' >
 </section>
           
        <section className='mobilesignin' >
-          <img style={{width:"100%",height:'550px',objectFit:'cover'}}  src={worldimage} alt='first background for auth'/>
-          <div style={{width:'100%',height:'550px',position:'absolute',top:'0px',backgroundColor:'#05101c9a'}}></div>
-          <div style={{position:'absolute',top:'0px',height:"550px",width:"100%",zIndex:'5'}}>
-              <div style={{width:"100%",boxSizing:'border-box',height:'30%',backgroundImage:'linear-gradient(to bottom,#05101c,transparent)'}}>
+          <img style={{width:"100%",height:'750px',objectFit:'cover'}}  src={worldimage} alt='first background image for auth'/>
+          <div style={{width:'100%',height:'750px',position:'absolute',top:'0px',backgroundColor:'#05101c9a'}}></div>
+          <div style={{position:'absolute',top:'0px',height:"750px",width:"100%",zIndex:'5'}}>
+              <div style={{width:"100%",boxSizing:'border-box',height:'25%',backgroundImage:'linear-gradient(to bottom,#05101c,transparent)'}}>
                 <div style={{width:'100%',height:'60%',display:'flex',justifyContent:'space-between',flexDirection:'column'}}>  
                     <div onClick={()=> navigate('/')} style={{paddingLeft:'20px',display:'flex',justifyContent:"left"}} >
                         <p>{backward}</p>
                         <p style={{fontSize:'20px',color:'white'}}>Back</p>
                     </div>
                     <div style={{marginTop:'15px'}}>
-                        <p style={{paddingLeft:'22px',fontSize:'25px',color:'white',textAlign:'left'}}>Sign-in</p>
-                        <p style={{paddingLeft:'22px',fontSize:'17px',textAlign:'left',color:'#BABABA',marginTop:"10px"}}>Plese sign-in to continue</p>
+                        <p style={{paddingLeft:'22px',fontSize:'25px',color:'white',textAlign:'left'}}>Forgot Password?</p>
+                        <p style={{paddingLeft:'22px',fontSize:'17px',textAlign:'left',color:'#BABABA',marginTop:"10px"}}>Plese fill-in to create new password</p>
                     </div>
                 </div>
               </div>
 
-          <div style={{width:'100%',boxSizing:'border-box',height:"70%",display:'flex',flexDirection:"column",justifyContent:'space-between',padding:'40px 15px',backgroundImage: 'linear-gradient(to bottom,#0d213a,#05101c)',borderRadius:'25px 25px 0px 0px'}}>
+          <div style={{width:'100%',boxSizing:'border-box',height:"75%",display:'flex',flexDirection:"column",justifyContent:'space-between',padding:'40px 15px',boxSizing:"border-box",backgroundImage: 'linear-gradient(to bottom,#0d213a,#05101c)',borderRadius:'25px 25px 0px 0px'}}>
             <div style={{width:'100%',height:'50%'}}>
               <div style={{width:'80%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
                 <p style={{marginBottom:'0px',color:'white',paddingTop:'17px'}}>Email:</p>
@@ -167,15 +183,20 @@ return <div className='signoverall' >
               </div>
 
               <div style={{width:'80%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
-                <p style={{marginBottom:'0px',paddingTop:'17px',color:'white'}}>Password:</p>
-                <input onChange={(event)=>onchangepassword(event)} value={formData.password} type='password' style={{fontSize:'17px',backgroundColor:'transparent',width:'100%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none',paddingBottom:'15px'}}/>
+                <span style={{marginBottom:'0px',paddingTop:'17px',color:'white'}}>New&nbsp;Password:</span>
+                <input onChange={(event)=>onchangenewpassword(event)} value={formData.newpassword} type='password' style={{fontSize:'17px',backgroundColor:'transparent',width:'70%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none',paddingBottom:'15px'}}/>
+              </div>
+
+              <div style={{width:'80%',height:'45px',display:'flex',justifyContent:'space-between',margin:'20px auto',border:'0.5px solid white',borderWidth:'0px 0px 0.5px'}}>
+                <span style={{marginBottom:'0px',paddingTop:'17px',color:'white'}}>Confirm&nbsp;Password:</span>
+                <input onChange={(event)=>onchangeconfirmpassword(event)} value={formData.confirmpassword} type='password' style={{fontSize:'17px',backgroundColor:'transparent',width:'70%',color:'white',marginBottom:'0px',paddingTop:"30px",boxSizing:'border-box',paddingLeft:'15px',height:'100%',border:'0px solid white',outline:'none',paddingBottom:'15px'}}/>
               </div>
               
             </div>
 
             <div style={{width:'100%',height:'50%',marginTop:"20px",display:"flex",justifyContent:"space-around",flexDirection:"column"}}>
-              <button onClick={onfinalsubmit} style={{width:'80%',margin:'20px auto',marginTop:'10px',color:'white',borderRadius:'15px',backgroundColor:"#02050a",outline:"none",height:'45px',borderWidth:"0px"}}>Sign-in</button>
-              <p style={{textAlign:'center',color:"#007AFF",marginBottom:'10px',width:'70%',margin:'0px auto'}}><Link to="/forgotpassword" style={{textDecoration:'none',color:'#007AFF'}}>Forgot Password?</Link></p>
+              <button onClick={onfinalsubmit} style={{width:'80%',margin:'20px auto',marginTop:'10px',color:'white',borderRadius:'15px',backgroundColor:"#02050a",outline:"none",height:'45px',borderWidth:"0px"}}>Submit</button>
+              <p style={{textAlign:'center',color:"#007AFF",marginBottom:'10px',width:'70%',margin:'0px auto'}}><Link to="/signup" style={{textDecoration:'none',color:'#007AFF'}}>Need to Sign in?</Link></p>
               <div><p style={{color:"white"}}>Don't have an account? &nbsp; &nbsp;</p><Link to="/signup" style={{textDecoration:'none',color:'#007AFF'}}> Sign up</Link></div>
             </div>
 

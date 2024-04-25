@@ -5,8 +5,14 @@ import { useNavigate,NavLink } from 'react-router-dom';
 import { Statecontext } from './CointoviewContext';
 import {Link} from 'react-router-dom';
 import {CoinObj} from './coinholder';
+import { v4 as uuidv4 } from 'uuid'
 import alexisearch from './alexi-icons/alexisearch.png';
 import Alert from './Menu/Alert';
+import imageOne from '../coinExploreImg/imageOne.jpg';
+import imageTwo from '../coinExploreImg/imageTwo.jpg';
+import imageThree from '../coinExploreImg/imageThree.jpg';
+import imageFour from '../coinExploreImg/imageFour.jpg';
+import imageFive from '../coinExploreImg/imageFive.jpg'
 
 
 
@@ -35,6 +41,17 @@ function Header({overallwidth}) {
    }
 */
 
+
+//navigate to add_coin or not depending on the availability of a token
+const navAddcoin  = ()=>{
+   if(userObject.token===''){
+      setalertobj({...alertobj,...{message:'Please, Sign in.',trigger:!alertobj.trigger,pass:true}})
+      navigate('/')
+   }
+   else{
+      navigate('/addcoin')
+   }
+} 
 
    useEffect(
       ()=>{
@@ -66,7 +83,7 @@ function Header({overallwidth}) {
       },[userObject.token,showLogout])
    
 
-   useEffect(
+   /*useEffect(
       async()=>{
          if(userObject.token===''){
             if(searchvalue===""){
@@ -115,8 +132,10 @@ function Header({overallwidth}) {
             }
          }
          
-      },[searchvalue])
+      },[searchvalue])*/
 
+
+const imagesForMiniBanner = [imageOne,imageTwo,imageThree,imageFour,imageFive]
 
 //useEffect to trigger alert messages
 useEffect(()=>{
@@ -201,6 +220,9 @@ useEffect(()=>{
        }
    }
 
+
+
+   
    useEffect(
       ()=>{
          let checkwhereclicked = (event)=>{
@@ -237,6 +259,7 @@ useEffect(()=>{
 
   return <div className='headerwrapper'>
             {alertobj.pass && <Alert overallwidth={overallwidth}/>}
+            
             <div className='headercontainer'>
                <div  onClick={()=> navigate('/')} className='logoandtitleholder'>
         
@@ -280,7 +303,7 @@ useEffect(()=>{
                      
                      <div style={{position:'absolute',textAlign:'left',height:'50%',display:'flex',justifyContent:'space-around',top:'20%',left:'20px',flexDirection:'column',color:"white"}}>
                      <p style={{textAlign:'left',fontFamily:'NexaTextLight',display:userObject.token===''?'none':'block',marginBottom:'30px'}}>{`Welcome to CoinExplore ${userObject.userEmail}`}</p>   
-                        <NavLink onClick={()=>{setshowhamburger(true) }} to='/addcoin' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none'}}}>Add Coin</NavLink>
+                        <p onClick={()=>navAddcoin()}><NavLink onClick={()=>{setshowhamburger(true); }} to='/addcoin' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none'}}}>Add Coin</NavLink></p>
                         <NavLink onClick={()=>{setshowhamburger(true) }} to='/promoted' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none'}}}>Advertise</NavLink>
                         <NavLink onClick={()=>{setshowhamburger(true) }} to='/newspage' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none'}}}>News</NavLink>
                         <NavLink onClick={()=>{setshowhamburger(true) }} to='/contactUs' style={({isActive})=>{ return{color: isActive?'grey':'white',textDecoration:'none'}}}>Contact Us</NavLink>
@@ -297,7 +320,7 @@ useEffect(()=>{
            
 
     <ul className={userObject.token===''?"lister":"listerWithToken"}>
-       <li className='list'><Link to="/addcoin" style={{color:"white",textDecoration:"none"}}>Add Coin</Link></li>
+       <li className='list' onClick={()=>navAddcoin()} style={{color:userObject.token===''?"grey":"white",textDecoration:"none"}}>Add Coin</li>
        <li className='list'><Link to="/promoted" style={{color:"white",textDecoration:"none"}}>Advertise</Link></li>
        <li className='list'><Link to="/newspage" style={{color:"white",textDecoration:"none"}}>News</Link></li>
        <li className='list'><Link to="/contactUs" style={{color:"white",textDecoration:"none"}}>Contact Us</Link></li>
@@ -309,8 +332,9 @@ useEffect(()=>{
          <div style={{position:'absolute',display:showLogout?'block':'none',right:'0px',top:'48px',width:'420px',color:"white",fontFamily:'NexaTextLight',padding:"5px",paddingTop:'15px',boxSizing:'border-box',height:'140px',borderRadius:'10px',border:'2px solid #0B1F36',backgroundColor:'#05101c',zIndex:'5'}}>
                <p style={{textAlign:'left'}}>{`Welcome to CoinExplore ${userObject.userEmail}`}</p>
                
-               <p onClick={()=>{window.localStorage.removeItem('userDetails');setshowLogout(!showLogout)}} style={{marginTop:'15px',textAlign:'left',cursor:'pointer'}}>Log Out</p>
                <p onClick={()=>{navigate('/userwatchlist');setshowLogout(!showLogout)}} style={{marginTop:'15px',textAlign:'left',cursor:'pointer'}}>Watchlist</p>
+               <p onClick={()=>{window.localStorage.removeItem('userDetails');setshowLogout(!showLogout)}} style={{marginTop:'15px',textAlign:'left',cursor:'pointer'}}>Log Out</p>
+               
          </div>
       </div>
     </ul>

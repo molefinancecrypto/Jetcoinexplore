@@ -1,21 +1,22 @@
 .headerwrapper{
     width:100%;
-    min-height:50px;
+    height:60px;
     
     background-color:  #071321;
     box-shadow: 10px 2px 15px black;
     box-sizing: border-box;
+    position: relative;
 }
 
 .headercontainer{
     padding: 5px 20px;
     width: 100%;
+    align-items: center;
     color: white;
     display: flex;
     box-sizing: border-box;
     justify-content: space-between;
     height: 100%;
-   
 }
 
 .logoandtitleholder{
@@ -71,7 +72,7 @@
 }
 
 .listerWithToken{
-    width:30%;
+    width:40%;
     display:flex;
     justify-content: space-evenly;
     list-style: none;

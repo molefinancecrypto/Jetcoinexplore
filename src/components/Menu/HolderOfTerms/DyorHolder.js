@@ -1,7 +1,39 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import GoToTop from '../../Gototop'
 
 function DyorHolder() {
+
+  const[showscroller,setshowscroller] = useState(false);
+  const [verticalscroll,setverticalscroll] = useState();
+
+  const scrolltotop = () => {
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+
+  const topdistance = ()=>{
+    setverticalscroll(window.scrollY);
+  
+    if(verticalscroll>100){
+      setshowscroller(true)
+    }
+    else{
+      setshowscroller(false)
+    }
+  
+    }
+
+
+    useEffect(() => {
+    
+      topdistance()
+      window.addEventListener('scroll', topdistance);
+      
+    
+      return () => {
+          window.removeEventListener('scroll', topdistance)
+        
+    }})
     return (
         <div style={{textAlign:'left',padding:'20px',height:'100%',fontFamily:'NexaTextLight'}}>
           <p style={{fontSize:'30px',fontFamily: "NexaTextBold"}}>Do Your Own Research (DYOR)</p>
@@ -117,7 +149,7 @@ function DyorHolder() {
     
           </div>
          <GoToTop /> 
-          
+         {showscroller && <div onClick={scrolltotop} style={{position:'fixed',top:'85vh',boxShadow: '10px 2px 15px black',zIndex:'20000',right:'20px',display:'flex',alignItems:'center',justifyContent:'center',width:'35px',height:'35px',backgroundColor:'white',borderRadius:'50%'}}><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><polygon points="6,17.59 7.41,19 12,14.42 16.59,19 18,17.59 12,11.59"/><polygon points="6,11 7.41,12.41 12,7.83 16.59,12.41 18,11 12,5"/></g></g></svg></div>} 
         </div>
       )
     }

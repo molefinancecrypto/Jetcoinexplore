@@ -358,7 +358,7 @@ const popupmover = ()=>{
                     <p style={{textAlign:'center',fontSize:overallwidth>900?'30px':'20px',height:"40px"}}>Orders</p>
 
                     
-                    <div style={{width:'90%',margin:'5px auto',height:'auto',boxSizing:'border-box',borderRadius:'10px',border:'2px solid #0B1F36',fontSize:'15px'}}>
+                    <div style={{width:'90%',margin:'15px auto',height:'auto',boxSizing:'border-box',borderRadius:'10px',border:'2px solid #0B1F36',fontSize:'15px'}}>
                         <div style={{display:'flex',justifyContent:'space-around',width:'100%',padding:'7px',boxSizing:'border-box'}}><p style={{width:'10%',textAlign:'center'}}>#</p><div style={{width:'80%',display:'flex',justifyContent:'space-between'}}><p>Item(s)</p><p>Date</p><p>Price</p></div><p style={{width:'10%',textAlign:'center'}}> </p></div>
                         {orderarray!=[] && orderarray.map(sales=><div style={{display:'flex',justifyContent:'space-around',height:'30px',fontFamily:'NexaTextLight',fontSize:'15px'}}><p style={{width:'10%',textAlign:'center'}}>{orderarray.indexOf(sales)+1}</p><div style={{width:'80%',display:'flex',justifyContent:'space-between'}}><p>{sales['promo']}</p><p>{sales['date']}</p><p>{sales['price']}</p></div><p style={{width:'10%',textAlign:'center'}} onClick={()=>deletesale(sales)} >{del}</p></div>)}
                         <div style={{width:'100%',border:'2px solid #0B1F36',borderWidth:'1.5px 0px 0px'}}>

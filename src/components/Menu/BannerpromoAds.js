@@ -56,6 +56,22 @@ export default function BannerpromoAds({overallwidth,leftholder,banasec}) {
         }
      }
 
+     
+     //function to disable a day
+     const disableDay = ({ _, date, view }) => {
+      
+      // Check if a date React-Calendar wants to check is on the list of dates to add class to
+      //console.log(typeof(date.getDay()) )
+      const today = new Date()
+    
+      if (date <= today.setDate(today.getDate()+2)){
+        
+        return date.getDate()
+      }
+   
+     }
+   
+
 
   useEffect(()=>{
     if(banasec && overallwidth>900){
@@ -77,8 +93,8 @@ export default function BannerpromoAds({overallwidth,leftholder,banasec}) {
         </div>
         <div style={{width:overallwidth>900?'60%':'85%',border:'2px solid #0B1F36',padding:'10px 5px',borderRadius:'10px',margin:'10px auto',display:'flex',justifyContent:'space-around'}}><p>Ad redirect:</p> &nbsp; <input type='text' placeholder='https://tt.me/coinexplore' style={{backgroundColor:'transparent',width:'50%',fontSize:'13px',color:'white',outline:'none',borderWidth:'0px 0px 0px',letterSpacing:'1.5px'}}/></div>
         <p style={{width:'80%',margin:'5px auto',textAlign:'center',fontFamily:'NexaTextLight',fontSize:'15px'}}>Coin Unavailable? <NavLink to='/addcoin' style={{color:'rgb(176, 176, 240)'}}>Add here</NavLink></p>
-        <p  style={{width:overallwidth>900?'50%':'70%',margin:'20px auto',textAlign:'center',marginBottom:'5px'}}>AVAILABLE SLOTS</p>
-        <Calendar onChange={setDate} value={date} onClickDay={clickday} tileClassName={tileClassName}/>
+        <p  style={{width:overallwidth>900?'50%':'70%',margin:'20px auto',textAlign:'center',marginBottom:'15px'}}>AVAILABLE SLOTS</p>
+        <Calendar onChange={setDate} value={date} onClickDay={clickday} tileClassName={tileClassName} tileDisabled={disableDay}/>
     </div>
   )
 }
