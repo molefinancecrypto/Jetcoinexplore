@@ -30,11 +30,10 @@ function Cryptonews({news,windowidth}) {
       <p className='backward' onClick={backwardScroll}>{backward}</p>
       <div ref={scrollRef} style={{height:"100%",overflowX:'hidden',scrollBehavior:'smooth'}}>
         <div  style={{width: news.length*windowidth, height:'100%',display:'flex',paddingTop:'5px',boxSizing:'border-box'}}>
-          
-          {news.map(newss => <div key={uuidv4()} ref={itemRef} className='detailPerNews' >
-        
-            <div className='individualNewsBlock' onClick={()=>newss['url']}>
-                <img alt="newsimage" src={newss['urlToImage']} style={{height:'78%', width:'100%',borderRadius:'8px'}}/>                                
+          {news.map(newss => <div key={uuidv4()} ref={itemRef} className='detailPerNews'>
+            <a href={newss['url']} className='urlHoldingNews'><div className='individualNewsBlock'>
+                <img src={newss['urlToImage']} style={{height:'78%', width:'100%',borderRadius:'8px'}} alt="newsimage" />
+                                
                 <p style={{color:"white",overflow:'hidden',height:'20%',padding:'5px',boxSizing:'border-box'}}>{newss['title']}</p>
             </div></a>
           </div>)}
